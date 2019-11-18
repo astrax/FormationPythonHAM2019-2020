@@ -103,13 +103,13 @@ common_replacements $html.html
 
 
 # Jupyter notebook
-doconce format ipynb $name $opt2
+doconce format ipynb $name
 
 # Publish
 dest=../../pub/$name
 if [ ! -d $dest ]; then
 mkdir $dest
 fi
-cp -r figs scripts *.pdf *.html *.ipynb *.tar.gz $dest
+cp -r imgs scripts *.pdf *.html *.ipynb *.tar.gz $dest
 
 ./clean.sh

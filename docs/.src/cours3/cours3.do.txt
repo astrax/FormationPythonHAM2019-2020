@@ -1,5 +1,5 @@
 TITLE: Bibliothèques numpy et matplotlib
-AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Université de Tunis El Manar.
+AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
 DATE: today
 
 TOC: on
@@ -90,7 +90,7 @@ Il existe plusieurs raisons pour ne pas utiliser que les listes:
 * En raison du typage statique, la mise en œuvre rapide de fonctions mathématiques telles que la multiplication et l'ajout de tableaux `numpy` peut être implémentée dans une langue compilée (C et Fortran sont utilisés).
 !enotice
 
-En utilisant la propriété `dtype` (type de données) d'un `ndarray`, on peut connaitre le type des éléments d'un tableau ou d'une matrice:
+En utilisant la propriété `dtype` (type de données) d'un `ndarray`, on peut connaître le type des éléments d'un tableau ou d'une matrice:
 !bc ipy
 In [17]: M.dtype
 Out[17]: dtype('int64')
@@ -318,19 +318,10 @@ Les lignes commençant par le caractère de commentaire sont ignorées lors de l
 
 Nous pouvons utiliser le fichier *cosinus.dat* pour tracer la fonction $cos(x)$ comme indiqué dans le code suivant:
 
-!bc pycod
-# Charger les données du fichier 'cosinus.dat'
-X, C = np.loadtxt('cosinus.dat', comments='#', unpack=True)
-# Tracer C en fonction de X
-figure(figsize=(8, 5), dpi=100)
-plt.plot(X,C)
-plt.savefig("figs/fonct_trig4.png")
-plt.savefig("figs/fonct_trig4.pdf")
-plt.show()
-!ec
+@@@CODE scripts/LoadData.py
 
-La sortie de ce code est la Figure ref{figout:trig4}.
-FIGURE:[figs/fonct_trig4, width=500 frac=0.7] Sortie du code. label{figout:trig4}
+La sortie de ce code est la Figure ref{figout:cosinus}.
+FIGURE:[imgs/cosinus, width=500 frac=0.7] Sortie du code. label{figout:cosinus}
 
 
 !split
@@ -352,7 +343,7 @@ Je veux tracer les courbes de deux fonctions ($f$ te $g$) _ressemblant_ à une t
 !equote
  Je souhaite bonne chance à ceux qui désirent obtenir rapidement une réponse, même avec l'aide de _google_!. C'est pourquoi la _galerie de matplotlib_ (URL: "http://matplotlib.org/gallery.html") est si utile, car elle montre la variété des possibilités. Ainsi, vous pouvez parcourir la galerie, cliquer sur n'importe quel graphique qui comporte les éléments que vous voulez reproduire et afficher le code qui a servi à le générer. Vous deviendrez rapidement autonome, vous allez mélanger et assortir différents composants pour produire votre propre chef-d’œuvre!
 
-=== Guide de Démarrage ===
+===== Guide de Démarrage =====
 L'exemple ci-dessous montre comment, de manière très simple, représenter graphiquement la fonction $f(x) = y = x$.
 @@@CODE scripts/BasicPlot1.py
 
@@ -363,15 +354,14 @@ Vous pouvez avoir plusieurs figures indépendantes et les graphiques peuvent con
 
 La plupart des tracés ont lieu sur des `Axes`. C’est effectivement la zone sur laquelle nous traçons les données et les graduations/labels/etc. qui leur sont associés. Habituellement, nous configurons un `Axes` avec un appel à `Subplot` (qui place les `Axes` sur une grille régulière). Par conséquent, dans la plupart des cas, `Axes` et `Subplot` sont synonymes (figure). Chaque `Axes` ou `Subplot` a un axe X et un axe Y. Ceux-ci contiennent les graduations, les emplacements de graduations, etc.
 
-=== Vues en grille ===
+===== Vues en grille =====
 Nous avons déjà mentionné qu’une figure peut avoir plus d’un axe. Si vous voulez que vos axes soient sur un système de grille standard, il est alors plus simple d'utiliser `plt.subplot(...)` pour créer un graphique et y ajouter les axes automatiquement.
 @@@CODE scripts/subplots.py
 
-FIGURE:[imgs/subplot1, width=500 frac=0.7] Vue en grille, figure(1). label{fig:subplot1}
+FIGURE:[imgs/subplots, width=500 frac=0.7] Vue en grille, figure(1). label{fig:subplots}
 
-FIGURE:[imgs/subplot2, width=500 frac=0.7] Graphique unique, figure(2). label{fig:subplot2}
 
-=== Commandes de texte de base ===
+===== Commandes de texte de base =====
 Les commandes suivantes permettent de créer du texte dans l'interface `pyplot`:
 * `text()` - ajoute du texte à un emplacement quelconque sur les axes; `matplotlib.axes.Axes.text()`.
 * `xlabel()` - ajoute une étiquette à l'axe des x; `matplotlib.axes.Axes.set_xlabel()`
@@ -387,31 +377,31 @@ Toutes ces fonctions créent et renvoient une instance `matplotlib.text.Text()`,
 
 FIGURE:[imgs/BasicText, width=500 frac=0.7] Texte de base. label{fig:BasicText}
 
-=== Styles de lignes et de marqueurs ===
+===== Styles de lignes et de marqueurs =====
 Pour changer la largeur de ligne, nous pouvons utiliser l'argument de mot-clé `linewidth` ou `lw`, et le style de ligne peut être sélectionné à l'aide des arguments de mot-clé `linestyle` ou `ls`:
 
 @@@CODE scripts/LineandMarkerStyles.py
 
 FIGURE:[imgs/LineandMarkerStyles, width=500 frac=0.7] Styles de lignes et de marqueurs. label{fig:LineandMarkerStyles}
 
-=== Colormap: Tracés contour, Imshow et 3D ===
+===== Colormap: Tracés contour, Imshow et 3D =====
 
 
 Voir la documentation de matplotlib colormaps URL: "http://matplotlib.org/users/colormaps.html".
 
-*  _Tracés contour :_
+=== Tracés contour ===
 
 @@@CODE scripts/ContourPlot.py
 
 FIGURE:[imgs/ContourPlot, width=500 frac=0.7] Exemple de tracé de contour. label{fig:ContourPlot}
 
-* _Imshow (Image pixelisée) :_
+=== Imshow (Image pixelisée) ===
 
 @@@CODE scripts/Imshow.py
 
 FIGURE:[imgs/Imshow, width=500 frac=0.7] Exemple d'image pixelisée. label{fig:CImshow}
 
-* _Tracé en 3D :_
+=== Tracé en 3D ===
 
 @@@CODE scripts/Plot3D.py
 

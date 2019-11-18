@@ -7,8 +7,9 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="TD N°3 : Bibliothèques numpy et matplotlib">
 
-<title></title>
+<title>TD N°3 : Bibliothèques numpy et matplotlib</title>
 
 <!-- Bootstrap style: bootswatch_journal -->
 <link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
@@ -40,30 +41,25 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 2,
- 'sections': [('Exercise 1: Tracer une fonction', 2, None, '___sec0'),
+ 'sections': [('Table des matières',
+               2,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Exercise 1: Tracer une fonction', 2, None, '___sec0'),
               ('Exercise 2: Tracer deux fonctions', 2, None, '___sec1'),
               ('Exercise 3: Racines d’une équation du second degré',
                2,
                None,
                '___sec2'),
-              ('Exercise 4: Loi de Snell-Descartes pour la réfraction',
+              ('Exercise 4: Approximer une fonction par une somme de sinus',
                2,
                None,
                '___sec3'),
-              ('Exercise 5: Diffraction par une ouverture rectangulaire',
-               2,
-               None,
-               '___sec4'),
-              ("Exercise 6: Tracer un graphique à partir d'un fichier (données "
-               'satellitaires)',
-               2,
-               None,
-               '___sec5'),
-              ('Exercise 7: Fonctions spéciales (intégrales de Fresnel et '
+              ('Exercise 5: Fonctions spéciales (intégrales de Fresnel et '
                'spirale de Cornu)',
                2,
                None,
-               '___sec6')]}
+               '___sec4')]}
 end of tocinfo -->
 
 <body>
@@ -85,18 +81,74 @@ MathJax.Hub.Config({
 
 
     
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="TD3.html">TD N°3 : Bibliothèques numpy et matplotlib</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;">Table des matières</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Exercise 1: Tracer une fonction</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">Exercise 2: Tracer deux fonctions</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">Exercise 3: Racines d’une équation du second degré</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">Exercise 4: Approximer une fonction par une somme de sinus</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">Exercise 5: Fonctions spéciales (intégrales de Fresnel et spirale de Cornu)</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
 <div class="container">
 
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
 
 <!-- ------------------- main content ---------------------- -->
 
-<!-- TITLE: TP 3: Introduction &#224; matplotlib et numpy -->
-<!-- AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Universit&#233; de Tunis El Manar. -->
-<!-- DATE: Mercredi, 5 d&#233;cembre 2018 -->
-<!--  -->
-<!-- TOC: on -->
 
+
+<div class="jumbotron">
+<center><h1>TD N&#176;3 : Biblioth&#232;ques numpy et matplotlib</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Ahmed Ammar -->
+
+<center>
+<b>Ahmed Ammar</b>  (<tt>ahmed.ammar at fst.utm.tn</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
+<br>
+<p>
+<center><h4>Mercredi, 5 d&#233;cembre 2018</h4></center> <!-- date -->
+<br>
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="table_of_contents">Table des matières</h2>
+
+<p>
+<a href="#___sec0"> Exercise 1: Tracer une fonction </a><br>
+<a href="#___sec1"> Exercise 2: Tracer deux fonctions </a><br>
+<a href="#___sec2"> Exercise 3: Racines d&#8217;une &#233;quation du second degr&#233; </a><br>
+<a href="#___sec3"> Exercise 4: Approximer une fonction par une somme de sinus </a><br>
+<a href="#___sec4"> Exercise 5: Fonctions sp&#233;ciales (int&#233;grales de Fresnel et spirale de Cornu) </a><br>
+</p>
 <p>
 <!-- !split -->
 
@@ -109,48 +161,8 @@ MathJax.Hub.Config({
 Ecrivez un programme qui trace la fonction \( g(y) = e^{-y} sin(4y) \) pour \( y \in [0, 4] \) en utilisant une ligne continue rouge. Utilisez 500 intervalles pour &#233;valuer les points dans [0,4]. Stockez toutes les coordonn&#233;es et les valeurs dans des tableaux. Placez le texte des graduations sur les axes et utilisez le titre "Onde sinuso&#239;dale att&#233;nu&#233;e".
 
 <p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_1_1" style="font-size: 80%;"></a>
-<a href="#exer_1_1" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_1_1">
-
-<p>
-La programme qui trace la fonction \( g(y) \) est:
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Importer tout de matplotlib et numpy</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">pylab</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(y):
-    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>y)<span style="color: #666666">*</span>sin(<span style="color: #666666">4*</span>y)
-
-y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4</span>, <span style="color: #666666">501</span>)
-<span style="color: #408080; font-style: italic"># définir un nouveau graphique</span>
-plt<span style="color: #666666">.</span>figure()
-<span style="color: #408080; font-style: italic"># tracer la fonction g(y) avec ligne solide rouge</span>
-plt<span style="color: #666666">.</span>plot(y, g(y), <span style="color: #BA2121">&#39;r-&#39;</span>)
-plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&#39;y&#39;</span>); plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&#39;g(y)&#39;</span>)
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&#39;Onde sinusoïdale atténuée&#39;</span>)
- <span style="color: #408080; font-style: italic"># sauvgarder le grahique (format PNG et PDF)</span>
-plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;fig_ex1.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;fig_ex1.pdf&quot;</span>)
-<span style="color: #408080; font-style: italic"># Afficher le graphique</span>
-plt<span style="color: #666666">.</span>show()
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
 <p>
 <!-- --- end exercise --- -->
 
@@ -163,49 +175,8 @@ plt<span style="color: #666666">.</span>show()
 Comme Exercice 1, mais ajouter une courbe en pointill&#233; noir pour la fonction \( h(y) = e^{-\frac{3}{2}y} sin(4y) \). Inclure une l&#233;gende pour chaque courbe (avec les noms \( g \) et \( h \)).
 
 <p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_2_1" style="font-size: 80%;"></a>
-<a href="#exer_2_1" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_2_1">
-
-<p>
-La programme qui trace la fonction \( g(y) \) avec une nouvelle fonction \( h(y) \) est:
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Importer tout de matplotlib et numpy</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">pylab</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(y):
-    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>y)<span style="color: #666666">*</span>sin(<span style="color: #666666">4*</span>y)
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">h</span>(y):
-    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>(<span style="color: #666666">3./2</span>)<span style="color: #666666">*</span>y)<span style="color: #666666">*</span>sin(<span style="color: #666666">4*</span>y)
-
-y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4</span>, <span style="color: #666666">501</span>)
-plt<span style="color: #666666">.</span>figure()
-plt<span style="color: #666666">.</span>plot(y, g(y), <span style="color: #BA2121">&#39;r-&#39;</span>, y, h(y), <span style="color: #BA2121">&#39;k--&#39;</span>)
-plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&#39;y&#39;</span>); plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&#39;g(y)&#39;</span>)
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&#39;Onde sinusoïdale atténuée&#39;</span>)
-plt<span style="color: #666666">.</span>legend([<span style="color: #BA2121">&#39;g&#39;</span>, <span style="color: #BA2121">&#39;h&#39;</span>])
-
-plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;fig_ex2.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;fig_ex2.pdf&quot;</span>)
-plt<span style="color: #666666">.</span>show()
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
 <p>
 <!-- --- end exercise --- -->
 
@@ -215,377 +186,15 @@ plt<span style="color: #666666">.</span>show()
 <h2 id="___sec2" class="anchor">Exercise 3: Racines d&#8217;une &#233;quation du second degr&#233; </h2>
 
 <p>
-Dans l'"application de l'exercice 4 dans le TP3, nous avons montr&#233; la repr&#233;sentation graphique d'une &#233;quation du second degr&#233; \( f(x)=0.83x^2+3.8x+2.48 \) ainsi que ses racines r&#233;elles:
+Dans l'"application de l'exercice 4 dans TD N&#176;2, nous avons montr&#233; la repr&#233;sentation graphique d'une &#233;quation du second degr&#233; \( f(x)=0.83x^2+3.8x+2.48 \) ainsi que ses racines r&#233;elles:
 
 <p>
-<br /><br /><center><p><img src="figs/equation2deg.png" align="bottom" width=500></p></center><br /><br />
+<br /><br /><center><p><img src="imgs/equation2deg.png" align="bottom" width=500></p></center><br /><br />
 Reproduire ce graphique en utilisant la fonction <code>EqSecondDegree(a,b,c)</code> du script Python <code>racines.py</code> pour d&#233;terminer les valeurs des racines x1 et x2 de l&#8217;&#233;quation \( f(x) \).
 
 <p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_3_1" style="font-size: 80%;"></a>
-<a href="#exer_3_1" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_3_1">
-
-<p>
-Le programme qui reproduit la figure en utilisant la fonction <code>EqSecondDegree()</code>:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">pylab</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">racines</span> <span style="color: #008000; font-weight: bold">import</span> EqSecondDegree
-<span style="color: #408080; font-style: italic"># NOTE: le module racines est le fichier racines.py</span>
-<span style="color: #408080; font-style: italic"># qu&#39;on doit placer dans le répertoire de travail.</span>
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
-    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0.83</span> <span style="color: #666666">*</span> x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">3.8</span> <span style="color: #666666">*</span> x <span style="color: #666666">+</span> <span style="color: #666666">2.48</span>
-x <span style="color: #666666">=</span> linspace(<span style="color: #666666">-6</span>, <span style="color: #666666">1</span>, <span style="color: #666666">200</span>)
-y <span style="color: #666666">=</span> f(x)
-x1, x2 <span style="color: #666666">=</span> EqSecondDegree(<span style="color: #666666">0.83</span>, <span style="color: #666666">3.8</span>, <span style="color: #666666">2.48</span>)
-
-figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">7</span>, <span style="color: #666666">5</span>), dpi<span style="color: #666666">=80</span>)
-plot(x, y, color<span style="color: #666666">=</span><span style="color: #BA2121">&quot;blue&quot;</span>, linewidth<span style="color: #666666">=3</span>, linestyle<span style="color: #666666">=</span><span style="color: #BA2121">&quot;-&quot;</span>, alpha<span style="color: #666666">=.8</span>)
-scatter([x1,x2], [f(x1), f(x2)], <span style="color: #666666">80</span>, color<span style="color: #666666">=</span><span style="color: #BA2121">&#39;red&#39;</span>)
-
-annotate(<span style="color: #BA2121">&#39;x1= {:.2f}&#39;</span><span style="color: #666666">.</span>format(x1),
-             xy<span style="color: #666666">=</span>(x1, f(x1)), xycoords<span style="color: #666666">=</span><span style="color: #BA2121">&#39;data&#39;</span>,
-             xytext<span style="color: #666666">=</span>(<span style="color: #666666">+10</span>, <span style="color: #666666">+30</span>), textcoords<span style="color: #666666">=</span><span style="color: #BA2121">&#39;offset points&#39;</span>, fontsize<span style="color: #666666">=16</span>,
-             arrowprops<span style="color: #666666">=</span><span style="color: #008000">dict</span>(arrowstyle<span style="color: #666666">=</span><span style="color: #BA2121">&quot;-&gt;&quot;</span>, connectionstyle<span style="color: #666666">=</span><span style="color: #BA2121">&quot;arc3,rad=.2&quot;</span>))
-annotate(<span style="color: #BA2121">&#39;x2= {:.2f}&#39;</span><span style="color: #666666">.</span>format(x2),
-             xy<span style="color: #666666">=</span>(x2, f(x2)), xycoords<span style="color: #666666">=</span><span style="color: #BA2121">&#39;data&#39;</span>,
-             xytext<span style="color: #666666">=</span>(<span style="color: #666666">+40</span>, <span style="color: #666666">+30</span>), textcoords<span style="color: #666666">=</span><span style="color: #BA2121">&#39;offset points&#39;</span>, fontsize<span style="color: #666666">=16</span>,
-             arrowprops<span style="color: #666666">=</span><span style="color: #008000">dict</span>(arrowstyle<span style="color: #666666">=</span><span style="color: #BA2121">&quot;-&gt;&quot;</span>, connectionstyle<span style="color: #666666">=</span><span style="color: #BA2121">&quot;arc3,rad=.2&quot;</span>))
-
-suptitle(<span style="color: #BA2121">&quot;Racines d’une équation du second degré&quot;</span>, fontweight<span style="color: #666666">=</span> <span style="color: #BA2121">&#39;bold&#39;</span>)
-title(<span style="color: #BA2121">r&quot;$f(x) = 0.83 * x^2 + 3.8 * x + 2.48$&quot;</span>,fontsize<span style="color: #666666">=14</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;b&#39;</span>)
-
-plt<span style="color: #666666">.</span>grid()
-
-plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;equation2deg.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;equation2deg.pdf&quot;</span>)
-plt<span style="color: #666666">.</span>show()
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
-<p>
-<!-- --- end exercise --- -->
-
-<p>
-<!-- --- begin exercise --- -->
-
-<h2 id="___sec3" class="anchor">Exercise 4: Loi de Snell-Descartes pour la r&#233;fraction </h2>
-
-<p>
-La loi de Snell-Descartes stipule que le rapport sinus de l'angle d'incidence sur le sinus de l'angle de r&#233;fraction est &#233;quivalent au rapport de la vitesse de phase dans le premier milieu &#224; la vitesse de phase dans le deuxi&#232;me milieu, ou &#233;quivalent &#224; l'inverse du rapport des indices de r&#233;fraction.
-
-$$\dfrac{\sin\theta_1}{\sin\theta_2} = \dfrac{v_1}{v_2} = \dfrac{n_2}{n_1}$$
-
-<p>
-O&#249; \( \theta_1 \) est l'angle d'incidence dans le premier milieu, \( \theta_2 \) est l'angle de r&#233;fraction dans le deuxi&#232;me milieu, tous les angles mesur&#233;s &#224; partir de la normale de la fronti&#232;re (dioptre), \( v_1 \) et \( v_2 \) sont respectivement les vitesses dans les deux milieux, et \( n_1 \) et \( n_2 \) sont les indices de r&#233;fraction du premier et du deuxi&#232;me milieux, respectivement.
-
-<p>
-<br /><br /><center><p><img src="figs/Refraction_fr.png" align="bottom" width=500></p></center><br /><br />
-
-<p>
-<b>Objectif:</b>
-
-<p>
-Ecrire un programme Python pour tracer angle de r&#233;fraction en fonction de l'angle d'incidence.
-
-<p>
-<b>Algorithme:</b>
-
-<ul>
- <li> Afficher: <code>&quot;Loi de Snell-Descartes pour la r&#233;fraction.&quot;</code></li>
- <li> Demender un nombre r&#233;el n1: <code>&quot;Entrez l'indice de r&#233;fraction du premier milieu: &quot;</code></li>
- <li> Demender un nombre r&#233;el n2: <code>&quot;Entrez l'indice de r&#233;fraction du deuxi&#232;me milieu: &quot;</code></li>
- <li> choix = 'o' et compteur k = 0</li>
- <li> Tant que choix == 'o':</li>
-
-<ul>
-   <li> Stoker dans une liste theta1 un nombre r&#233;el <code>theta1[k]</code>: <code>&quot;Entrez l'angle d'incidence en degr&#233;s: &quot;</code></li>
-   <li> Condition: <code>si (n1*sin(theta1[k]))/n2 &lt; -1 ou n1 * (n1*sin(theta1[k]))/n2 &gt; 1</code>:</li>
-
-<ul>
-     <li> Afficher: <code>&quot;Il y aura une r&#233;flexion totale pour l'angle d'incidence donn&#233;. Essayez d'autres valeurs.&quot;</code></li>
-     <li> Stoker dans une liste theta1 un nombre r&#233;el <code>theta1[k]</code>: <code>&quot;Entrez l'angle d'incidence en degr&#233;s: &quot;</code></li>
-</ul>
-
-   <li> Stoker dans la liste la valeur <code>theta2[k]</code>: <code>arcsin(n1*sin(theta1[k])/n2</code></li>
-   <li> Afficher: <code>&quot;L'angle d'incidence est de theta1[k] degr&#233;s et l'angle de r&#233;fraction de theta2[k] degr&#233;s.&quot;</code></li>
-   <li> Entrer une nouvelle valeur de choix: <code>&quot;Voulez-vous entrer plus de valeurs (o / n)?: &quot;</code></li>
-   <li> k+=1</li>
-</ul>
-
- <li> si choix == 'n':</li>
-
-<ul>
-   <li> Tracer le graphique de theta2 en fonction de theta1 (exemple pour 3 valeurs de theta1):</li>
-</ul>
-
-</ul>
-
-<br /><br /><center><p><img src="figs/snell.png" align="bottom" width=500></p></center><br /><br />
-
-<p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_4_1" style="font-size: 80%;"></a>
-<a href="#exer_4_1" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_4_1">
-
-<p>
-Le code Python qui traduit l'algorithme pr&#233;c&#233;dent est:
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">pylab</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-
-<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Loi de Snell-Descartes pour la réfraction.&quot;</span>)
-n1 <span style="color: #666666">=</span> <span style="color: #008000">float</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Entrez l&#39;indice de réfraction du premier milieu: &quot;</span>))
-n2 <span style="color: #666666">=</span> <span style="color: #008000">float</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Entrez l&#39;indice de réfraction du deuxième milieu: &quot;</span>))
-choix <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;o&quot;</span>
-k <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-theta1, theta2 <span style="color: #666666">=</span> [],[]
-<span style="color: #008000; font-weight: bold">while</span> choix <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;o&quot;</span>:
-    theta1<span style="color: #666666">.</span>append(<span style="color: #008000">float</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Entrez l&#39;angle d&#39;incidence en degrés: &quot;</span>)))
-    <span style="color: #008000; font-weight: bold">if</span> (n1<span style="color: #666666">*</span>sin(deg2rad(theta1[k])))<span style="color: #666666">/</span>n2 <span style="color: #666666">&lt;</span> <span style="color: #666666">-1</span> <span style="color: #AA22FF; font-weight: bold">or</span> n1 <span style="color: #666666">*</span> (n1<span style="color: #666666">*</span>sin(deg2rad(theta1[k])))<span style="color: #666666">/</span>n2 <span style="color: #666666">&gt;</span> <span style="color: #666666">1</span>:
-        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Il y aura une réflexion totale pour l&#39;angle d&#39;incidence donné. Essayez d&#39;autres valeurs.&quot;</span>)
-        theta1<span style="color: #666666">.</span>append(<span style="color: #008000">float</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Entrez l&#39;angle d&#39;incidence en degrés: &quot;</span>)))
-    theta2<span style="color: #666666">.</span>append(rad2deg(arcsin(n1<span style="color: #666666">*</span>sin(deg2rad(theta1[k]))<span style="color: #666666">/</span>n2)))
-    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;L&#39;angle d&#39;incidence est de {:.2f} degrés et l&#39;angle de réfraction de {:.2f} degrés.&quot;</span><span style="color: #666666">.</span>format(theta1[k], theta2[k]))
-    choix <span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Voulez-vous entrer plus de valeurs (o / n)?: &quot;</span>)
-    <span style="color: #008000; font-weight: bold">while</span> (choix<span style="color: #666666">!=</span><span style="color: #BA2121">&#39;o&#39;</span>) <span style="color: #AA22FF; font-weight: bold">and</span> (choix<span style="color: #666666">!=</span><span style="color: #BA2121">&#39;n&#39;</span>):
-        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Entrée invalide. Tapez o ou n. &quot;</span>)
-        choix <span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Voulez-vous entrer plus de valeurs (o / n)?: &quot;</span>)
-
-    k <span style="color: #666666">+=1</span>
-
-<span style="color: #008000; font-weight: bold">if</span> choix <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;n&quot;</span>:
-    scatter(theta1, theta2)
-    suptitle(<span style="color: #BA2121">&quot;Loi de Snell-Descartes&quot;</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
-    title(<span style="color: #BA2121">&quot;Angle de réfraction en fonction de l&#39;angle d&#39;incidence&quot;</span>)
-    xlabel(<span style="color: #BA2121">&quot;Angle d&#39;incidence&quot;</span> <span style="color: #666666">+</span> <span style="color: #BA2121">r&quot; $\theta_1$&quot;</span>)
-    ylabel(<span style="color: #BA2121">&quot;Angle de réfraction&quot;</span> <span style="color: #666666">+</span> <span style="color: #BA2121">r&quot; $\theta_2$&quot;</span>)
-    savefig(<span style="color: #BA2121">&quot;snell.png&quot;</span>)
-    show()
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
-<p>
-<!-- --- end exercise --- -->
-
-<p>
-<!-- --- begin exercise --- -->
-
-<h2 id="___sec4" class="anchor">Exercise 5: Diffraction par une ouverture rectangulaire </h2>
-
-<p>
-<br /><br /><center><p><img src="figs/Diffr_ouv_rectangle.png" align="bottom" width=500></p></center><br /><br />
-
-<p>
-Une ouverture rectangulaire de c&#244;t&#233;s a et b correspond &#224; une transmission \( t(X, Y) \) d&#233;finie par :
-$$ \left\{
-\begin{array}{ll}
-t(X,Y) = 1 & si \ |X| < a/2 \ et \ |Y| < b/2 \\
-t(X,Y) = 0 & sinon
-\end{array}
-\right. $$
-
-Le calcul de l'intensit&#233; diffract&#233;e par une telle ouverture, c&#8217;est-&#224;-dire du carr&#233; du module de l'amplitude E(M), donne :
-$$I(x,y)=|E(x,y)|^2=I_0 \  \mathrm{sinc}^2\left(\frac{\pi xa}{\lambda f_2}\right) \mathrm{sinc}^2\left(\frac{\pi yb}{\lambda f_2}\right)$$
-
-<p>
-<br /><br /><center><p><img src="figs/figDiff.png" align="bottom" width=500></p></center><br /><br />
-
-<p>
-les dimensions de la tache centrale sont&#160;:
-
-<ul>
- <li> \( \Delta x = 2 \lambda f_2/a  \)</li>
- <li> \( \Delta y = 2 \lambda f_2/b  \)</li>
-</ul>
-
-<b>Le programme Python:</b>
-
-<p>
-<b>a)</b>
-&#201;crire une fonction <code>Intensity(X, Y, a = 0.2 * 1.E-3, b = 0.2 * 1.E-3, lambda_ = 630 * 1.E-9, f2 = 10)</code> qui affiche les dimensions de la tache centrale (\( \Delta x \) et \( \Delta y \)) et retourne la valeur de \( I(X,Y) \). Avec:
-
-<ul>
-<li> <code>X</code> et <code>Y</code> sont respectivement l'abscisse et l'ordonn&#233;e &#224; l'&#233;cran.</li>
-<li> <code>a</code> la largeur de la fente (par d&#233;faut = 0.2 mm)</li>
-<li> <code>b</code> la hauteur de la fente (par d&#233;faut = 0.2 mm)</li>
-<li> <code>lambda_</code> la longueur d'onde de la lumi&#232;re incidente (par d&#233;faut = 630 nm)</li>
-<li> <code>f2</code> la distance fente - &#233;cran (par d&#233;faut = 10 m)</li>
-</ul>
-
-On consid&#232;re que \( I_0 = 1 \) par convention.
-
-<p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_5_1" style="font-size: 80%;"></a>
-<a href="#exer_5_1" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_5_1">
-
-<p>
-la fonction <code>Intensity()</code> s'&#233;crit:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">pylab</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Intensity</span>(X, Y, a <span style="color: #666666">=</span> <span style="color: #666666">0.2</span> <span style="color: #666666">*</span> <span style="color: #666666">1.E-3</span>, b <span style="color: #666666">=</span> <span style="color: #666666">0.2</span> <span style="color: #666666">*</span> <span style="color: #666666">1.E-3</span>, lambda_ <span style="color: #666666">=</span> <span style="color: #666666">630</span> <span style="color: #666666">*</span> <span style="color: #666666">1.E-9</span>, f2 <span style="color: #666666">=</span> <span style="color: #666666">10</span>):
-    <span style="color: #408080; font-style: italic"># les dimensions de la tache centrale</span>
-    Dx <span style="color: #666666">=</span> <span style="color: #666666">1.E2</span> <span style="color: #666666">*</span> (<span style="color: #666666">2</span> <span style="color: #666666">*</span> lambda_ <span style="color: #666666">*</span> f2) <span style="color: #666666">/</span> a
-    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La largeur du maximum central le long (Ox) = {:.3f} cm&quot;</span><span style="color: #666666">.</span>format(Dx))
-    Dy <span style="color: #666666">=</span> <span style="color: #666666">1.E2</span> <span style="color: #666666">*</span> (<span style="color: #666666">2</span> <span style="color: #666666">*</span> lambda_ <span style="color: #666666">*</span> f2) <span style="color: #666666">/</span> b
-    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La largeur du maximum central le long (Oy) = {:.3f} cm&quot;</span><span style="color: #666666">.</span>format(Dy))
-    <span style="color: #408080; font-style: italic"># Variables intermidières</span>
-    A <span style="color: #666666">=</span> (pi <span style="color: #666666">*</span> X <span style="color: #666666">*</span> a)<span style="color: #666666">/</span>(lambda_ <span style="color: #666666">*</span> f2)
-    B <span style="color: #666666">=</span> (pi <span style="color: #666666">*</span> Y <span style="color: #666666">*</span> b)<span style="color: #666666">/</span>(lambda_ <span style="color: #666666">*</span> f2)
-    <span style="color: #008000; font-weight: bold">return</span> (sin(A)<span style="color: #666666">/</span>A)<span style="color: #666666">**2</span> <span style="color: #666666">*</span> (sin(B)<span style="color: #666666">/</span>B)<span style="color: #666666">**2</span>
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
-<p>
-<b>b)</b>
-Cr&#233;ez le graphique de diffraction suivant (&#224; l'aide de la fonction <a href="https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#image-pixelis%C3%A9e" target="_self"><tt>imshow()</tt></a>) pour un &#233;cran de 30/30 cm:
-<br /><br /><center><p><img src="figs/diff2D.png" align="bottom" width=500></p></center><br /><br />
-
-<p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_5_2" style="font-size: 80%;"></a>
-<a href="#exer_5_2" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_5_2">
-
-<p>
-La repr&#233;sentation graphique de la figure de diffraction en 2D:
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># coordonnées de l&#39;écran</span>
-X, Y <span style="color: #666666">=</span> meshgrid(linspace(<span style="color: #666666">-15*1e-2</span>, <span style="color: #666666">15*1e-2</span>, <span style="color: #666666">400</span>), linspace(<span style="color: #666666">-15*1e-2</span>, <span style="color: #666666">15*1e-2</span>, <span style="color: #666666">400</span>))
-<span style="color: #408080; font-style: italic"># Intensité</span>
-I <span style="color: #666666">=</span> Intensity(X, Y)
-<span style="color: #408080; font-style: italic"># Figure de diffraction</span>
-fig, ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>subplots(figsize<span style="color: #666666">=</span>(<span style="color: #666666">8</span>,<span style="color: #666666">8</span>))
-im <span style="color: #666666">=</span> imshow(I, cmap<span style="color: #666666">=</span><span style="color: #BA2121">&#39;gray&#39;</span>, interpolation<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bilinear&#39;</span>,
-                origin<span style="color: #666666">=</span><span style="color: #BA2121">&#39;lower&#39;</span>,  vmin<span style="color: #666666">=</span> <span style="color: #666666">0</span>, vmax <span style="color: #666666">=</span> <span style="color: #666666">0.005</span>)
-cb <span style="color: #666666">=</span> fig<span style="color: #666666">.</span>colorbar(im, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;I(X,Y) - ua&quot;</span>, shrink<span style="color: #666666">=0.8</span>)
-title(<span style="color: #BA2121">&#39;Diffraction par une ouverture rectangulaire&#39;</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
-
-xlabel(<span style="color: #BA2121">&#39;X (cm)&#39;</span>, fontsize<span style="color: #666666">=12</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
-ylabel(<span style="color: #BA2121">&#39;Y (cm)&#39;</span>, fontsize<span style="color: #666666">=12</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
-xticks(linspace(<span style="color: #666666">0</span>, <span style="color: #666666">400</span>, <span style="color: #666666">7</span>))
-ax<span style="color: #666666">.</span>set_xticklabels(linspace(<span style="color: #666666">-15</span>, <span style="color: #666666">15</span>, <span style="color: #666666">7</span>),  color<span style="color: #666666">=</span><span style="color: #BA2121">&#39;r&#39;</span>)
-yticks(linspace(<span style="color: #666666">0</span>, <span style="color: #666666">400</span>, <span style="color: #666666">7</span>))
-ax<span style="color: #666666">.</span>set_yticklabels(linspace(<span style="color: #666666">-15</span>, <span style="color: #666666">15</span>, <span style="color: #666666">7</span>),  color<span style="color: #666666">=</span><span style="color: #BA2121">&#39;r&#39;</span>)
-
-savefig(<span style="color: #BA2121">&quot;diff2D.png&quot;</span>); savefig(<span style="color: #BA2121">&quot;diff2D.pdf&quot;</span>)
-show()
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
-<p>
-<b>c)</b>
-Cr&#233;ez le graphique 3D de diffraction suivant (voir la partie <a href="https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#trac%C3%A9-de-surfaces" target="_self">trac&#233; de surfaces</a> du cours):
-<br /><br /><center><p><img src="figs/diff3D.png" align="bottom" width=500></p></center><br /><br />
-
-<p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_5_3" style="font-size: 80%;"></a>
-<a href="#exer_5_3" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_5_3">
-
-<p>
-La repr&#233;sentation graphique de la figure de diffraction en 3D:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># coordonnées de l&#39;écran</span>
-X, Y <span style="color: #666666">=</span> meshgrid(linspace(<span style="color: #666666">-15*1e-2</span>, <span style="color: #666666">15*1e-2</span>, <span style="color: #666666">400</span>), linspace(<span style="color: #666666">-15*1e-2</span>, <span style="color: #666666">15*1e-2</span>, <span style="color: #666666">400</span>))
-<span style="color: #408080; font-style: italic"># Intensité</span>
-I <span style="color: #666666">=</span> Intensity(X, Y)
-
-<span style="color: #408080; font-style: italic"># Figure de diffraction</span>
-fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">8</span>,<span style="color: #666666">8</span>))
-ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>axes(projection<span style="color: #666666">=</span><span style="color: #BA2121">&#39;3d&#39;</span>)
-<span style="color: #408080; font-style: italic"># plot surface</span>
-p <span style="color: #666666">=</span> ax<span style="color: #666666">.</span>plot_surface(X, Y, I, rstride<span style="color: #666666">=4</span>, cstride<span style="color: #666666">=4</span>, cmap<span style="color: #666666">=</span><span style="color: #BA2121">&#39;coolwarm&#39;</span>,
-                    linewidth<span style="color: #666666">=0</span>, antialiased<span style="color: #666666">=</span><span style="color: #008000">False</span>)
-cb <span style="color: #666666">=</span> fig<span style="color: #666666">.</span>colorbar(p, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;I(X,Y) - ua&quot;</span>, shrink<span style="color: #666666">=0.5</span>)
-
-xlabel(<span style="color: #BA2121">&#39;X (m)&#39;</span>, fontsize<span style="color: #666666">=12</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
-ylabel(<span style="color: #BA2121">&#39;Y (m)&#39;</span>, fontsize<span style="color: #666666">=12</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
-title(<span style="color: #BA2121">&#39;Diffraction par une ouverture rectangulaire&#39;</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
-
-savefig(<span style="color: #BA2121">&quot;diff3D.png&quot;</span>); savefig(<span style="color: #BA2121">&quot;diff3D.pdf&quot;</span>)
-plt<span style="color: #666666">.</span>show()
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
 <p>
 <!-- --- end exercise --- -->
 
@@ -595,198 +204,89 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="___sec5" class="anchor">Exercise 6: Tracer un graphique &#224; partir d'un fichier (donn&#233;es satellitaires) </h2>
+<h2 id="___sec3" class="anchor">Exercise 4: Approximer une fonction par une somme de sinus </h2>
 
 <p>
-Les mesures de flux de rayons X du satellite GOES (<a href="https://fr.wikipedia.org/wiki/Geostationary_Operational_Environmental_Satellite" target="_self">Geostationary Operational Environmental Satellite</a>) ont &#233;t&#233; effectu&#233;es depuis 1974. Le graphique &#224; rayons X GOES (flux de 1 &#224; 8 angstr&#246;ms) faisant l&#8217;objet de cet exercice peut suivre l&#8217;activit&#233; solaire et les &#233;ruptions solaires. De grandes &#233;ruptions de rayons X solaires peuvent modifier l'ionosph&#232;re terrestre et bloquer les transmissions radio haute fr&#233;quence (HF) du c&#244;t&#233; de la Terre &#233;clair&#233; par le soleil.
+Nous consid&#233;rons la fonction constante par morceaux:
 
-<p>
-<br /><br /><center><p><img src="figs/goes_sat.jpeg" align="bottom" width=500></p></center><br /><br />
+$$
+\begin{equation}
+f(t) = \left\lbrace
+\begin{array}{ll}
+1, & 0 < t < T/2,\\
+0, & t = T/2,\\
+-1, & T/2 < t \le T
+\end{array}\right.
+\label{_auto1}
+\end{equation}
+$$
 
-<p>
-SWPC (<a href="https://www.swpc.noaa.gov/products/goes-x-ray-flux" target="_self">Space Weather Prediction Center</a>) a utilis&#233; ces donn&#233;es pour produire les ensembles et trac&#233;s de donn&#233;es de rayons X moyenn&#233;s sur 1 minute et 5 minutes.
+On peut approcher f(t) par la somme:
+$$
+\begin{equation}
+S(t;n) = {4\over\pi}\sum_{i=1}^n {1\over 2i-1}
+\sin\left( {2(2i-1)\pi t\over T}\right)
+\label{_auto2}
+\end{equation}
+$$
 
-<p>
-Le but de cet exercice est de tracer 24 heures, pour un intervalle de mesure d'une minute, des donn&#233;es solaires aux rayons X enregistr&#233;es par le satellite GOES. Dans le r&#233;pertoire courant (r&#233;pertoire de ce notebook Jupyter), nous avons un dossier <code>data_GOES</code> contenant 12 fichiers dont le nom est format&#233; comme suit <code>YYYYMMDD_Gp_xr_1m.txt</code> avec:
-
-<ul>
-<li> <b>YYYY</b> est l'ann&#233;e de l'enregistrement des donn&#233;es</li>
-<li> <b>MM</b> estle mois de l'enregistrement des donn&#233;es</li>
-<li> <b>DD</b> est le jour de l'enregistrement des donn&#233;es</li>
-<li> <b>Gp</b> est la g&#233;n&#233;rartion du satellite GOES (GOES-15)</li>
-<li> <b>1m</b> r&#233;solution de l'enregistrement des donn&#233;es</li>
-</ul>
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>ls data_GOES<span style="color: #666666">/</span>  <span style="color: #408080; font-style: italic"># Afficher le contenu du dossier data_GOES</span>
-</pre></div>
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>20120607_Gp_xr_1m.txt  20120615_Gp_xr_1m.txt  20120627_Gp_xr_1m.txt
-20120609_Gp_xr_1m.txt  20120616_Gp_xr_1m.txt  20120628_Gp_xr_1m.txt
-20120613_Gp_xr_1m.txt  20120617_Gp_xr_1m.txt  20120629_Gp_xr_1m.txt
-20120614_Gp_xr_1m.txt  20120620_Gp_xr_1m.txt  20120630_Gp_xr_1m.txt
-</pre></div>
-<p>
-Soit par exemple le fichier <code>data_GOES/20120609_Gp_xr_1m.txt</code> suivant:
-
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>:Data_list: 20120609_Gp_xr_1m.txt
-:Created: 2012 Jun 10 0010 UTC
-# Prepared by the U.S. Dept. of Commerce, NOAA, Space Weather Prediction Center
-# Please send comments and suggestions to SWPC.Webmaster@noaa.gov
-#
-# Label: Short = 0.05- 0.4 nanometer
-# Label: Long  = 0.1 - 0.8 nanometer
-# Units: Short = Watts per meter squared
-# Units: Long  = Watts per meter squared
-# Source: GOES-15
-# Location: W135
-# Missing data: -1.00e+05
-#
-#         1-minute GOES-15 Solar X-ray Flux
-#
-#                 Modified Seconds
-# UTC Date  Time   Julian  of the
-# YR MO DA  HHMM    Day     Day       Short       Long
-#-------------------------------------------------------
-2012 06 09  0000   56087      0     1.62e-08    7.81e-07
-2012 06 09  0001   56087     60     1.70e-08    7.92e-07
-2012 06 09  0002   56087    120     1.85e-08    8.21e-07
-2012 06 09  0003   56087    180     1.90e-08    8.41e-07
-2012 06 09  0004   56087    240     1.86e-08    8.50e-07
-2012 06 09  0005   56087    300     1.98e-08    8.59e-07
-.... .. ..  ....   .....   ....     ........    ........
-.... .. ..  ....   .....   ....     ........    ........
-.... .. ..  ....   .....   ....     ........    ........
-2012 06 09  2352   56087  85920     5.48e-09    5.50e-07
-2012 06 09  2353   56087  85980     3.94e-09    5.48e-07
-2012 06 09  2354   56087  86040     3.68e-09    5.45e-07
-2012 06 09  2355   56087  86100     3.91e-09    5.44e-07
-2012 06 09  2356   56087  86160     2.28e-09    5.48e-07
-2012 06 09  2357   56087  86220     5.71e-09    5.64e-07
-2012 06 09  2358   56087  86280     1.15e-08    5.96e-07
-2012 06 09  2359   56087  86340     1.62e-08    6.49e-07
-</pre></div>
-<p>
-Dans le m&#234;me graphique, tracer les tableaux <b>Short X-ray</b> et <b>Long X-ray</b> en fonction de temps <b>Universal Time</b> (Heure de la journ&#233;e GMT):
+On peut montrer que \( S(t;n)\rightarrow f(t) \) quand \( n\rightarrow\infty \)
 
 <p>
 <b>a)</b>
-D&#233;finir les tableaux <code>Xray_s</code> et <code>Xray_L</code> qui correspondent au \( 6^{&#233;me} \) et au \( 7^{&#233;me} \) colonnes dans le fichier (on compte les colonnes &#224; partir de z&#233;ro). Utilisez la fonction <code>numpy.loadtxt</code> comme indiqu&#233; dans le cours3 (<a href="https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#lecture-de-donn%C3%A9es" target="_self">lecture de donn&#233;es</a>) et pr&#233;cisez les num&#233;ros des colonnes avec l'argument <code>usecols</code>, utilisez le help (<code>help(np.loadtxt)</code>) dans le notebook.
+Ecrivez une fonction Python <code>S(t, n, T)</code> pour renvoyer la valeur de \( S(t; n) \).
 
 <p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_6_1" style="font-size: 80%;"></a>
-<a href="#exer_6_1" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_6_1">
-
-<p>
-Les tableaux <code>Xray_s</code> et <code>Xray_L</code> sont d&#233;finis de la fa&#231;on suivante:
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">pylab</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-NomFichier <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;data_GOES/20120609_Gp_xr_1m.txt&quot;</span>
-Xray_s,Xray_L <span style="color: #666666">=</span> np<span style="color: #666666">.</span>loadtxt(NomFichier, skiprows<span style="color: #666666">=18</span>, usecols<span style="color: #666666">=</span>[<span style="color: #666666">6</span>,<span style="color: #666666">7</span>],unpack<span style="color: #666666">=</span><span style="color: #008000">True</span>)
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
 <p>
 <b>b)</b>
-D&#233;finir le tableau <code>temps</code> en utilisant la fonction <code>numpy.arange()</code> (voir cours3: <a href="https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#utilisation-de-fonctions-g%C3%A9n%C3%A9ratrices-de-tableaux-et-de-matrices" target="_self">Utilisation de fonctions g&#233;n&#233;ratrices de tableaux et de matrices</a>).
+Ecrivez une fonction Python <code>f(t, T)</code> pour calculer \( f(t) \).
 
 <p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_6_2" style="font-size: 80%;"></a>
-<a href="#exer_6_2" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_6_2">
-
-<p>
-Le tableau temps s'&#233;crit:
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>temps <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">0.0</span>, <span style="color: #666666">24.0</span> , <span style="color: #666666">24.0/</span><span style="color: #008000">len</span>(Xray_L))
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
 <p>
 <b>c)</b>
-Tracer <code>Xray_s</code> et <code>Xray_L</code> en fonction de <code>temps</code> afin de reproduire le graphique suivant (voirs cours3: <a href="https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#trac%C3%A9s-logarithmiques" target="_self">Trac&#233;s logarithmiques</a>):
-<br /><br /><center><p><img src="figs/goes_plot.png" align="bottom" width=500></p></center><br /><br />
+Cr&#233;er un tableau <code>t</code> &#224; l'aide de la fonction <code>linspace</code>, du module <code>numpy</code>, pour <code>100</code> valeurs <code>t</code> uniform&#233;ment espac&#233;s dans [0, T]. On prendra \( T = 2 \pi \).
 
 <p>
-<!-- --- begin solution of exercise --- -->
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>d)</b>
+Remplir une liste <code>F</code> par les valeurs de <code>f(ti,T)</code> avec \( ti \in t \). Transformer la liste <code>F</code> en un tableau (nous voulons avoir un tableau pour la fonction \( f(t) \) avec \( t \in [0, T] \) et \( T = 2\pi \)).
 
 <p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_6_3" style="font-size: 80%;"></a>
-<a href="#exer_6_3" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_6_3">
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>e)</b>
+Tracer \( S(t; 1) \), \( S(t; 3) \), \( S(t; 20) \), \( S(t; 200) \) et la fonction exacte \( f(t) \) dans le m&#234;me graphique. Le r&#233;sultat devrait &#234;tre similaire au graphique ci-dessous.
 
 <p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">10</span>, <span style="color: #666666">7</span>))
-plt<span style="color: #666666">.</span>semilogy(temps, Xray_L,color<span style="color: #666666">=</span><span style="color: #BA2121">&#39;r&#39;</span>,linewidth<span style="color: #666666">=3</span>,label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;GOES: Long X-Ray (0.1 - 0.8 nanometer)&quot;</span>)
-plt<span style="color: #666666">.</span>semilogy(temps, Xray_s,color<span style="color: #666666">=</span><span style="color: #BA2121">&#39;k&#39;</span>,linewidth<span style="color: #666666">=3</span>,label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;GOES: Short X-Ray (0.05 - 0.4 nanometer)&quot;</span>, alpha<span style="color: #666666">=.3</span>)
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot; GOES Solar X-ray Flux&quot;</span>, fontsize<span style="color: #666666">=16</span>, weight<span style="color: #666666">=</span><span style="color: #BA2121">&quot;bold&quot;</span> )
-plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;X ray Flux ($Watts/m^2$)&quot;</span>); plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Universal Time (hours)&quot;</span>)
-plt<span style="color: #666666">.</span>legend(loc<span style="color: #666666">=</span><span style="color: #BA2121">&#39;upper left&#39;</span>)
-plt<span style="color: #666666">.</span>ylim(<span style="color: #666666">1e-9</span>, <span style="color: #666666">1e-3</span>)
-plt<span style="color: #666666">.</span>grid()
-
-savefig(<span style="color: #BA2121">&quot;goes_plot.png&quot;</span>)
-plt<span style="color: #666666">.</span>show()
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
+<br /><br /><center><p><img src="imgs/fourier.png" align="bottom" width=500></p></center><br /><br />
 
 <p>
-<!-- --- end solution of exercise --- -->
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>f)</b>
+Quelle est la relation entre la qualit&#233; de l'approximation et le choix de la valeur de <code>n</code>?
 
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
 <p>
 <!-- --- end exercise --- -->
 
 <p>
+<!-- !split -->
+
+<p>
 <!-- --- begin exercise --- -->
 
-<h2 id="___sec6" class="anchor">Exercise 7: Fonctions sp&#233;ciales (int&#233;grales de Fresnel et spirale de Cornu) </h2>
+<h2 id="___sec4" class="anchor">Exercise 5: Fonctions sp&#233;ciales (int&#233;grales de Fresnel et spirale de Cornu) </h2>
 
 <p>
 Les int&#233;grales de Fresnel ont &#233;t&#233; introduites par le physicien fran&#231;ais Augustin Fresnel (1788-1827) lors de ses travaux sur les interf&#233;rences lumineuses (voici un article int&#233;ressant &#224; lire: <a href="http://www.mathouriste.eu/Fresnel/Fresnel.html" target="_self">Fresnel, des Math&#233;matiques en Lumi&#232;re</a>).
@@ -830,7 +330,7 @@ ff2 = \sum\limits_{n=0}^{11} b_{n}x^{2n+1}\left(\frac{\pi}{8}\right)^{n+1/2} & g
 \end{equation*}
 $$
 
-et \( a_n \), \( b_n \), \( c_n \) et \( d_n \) sont des coefficients tabul&#233;s  (<a href="https://www.ams.org/journals/mcom/1960-14-072/S0025-5718-1960-0121973-3/S0025-5718-1960-0121973-3.pdf" target="_self">*J.Boersma Math Computation 14,380(1960)*</a>) et donn&#233;s dans un fichier <b>coef.dat</b> dans le r&#233;pertoire de ce notebook:
+et \( a_n \), \( b_n \), \( c_n \) et \( d_n \) sont des coefficients tabul&#233;s  (<a href="https://www.ams.org/journals/mcom/1960-14-072/S0025-5718-1960-0121973-3/S0025-5718-1960-0121973-3.pdf" target="_self">*J.Boersma Math Computation 14,380(1960)*</a>) et donn&#233;s dans un fichier <b>coef.dat</b>:
 
 <p>
 
@@ -859,250 +359,45 @@ et \( a_n \), \( b_n \), \( c_n \) et \( d_n \) sont des coefficients tabul&#233
 D&#233;finir les fonctions <code>ff1(x)</code>, <code>gg1(x)</code>, <code>ff2(x)</code> et <code>gg2(x)</code>. Chaque fonction renvoie la valeur de la somme qui lui correspond.
 
 <p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_7_1" style="font-size: 80%;"></a>
-<a href="#exer_7_1" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_7_1">
-
-<p>
-Les fonctions <code>ff1(x)</code>, <code>gg1(x)</code>, <code>ff2(x)</code> et <code>gg2(x)</code> sont les suivantes:
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">pylab</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">ff1</span>(x):
-    S <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">12</span>):
-        fn <span style="color: #666666">=</span> (<span style="color: #666666">8</span> <span style="color: #666666">/</span> pi)<span style="color: #666666">**</span>(i <span style="color: #666666">+</span> <span style="color: #666666">0.5</span>) <span style="color: #666666">*</span> dn[i]
-        S <span style="color: #666666">+=</span> fn <span style="color: #666666">*</span> x<span style="color: #666666">**</span>(<span style="color: #666666">-2</span> <span style="color: #666666">*</span> i <span style="color: #666666">-</span> <span style="color: #666666">1</span>)
-    <span style="color: #008000; font-weight: bold">return</span> S
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">gg1</span>(x):
-    S <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">12</span>):
-        gn <span style="color: #666666">=</span> (<span style="color: #666666">8</span> <span style="color: #666666">/</span> pi)<span style="color: #666666">**</span>(i <span style="color: #666666">+</span> <span style="color: #666666">0.5</span>) <span style="color: #666666">*</span> cn[i]
-        S <span style="color: #666666">+=</span> gn <span style="color: #666666">*</span> x<span style="color: #666666">**</span>(<span style="color: #666666">-2</span> <span style="color: #666666">*</span> i <span style="color: #666666">-</span> <span style="color: #666666">1</span>)
-    <span style="color: #008000; font-weight: bold">return</span> S
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">ff2</span>(x):
-    S <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">12</span>):
-        fn <span style="color: #666666">=</span> (pi <span style="color: #666666">/</span> <span style="color: #666666">8</span>)<span style="color: #666666">**</span>(i <span style="color: #666666">+</span> <span style="color: #666666">0.5</span>) <span style="color: #666666">*</span> bn[i]
-        S <span style="color: #666666">+=</span> fn <span style="color: #666666">*</span> x<span style="color: #666666">**</span>(<span style="color: #666666">2</span> <span style="color: #666666">*</span> i <span style="color: #666666">+</span> <span style="color: #666666">1</span>)
-    <span style="color: #008000; font-weight: bold">return</span> S
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">gg2</span>(x):
-
-    S <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">12</span>):
-        gn <span style="color: #666666">=</span> (pi<span style="color: #666666">/8</span>)<span style="color: #666666">**</span>(i <span style="color: #666666">+</span> <span style="color: #666666">0.5</span>) <span style="color: #666666">*</span> an[i]
-        S <span style="color: #666666">+=</span>  gn <span style="color: #666666">*</span> x<span style="color: #666666">**</span>(<span style="color: #666666">2</span> <span style="color: #666666">*</span> i <span style="color: #666666">+</span> <span style="color: #666666">1</span>)
-    <span style="color: #008000; font-weight: bold">return</span> S
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
 <p>
 <b>b)</b>
 D&#233;finir les fonctions Python <code>C(x)</code> et <code>S(x)</code> qui renvoient respectivement les listes, les valeurs de \( C(x) \) et \( S(x) \), <code>CF</code> et` SF` (en utilisant une boucle <code>for</code> pour remplir les listes par exemple).
 
 <p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_7_2" style="font-size: 80%;"></a>
-<a href="#exer_7_2" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_7_2">
-
-<p>
-Les fonctions Python <code>C(x)</code> et <code>S(x)</code> sont les suivantes:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">C</span>(x):
-    CF<span style="color: #666666">=</span>[]
-    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(x)):
-        <span style="color: #008000; font-weight: bold">if</span> x[i] <span style="color: #666666">&gt;=</span> sqrt(<span style="color: #666666">8/</span>pi):
-            cf<span style="color: #666666">=0.5</span> <span style="color: #666666">+</span> cos((pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>gg1(x[i]) <span style="color: #666666">+</span> sin((pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>ff1(x[i])
-            CF<span style="color: #666666">.</span>append(cf)
-        <span style="color: #008000; font-weight: bold">elif</span> <span style="color: #666666">0</span> <span style="color: #666666">&lt;=</span> x[i] <span style="color: #666666">&lt;</span> sqrt(<span style="color: #666666">8/</span>pi):
-            cf <span style="color: #666666">=</span> cos((pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>gg2(x[i]) <span style="color: #666666">+</span> sin((pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>ff2(x[i])
-            CF<span style="color: #666666">.</span>append(cf)
-    <span style="color: #008000; font-weight: bold">return</span> CF
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">S</span>(x):
-    SF<span style="color: #666666">=</span>[]
-    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(x)):
-        <span style="color: #008000; font-weight: bold">if</span> x[i] <span style="color: #666666">&gt;=</span> sqrt(<span style="color: #666666">8/</span>pi):
-            sf <span style="color: #666666">=</span> <span style="color: #666666">0.5</span> <span style="color: #666666">-</span> cos((pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>ff1(x[i]) <span style="color: #666666">+</span> sin((pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>gg1(x[i])
-            SF<span style="color: #666666">.</span>append(sf)
-        <span style="color: #008000; font-weight: bold">elif</span> <span style="color: #666666">0</span> <span style="color: #666666">&lt;=</span> x[i] <span style="color: #666666">&lt;</span> sqrt(<span style="color: #666666">8/</span>pi):
-            sf <span style="color: #666666">=</span> <span style="color: #666666">-</span>cos((pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>ff2(x[i]) <span style="color: #666666">+</span> sin((pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>gg2(x[i])
-            SF<span style="color: #666666">.</span>append(sf)
-    <span style="color: #008000; font-weight: bold">return</span> SF
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
 <p>
 <b>c)</b>
 Cr&#233;er des tableaux <code>an</code>, <code>bn</code>, <code>cn</code> et <code>dn</code> &#224; partir du fichier <b>coef.dat</b>.
 
 <p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_7_3" style="font-size: 80%;"></a>
-<a href="#exer_7_3" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_7_3">
-
-<p>
-Les tableaux <code>an</code>, <code>bn</code>, <code>cn</code> et <code>dn</code> sont charg&#233;s  &#224; partir du fichier <b>coef.dat</b> &#224; l'aide del a fonction <code>numpy.loadtxt()</code>:
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>an, bn, cn, dn <span style="color: #666666">=</span> loadtxt(<span style="color: #BA2121">&#39;coef.dat&#39;</span>, comments<span style="color: #666666">=</span><span style="color: #BA2121">&#39;#&#39;</span>, usecols<span style="color: #666666">=</span>(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>), unpack<span style="color: #666666">=</span><span style="color: #008000">True</span>)
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
 <p>
 <b>d)</b>
 Cr&#233;er un tableau <code>x</code>. Utilisez 800 intervalles pour &#233;valuer les points dans [0,10] (cas o&#249; \( x \geq 0 \)).
 
 <p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_7_4" style="font-size: 80%;"></a>
-<a href="#exer_7_4" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_7_4">
-
-<p>
-Le tableau <code>x</code> s'&#233;crit:
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>,<span style="color: #666666">10</span>, <span style="color: #666666">500</span>)
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
 <p>
 <b>e)</b>
 Transformer <code>C(x)</code> et <code>S(x)</code> en tableaux <code>numpy</code>, respectivement <code>CF</code> et <code>SF</code>.
 
 <p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_7_5" style="font-size: 80%;"></a>
-<a href="#exer_7_5" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_7_5">
-
-<p>
-Les listes <code>C(x)</code> et <code>S(x)</code> sont transform&#233;s en tableaux <code>numpy</code> &#224; l'aide de la fonction <code>numpy.array()</code>:
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>CF <span style="color: #666666">=</span> array(C(x)); SF <span style="color: #666666">=</span> array(S(x))
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
 <p>
 <b>f)</b>
 Tracer une grille de figures &#224; 2 colonnes (voir Cours3: <a href="https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#linstruction-subplot" target="_self">Vues en grille</a>) dont le graphique de gauche repr&#233;sente <code>CF</code> et <code>SF</code> en fonction de <code>x</code> et le graphique de droite repr&#233;sente une <a href="https://fr.wikipedia.org/wiki/Clotho%C3%AFde" target="_self">clotho&#239;de</a> (ou spirale de Cornu, ou Spirale de Fresnel..)`SF` en fonction de <code>CF</code>.
 La sortie de ce programme devrait &#234;tre comme suit:
-<br /><br /><center><p><img src="figs/fresnel.png" align="bottom" width=500></p></center><br /><br />
+<br /><br /><center><p><img src="imgs/fresnel.png" align="bottom" width=600></p></center><br /><br />
 
 <p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_7_6" style="font-size: 80%;"></a>
-<a href="#exer_7_6" data-toggle="collapse">
-<b>Solution.</b>
-</a>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_7_6">
-
-<p>
-La repr&#233;sentation graphique des int&#233;grales de Fresnel et du spirale de Cornu est donc:
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">12</span>,<span style="color: #666666">5</span>))
-subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">1</span>)
-plt<span style="color: #666666">.</span>plot(x, CF,<span style="color: #BA2121">&#39;b&#39;</span>, x, SF,<span style="color: #BA2121">&#39;r&#39;</span>, linewidth<span style="color: #666666">=2</span>)
-plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;x&quot;</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>); plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;C(x) / S(x)&quot;</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Intégrales de Fresnel&quot;</span>, fontsize<span style="color: #666666">=14</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
-plt<span style="color: #666666">.</span>legend([<span style="color: #BA2121">&quot;C(x)&quot;</span>,<span style="color: #BA2121">&quot;S(x)&quot;</span>])
-subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">2</span>)
-plt<span style="color: #666666">.</span>plot(CF, SF, linewidth <span style="color: #666666">=</span> <span style="color: #666666">2</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;k&#39;</span>)
-plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;C(x)&quot;</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>); plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;S(x)&quot;</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Spirale de Cornu&quot;</span>, fontsize<span style="color: #666666">=14</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
-
-plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;fresnel.png&quot;</span>)
-plt<span style="color: #666666">.</span>show()
-</pre></div>
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
 <p>
 <!-- --- end exercise --- -->
 
@@ -1118,6 +413,11 @@ plt<span style="color: #666666">.</span>show()
 <a href="http://..."><img width="250" align=right src="http://..."></a>
 </footer>
 -->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2019, Ahmed Ammar. Released under CC Attribution 4.0 license
+</center>
 
 
 </body>

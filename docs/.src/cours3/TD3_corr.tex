@@ -165,12 +165,44 @@ final,                   % draft: marks overfull hboxes, figures with paths
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
 %\usepackage{float}\restylefloat{figure}
 
+% --- fancyhdr package for fancy headers ---
+\usepackage{fancyhdr}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[LE,RO]{\thepage}
+% Ensure copyright on titlepage (article style) and chapter pages (book style)
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{{\footnotesize \copyright\ 2019, Ahmed Ammar. Released under CC Attribution 4.0 license}}
+%  \renewcommand{\footrulewidth}{0mm}
+  \renewcommand{\headrulewidth}{0mm}
+}
+% Ensure copyright on titlepages with \thispagestyle{empty}
+\fancypagestyle{empty}{
+  \fancyhf{}
+  \fancyfoot[C]{{\footnotesize \copyright\ 2019, Ahmed Ammar. Released under CC Attribution 4.0 license}}
+  \renewcommand{\footrulewidth}{0mm}
+  \renewcommand{\headrulewidth}{0mm}
+}
+
+\pagestyle{fancy}
+
+
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
 
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
+% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{\section*{List of Exercises}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+% --- end definition of \listofexercises command ---
+
 
 
 % ------ header in subexercises ------
@@ -209,11 +241,49 @@ final,                   % draft: marks overfull hboxes, figures with paths
 
 % ------------------- main content ----------------------
 
-% TITLE: TP 3: Introduction à matplotlib et numpy
-% AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Université de Tunis El Manar.
-% DATE: Mercredi, 5 décembre 2018
-% 
-% TOC: on
+
+
+% ----------------- title -------------------------
+
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE\bf
+\begin{spacing}{1.25}
+TD N°3 : Bibliothèques numpy et matplotlib
+\end{spacing}
+}
+\end{center}
+
+% ----------------- author(s) -------------------------
+
+\begin{center}
+{\bf Ahmed Ammar (\texttt{ahmed.ammar@fst.utm.tn})}
+\end{center}
+
+    \begin{center}
+% List of all institutions:
+\centerline{{\small Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.}}
+\end{center}
+    
+% ----------------- end author(s) -------------------------
+
+% --- begin date ---
+\begin{center}
+Mercredi, 5 décembre 2018
+\end{center}
+% --- end date ---
+
+\vspace{1cm}
+
+
+\tableofcontents
+
+
+\vspace{1cm} % after toc
+
+
+
 
 % !split
 
@@ -232,8 +302,10 @@ Ecrivez un programme qui trace la fonction $g(y) = e^{-y} sin(4y)$ pour $y \in [
 \paragraph{Solution.}
 La programme qui trace la fonction $g(y)$ est:
 \begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-# Importer tout de matplotlib et numpy
-from pylab import *
+# Importation
+from math import exp, sin
+import numpy as np
+import matplotlib.pyplot as plt
 
 def g(y):
     return exp(-y)*sin(4*y)
@@ -275,8 +347,10 @@ Comme Exercice 1, mais ajouter une courbe en pointillé noir pour la fonction $h
 \paragraph{Solution.}
 La programme qui trace la fonction $g(y)$ avec une nouvelle fonction $h(y)$ est:
 \begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-# Importer tout de matplotlib et numpy
-from pylab import *
+# Importation
+from math import exp, sin
+import numpy as np
+import matplotlib.pyplot as plt
 
 def g(y):
     return exp(-y)*sin(4*y)
@@ -312,14 +386,14 @@ plt.show()
 \exercisesection{Exercise \thedoconceexercisecounter: Racines d’une équation du second degré}
 
 
-Dans l'"application de l'exercice 4 dans le TP3, nous avons montré la représentation graphique d'une équation du second degré $f(x)=0.83x^2+3.8x+2.48$ ainsi que ses racines réelles:
+Dans l'"application de l'exercice 4 dans TD N°2, nous avons montré la représentation graphique d'une équation du second degré $f(x)=0.83x^2+3.8x+2.48$ ainsi que ses racines réelles:
 
 
 
 \vspace{6mm}
 
 % inline figure
-\centerline{\includegraphics[width=0.7\linewidth]{figs/equation2deg.pdf}}
+\centerline{\includegraphics[width=0.7\linewidth]{imgs/equation2deg.pdf}}
 
 \vspace{6mm}
 
@@ -332,352 +406,36 @@ Reproduire ce graphique en utilisant la fonction \texttt{EqSecondDegree(a,b,c)} 
 Le programme qui reproduit la figure en utilisant la fonction \texttt{EqSecondDegree()}:
 
 \begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-
-from pylab import *
+# Importation
+import numpy as np
+import matplotlib.pyplot as plt
 from racines import EqSecondDegree
 # NOTE: le module racines est le fichier racines.py
 # qu'on doit placer dans le répertoire de travail.
 
 def f(x):
     return 0.83 * x**2 + 3.8 * x + 2.48
-x = linspace(-6, 1, 200)
+x = np.linspace(-6, 1, 200)
 y = f(x)
 x1, x2 = EqSecondDegree(0.83, 3.8, 2.48)
 
-figure(figsize=(7, 5), dpi=80)
-plot(x, y, color="blue", linewidth=3, linestyle="-", alpha=.8)
-scatter([x1,x2], [f(x1), f(x2)], 80, color='red')
+plt.figure(figsize=(7, 5), dpi=80)
+plt.plot(x, y, color="blue", linewidth=3, linestyle="-", alpha=.8)
+plt.scatter([x1,x2], [f(x1), f(x2)], 80, color='red')
 
-annotate('x1= {:.2f}'.format(x1),
+plt.annotate('x1= {:.2f}'.format(x1),
              xy=(x1, f(x1)), xycoords='data',
              xytext=(+10, +30), textcoords='offset points', fontsize=16,
              arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
-annotate('x2= {:.2f}'.format(x2),
+plt.annotate('x2= {:.2f}'.format(x2),
              xy=(x2, f(x2)), xycoords='data',
              xytext=(+40, +30), textcoords='offset points', fontsize=16,
              arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
 
-suptitle("Racines d’une équation du second degré", fontweight= 'bold')
-title(r"$f(x) = 0.83 * x^2 + 3.8 * x + 2.48$",fontsize=14, color = 'b')
+plt.suptitle("Racines d’une équation du second degré", fontweight= 'bold')
+plt.title(r"$f(x) = 0.83 * x^2 + 3.8 * x + 2.48$",fontsize=14, color = 'b')
 
 plt.grid()
-
-plt.savefig("equation2deg.png"); plt.savefig("equation2deg.pdf")
-plt.show()
-\end{minted}
-\end{cod}
-\noindent
-
-% --- end solution of exercise ---
-
-\end{doconceexercise}
-% --- end exercise ---
-
-
-
-
-% --- begin exercise ---
-\begin{doconceexercise}
-\refstepcounter{doconceexercisecounter}
-
-\exercisesection{Exercise \thedoconceexercisecounter: Loi de Snell-Descartes pour la réfraction}
-
-
-La loi de Snell-Descartes stipule que le rapport sinus de l'angle d'incidence sur le sinus de l'angle de réfraction est équivalent au rapport de la vitesse de phase dans le premier milieu à la vitesse de phase dans le deuxième milieu, ou équivalent à l'inverse du rapport des indices de réfraction.
-
-$$\dfrac{\sin\theta_1}{\sin\theta_2} = \dfrac{v_1}{v_2} = \dfrac{n_2}{n_1}$$
-
-Où $\theta_1$ est l'angle d'incidence dans le premier milieu, $\theta_2$ est l'angle de réfraction dans le deuxième milieu, tous les angles mesurés à partir de la normale de la frontière (dioptre), $v_1$ et $v_2$ sont respectivement les vitesses dans les deux milieux, et $n_1$ et $n_2$ sont les indices de réfraction du premier et du deuxième milieux, respectivement.
-
-
-
-\vspace{6mm}
-
-% inline figure
-\centerline{\includegraphics[width=0.7\linewidth]{figs/Refraction_fr.png}}
-
-\vspace{6mm}
-
-
-
-\textbf{Objectif:}
-
-Ecrire un programme Python pour tracer angle de réfraction en fonction de l'angle d'incidence.
-
-\textbf{Algorithme:}
-\begin{itemize}
- \item Afficher: \texttt{"Loi de Snell-Descartes pour la réfraction."}
-
- \item Demender un nombre réel n1: \texttt{"Entrez l'indice de réfraction du premier milieu: "}
-
- \item Demender un nombre réel n2: \texttt{"Entrez l'indice de réfraction du deuxième milieu: "}
-
- \item choix = 'o' et compteur k = 0
-
- \item Tant que choix == 'o':
-\begin{itemize}
-
-   \item Stoker dans une liste theta1 un nombre réel \texttt{theta1[k]}: \texttt{"Entrez l'angle d'incidence en degrés: "}
-
-   \item Condition: \texttt{si (n1*sin(theta1[k]))/n2 < -1 ou n1 * (n1*sin(theta1[k]))/n2 > 1}:
-\begin{itemize}
-
-     \item Afficher: \texttt{"Il y aura une réflexion totale pour l'angle d'incidence donné. Essayez d'autres valeurs."}
-
-     \item Stoker dans une liste theta1 un nombre réel \texttt{theta1[k]}: \texttt{"Entrez l'angle d'incidence en degrés: "}
-
-\end{itemize}
-
-\noindent
-   \item Stoker dans la liste la valeur \texttt{theta2[k]}: \texttt{arcsin(n1*sin(theta1[k])/n2}
-
-   \item Afficher: \texttt{"L'angle d'incidence est de theta1[k] degrés et l'angle de réfraction de theta2[k] degrés."}
-
-   \item Entrer une nouvelle valeur de choix: \texttt{"Voulez-vous entrer plus de valeurs (o / n)?: "}
-
-   \item k+=1
-
-\end{itemize}
-
-\noindent
- \item si choix == 'n':
-\begin{itemize}
-
-   \item Tracer le graphique de theta2 en fonction de theta1 (exemple pour 3 valeurs de theta1):
-\end{itemize}
-
-\noindent
-\end{itemize}
-
-\noindent
-\vspace{6mm}
-
-% inline figure
-\centerline{\includegraphics[width=0.7\linewidth]{figs/snell.png}}
-
-\vspace{6mm}
-
-
-
-
-% --- begin solution of exercise ---
-\paragraph{Solution.}
-Le code Python qui traduit l'algorithme précédent est:
-\begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-from pylab import *
-
-print("Loi de Snell-Descartes pour la réfraction.")
-n1 = float(input("Entrez l'indice de réfraction du premier milieu: "))
-n2 = float(input("Entrez l'indice de réfraction du deuxième milieu: "))
-choix = "o"
-k = 0
-theta1, theta2 = [],[]
-while choix == "o":
-    theta1.append(float(input("Entrez l'angle d'incidence en degrés: ")))
-    if (n1*sin(deg2rad(theta1[k])))/n2 < -1 or n1 * (n1*sin(deg2rad(theta1[k])))/n2 > 1:
-        print("Il y aura une réflexion totale pour l'angle d'incidence donné. Essayez d'autres valeurs.")
-        theta1.append(float(input("Entrez l'angle d'incidence en degrés: ")))
-    theta2.append(rad2deg(arcsin(n1*sin(deg2rad(theta1[k]))/n2)))
-    print("L'angle d'incidence est de {:.2f} degrés et l'angle de réfraction de {:.2f} degrés.".format(theta1[k], theta2[k]))
-    choix = input("Voulez-vous entrer plus de valeurs (o / n)?: ")
-    while (choix!='o') and (choix!='n'):
-        print("Entrée invalide. Tapez o ou n. ")
-        choix = input("Voulez-vous entrer plus de valeurs (o / n)?: ")
-
-    k +=1
-
-if choix == "n":
-    scatter(theta1, theta2)
-    suptitle("Loi de Snell-Descartes", fontweight='bold')
-    title("Angle de réfraction en fonction de l'angle d'incidence")
-    xlabel("Angle d'incidence" + r" $\theta_1$")
-    ylabel("Angle de réfraction" + r" $\theta_2$")
-    savefig("snell.png")
-    show()
-\end{minted}
-\end{cod}
-\noindent
-
-% --- end solution of exercise ---
-
-\end{doconceexercise}
-% --- end exercise ---
-
-
-
-
-% --- begin exercise ---
-\begin{doconceexercise}
-\refstepcounter{doconceexercisecounter}
-
-\exercisesection{Exercise \thedoconceexercisecounter: Diffraction par une ouverture rectangulaire}
-
-
-
-
-\vspace{6mm}
-
-% inline figure
-\centerline{\includegraphics[width=0.7\linewidth]{figs/Diffr_ouv_rectangle.png}}
-
-\vspace{6mm}
-
-
-
-Une ouverture rectangulaire de côtés a et b correspond à une transmission $t(X, Y)$ définie par :
-\[ \left\{
-\begin{array}{ll}
-t(X,Y) = 1 & si \ |X|<a/2 \ et \ |Y|<b/2 \\
-t(X,Y) = 0 & sinon
-\end{array}
-\right. \]
-Le calcul de l'intensité diffractée par une telle ouverture, c’est-à-dire du carré du module de l'amplitude E(M), donne :
-$$I(x,y)=|E(x,y)|^2=I_0 \  \mathrm{sinc}^2\left(\frac{\pi xa}{\lambda f_2}\right) \mathrm{sinc}^2\left(\frac{\pi yb}{\lambda f_2}\right)$$
-
-
-
-\vspace{6mm}
-
-% inline figure
-\centerline{\includegraphics[width=0.7\linewidth]{figs/figDiff.png}}
-
-\vspace{6mm}
-
-
-
-les dimensions de la tache centrale sont :
-\begin{itemize}
- \item $\Delta x = 2 \lambda f_2/a $
-
- \item $\Delta y = 2 \lambda f_2/b $
-\end{itemize}
-
-\noindent
-\textbf{Le programme Python:}
-
-
-\subex{a)}
-Écrire une fonction \Verb!Intensity(X, Y, a = 0.2 * 1.E-3, b = 0.2 * 1.E-3, lambda_ = 630 * 1.E-9, f2 = 10)! qui affiche les dimensions de la tache centrale ($\Delta x$ et $\Delta y$) et retourne la valeur de $I(X,Y)$. Avec:
-\begin{itemize}
-\item \texttt{X} et \texttt{Y} sont respectivement l'abscisse et l'ordonnée à l'écran.
-
-\item \texttt{a} la largeur de la fente (par défaut = 0.2 mm)
-
-\item \texttt{b} la hauteur de la fente (par défaut = 0.2 mm)
-
-\item \Verb!lambda_! la longueur d'onde de la lumière incidente (par défaut = 630 nm)
-
-\item \texttt{f2} la distance fente - écran (par défaut = 10 m)
-\end{itemize}
-
-\noindent
-On considère que $I_0 = 1$ par convention.
-
-
-% --- begin solution of exercise ---
-\paragraph{Solution.}
-la fonction \texttt{Intensity()} s'écrit:
-
-\begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-from pylab import *
-
-def Intensity(X, Y, a = 0.2 * 1.E-3, b = 0.2 * 1.E-3, lambda_ = 630 * 1.E-9, f2 = 10):
-    # les dimensions de la tache centrale
-    Dx = 1.E2 * (2 * lambda_ * f2) / a
-    print("La largeur du maximum central le long (Ox) = {:.3f} cm".format(Dx))
-    Dy = 1.E2 * (2 * lambda_ * f2) / b
-    print("La largeur du maximum central le long (Oy) = {:.3f} cm".format(Dy))
-    # Variables intermidières
-    A = (pi * X * a)/(lambda_ * f2)
-    B = (pi * Y * b)/(lambda_ * f2)
-    return (sin(A)/A)**2 * (sin(B)/B)**2
-\end{minted}
-\end{cod}
-\noindent
-
-% --- end solution of exercise ---
-
-\subex{b)}
-Créez le graphique de diffraction suivant (à l'aide de la fonction \href{{https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#image-pixelis%C3%A9e}}{\nolinkurl{imshow()}}) pour un écran de 30/30 cm:
-
-
-\vspace{6mm}
-
-% inline figure
-\centerline{\includegraphics[width=0.7\linewidth]{figs/diff2D.pdf}}
-
-\vspace{6mm}
-
-
-
-
-% --- begin solution of exercise ---
-\paragraph{Solution.}
-La représentation graphique de la figure de diffraction en 2D:
-\begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-# coordonnées de l'écran
-X, Y = meshgrid(linspace(-15*1e-2, 15*1e-2, 400), linspace(-15*1e-2, 15*1e-2, 400))
-# Intensité
-I = Intensity(X, Y)
-# Figure de diffraction
-fig, ax = plt.subplots(figsize=(8,8))
-im = imshow(I, cmap='gray', interpolation='bilinear',
-                origin='lower',  vmin= 0, vmax = 0.005)
-cb = fig.colorbar(im, label="I(X,Y) - ua", shrink=0.8)
-title('Diffraction par une ouverture rectangulaire', fontweight='bold')
-
-xlabel('X (cm)', fontsize=12, fontweight='bold')
-ylabel('Y (cm)', fontsize=12, fontweight='bold')
-xticks(linspace(0, 400, 7))
-ax.set_xticklabels(linspace(-15, 15, 7),  color='r')
-yticks(linspace(0, 400, 7))
-ax.set_yticklabels(linspace(-15, 15, 7),  color='r')
-
-savefig("diff2D.png"); savefig("diff2D.pdf")
-show()
-\end{minted}
-\end{cod}
-\noindent
-
-% --- end solution of exercise ---
-
-\subex{c)}
-Créez le graphique 3D de diffraction suivant (voir la partie \href{{https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#trac%C3%A9-de-surfaces}}{tracé de surfaces} du cours):
-
-
-\vspace{6mm}
-
-% inline figure
-\centerline{\includegraphics[width=0.7\linewidth]{figs/diff3D.pdf}}
-
-\vspace{6mm}
-
-
-
-
-% --- begin solution of exercise ---
-\paragraph{Solution.}
-La représentation graphique de la figure de diffraction en 3D:
-
-\begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-# coordonnées de l'écran
-X, Y = meshgrid(linspace(-15*1e-2, 15*1e-2, 400), linspace(-15*1e-2, 15*1e-2, 400))
-# Intensité
-I = Intensity(X, Y)
-
-# Figure de diffraction
-fig = plt.figure(figsize=(8,8))
-ax = plt.axes(projection='3d')
-# plot surface
-p = ax.plot_surface(X, Y, I, rstride=4, cstride=4, cmap='coolwarm',
-                    linewidth=0, antialiased=False)
-cb = fig.colorbar(p, label="I(X,Y) - ua", shrink=0.5)
-
-xlabel('X (m)', fontsize=12, fontweight='bold')
-ylabel('Y (m)', fontsize=12, fontweight='bold')
-title('Diffraction par une ouverture rectangulaire', fontweight='bold')
-
-savefig("diff3D.png"); savefig("diff3D.pdf")
 plt.show()
 \end{minted}
 \end{cod}
@@ -696,115 +454,46 @@ plt.show()
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\exercisesection{Exercise \thedoconceexercisecounter: Tracer un graphique à partir d'un fichier (données satellitaires)}
+\exercisesection{Exercise \thedoconceexercisecounter: Approximer une fonction par une somme de sinus}
 
 
-Les mesures de flux de rayons X du satellite GOES (\href{{https://fr.wikipedia.org/wiki/Geostationary_Operational_Environmental_Satellite}}{Geostationary Operational Environmental Satellite}) ont été effectuées depuis 1974. Le graphique à rayons X GOES (flux de 1 à 8 angströms) faisant l’objet de cet exercice peut suivre l’activité solaire et les éruptions solaires. De grandes éruptions de rayons X solaires peuvent modifier l'ionosphère terrestre et bloquer les transmissions radio haute fréquence (HF) du côté de la Terre éclairé par le soleil.
+Nous considérons la fonction constante par morceaux:
 
-
-
-\vspace{6mm}
-
-% inline figure
-\centerline{\includegraphics[width=0.7\linewidth]{figs/goes_sat.jpeg}}
-
-\vspace{6mm}
-
-
-
-SWPC (\href{{https://www.swpc.noaa.gov/products/goes-x-ray-flux}}{Space Weather Prediction Center}) a utilisé ces données pour produire les ensembles et tracés de données de rayons X moyennés sur 1 minute et 5 minutes.
-
-
-Le but de cet exercice est de tracer 24 heures, pour un intervalle de mesure d'une minute, des données solaires aux rayons X enregistrées par le satellite GOES. Dans le répertoire courant (répertoire de ce notebook Jupyter), nous avons un dossier \Verb!data_GOES! contenant 12 fichiers dont le nom est formaté comme suit \Verb!YYYYMMDD_Gp_xr_1m.txt! avec:
-
-\begin{itemize}
-\item \textbf{YYYY} est l'année de l'enregistrement des données
-
-\item \textbf{MM} estle mois de l'enregistrement des données
-
-\item \textbf{DD} est le jour de l'enregistrement des données
-
-\item \textbf{Gp} est la générartion du satellite GOES (GOES-15)
-
-\item \textbf{1m} résolution de l'enregistrement des données
-\end{itemize}
-
-\noindent
-\begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-ls data_GOES/  # Afficher le contenu du dossier data_GOES
-\end{minted}
-\end{cod}
-\noindent
-
-\begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{text}
-20120607_Gp_xr_1m.txt  20120615_Gp_xr_1m.txt  20120627_Gp_xr_1m.txt
-20120609_Gp_xr_1m.txt  20120616_Gp_xr_1m.txt  20120628_Gp_xr_1m.txt
-20120613_Gp_xr_1m.txt  20120617_Gp_xr_1m.txt  20120629_Gp_xr_1m.txt
-20120614_Gp_xr_1m.txt  20120620_Gp_xr_1m.txt  20120630_Gp_xr_1m.txt
-\end{minted}
-\end{cod}
-\noindent
-
-
-
-Soit par exemple le fichier \Verb!data_GOES/20120609_Gp_xr_1m.txt! suivant:
-
-\begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{text}
-:Data_list: 20120609_Gp_xr_1m.txt
-:Created: 2012 Jun 10 0010 UTC
-# Prepared by the U.S. Dept. of Commerce, NOAA, Space Weather Prediction Center
-# Please send comments and suggestions to SWPC.Webmaster@noaa.gov
-#
-# Label: Short = 0.05- 0.4 nanometer
-# Label: Long  = 0.1 - 0.8 nanometer
-# Units: Short = Watts per meter squared
-# Units: Long  = Watts per meter squared
-# Source: GOES-15
-# Location: W135
-# Missing data: -1.00e+05
-#
-#         1-minute GOES-15 Solar X-ray Flux
-#
-#                 Modified Seconds
-# UTC Date  Time   Julian  of the
-# YR MO DA  HHMM    Day     Day       Short       Long
-#-------------------------------------------------------
-2012 06 09  0000   56087      0     1.62e-08    7.81e-07
-2012 06 09  0001   56087     60     1.70e-08    7.92e-07
-2012 06 09  0002   56087    120     1.85e-08    8.21e-07
-2012 06 09  0003   56087    180     1.90e-08    8.41e-07
-2012 06 09  0004   56087    240     1.86e-08    8.50e-07
-2012 06 09  0005   56087    300     1.98e-08    8.59e-07
-.... .. ..  ....   .....   ....     ........    ........
-.... .. ..  ....   .....   ....     ........    ........
-.... .. ..  ....   .....   ....     ........    ........
-2012 06 09  2352   56087  85920     5.48e-09    5.50e-07
-2012 06 09  2353   56087  85980     3.94e-09    5.48e-07
-2012 06 09  2354   56087  86040     3.68e-09    5.45e-07
-2012 06 09  2355   56087  86100     3.91e-09    5.44e-07
-2012 06 09  2356   56087  86160     2.28e-09    5.48e-07
-2012 06 09  2357   56087  86220     5.71e-09    5.64e-07
-2012 06 09  2358   56087  86280     1.15e-08    5.96e-07
-2012 06 09  2359   56087  86340     1.62e-08    6.49e-07
-\end{minted}
-\end{cod}
-\noindent
-
-Dans le même graphique, tracer les tableaux \textbf{Short X-ray} et \textbf{Long X-ray} en fonction de temps \textbf{Universal Time} (Heure de la journée GMT):
+\begin{equation}
+f(t) = \left\lbrace
+\begin{array}{ll}
+1, & 0 < t < T/2,\\
+0, & t = T/2,\\
+-1, & T/2 < t \le T
+\end{array}\right.
+\end{equation}
+On peut approcher f(t) par la somme:
+\begin{equation}
+S(t;n) = {4\over\pi}\sum_{i=1}^n {1\over 2i-1}
+\sin\left( {2(2i-1)\pi t\over T}\right)
+\end{equation}
+On peut montrer que $S(t;n)\rightarrow f(t)$ quand $n\rightarrow\infty$
 
 
 \subex{a)}
-Définir les tableaux \Verb!Xray_s! et \Verb!Xray_L! qui correspondent au $6^{éme}$ et au $7^{éme}$ colonnes dans le fichier (on compte les colonnes à partir de zéro). Utilisez la fonction \texttt{numpy.loadtxt} comme indiqué dans le cours3 (\href{{https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#lecture-de-donn%C3%A9es}}{lecture de données}) et précisez les numéros des colonnes avec l'argument \texttt{usecols}, utilisez le help (\texttt{help(np.loadtxt)}) dans le notebook.
+Ecrivez une fonction Python \texttt{S(t, n, T)} pour renvoyer la valeur de $S(t; n)$.
 
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
-Les tableaux \Verb!Xray_s! et \Verb!Xray_L! sont définis de la façon suivante:
+La fonction Python \texttt{S(t, n, T)} est la suivante:
 \begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-from pylab import *
-NomFichier = "data_GOES/20120609_Gp_xr_1m.txt"
-Xray_s,Xray_L = np.loadtxt(NomFichier, skiprows=18, usecols=[6,7],unpack=True)
+import numpy as np
+import matplotlib.pyplot as plt
+from math import cos, sin, pi
+def S(t, n, T):
+    s = 0
+    for i in range(1, n+1):
+        A = 1/(2*i - 1)
+        B = 2*(2*i - 1)* (pi * t)
+        s +=  A * sin(B/T)
 
+    return s*4/pi
 \end{minted}
 \end{cod}
 \noindent
@@ -812,14 +501,20 @@ Xray_s,Xray_L = np.loadtxt(NomFichier, skiprows=18, usecols=[6,7],unpack=True)
 % --- end solution of exercise ---
 
 \subex{b)}
-Définir le tableau \texttt{temps} en utilisant la fonction \texttt{numpy.arange()} (voir cours3: \href{{https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#utilisation-de-fonctions-g%C3%A9n%C3%A9ratrices-de-tableaux-et-de-matrices}}{Utilisation de fonctions génératrices de tableaux et de matrices}).
+Ecrivez une fonction Python \texttt{f(t, T)} pour calculer $f(t)$.
 
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
-Le tableau temps s'écrit:
+La fonction Python \texttt{f(t, T)} est la suivante:
 \begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-temps = np.arange(0.0, 24.0 , 24.0/len(Xray_L))
+def f(t, T):
+    if 0 < t < T/2:
+        return 1
+    elif t == T/2:
+        return 0
+    elif T/2 < t <= T:
+        return -1
 \end{minted}
 \end{cod}
 \noindent
@@ -827,13 +522,48 @@ temps = np.arange(0.0, 24.0 , 24.0/len(Xray_L))
 % --- end solution of exercise ---
 
 \subex{c)}
-Tracer \Verb!Xray_s! et \Verb!Xray_L! en fonction de \texttt{temps} afin de reproduire le graphique suivant (voirs cours3: \href{{https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#trac%C3%A9s-logarithmiques}}{Tracés logarithmiques}):
+Créer un tableau \texttt{t} à l'aide de la fonction \texttt{linspace}, du module \texttt{numpy}, pour \texttt{100} valeurs \texttt{t} uniformément espacés dans [0, T]. On prendra $T = 2 \pi$.
+
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+Le tableau de valeurs de $t$ pour $T = 2 \pi$ est défini comme suit:
+\begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+T = 2*pi
+t = np.linspace(0, T, 100)
+\end{minted}
+\end{cod}
+\noindent
+
+% --- end solution of exercise ---
+
+\subex{d)}
+Remplir une liste \texttt{F} par les valeurs de \texttt{f(ti,T)} avec $ti \in t$. Transformer la liste \texttt{F} en un tableau (nous voulons avoir un tableau pour la fonction $f(t)$ avec $t \in [0, T]$ et $T = 2\pi$).
+
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+Le code suivant nous permet d’avoir un tableau de $f(t)$:
+\begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+F = []
+for ti in t:
+  F.append(f(ti,T))
+F = np.array(F)
+\end{minted}
+\end{cod}
+\noindent
+
+% --- end solution of exercise ---
+
+\subex{e)}
+Tracer $S(t; 1)$, $S(t; 3)$, $S(t; 20)$, $S(t; 200)$ et la fonction exacte $f(t)$ dans le même graphique. Le résultat devrait être similaire au graphique ci-dessous.
+
 
 
 \vspace{6mm}
 
 % inline figure
-\centerline{\includegraphics[width=0.7\linewidth]{figs/goes_plot.png}}
+\centerline{\includegraphics[width=1.0\linewidth]{imgs/fourier.pdf}}
 
 \vspace{6mm}
 
@@ -842,21 +572,30 @@ Tracer \Verb!Xray_s! et \Verb!Xray_L! en fonction de \texttt{temps} afin de repr
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
+Le programme qui donne le graphique est:
 \begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-plt.figure(figsize=(10, 7))
-plt.semilogy(temps, Xray_L,color='r',linewidth=3,label="GOES: Long X-Ray (0.1 - 0.8 nanometer)")
-plt.semilogy(temps, Xray_s,color='k',linewidth=3,label="GOES: Short X-Ray (0.05 - 0.4 nanometer)", alpha=.3)
-plt.title(" GOES Solar X-ray Flux", fontsize=16, weight="bold" )
-plt.ylabel("X ray Flux ($Watts/m^2$)"); plt.xlabel("Universal Time (hours)")
-plt.legend(loc='upper left')
-plt.ylim(1e-9, 1e-3)
-plt.grid()
-
-savefig("goes_plot.png")
-plt.show()
+plt.plot(t, S(t, n=1, T=2*pi), 'k-.', label = "S(t;1)")
+plt.plot(t, S(t, n=3, T=2*pi), 'k:', label = "S(t;3)")
+plt.plot(t, S(t, n=20, T=2*pi), 'k:', label = "S(t;20)")
+plt.plot(t, S(t, n=200, T=2*pi), 'k--', label = "S(t;200)")
+plt.plot(t, F, 'k-', label = "f(t)")
+plt.title("Approximation d’une fonction par sa série de Fourier", fontweight='bold')
+plt.ylabel("f(t)/S(t;n)")
+plt.xlabel("t")
+plt.legend()
 \end{minted}
 \end{cod}
 \noindent
+
+% --- end solution of exercise ---
+
+\subex{f)}
+Quelle est la relation entre la qualité de l'approximation et le choix de la valeur de \texttt{n}?
+
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+La qualité de l'approximation dépend de $n$. $S(t;n)\rightarrow f(t)$ quand $n\rightarrow\infty$.
 
 % --- end solution of exercise ---
 
@@ -864,6 +603,7 @@ plt.show()
 % --- end exercise ---
 
 
+% !split
 
 
 % --- begin exercise ---
@@ -902,7 +642,7 @@ ff1 = \sum\limits_{n=0}^{11} \frac{d_{n}}{x^{2n+1}}\left(\frac{8}{\pi}\right)^{n
 ff2 = \sum\limits_{n=0}^{11} b_{n}x^{2n+1}\left(\frac{\pi}{8}\right)^{n+1/2} & gg2 = \sum\limits_{n=0}^{11} a_{n}x^{2n+1}\left(\frac{\pi}{8}\right)^{n+1/2}
 \end{aligned}
 \end{equation*}
-et $a_n$, $b_n$, $c_n$ et $d_n$ sont des coefficients tabulés  (\href{{https://www.ams.org/journals/mcom/1960-14-072/S0025-5718-1960-0121973-3/S0025-5718-1960-0121973-3.pdf}}{*J.Boersma Math Computation 14,380(1960)*}) et donnés dans un fichier \textbf{coef.dat} dans le répertoire de ce notebook:
+et $a_n$, $b_n$, $c_n$ et $d_n$ sont des coefficients tabulés  (\href{{https://www.ams.org/journals/mcom/1960-14-072/S0025-5718-1960-0121973-3/S0025-5718-1960-0121973-3.pdf}}{*J.Boersma Math Computation 14,380(1960)*}) et donnés dans un fichier \textbf{coef.dat}:
 
 \begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{text}
 #--------------------------------------------------
@@ -936,7 +676,9 @@ Définir les fonctions \texttt{ff1(x)}, \texttt{gg1(x)}, \texttt{ff2(x)} et \tex
 \paragraph{Solution.}
 Les fonctions \texttt{ff1(x)}, \texttt{gg1(x)}, \texttt{ff2(x)} et \texttt{gg2(x)} sont les suivantes:
 \begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-from pylab import *
+# Importation
+import numpy as np
+from math import pi, cos, sin, sqrt
 
 def ff1(x):
     S = 0
@@ -1015,7 +757,7 @@ Créer des tableaux \texttt{an}, \texttt{bn}, \texttt{cn} et \texttt{dn} à part
 \paragraph{Solution.}
 Les tableaux \texttt{an}, \texttt{bn}, \texttt{cn} et \texttt{dn} sont chargés  à partir du fichier \textbf{coef.dat} à l'aide del a fonction \texttt{numpy.loadtxt()}:
 \begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-an, bn, cn, dn = loadtxt('coef.dat', comments='#', usecols=(0, 1, 2, 3), unpack=True)
+an, bn, cn, dn = np.loadtxt('coef.dat', comments='#', usecols=(0, 1, 2, 3), unpack=True)
 \end{minted}
 \end{cod}
 \noindent
@@ -1030,7 +772,7 @@ Créer un tableau \texttt{x}. Utilisez 800 intervalles pour évaluer les points 
 \paragraph{Solution.}
 Le tableau \texttt{x} s'écrit:
 \begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-x = linspace(0,10, 500)
+x = np.linspace(0,10, 500)
 \end{minted}
 \end{cod}
 \noindent
@@ -1045,7 +787,7 @@ Transformer \texttt{C(x)} et \texttt{S(x)} en tableaux \texttt{numpy}, respectiv
 \paragraph{Solution.}
 Les listes \texttt{C(x)} et \texttt{S(x)} sont transformés en tableaux \texttt{numpy} à l'aide de la fonction \texttt{numpy.array()}:
 \begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-CF = array(C(x)); SF = array(S(x))
+CF = np.array(C(x)); SF = np.array(S(x))
 \end{minted}
 \end{cod}
 \noindent
@@ -1060,7 +802,7 @@ La sortie de ce programme devrait être comme suit:
 \vspace{6mm}
 
 % inline figure
-\centerline{\includegraphics[width=0.7\linewidth]{figs/fresnel.png}}
+\centerline{\includegraphics[width=1.0\linewidth]{imgs/fresnel.png}}
 
 \vspace{6mm}
 

@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# Nom Fichier: LineandMarkerStyles.py
+# Importation
 import matplotlib.pyplot as plt
 import numpy as np
 x = np.linspace(0, 5, 10)

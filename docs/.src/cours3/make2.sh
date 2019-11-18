@@ -65,7 +65,7 @@ pdflatex -shell-escape $name
 pdflatex -shell-escape $name
 
 # HTML
-system doconce format html $name --html_style=bootswatch_journal $options
+system doconce format html $name --html_style=bootswatch_journal $options $opt2
 common_replacements $name.html
 
 # Publish
@@ -73,4 +73,6 @@ dest=../../pub/$name
 if [ ! -d $dest ]; then
 mkdir $dest
 fi
-cp -r *.pdf *.html imgs $dest
+cp -r *.pdf *.html imgs scripts $dest
+
+./clean.sh

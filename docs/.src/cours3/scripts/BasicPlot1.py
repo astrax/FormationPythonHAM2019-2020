@@ -1,17 +1,20 @@
-# -*- coding: utf-8 -*-
+# Nom Fichier: BasicPlot1.py
 # importaion
 import matplotlib.pyplot as plt
-# define x
+# definir x
 x = [1, 3, 5, 6, 8, 10, 15]
-# define y
+# definir y
 y=x
 # créer un nouveau graphique
 plt.figure()
-#plot f(x)= x
-plt.plot(x, y)
+# Écrire un titre
+plt.title("Figure: f(x) = x")
+#plot f(x)= x avec: ligne solide ( - ) et marqueurs ( o ) rouges ( r )
+plt.plot(x, y, '-ro')
 # Écrire un texte (label) sur l'axe des x
 plt.xlabel("X-Axis")
 # Écrire un texte (label) sur l'axe des y
 plt.ylabel("Y-Axis")
 #les graphiques ne seront affichés que lorsque vous appelez plt.show ()
 plt.show()
+

@@ -63,11 +63,14 @@ body { font-size:20px;line-height:1.5; }
                None,
                '___sec7'),
               ('Documentation en ligne et Galerie', 2, None, '___sec8'),
-              ('Guide de Démarrage', 3, None, '___sec9'),
-              ('Vues en grille', 3, None, '___sec10'),
-              ('Commandes de texte de base', 3, None, '___sec11'),
-              ('Styles de lignes et de marqueurs', 3, None, '___sec12'),
-              ('Colormap: Tracés contour, Imshow et 3D', 3, None, '___sec13')]}
+              ('Guide de Démarrage', 2, None, '___sec9'),
+              ('Vues en grille', 2, None, '___sec10'),
+              ('Commandes de texte de base', 2, None, '___sec11'),
+              ('Styles de lignes et de marqueurs', 2, None, '___sec12'),
+              ('Colormap: Tracés contour, Imshow et 3D', 2, None, '___sec13'),
+              ('Tracés contour', 3, None, '___sec14'),
+              ('Imshow (Image pixelisée)', 3, None, '___sec15'),
+              ('Tracé en 3D', 3, None, '___sec16')]}
 end of tocinfo -->
 
 <body>
@@ -115,11 +118,14 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lecture de données</a></li>
      <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;"><b>Bibliothèque Python de visualisation des données: <code>matplotlib</code></b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Documentation en ligne et Galerie</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guide de Démarrage</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vues en grille</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Commandes de texte de base</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Styles de lignes et de marqueurs</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Colormap: Tracés contour, Imshow et 3D</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Guide de Démarrage</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vues en grille</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Commandes de texte de base</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Styles de lignes et de marqueurs</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Colormap: Tracés contour, Imshow et 3D</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tracés contour</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Imshow (Image pixelisée)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tracé en 3D</a></li>
 
         </ul>
       </li>
@@ -149,7 +155,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution -->
 
-<center><b>Universit&#233; de Tunis El Manar.</b></center>
+<center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
 <br>
 <p>
 <center><h4>Nov 18, 2019</h4></center> <!-- date -->
@@ -165,6 +171,11 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Lecture et &#233;criture de donn&#233;es </a><br>
 <a href="#___sec7"> Biblioth&#232;que Python de visualisation des donn&#233;es: <code>matplotlib</code> </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec8"> Documentation en ligne et Galerie </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> Guide de D&#233;marrage </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec10"> Vues en grille </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec11"> Commandes de texte de base </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Styles de lignes et de marqueurs </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec13"> Colormap: Trac&#233;s contour, Imshow et 3D </a><br>
 </p>
 <p>
 <!-- !split -->
@@ -302,7 +313,7 @@ Il existe plusieurs raisons pour ne pas utiliser que les listes:
 
 
 <p>
-En utilisant la propri&#233;t&#233; <code>dtype</code> (type de donn&#233;es) d'un <code>ndarray</code>, on peut connaitre le type des &#233;l&#233;ments d'un tableau ou d'une matrice:
+En utilisant la propri&#233;t&#233; <code>dtype</code> (type de donn&#233;es) d'un <code>ndarray</code>, on peut conna&#238;tre le type des &#233;l&#233;ments d'un tableau ou d'une matrice:
 <p>
 
 <!-- code=python (!bc ipy) typeset with pygments style "default" -->
@@ -584,24 +595,26 @@ Nous pouvons utiliser le fichier <em>cosinus.dat</em> pour tracer la fonction \(
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Charger les données du fichier &#39;cosinus.dat&#39;</span>
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #408080; font-style: italic"># Charger les données du fichier &#39;cosinus.dat&#39;</span>
 X, C <span style="color: #666666">=</span> np<span style="color: #666666">.</span>loadtxt(<span style="color: #BA2121">&#39;cosinus.dat&#39;</span>, comments<span style="color: #666666">=</span><span style="color: #BA2121">&#39;#&#39;</span>, unpack<span style="color: #666666">=</span><span style="color: #008000">True</span>)
 <span style="color: #408080; font-style: italic"># Tracer C en fonction de X</span>
-figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">8</span>, <span style="color: #666666">5</span>), dpi<span style="color: #666666">=100</span>)
 plt<span style="color: #666666">.</span>plot(X,C)
-plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;figs/fonct_trig4.png&quot;</span>)
-plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;figs/fonct_trig4.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;cos(x)&quot;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;X&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;C&quot;</span>)
 plt<span style="color: #666666">.</span>show()
 </pre></div>
 <p>
-La sortie de ce code est la Figure <a href="#figout:trig4">1</a>.
+La sortie de ce code est la Figure <a href="#figout:cosinus">1</a>.
 
 <p>
-<center> <!-- figure label: --> <div id="figout:trig4"></div> <!-- FIGURE -->
+<center> <!-- figure label: --> <div id="figout:cosinus"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  Sortie du code.  <!-- caption label: figout:trig4 --> </p></center>
-<p><img src="figs/fonct_trig4.png" align="bottom" width=500></p>
+<center><p class="caption">Figure 1:  Sortie du code.  <!-- caption label: figout:cosinus --> </p></center>
+<p><img src="imgs/cosinus.png" align="bottom" width=500></p>
 </center>
 
 <p>
@@ -629,23 +642,24 @@ De nombreux utilisateurs de <code>matplotlib</code> sont souvent confront&#233;s
 
  Je souhaite bonne chance &#224; ceux qui d&#233;sirent obtenir rapidement une r&#233;ponse, m&#234;me avec l'aide de <b>google</b>!. C'est pourquoi la <b>galerie de matplotlib</b> (<a href="http://matplotlib.org/gallery.html" target="_self"><tt>http://matplotlib.org/gallery.html</tt></a>) est si utile, car elle montre la vari&#233;t&#233; des possibilit&#233;s. Ainsi, vous pouvez parcourir la galerie, cliquer sur n'importe quel graphique qui comporte les &#233;l&#233;ments que vous voulez reproduire et afficher le code qui a servi &#224; le g&#233;n&#233;rer. Vous deviendrez rapidement autonome, vous allez m&#233;langer et assortir diff&#233;rents composants pour produire votre propre chef-d&#8217;&#339;uvre!
 
-<h3 id="___sec9" class="anchor">Guide de D&#233;marrage </h3>
-
+<h2 id="___sec9" class="anchor">Guide de D&#233;marrage </h2>
 L'exemple ci-dessous montre comment, de mani&#232;re tr&#232;s simple, repr&#233;senter graphiquement la fonction \( f(x) = y = x \).
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># -*- coding: utf-8 -*-</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Nom Fichier: BasicPlot1.py</span>
 <span style="color: #408080; font-style: italic"># importaion</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
-<span style="color: #408080; font-style: italic"># define x</span>
+<span style="color: #408080; font-style: italic"># definir x</span>
 x <span style="color: #666666">=</span> [<span style="color: #666666">1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>, <span style="color: #666666">8</span>, <span style="color: #666666">10</span>, <span style="color: #666666">15</span>]
-<span style="color: #408080; font-style: italic"># define y</span>
+<span style="color: #408080; font-style: italic"># definir y</span>
 y<span style="color: #666666">=</span>x
 <span style="color: #408080; font-style: italic"># créer un nouveau graphique</span>
 plt<span style="color: #666666">.</span>figure()
-<span style="color: #408080; font-style: italic">#plot f(x)= x</span>
-plt<span style="color: #666666">.</span>plot(x, y)
+<span style="color: #408080; font-style: italic"># Écrire un titre</span>
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Figure: f(x) = x&quot;</span>)
+<span style="color: #408080; font-style: italic">#plot f(x)= x avec: ligne solide ( - ) et marqueurs ( o ) rouges ( r )</span>
+plt<span style="color: #666666">.</span>plot(x, y, <span style="color: #BA2121">&#39;-ro&#39;</span>)
 <span style="color: #408080; font-style: italic"># Écrire un texte (label) sur l&#39;axe des x</span>
 plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;X-Axis&quot;</span>)
 <span style="color: #408080; font-style: italic"># Écrire un texte (label) sur l&#39;axe des y</span>
@@ -667,44 +681,37 @@ Vous pouvez avoir plusieurs figures ind&#233;pendantes et les graphiques peuvent
 <p>
 La plupart des trac&#233;s ont lieu sur des <code>Axes</code>. C&#8217;est effectivement la zone sur laquelle nous tra&#231;ons les donn&#233;es et les graduations/labels/etc. qui leur sont associ&#233;s. Habituellement, nous configurons un <code>Axes</code> avec un appel &#224; <code>Subplot</code> (qui place les <code>Axes</code> sur une grille r&#233;guli&#232;re). Par cons&#233;quent, dans la plupart des cas, <code>Axes</code> et <code>Subplot</code> sont synonymes (figure). Chaque <code>Axes</code> ou <code>Subplot</code> a un axe X et un axe Y. Ceux-ci contiennent les graduations, les emplacements de graduations, etc.
 
-<h3 id="___sec10" class="anchor">Vues en grille </h3>
-
+<h2 id="___sec10" class="anchor">Vues en grille </h2>
 Nous avons d&#233;j&#224; mentionn&#233; qu&#8217;une figure peut avoir plus d&#8217;un axe. Si vous voulez que vos axes soient sur un syst&#232;me de grille standard, il est alors plus simple d'utiliser <code>plt.subplot(...)</code> pour cr&#233;er un graphique et y ajouter les axes automatiquement.
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># -*- coding: utf-8 -*-</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Nom Fichier: subplots.py</span>
+<span style="color: #408080; font-style: italic"># Importation</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
-fig1<span style="color: #666666">=</span>plt<span style="color: #666666">.</span>figure(<span style="color: #666666">1</span>)                <span style="color: #408080; font-style: italic"># the first figure</span>
-ax1<span style="color: #666666">=</span>plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">211</span>)             <span style="color: #408080; font-style: italic"># the first subplot in the first figure</span>
-ax1<span style="color: #666666">.</span>plot([<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>])
-ax2<span style="color: #666666">=</span>plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">212</span>)             <span style="color: #408080; font-style: italic"># the second subplot in the first figure</span>
-ax2<span style="color: #666666">.</span>plot([<span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>])
+fig1<span style="color: #666666">=</span>plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">5</span>, <span style="color: #666666">5</span>))   <span style="color: #408080; font-style: italic"># Figure</span>
+ax1<span style="color: #666666">=</span>plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">211</span>) <span style="color: #408080; font-style: italic"># premier subplot dans la figure</span>
+ax1<span style="color: #666666">.</span>plot([<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>], <span style="color: #BA2121">&quot;-go&quot;</span>)
+ax1<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&quot;x1&quot;</span>)
+ax1<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&quot;y1&quot;</span>)
+ax1<span style="color: #666666">.</span>set_title(<span style="color: #BA2121">&#39;subplot 211&#39;</span>) <span style="color: #408080; font-style: italic"># titre du subplot 211</span>
+ax2<span style="color: #666666">=</span>plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">212</span>) <span style="color: #408080; font-style: italic"># deuxième subplot dans la figure</span>
+ax2<span style="color: #666666">.</span>plot([<span style="color: #666666">4</span>, <span style="color: #666666">2</span>, <span style="color: #666666">5</span>], <span style="color: #BA2121">&quot;--k*&quot;</span>)
+ax2<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&quot;x2&quot;</span>)
+ax2<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&quot;y2&quot;</span>)
+ax2<span style="color: #666666">.</span>set_title(<span style="color: #BA2121">&#39;subplot 212&#39;</span>) <span style="color: #408080; font-style: italic"># titre du subplot 212</span>
 
-fig2<span style="color: #666666">=</span>plt<span style="color: #666666">.</span>figure(<span style="color: #666666">2</span>)                <span style="color: #408080; font-style: italic"># a second figure</span>
-plt<span style="color: #666666">.</span>plot([<span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>])          <span style="color: #408080; font-style: italic"># creates a subplot(111) by default</span>
-
-fig1<span style="color: #666666">=</span>plt<span style="color: #666666">.</span>figure(<span style="color: #666666">1</span>)                <span style="color: #408080; font-style: italic"># figure 1 current; subplot(212) still current</span>
-ax1<span style="color: #666666">=</span>plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">211</span>)             <span style="color: #408080; font-style: italic"># make subplot(211) in figure1 current</span>
-ax1<span style="color: #666666">.</span>set_title(<span style="color: #BA2121">&#39;Easy as 1, 2, 3&#39;</span>) <span style="color: #408080; font-style: italic"># subplot 211 title</span>
+plt<span style="color: #666666">.</span>tight_layout() <span style="color: #408080; font-style: italic"># Ajuster la figure</span>
 plt<span style="color: #666666">.</span>show()
 </pre></div>
 <p>
-<center> <!-- figure label: --> <div id="fig:subplot1"></div> <!-- FIGURE -->
+<center> <!-- figure label: --> <div id="fig:subplots"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 3:  Vue en grille, figure(1).  <!-- caption label: fig:subplot1 --> </p></center>
-<p><img src="imgs/subplot1.png" align="bottom" width=500></p>
+<center><p class="caption">Figure 3:  Vue en grille, figure(1).  <!-- caption label: fig:subplots --> </p></center>
+<p><img src="imgs/subplots.png" align="bottom" width=500></p>
 </center>
 
-<p>
-<center> <!-- figure label: --> <div id="fig:subplot2"></div> <!-- FIGURE -->
-<hr class="figure">
-<center><p class="caption">Figure 4:  Graphique unique, figure(2).  <!-- caption label: fig:subplot2 --> </p></center>
-<p><img src="imgs/subplot2.png" align="bottom" width=500></p>
-</center>
-
-<h3 id="___sec11" class="anchor">Commandes de texte de base </h3>
-
+<h2 id="___sec11" class="anchor">Commandes de texte de base </h2>
 Les commandes suivantes permettent de cr&#233;er du texte dans l'interface <code>pyplot</code>:
 
 <ul>
@@ -722,55 +729,55 @@ Toutes ces fonctions cr&#233;ent et renvoient une instance <code>matplotlib.text
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># -*- coding: utf-8 -*-</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Nom Fichier: BasicText.py</span>
+<span style="color: #408080; font-style: italic"># Importation</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 
 fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure()
-fig<span style="color: #666666">.</span>suptitle(<span style="color: #BA2121">&#39;bold figure suptitle&#39;</span>, fontsize<span style="color: #666666">=14</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
+fig<span style="color: #666666">.</span>suptitle(<span style="color: #BA2121">&#39;Sous-titre de la figure en gras&#39;</span>, fontsize<span style="color: #666666">=14</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
 
 ax <span style="color: #666666">=</span> fig<span style="color: #666666">.</span>add_subplot(<span style="color: #666666">111</span>)
 fig<span style="color: #666666">.</span>subplots_adjust(top<span style="color: #666666">=0.85</span>)
-ax<span style="color: #666666">.</span>set_title(<span style="color: #BA2121">&#39;axes title&#39;</span>)
+ax<span style="color: #666666">.</span>set_title(<span style="color: #BA2121">&#39;titre des axes&#39;</span>)
 
 ax<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&#39;xlabel&#39;</span>)
 ax<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&#39;ylabel&#39;</span>)
 
-ax<span style="color: #666666">.</span>text(<span style="color: #666666">3</span>, <span style="color: #666666">8</span>, <span style="color: #BA2121">&#39;boxed italics text in data coords&#39;</span>, style<span style="color: #666666">=</span><span style="color: #BA2121">&#39;italic&#39;</span>,
-        bbox<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;facecolor&#39;</span>:<span style="color: #BA2121">&#39;red&#39;</span>, <span style="color: #BA2121">&#39;alpha&#39;</span>:<span style="color: #666666">0.5</span>, <span style="color: #BA2121">&#39;pad&#39;</span>:<span style="color: #666666">10</span>})
+ax<span style="color: #666666">.</span>text(<span style="color: #666666">3</span>, <span style="color: #666666">8</span>, <span style="color: #BA2121">&#39;texte en italique encadré par les données&#39;</span>, style<span style="color: #666666">=</span><span style="color: #BA2121">&#39;italic&#39;</span>,
+        bbox<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;facecolor&#39;</span>:<span style="color: #BA2121">&#39;blue&#39;</span>, <span style="color: #BA2121">&#39;alpha&#39;</span>:<span style="color: #666666">0.5</span>, <span style="color: #BA2121">&#39;pad&#39;</span>:<span style="color: #666666">10</span>})
 
-ax<span style="color: #666666">.</span>text(<span style="color: #666666">2</span>, <span style="color: #666666">6</span>, <span style="color: #BA2121">r&#39;an equation: $E=mc^2$&#39;</span>, fontsize<span style="color: #666666">=15</span>)
+ax<span style="color: #666666">.</span>text(<span style="color: #666666">2</span>, <span style="color: #666666">6</span>, <span style="color: #BA2121">r&#39;Une équation: $E=mc^2$&#39;</span>, fontsize<span style="color: #666666">=15</span>)
 
-ax<span style="color: #666666">.</span>text(<span style="color: #666666">3</span>, <span style="color: #666666">2</span>, <span style="color: #BA2121">u&#39;unicode: Institut f</span><span style="color: #BB6622; font-weight: bold">\374</span><span style="color: #BA2121">r Festk</span><span style="color: #BB6622; font-weight: bold">\366</span><span style="color: #BA2121">rperphysik&#39;</span>)
 
-ax<span style="color: #666666">.</span>text(<span style="color: #666666">0.95</span>, <span style="color: #666666">0.01</span>, <span style="color: #BA2121">&#39;colored text in axes coords&#39;</span>,
+ax<span style="color: #666666">.</span>text(<span style="color: #666666">0.95</span>, <span style="color: #666666">0.01</span>, <span style="color: #BA2121">&quot;texte en couleur sur l&#39;axe des x&quot;</span>,
         verticalalignment<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bottom&#39;</span>, horizontalalignment<span style="color: #666666">=</span><span style="color: #BA2121">&#39;right&#39;</span>,
         transform<span style="color: #666666">=</span>ax<span style="color: #666666">.</span>transAxes,
-        color<span style="color: #666666">=</span><span style="color: #BA2121">&#39;green&#39;</span>, fontsize<span style="color: #666666">=15</span>)
-
+        color<span style="color: #666666">=</span><span style="color: #BA2121">&#39;red&#39;</span>, fontsize<span style="color: #666666">=14</span>)
 
 ax<span style="color: #666666">.</span>plot([<span style="color: #666666">2</span>], [<span style="color: #666666">1</span>], <span style="color: #BA2121">&#39;o&#39;</span>)
-ax<span style="color: #666666">.</span>annotate(<span style="color: #BA2121">&#39;annotate&#39;</span>, xy<span style="color: #666666">=</span>(<span style="color: #666666">2</span>, <span style="color: #666666">1</span>), xytext<span style="color: #666666">=</span>(<span style="color: #666666">3</span>, <span style="color: #666666">4</span>),
+
+ax<span style="color: #666666">.</span>annotate(<span style="color: #BA2121">&#39;annotation: point M(2,1)&#39;</span>, xy<span style="color: #666666">=</span>(<span style="color: #666666">2</span>, <span style="color: #666666">1</span>), xytext<span style="color: #666666">=</span>(<span style="color: #666666">3</span>, <span style="color: #666666">4</span>),
             arrowprops<span style="color: #666666">=</span><span style="color: #008000">dict</span>(facecolor<span style="color: #666666">=</span><span style="color: #BA2121">&#39;black&#39;</span>, shrink<span style="color: #666666">=0.05</span>))
 
 ax<span style="color: #666666">.</span>axis([<span style="color: #666666">0</span>, <span style="color: #666666">10</span>, <span style="color: #666666">0</span>, <span style="color: #666666">10</span>])
-
+plt<span style="color: #666666">.</span>grid()
 plt<span style="color: #666666">.</span>show()
 </pre></div>
 <p>
 <center> <!-- figure label: --> <div id="fig:BasicText"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 5:  Texte de base.  <!-- caption label: fig:BasicText --> </p></center>
+<center><p class="caption">Figure 4:  Texte de base.  <!-- caption label: fig:BasicText --> </p></center>
 <p><img src="imgs/BasicText.png" align="bottom" width=500></p>
 </center>
 
-<h3 id="___sec12" class="anchor">Styles de lignes et de marqueurs </h3>
-
+<h2 id="___sec12" class="anchor">Styles de lignes et de marqueurs </h2>
 Pour changer la largeur de ligne, nous pouvons utiliser l'argument de mot-cl&#233; <code>linewidth</code> ou <code>lw</code>, et le style de ligne peut &#234;tre s&#233;lectionn&#233; &#224; l'aide des arguments de mot-cl&#233; <code>linestyle</code> ou <code>ls</code>:
 
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># -*- coding: utf-8 -*-</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Nom Fichier: LineandMarkerStyles.py</span>
+<span style="color: #408080; font-style: italic"># Importation</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">5</span>, <span style="color: #666666">10</span>)
@@ -812,23 +819,22 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <center> <!-- figure label: --> <div id="fig:LineandMarkerStyles"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 6:  Styles de lignes et de marqueurs.  <!-- caption label: fig:LineandMarkerStyles --> </p></center>
+<center><p class="caption">Figure 5:  Styles de lignes et de marqueurs.  <!-- caption label: fig:LineandMarkerStyles --> </p></center>
 <p><img src="imgs/LineandMarkerStyles.png" align="bottom" width=500></p>
 </center>
 
-<h3 id="___sec13" class="anchor">Colormap: Trac&#233;s contour, Imshow et 3D </h3>
+<h2 id="___sec13" class="anchor">Colormap: Trac&#233;s contour, Imshow et 3D </h2>
 
 <p>
 Voir la documentation de matplotlib colormaps <a href="http://matplotlib.org/users/colormaps.html" target="_self"><tt>http://matplotlib.org/users/colormaps.html</tt></a>.
 
-<ul>
- <li> <b>Trac&#233;s contour :</b></li>
-</ul>
+<h3 id="___sec14" class="anchor">Trac&#233;s contour </h3>
 
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># -*- coding: utf-8 -*-</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Nom Fichier: ContourPlot.py</span>
+<span style="color: #408080; font-style: italic"># Importation</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 
@@ -840,88 +846,82 @@ x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>l
 y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">-3</span>, <span style="color: #666666">3</span>, n)
 X,Y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>meshgrid(x, y)
 
-plt<span style="color: #666666">.</span>axes([<span style="color: #666666">0.025</span>, <span style="color: #666666">0.025</span>, <span style="color: #666666">0.95</span>, <span style="color: #666666">0.95</span>])
-
-plt<span style="color: #666666">.</span>contourf(X, Y, f(X, Y), <span style="color: #666666">8</span>, alpha<span style="color: #666666">=.75</span>, cmap<span style="color: #666666">=</span>plt<span style="color: #666666">.</span>cm<span style="color: #666666">.</span>gray)
-C <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>contour(X, Y, f(X, Y), <span style="color: #666666">8</span>, colors<span style="color: #666666">=</span><span style="color: #BA2121">&#39;black&#39;</span>, linewidth<span style="color: #666666">=.5</span>)
+<span style="color: #408080; font-style: italic"># Surface</span>
+S <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>contourf(X, Y, f(X, Y), <span style="color: #666666">8</span>, cmap<span style="color: #666666">=</span><span style="color: #BA2121">&#39;plasma&#39;</span>)
+<span style="color: #408080; font-style: italic"># Contour</span>
+C <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>contour(X, Y, f(X, Y), <span style="color: #666666">8</span>, colors<span style="color: #666666">=</span><span style="color: #BA2121">&#39;black&#39;</span>)
 plt<span style="color: #666666">.</span>clabel(C, inline<span style="color: #666666">=1</span>, fontsize<span style="color: #666666">=10</span>)
 
-plt<span style="color: #666666">.</span>xticks(())
-plt<span style="color: #666666">.</span>yticks(())
+plt<span style="color: #666666">.</span>colorbar(S) <span style="color: #408080; font-style: italic"># afficher la barre de couleurs</span>
 plt<span style="color: #666666">.</span>show()
 </pre></div>
 <p>
 <center> <!-- figure label: --> <div id="fig:ContourPlot"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 7:  Exemple de trac&#233; de contour.  <!-- caption label: fig:ContourPlot --> </p></center>
+<center><p class="caption">Figure 6:  Exemple de trac&#233; de contour.  <!-- caption label: fig:ContourPlot --> </p></center>
 <p><img src="imgs/ContourPlot.png" align="bottom" width=500></p>
 </center>
 
-<ul>
-<li> <b>Imshow (Image pixelis&#233;e) :</b></li>
-</ul>
+<h3 id="___sec15" class="anchor">Imshow (Image pixelis&#233;e) </h3>
 
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># -*- coding: utf-8 -*-</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Nom Fichier: Imshow.py</span>
+<span style="color: #408080; font-style: italic"># Importation</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x, y):
     <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> x <span style="color: #666666">/</span> <span style="color: #666666">2</span> <span style="color: #666666">+</span> x <span style="color: #666666">**</span> <span style="color: #666666">5</span> <span style="color: #666666">+</span> y <span style="color: #666666">**</span> <span style="color: #666666">3</span> ) <span style="color: #666666">*</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x <span style="color: #666666">**</span> <span style="color: #666666">2</span> <span style="color: #666666">-</span> y <span style="color: #666666">**</span> <span style="color: #666666">2</span>)
 
-n <span style="color: #666666">=</span> <span style="color: #666666">10</span>
-x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">-3</span>, <span style="color: #666666">3</span>, <span style="color: #666666">3.5</span> <span style="color: #666666">*</span> n)
-y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">-3</span>, <span style="color: #666666">3</span>, <span style="color: #666666">3.0</span> <span style="color: #666666">*</span> n)
+n <span style="color: #666666">=</span> <span style="color: #666666">30</span>
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">-3</span>, <span style="color: #666666">3</span>, n)
+y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">-3</span>, <span style="color: #666666">3</span>, n)
 X, Y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>meshgrid(x, y)
 Z <span style="color: #666666">=</span> f(X, Y)
+<span style="color: #408080; font-style: italic"># Image</span>
+im <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>imshow(Z, interpolation<span style="color: #666666">=</span><span style="color: #BA2121">&#39;nearest&#39;</span>, cmap<span style="color: #666666">=</span><span style="color: #BA2121">&#39;gray&#39;</span>, origin<span style="color: #666666">=</span><span style="color: #BA2121">&#39;lower&#39;</span>)
 
-plt<span style="color: #666666">.</span>axes([<span style="color: #666666">0.025</span>, <span style="color: #666666">0.025</span>, <span style="color: #666666">0.95</span>, <span style="color: #666666">0.95</span>])
-plt<span style="color: #666666">.</span>imshow(Z, interpolation<span style="color: #666666">=</span><span style="color: #BA2121">&#39;nearest&#39;</span>, cmap<span style="color: #666666">=</span><span style="color: #BA2121">&#39;gray&#39;</span>, origin<span style="color: #666666">=</span><span style="color: #BA2121">&#39;lower&#39;</span>)
-plt<span style="color: #666666">.</span>colorbar(shrink<span style="color: #666666">=.92</span>)
-
-plt<span style="color: #666666">.</span>xticks(())
-plt<span style="color: #666666">.</span>yticks(())
+plt<span style="color: #666666">.</span>colorbar(im)
 plt<span style="color: #666666">.</span>show()
 </pre></div>
 <p>
 <center> <!-- figure label: --> <div id="fig:CImshow"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 8:  Exemple d'image pixelis&#233;e.  <!-- caption label: fig:CImshow --> </p></center>
+<center><p class="caption">Figure 7:  Exemple d'image pixelis&#233;e.  <!-- caption label: fig:CImshow --> </p></center>
 <p><img src="imgs/Imshow.png" align="bottom" width=500></p>
 </center>
 
-<ul>
-<li> <b>Trac&#233; en 3D :</b></li>
-</ul>
+<h3 id="___sec16" class="anchor">Trac&#233; en 3D </h3>
 
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># -*- coding: utf-8 -*-</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Nom Fichier: Plot3D.py</span>
+<span style="color: #408080; font-style: italic"># Importation</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d</span> <span style="color: #008000; font-weight: bold">import</span> Axes3D
-
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x, y):
+    <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> x <span style="color: #666666">/</span> <span style="color: #666666">2</span> <span style="color: #666666">+</span> x <span style="color: #666666">**</span> <span style="color: #666666">5</span> <span style="color: #666666">+</span> y <span style="color: #666666">**</span> <span style="color: #666666">3</span> ) <span style="color: #666666">*</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x <span style="color: #666666">**</span> <span style="color: #666666">2</span> <span style="color: #666666">-</span> y <span style="color: #666666">**</span> <span style="color: #666666">2</span>)
+n <span style="color: #666666">=</span> <span style="color: #666666">100</span>
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">-3</span>, <span style="color: #666666">3</span>, n)
+y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">-3</span>, <span style="color: #666666">3</span>, n)
+X, Y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>meshgrid(x, y)
+Z <span style="color: #666666">=</span> f(X,Y)
 fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure()
 ax <span style="color: #666666">=</span> Axes3D(fig)
-X <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">-4</span>, <span style="color: #666666">4</span>, <span style="color: #666666">0.25</span>)
-Y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">-4</span>, <span style="color: #666666">4</span>, <span style="color: #666666">0.25</span>)
-X, Y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>meshgrid(X, Y)
-R <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sqrt(X <span style="color: #666666">**</span> <span style="color: #666666">2</span> <span style="color: #666666">+</span> Y <span style="color: #666666">**</span> <span style="color: #666666">2</span>)
-Z <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sin(R)
-
-ax<span style="color: #666666">.</span>plot_surface(X, Y, Z, rstride<span style="color: #666666">=1</span>, cstride<span style="color: #666666">=1</span>, cmap<span style="color: #666666">=</span>plt<span style="color: #666666">.</span>cm<span style="color: #666666">.</span>gray)
-ax<span style="color: #666666">.</span>contourf(X, Y, Z, zdir<span style="color: #666666">=</span><span style="color: #BA2121">&#39;z&#39;</span>, offset<span style="color: #666666">=-2</span>, cmap<span style="color: #666666">=</span>plt<span style="color: #666666">.</span>cm<span style="color: #666666">.</span>gray)
-ax<span style="color: #666666">.</span>set_zlim(<span style="color: #666666">-2</span>, <span style="color: #666666">2</span>)
-
+S <span style="color: #666666">=</span> ax<span style="color: #666666">.</span>plot_surface(X, Y, Z, cmap<span style="color: #666666">=</span><span style="color: #BA2121">&quot;viridis&quot;</span>)
+ax<span style="color: #666666">.</span>contourf(X, Y, Z, zdir<span style="color: #666666">=</span><span style="color: #BA2121">&#39;z&#39;</span>, offset<span style="color: #666666">=-1</span>, cmap<span style="color: #666666">=</span><span style="color: #BA2121">&quot;viridis&quot;</span>)
+ax<span style="color: #666666">.</span>set_zlim(<span style="color: #666666">-1</span>, <span style="color: #666666">1</span>)
+plt<span style="color: #666666">.</span>colorbar(S, shrink<span style="color: #666666">=0.5</span>)
 plt<span style="color: #666666">.</span>show()
 </pre></div>
 <p>
 <center> <!-- figure label: --> <div id="fig:3D"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 9:  Exemple de trac&#233; en 3D.  <!-- caption label: fig:3D --> </p></center>
+<center><p class="caption">Figure 8:  Exemple de trac&#233; en 3D.  <!-- caption label: fig:3D --> </p></center>
 <p><img src="imgs/Plot3D.png" align="bottom" width=500></p>
 </center>
 

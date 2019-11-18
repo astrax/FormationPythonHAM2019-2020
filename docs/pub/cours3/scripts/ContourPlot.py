@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# Nom Fichier: ContourPlot.py
+# Importation
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -10,12 +11,11 @@ x = np.linspace(-3, 3, n)
 y = np.linspace(-3, 3, n)
 X,Y = np.meshgrid(x, y)
 
-plt.axes([0.025, 0.025, 0.95, 0.95])
-
-plt.contourf(X, Y, f(X, Y), 8, alpha=.75, cmap=plt.cm.gray)
-C = plt.contour(X, Y, f(X, Y), 8, colors='black', linewidth=.5)
+# Surface
+S = plt.contourf(X, Y, f(X, Y), 8, cmap='plasma')
+# Contour
+C = plt.contour(X, Y, f(X, Y), 8, colors='black')
 plt.clabel(C, inline=1, fontsize=10)
 
-plt.xticks(())
-plt.yticks(())
+plt.colorbar(S) # afficher la barre de couleurs
 plt.show()

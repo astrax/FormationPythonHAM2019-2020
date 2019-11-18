@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.20)  18 NOV 2019 16:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.20)  18 NOV 2019 23:48
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -578,8 +578,24 @@ Package hyperref Info: Option `pdftoolbar' set `true' on input line 148.
 (/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 )
-\c@doconceexercisecounter=\count153
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip60
+\f@nch@O@elh=\skip61
+\f@nch@O@erh=\skip62
+\f@nch@O@olh=\skip63
+\f@nch@O@orh=\skip64
+\f@nch@O@elf=\skip65
+\f@nch@O@erf=\skip66
+\f@nch@O@olf=\skip67
+\f@nch@O@orf=\skip68
+)
 
+Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
+less on input line 172.
+
+\c@doconceexercisecounter=\count153
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2018/02/14 3.18 The Babel package
 
@@ -612,12 +628,12 @@ Package babel Info: Making ? an active character on input line 414.
 \std@mcc=\count161
 \dec@mcc=\count162
 \c@FBcaption@count=\count163
-\listindentFB=\skip60
-\descindentFB=\skip61
-\labelwidthFB=\skip62
-\leftmarginFB=\skip63
+\listindentFB=\skip69
+\descindentFB=\skip70
+\labelwidthFB=\skip71
+\leftmarginFB=\skip72
 \parindentFFN=\dimen145
-\FBfnindent=\skip64
+\FBfnindent=\skip73
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty)
 \@indexfile=\write6
@@ -642,8 +658,8 @@ Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
 \page@free=\dimen148
 \premulticols=\dimen149
 \postmulticols=\dimen150
-\multicolsep=\skip65
-\multicolbaselineskip=\skip66
+\multicolsep=\skip74
+\multicolbaselineskip=\skip75
 \partial@page=\box42
 \last@line=\box43
 \maxbalancingoverflow=\dimen151
@@ -678,10 +694,10 @@ Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
 \mc@col@check@num=\count172
 )
 \c@idxcols=\count173
-\indexcolsep=\skip67
-\indexrule=\skip68
-\ila@indentunit=\skip69
-\ila@initsep=\skip70
+\indexcolsep=\skip76
+\indexrule=\skip77
+\ila@indentunit=\skip78
+\ila@initsep=\skip79
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
@@ -783,46 +799,46 @@ Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
 (/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
 Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 )
-\CenteringLeftskip=\skip71
-\RaggedLeftLeftskip=\skip72
-\RaggedRightLeftskip=\skip73
-\CenteringRightskip=\skip74
-\RaggedLeftRightskip=\skip75
-\RaggedRightRightskip=\skip76
-\CenteringParfillskip=\skip77
-\RaggedLeftParfillskip=\skip78
-\RaggedRightParfillskip=\skip79
-\JustifyingParfillskip=\skip80
-\CenteringParindent=\skip81
-\RaggedLeftParindent=\skip82
-\RaggedRightParindent=\skip83
-\JustifyingParindent=\skip84
+\CenteringLeftskip=\skip80
+\RaggedLeftLeftskip=\skip81
+\RaggedRightLeftskip=\skip82
+\CenteringRightskip=\skip83
+\RaggedLeftRightskip=\skip84
+\RaggedRightRightskip=\skip85
+\CenteringParfillskip=\skip86
+\RaggedLeftParfillskip=\skip87
+\RaggedRightParfillskip=\skip88
+\JustifyingParfillskip=\skip89
+\CenteringParindent=\skip90
+\RaggedLeftParindent=\skip91
+\RaggedRightParindent=\skip92
+\JustifyingParindent=\skip93
 ) (./TD3_corr.aux)
 \openout1 = `TD3_corr.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 202.
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 202.
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 202.
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 202.
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 202.
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 202.
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 202.
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 202.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 202.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 234.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 234.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 202.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 234.
 
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -857,7 +873,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \microtypecontext on input line 202.
+LaTeX Info: Redefining \microtypecontext on input line 234.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -876,7 +892,7 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 \AtBeginShipoutBox=\box68
-Package hyperref Info: Link coloring ON on input line 202.
+Package hyperref Info: Link coloring ON on input line 234.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -886,50 +902,76 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count180
 )
-LaTeX Info: Redefining \ref on input line 202.
-LaTeX Info: Redefining \pageref on input line 202.
-LaTeX Info: Redefining \nameref on input line 202.
+LaTeX Info: Redefining \ref on input line 234.
+LaTeX Info: Redefining \pageref on input line 234.
+LaTeX Info: Redefining \nameref on input line 234.
 
 (./TD3_corr.out) (./TD3_corr.out)
 \@outlinefile=\write7
 \openout7 = `TD3_corr.out'.
 
-LaTeX Info: Redefining \degres on input line 202.
-LaTeX Info: Redefining \dots on input line 202.
-LaTeX Info: Redefining \up on input line 202.
+LaTeX Info: Redefining \degres on input line 234.
+LaTeX Info: Redefining \dots on input line 234.
+LaTeX Info: Redefining \up on input line 234.
  ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 202.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 228.
+LaTeX Info: Redefining \selectfont on input line 234.
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
+File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
+)
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 253.
+
+
+(/usr/share/texmf/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 261.
+
+
+(/usr/share/texmf/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 261.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ (./TD3_corr.toc)
+\tf@toc=\write8
+\openout8 = `TD3_corr.toc'.
+
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 298.
 
 
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 228.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 298.
 
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 228
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 298
 .
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 228
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 298
 .
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 228.
+(Font)              <10> on input line 298.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 228.
+(Font)              <7> on input line 298.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 228.
-LaTeX Font Info:    Try loading font information for U+msa on input line 228.
+(Font)              <5> on input line 298.
+LaTeX Font Info:    Try loading font information for U+msa on input line 298.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -937,7 +979,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 228.
+LaTeX Font Info:    Try loading font information for U+msb on input line 298.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -945,30 +987,18 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
-File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
-)
 \openout3 = `TD3_corr.pyg'.
 
 
 (./_minted-TD3_corr/default-pyg-prefix.pygstyle)
 (./_minted-TD3_corr/default.pygstyle)
-(./_minted-TD3_corr/D603322D9760C2BB7751E2FC9D4E0567447F966D79FF32F728B4E14C30F
+(./_minted-TD3_corr/771584E946BBAF5EC1901F81F14B8E21447F966D79FF32F728B4E14C30F
 D0D45.pygtex
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 1.
- (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `lmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <9> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 3.
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 12.
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 14.
 
-
-(/usr/share/texmf/tex/latex/lm/ts1lmtt.fd
+ (/usr/share/texmf/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 Package microtype Info: Loading generic protrusion settings for font family
@@ -978,24 +1008,24 @@ Package microtype Info: Loading generic protrusion settings for font family
 Package microtype Info: Character `texttrademark ' is missing
 (microtype)             in font `TS1/lmtt/m/n/9'.
 (microtype)             Ignoring protrusion settings for this character.
-)
+) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 \openout3 = `TD3_corr.pyg'.
 
 
-(./_minted-TD3_corr/3560C4F1CD7C1190BEA888FA3F017A98447F966D79FF32F728B4E14C30F
-D0D45.pygtex) [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
+(./_minted-TD3_corr/FF4823844DE5131CD9241B8E6FC8F7AB447F966D79FF32F728B4E14C30F
+D0D45.pygtex) (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 )
-<figs/equation2deg.pdf, id=28, 505.89pt x 361.35pt>
-File: figs/equation2deg.pdf Graphic file (type pdf)
-<use figs/equation2deg.pdf>
-Package pdftex.def Info: figs/equation2deg.pdf  used on input line 322.
+<imgs/equation2deg.pdf, id=30, 505.89pt x 361.35pt>
+File: imgs/equation2deg.pdf Graphic file (type pdf)
+<use imgs/equation2deg.pdf>
+Package pdftex.def Info: imgs/equation2deg.pdf  used on input line 396.
 (pdftex.def)             Requested size: 241.49895pt x 172.50317pt.
 
-Overfull \hbox (50.74153pt too wide) in paragraph at lines 332--333
+[2 <./imgs/equation2deg.pdf>]
+Overfull \hbox (50.74153pt too wide) in paragraph at lines 406--407
  []\T1/lmr/bx/n/10 Solution.[] \T1/lmr/m/n/10 (-20) Le pro-gramme qui re-pro-du
 it la fi-gure en uti-li-sant la fonc-tion \T1/lmtt/m/n/10 EqSecondDegree() \T1/
 lmr/m/n/10 (-20) : 
@@ -1004,190 +1034,99 @@ lmr/m/n/10 (-20) :
 \openout3 = `TD3_corr.pyg'.
 
 
-(./_minted-TD3_corr/0CA6295EF321DBAB81810194FC4C294B447F966D79FF32F728B4E14C30F
+(./_minted-TD3_corr/D0192D8A46465C99F6CCB7AD317F0B0B447F966D79FF32F728B4E14C30F
 D0D45.pygtex
 Package microtype Info: Character `texttrademark ' is missing
 (microtype)             in font `TS1/lmtt/m/it/9'.
 (microtype)             Ignoring protrusion settings for this character.
-) [2 <./figs/equation2deg.pdf>]
-<figs/Refraction_fr.png, id=93, 533.27652pt x 356.83313pt>
-File: figs/Refraction_fr.png Graphic file (type png)
-<use figs/Refraction_fr.png>
-Package pdftex.def Info: figs/Refraction_fr.png  used on input line 397.
-(pdftex.def)             Requested size: 241.49895pt x 161.59705pt.
- [3 <./figs/Refraction_fr.png (PNG copy)>]
-Overfull \hbox (69.88535pt too wide) in paragraph at lines 422--423
-[]\T1/lmr/m/n/10 (-20) Condition : \T1/lmtt/m/n/10 si (n1*sin(theta1[k]))/n2 < 
--1 ou n1 * (n1*sin(theta1[k]))/n2
- []
+)
 
+Package amsmath Warning: Foreign command \over;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 472.
 
-Overfull \hbox (49.40161pt too wide) in paragraph at lines 425--426
-[]\T1/lmr/m/n/10 (-20) Afficher : \T1/lmtt/m/n/10 "Il y aura une réflexion tota
-le pour l'angle d'incidence
- []
-
-
-Overfull \hbox (15.00099pt too wide) in paragraph at lines 432--433
-[]\T1/lmr/m/n/10 (-20) Stoker dans la liste la va-leur \T1/lmtt/m/n/10 theta2[k
-] \T1/lmr/m/n/10 (-20) : \T1/lmtt/m/n/10 arcsin(n1*sin(theta1[k])/n2 
- []
-
-
-Overfull \hbox (29.15163pt too wide) in paragraph at lines 434--435
-[]\T1/lmr/m/n/10 (-20) Afficher : \T1/lmtt/m/n/10 "L'angle d'incidence est de t
-heta1[k] degrés et l'angle
- []
-
-<figs/snell.png, id=100, 433.62pt x 289.08pt>
-File: figs/snell.png Graphic file (type png)
-<use figs/snell.png>
-Package pdftex.def Info: figs/snell.png  used on input line 456.
-(pdftex.def)             Requested size: 241.49895pt x 161.00148pt.
+[3]
 \openout3 = `TD3_corr.pyg'.
 
 
-(./_minted-TD3_corr/202A6CF5DEAECC9DFE804DECAEF77F32447F966D79FF32F728B4E14C30F
-D0D45.pygtex) [4 <./figs/snell.png>]
-<figs/Diffr_ouv_rectangle.png, id=108, 225.84375pt x 227.34938pt>
-File: figs/Diffr_ouv_rectangle.png Graphic file (type png)
-<use figs/Diffr_ouv_rectangle.png>
-Package pdftex.def Info: figs/Diffr_ouv_rectangle.png  used on input line 521.
-(pdftex.def)             Requested size: 241.49895pt x 243.12267pt.
- [5]
-<figs/figDiff.png, id=114, 463.7325pt x 195.73125pt>
-File: figs/figDiff.png Graphic file (type png)
-<use figs/figDiff.png>
-Package pdftex.def Info: figs/figDiff.png  used on input line 542.
-(pdftex.def)             Requested size: 241.49895pt x 101.93314pt.
- [6 <./figs/Diffr_ouv_rectangle.png (PNG copy)> <./figs/figDiff.png>]
-Overfull \hbox (176.52345pt too wide) in paragraph at lines 560--561
- []\T1/lmr/bx/n/10 a)[] \T1/lmr/m/n/10 (-20) Écrire une fonc-tion []
- []
-
-\openout3 = `TD3_corr.pyg'.
-
-
-(./_minted-TD3_corr/8CFD952A96B9A2308CB94B403A1C584F447F966D79FF32F728B4E14C30F
-D0D45.pygtex)
-<figs/diff2D.pdf, id=123, 578.16pt x 578.16pt>
-File: figs/diff2D.pdf Graphic file (type pdf)
-<use figs/diff2D.pdf>
-Package pdftex.def Info: figs/diff2D.pdf  used on input line 607.
-(pdftex.def)             Requested size: 241.49895pt x 241.49342pt.
- [7]
-\openout3 = `TD3_corr.pyg'.
-
-
-(./_minted-TD3_corr/36C4272779DD7E9F308C6622CCA47E89447F966D79FF32F728B4E14C30F
-D0D45.pygtex)
-<figs/diff3D.pdf, id=133, 578.16pt x 578.16pt>
-File: figs/diff3D.pdf Graphic file (type pdf)
-<use figs/diff3D.pdf>
-Package pdftex.def Info: figs/diff3D.pdf  used on input line 651.
-(pdftex.def)             Requested size: 241.49895pt x 241.49342pt.
- [8 <./figs/diff2D.pdf>]
-\openout3 = `TD3_corr.pyg'.
-
-
-(./_minted-TD3_corr/E59D0C3843AEF4EA2D308716282F9E0D447F966D79FF32F728B4E14C30F
-D0D45.pygtex) [9 <./figs/diff3D.pdf>]
-<figs/goes_sat.jpeg, id=253, 1490.56876pt x 909.3975pt>
-File: figs/goes_sat.jpeg Graphic file (type jpg)
-<use figs/goes_sat.jpeg>
-Package pdftex.def Info: figs/goes_sat.jpeg  used on input line 709.
-(pdftex.def)             Requested size: 241.49895pt x 147.33824pt.
-\openout3 = `TD3_corr.pyg'.
-
-
-(./_minted-TD3_corr/BC8D16A57A284995586E57AF2DBE3458447F966D79FF32F728B4E14C30F
+(./_minted-TD3_corr/A8665F8AD31D828037F3896D9C681532447F966D79FF32F728B4E14C30F
 D0D45.pygtex)
 \openout3 = `TD3_corr.pyg'.
 
 
-(./_minted-TD3_corr/C5B1164E7A1F7F4ED0B3065B5D9978C4A5D9E75EE8F7167F098E896ACB6
-52153.pygtex)
-\openout3 = `TD3_corr.pyg'.
-
-
-(./_minted-TD3_corr/5E07B7679109F9EE171271D266B2B127A5D9E75EE8F7167F098E896ACB6
-52153.pygtex) [10 <./figs/goes_sat.jpeg>]
-
-LaTeX Warning: Command \' invalid in math mode on input line 797.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 797.
-
-\openout3 = `TD3_corr.pyg'.
-
-
-(./_minted-TD3_corr/DA24E4525A4F7777B4C7389C26557D8C447F966D79FF32F728B4E14C30F
+(./_minted-TD3_corr/8806787780597109813C30CE0130B6FA447F966D79FF32F728B4E14C30F
 D0D45.pygtex)
 \openout3 = `TD3_corr.pyg'.
 
 
-(./_minted-TD3_corr/E515E43301FDBD611C03F0E21FBCA482447F966D79FF32F728B4E14C30F
-D0D45.pygtex) [11]
-<figs/goes_plot.png, id=271, 722.7pt x 505.89pt>
-File: figs/goes_plot.png Graphic file (type png)
-<use figs/goes_plot.png>
-Package pdftex.def Info: figs/goes_plot.png  used on input line 836.
-(pdftex.def)             Requested size: 241.49895pt x 169.05156pt.
+(./_minted-TD3_corr/F8D9C4D56E9C62DE9EE5F9ECB5F50405447F966D79FF32F728B4E14C30F
+D0D45.pygtex)
 \openout3 = `TD3_corr.pyg'.
 
 
-(./_minted-TD3_corr/FFAABA0FE70898EDC252C61B837A3EBC447F966D79FF32F728B4E14C30F
-D0D45.pygtex) [12 <./figs/goes_plot.png>]
+(./_minted-TD3_corr/2FF3A296EFA42CC684F51A895C3C0496447F966D79FF32F728B4E14C30F
+D0D45.pygtex)
+<imgs/fourier.pdf, id=108, 433.62pt x 289.08pt>
+File: imgs/fourier.pdf Graphic file (type pdf)
+<use imgs/fourier.pdf>
+Package pdftex.def Info: imgs/fourier.pdf  used on input line 566.
+(pdftex.def)             Requested size: 345.0pt x 230.01158pt.
+ [4]
+\openout3 = `TD3_corr.pyg'.
+
+
+(./_minted-TD3_corr/18CE7421204E49FA66C15F3D9721F84A447F966D79FF32F728B4E14C30F
+D0D45.pygtex) [5 <./imgs/fourier.pdf>]
 \openout3 = `TD3_corr.pyg'.
 
 
 (./_minted-TD3_corr/4D106CBD29BB76DBB7135F15054C4EEBA5D9E75EE8F7167F098E896ACB6
-52153.pygtex)
-Underfull \hbox (badness 10000) in paragraph at lines 937--938
+52153.pygtex) [6]
+Underfull \hbox (badness 10000) in paragraph at lines 677--678
 
  []
 
-[13]
 \openout3 = `TD3_corr.pyg'.
 
 
-(./_minted-TD3_corr/2D826FE3AC21A235B781FC10A6A31325447F966D79FF32F728B4E14C30F
+(./_minted-TD3_corr/356EB99BDD6B1220543189D70AE136D2447F966D79FF32F728B4E14C30F
 D0D45.pygtex)
 \openout3 = `TD3_corr.pyg'.
 
 
 (./_minted-TD3_corr/B71058621AFC1FAFC98F70A0C787FB34447F966D79FF32F728B4E14C30F
-D0D45.pygtex) [14]
+D0D45.pygtex) [7]
 \openout3 = `TD3_corr.pyg'.
 
 
-(./_minted-TD3_corr/1C5D9E68719D596DB0363FB17C5B3D26447F966D79FF32F728B4E14C30F
+(./_minted-TD3_corr/89E0D85F2ED1C1A30A72F884BEC6FF59447F966D79FF32F728B4E14C30F
 D0D45.pygtex)
 \openout3 = `TD3_corr.pyg'.
 
 
-(./_minted-TD3_corr/CAAF315E01484058167CB57715ACC092447F966D79FF32F728B4E14C30F
+(./_minted-TD3_corr/8B31D7012BF480DBF09D65B273462831447F966D79FF32F728B4E14C30F
 D0D45.pygtex)
 \openout3 = `TD3_corr.pyg'.
 
 
-(./_minted-TD3_corr/7EEBCCC696600833CF689AEED7760F2F447F966D79FF32F728B4E14C30F
+(./_minted-TD3_corr/11955498B23C7F026015F0632D2BD499447F966D79FF32F728B4E14C30F
 D0D45.pygtex)
-<figs/fresnel.png, id=300, 867.24pt x 361.35pt>
-File: figs/fresnel.png Graphic file (type png)
-<use figs/fresnel.png>
-Package pdftex.def Info: figs/fresnel.png  used on input line 1063.
-(pdftex.def)             Requested size: 241.49895pt x 100.62042pt.
+<imgs/fresnel.png, id=197, 867.24pt x 361.35pt>
+File: imgs/fresnel.png Graphic file (type png)
+<use imgs/fresnel.png>
+Package pdftex.def Info: imgs/fresnel.png  used on input line 805.
+(pdftex.def)             Requested size: 345.0pt x 143.74896pt.
+ [8]
 \openout3 = `TD3_corr.pyg'.
 
 
 (./_minted-TD3_corr/DAD703201CA7EB79B0F3751A49D20E46447F966D79FF32F728B4E14C30F
-D0D45.pygtex) [15 <./figs/fresnel.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1100.
- [16]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1100.
+D0D45.pygtex)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 842.
+ [9 <./imgs/fresnel.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 842.
  (./TD3_corr.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1100.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 842.
 
 
  *File List*
@@ -1282,6 +1221,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2018/02/06 v6.86b Hyperref driver for pdfTeX
 rerunfilecheck.sty    2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
+fancyhdr.sty    2017/06/30 v3.9a Extensive control of page headers and footers
    babel.sty    2018/02/14 3.18 The Babel package
   french.ldf    2018/02/04 v3.4b French support from the babel system
 scalefnt.sty    
@@ -1305,6 +1245,9 @@ RS)
 gettitlestring.sty    2016/05/16 v1.5 Cleanup title references (HO)
 TD3_corr.out
 TD3_corr.out
+   uni-0.def    2013/05/13 UCS: Unicode data U+0000..U+00FF
+  ts1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
@@ -1313,79 +1256,59 @@ TD3_corr.out
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-   uni-0.def    2013/05/13 UCS: Unicode data U+0000..U+00FF
 _minted-TD3_corr/default-pyg-prefix.pygstyle
 _minted-TD3_corr/default.pygstyle
-_minted-TD3_corr/D603322D9760C2BB7751E2FC9D4E0567447F966D79FF32F728B4E14C30FD0D
+_minted-TD3_corr/771584E946BBAF5EC1901F81F14B8E21447F966D79FF32F728B4E14C30FD0D
 45.pygtex
-  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
  ts1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
-_minted-TD3_corr/3560C4F1CD7C1190BEA888FA3F017A98447F966D79FF32F728B4E14C30FD0D
+_minted-TD3_corr/FF4823844DE5131CD9241B8E6FC8F7AB447F966D79FF32F728B4E14C30FD0D
 45.pygtex
   uni-32.def    2013/05/13 UCS: Unicode data U+2000..U+20FF
-figs/equation2deg.pdf
-_minted-TD3_corr/0CA6295EF321DBAB81810194FC4C294B447F966D79FF32F728B4E14C30FD0D
+imgs/equation2deg.pdf
+_minted-TD3_corr/D0192D8A46465C99F6CCB7AD317F0B0B447F966D79FF32F728B4E14C30FD0D
 45.pygtex
-figs/Refraction_fr.png
-figs/snell.png
-_minted-TD3_corr/202A6CF5DEAECC9DFE804DECAEF77F32447F966D79FF32F728B4E14C30FD0D
+_minted-TD3_corr/A8665F8AD31D828037F3896D9C681532447F966D79FF32F728B4E14C30FD0D
 45.pygtex
-figs/Diffr_ouv_rectangle.png
-figs/figDiff.png
-_minted-TD3_corr/8CFD952A96B9A2308CB94B403A1C584F447F966D79FF32F728B4E14C30FD0D
+_minted-TD3_corr/8806787780597109813C30CE0130B6FA447F966D79FF32F728B4E14C30FD0D
 45.pygtex
-figs/diff2D.pdf
-_minted-TD3_corr/36C4272779DD7E9F308C6622CCA47E89447F966D79FF32F728B4E14C30FD0D
+_minted-TD3_corr/F8D9C4D56E9C62DE9EE5F9ECB5F50405447F966D79FF32F728B4E14C30FD0D
 45.pygtex
-figs/diff3D.pdf
-_minted-TD3_corr/E59D0C3843AEF4EA2D308716282F9E0D447F966D79FF32F728B4E14C30FD0D
+_minted-TD3_corr/2FF3A296EFA42CC684F51A895C3C0496447F966D79FF32F728B4E14C30FD0D
 45.pygtex
-figs/goes_sat.jpeg
-_minted-TD3_corr/BC8D16A57A284995586E57AF2DBE3458447F966D79FF32F728B4E14C30FD0D
-45.pygtex
-_minted-TD3_corr/C5B1164E7A1F7F4ED0B3065B5D9978C4A5D9E75EE8F7167F098E896ACB6521
-53.pygtex
-_minted-TD3_corr/5E07B7679109F9EE171271D266B2B127A5D9E75EE8F7167F098E896ACB6521
-53.pygtex
-_minted-TD3_corr/DA24E4525A4F7777B4C7389C26557D8C447F966D79FF32F728B4E14C30FD0D
-45.pygtex
-_minted-TD3_corr/E515E43301FDBD611C03F0E21FBCA482447F966D79FF32F728B4E14C30FD0D
-45.pygtex
-figs/goes_plot.png
-_minted-TD3_corr/FFAABA0FE70898EDC252C61B837A3EBC447F966D79FF32F728B4E14C30FD0D
+imgs/fourier.pdf
+_minted-TD3_corr/18CE7421204E49FA66C15F3D9721F84A447F966D79FF32F728B4E14C30FD0D
 45.pygtex
 _minted-TD3_corr/4D106CBD29BB76DBB7135F15054C4EEBA5D9E75EE8F7167F098E896ACB6521
 53.pygtex
-_minted-TD3_corr/2D826FE3AC21A235B781FC10A6A31325447F966D79FF32F728B4E14C30FD0D
+_minted-TD3_corr/356EB99BDD6B1220543189D70AE136D2447F966D79FF32F728B4E14C30FD0D
 45.pygtex
 _minted-TD3_corr/B71058621AFC1FAFC98F70A0C787FB34447F966D79FF32F728B4E14C30FD0D
 45.pygtex
-_minted-TD3_corr/1C5D9E68719D596DB0363FB17C5B3D26447F966D79FF32F728B4E14C30FD0D
+_minted-TD3_corr/89E0D85F2ED1C1A30A72F884BEC6FF59447F966D79FF32F728B4E14C30FD0D
 45.pygtex
-_minted-TD3_corr/CAAF315E01484058167CB57715ACC092447F966D79FF32F728B4E14C30FD0D
+_minted-TD3_corr/8B31D7012BF480DBF09D65B273462831447F966D79FF32F728B4E14C30FD0D
 45.pygtex
-_minted-TD3_corr/7EEBCCC696600833CF689AEED7760F2F447F966D79FF32F728B4E14C30FD0D
+_minted-TD3_corr/11955498B23C7F026015F0632D2BD499447F966D79FF32F728B4E14C30FD0D
 45.pygtex
-figs/fresnel.png
+imgs/fresnel.png
 _minted-TD3_corr/DAD703201CA7EB79B0F3751A49D20E46447F966D79FF32F728B4E14C30FD0D
 45.pygtex
  ***********
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1100.
-
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 842.
 Package rerunfilecheck Info: File `TD3_corr.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 runsystem(rm TD3_corr.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 15029 strings out of 494894
- 245223 string characters out of 6179473
- 419251 words of memory out of 5000000
- 17836 multiletter control sequences out of 15000+600000
- 35541 words of font info for 77 fonts, out of 8000000 for 9000
+ 15144 strings out of 494894
+ 245051 string characters out of 6179473
+ 421648 words of memory out of 5000000
+ 17967 multiletter control sequences out of 15000+600000
+ 54985 words of font info for 87 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 41i,9n,38p,843b,580s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,12n,48p,843b,613s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/en
 c/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/
 share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/l
@@ -1396,14 +1319,15 @@ type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi5.pfb></
 usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/p
 ublic/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share
 /texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/l
-msy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/f
-onts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.
-pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmtti10.pfb>
-Output written on TD3_corr.pdf (16 pages, 2906892 bytes).
+mr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/font
+s/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmtti10.pfb>
+Output written on TD3_corr.pdf (9 pages, 399183 bytes).
 PDF statistics:
- 390 PDF objects out of 1000 (max. 8388607)
- 219 compressed objects within 3 object streams
- 59 named destinations out of 1000 (max. 500000)
- 12851 words of extra memory for PDF output out of 14400 (max. 10000000)
+ 296 PDF objects out of 1000 (max. 8388607)
+ 185 compressed objects within 2 object streams
+ 50 named destinations out of 1000 (max. 500000)
+ 21008 words of extra memory for PDF output out of 24883 (max. 10000000)
 
