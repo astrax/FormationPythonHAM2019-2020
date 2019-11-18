@@ -47,27 +47,47 @@ body { font-size:20px;line-height:1.5; }
                1,
                'table_of_contents',
                'table_of_contents'),
-              ('Bibliothèque numérique: `numpy`', 1, None, '___sec0'),
-              ('Tableaux et matrices', 2, None, '___sec1'),
-              ('Listes', 3, None, '___sec2'),
+              ('Introduction', 1, None, '___sec0'),
+              ('Calculs des fonctions trigonométriques avec le module `math`',
+               2,
+               None,
+               '___sec1'),
+              ('Vectorisation avec le module numpy', 2, None, '___sec2'),
+              ('Utilisation de pylab (numpy + matplotlib)', 2, None, '___sec3'),
+              ('Création des tableaux', 3, None, '___sec4'),
+              ('Traçage des fonctions trigonométrique cos(X), sin(X) et '
+               'cos(X)+ sin(X)',
+               3,
+               None,
+               '___sec5'),
+              ('Introduction à Numpy', 1, None, '___sec6'),
+              ('Tableaux et matrices', 2, None, '___sec7'),
+              ('Listes', 3, None, '___sec8'),
               ('Utilisation de fonctions génératrices de tableaux et de '
                'matrices',
                3,
                None,
-               '___sec3'),
-              ('Lecture et écriture de données', 2, None, '___sec4'),
-              ('Écriture de données', 3, None, '___sec5'),
-              ('Lecture de données', 3, None, '___sec6'),
+               '___sec9'),
+              ('Lecture et écriture de données', 2, None, '___sec10'),
+              ('Écriture de données', 3, None, '___sec11'),
+              ('Lecture de données', 3, None, '___sec12'),
               ('Bibliothèque Python de visualisation des données: `matplotlib`',
                1,
                None,
-               '___sec7'),
-              ('Documentation en ligne et Galerie', 2, None, '___sec8'),
-              ('Guide de Démarrage', 3, None, '___sec9'),
-              ('Vues en grille', 3, None, '___sec10'),
-              ('Commandes de texte de base', 3, None, '___sec11'),
-              ('Styles de lignes et de marqueurs', 3, None, '___sec12'),
-              ('Colormap: Tracés contour, Imshow et 3D', 3, None, '___sec13')]}
+               '___sec13'),
+              ('Documentation en ligne et Galerie', 2, None, '___sec14'),
+              ('Guide de Démarrage', 3, None, '___sec15'),
+              ('Vues en grille', 3, None, '___sec16'),
+              ('Commandes de texte de base', 3, None, '___sec17'),
+              ('Styles de lignes et de marqueurs', 3, None, '___sec18'),
+              ('Colormap: Tracés contour, Imshow et 3D', 3, None, '___sec19'),
+              ('Bibliothèque scientifique python: `scipy`',
+               1,
+               None,
+               '___sec20'),
+              ('Fonctions spéciales', 2, None, '___sec21'),
+              ('Fonctions de Bessel', 3, None, '___sec22'),
+              ('Intégrales de Fresnel', 3, None, '___sec23')]}
 end of tocinfo -->
 
 <body>
@@ -106,20 +126,30 @@ MathJax.Hub.Config({
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;"><b>Table des matières</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Bibliothèque numérique: <code>numpy</code></b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tableaux et matrices</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Listes</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utilisation de fonctions génératrices de tableaux et de matrices</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Lecture et écriture de données</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Écriture de données</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lecture de données</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;"><b>Bibliothèque Python de visualisation des données: <code>matplotlib</code></b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Documentation en ligne et Galerie</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guide de Démarrage</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vues en grille</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Commandes de texte de base</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Styles de lignes et de marqueurs</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Colormap: Tracés contour, Imshow et 3D</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Calculs des fonctions trigonométriques avec le module <code>math</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vectorisation avec le module numpy</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Utilisation de pylab (numpy + matplotlib)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Création des tableaux</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Traçage des fonctions trigonométrique cos(X), sin(X) et cos(X)+ sin(X)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;"><b>Introduction à Numpy</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tableaux et matrices</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Listes</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utilisation de fonctions génératrices de tableaux et de matrices</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Lecture et écriture de données</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Écriture de données</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lecture de données</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;"><b>Bibliothèque Python de visualisation des données: <code>matplotlib</code></b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Documentation en ligne et Galerie</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guide de Démarrage</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vues en grille</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Commandes de texte de base</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Styles de lignes et de marqueurs</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Colormap: Tracés contour, Imshow et 3D</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec20" style="font-size: 80%;"><b>Bibliothèque scientifique python: <code>scipy</code></b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Fonctions spéciales</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fonctions de Bessel</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Intégrales de Fresnel</a></li>
 
         </ul>
       </li>
@@ -160,19 +190,270 @@ MathJax.Hub.Config({
 <h1 id="table_of_contents">Table des matières</h2>
 
 <p>
-<a href="#___sec0"> Biblioth&#232;que num&#233;rique: <code>numpy</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec1"> Tableaux et matrices </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec4"> Lecture et &#233;criture de donn&#233;es </a><br>
-<a href="#___sec7"> Biblioth&#232;que Python de visualisation des donn&#233;es: <code>matplotlib</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec8"> Documentation en ligne et Galerie </a><br>
+<a href="#___sec0"> Introduction </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec1"> Calculs des fonctions trigonom&#233;triques avec le module <code>math</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec2"> Vectorisation avec le module numpy </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec3"> Utilisation de pylab (numpy + matplotlib) </a><br>
+<a href="#___sec6"> Introduction &#224; Numpy </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Tableaux et matrices </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec10"> Lecture et &#233;criture de donn&#233;es </a><br>
+<a href="#___sec13"> Biblioth&#232;que Python de visualisation des donn&#233;es: <code>matplotlib</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec14"> Documentation en ligne et Galerie </a><br>
+<a href="#___sec20"> Biblioth&#232;que scientifique python: <code>scipy</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Fonctions sp&#233;ciales </a><br>
 </p>
 <p>
 <!-- !split -->
 
-<h1 id="___sec0" class="anchor">Biblioth&#232;que num&#233;rique: <code>numpy</code> </h1>
+<h1 id="___sec0" class="anchor">Introduction </h1>
+
+<h2 id="___sec1" class="anchor">Calculs des fonctions trigonom&#233;triques avec le module <code>math</code> </h2>
 
 <p>
-La biblioth&#232;que <code>numpy</code> (<a href="http://www.numpy.org" target="_self"><tt>http://www.numpy.org</tt></a>) est utilis&#233;e dans presque tous les calculs num&#233;riques r&#233;alis&#233;s &#224; l'aide de Python. C'est une biblioth&#232;que qui fournit des structures de donn&#233;es de haute performance de type vectoriel, matriciel et de dimensions sup&#233;rieures. Il est impl&#233;ment&#233; avec les syntaxes de C et Fortran, ainsi lorsque les calculs sont vectoris&#233;s les performances sont tr&#232;s bonnes.
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># importation des fonctions trigonométriques du module math</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> cos, sin, pi
+<span style="color: #408080; font-style: italic"># définition des variable (listes)</span>
+X, C, S <span style="color: #666666">=</span>[],[], []
+k <span style="color: #666666">=</span> <span style="color: #666666">0</span> <span style="color: #408080; font-style: italic"># initialisation du compteur</span>
+<span style="color: #008000; font-weight: bold">while</span> <span style="color: #666666">0</span> <span style="color: #666666">&lt;=</span> k <span style="color: #666666">&lt;=</span> <span style="color: #666666">2*</span>pi:
+    <span style="color: #408080; font-style: italic"># stokage des valeurs dans les listes</span>
+    C<span style="color: #666666">.</span>append(cos(k))
+    S<span style="color: #666666">.</span>append(sin(k))
+    X<span style="color: #666666">.</span>append(k)
+    k<span style="color: #666666">+=0.05</span>
+
+<span style="color: #408080; font-style: italic"># Affichage des listes crées</span>
+<span style="color: #408080; font-style: italic">#print(&quot;Les abscisses (X) = &quot;, X)</span>
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Fonction cosinus (cos(X)) = &quot;</span>, C)
+<span style="color: #408080; font-style: italic">#print(&quot;Fonction sinus (sin(X)) = &quot;, S)</span>
+</pre></div>
+<p>
+Vous voyez ici qu'il est difficile de v&#233;rifier <b>toutes</b> les valeurs stock&#233;es dans une liste assez grande. Pour cette raison, une repr&#233;sentation graphique donne une vue g&#233;n&#233;rale de nos calculs et permet d'identifier imm&#233;diatement les erreurs &#233;ventuelles ou les artefacts de calcul susceptibles d'affecter nos calculs.
+
+<p>
+La biblioth&#232;que <code>matplotlib</code> est choisie comme le meilleur candidat pour cette t&#226;che, que nous verrons plus en d&#233;tail plus loin dans ce chapitre.
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># importation de la bibliothèque matplotlib</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;il y a d&#39;autres approches pour l&#39;importation</span>
+<span style="color: #BA2121; font-style: italic">que nous discuterons dans la section matplotlib&#39;&#39;&#39;</span>
+plt<span style="color: #666666">.</span>plot(X, C, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;cos(X)&quot;</span>)
+plt<span style="color: #666666">.</span>plot(X, S, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;sin(X)&quot;</span>)
+<span style="color: #408080; font-style: italic"># Courbe de la somme cos(x) + sin(x):</span>
+<span style="color: #408080; font-style: italic">#plt.plot(X, C+S, label=&quot;cos(x) + sin(x)&quot;) #--&gt; Erreur!! pourquoi?</span>
+
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Fonctions trigonométriques&quot;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;X&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Y&quot;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;figs/fonct_trig1.png&quot;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;figs/fonct_trig1.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+La sortie de ce code est la Figure <a href="#figout:trig1">1</a>.
+
+<p>
+<center> <!-- figure label: --> <div id="figout:trig1"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Sortie du code.  <!-- caption label: figout:trig1 --> </p></center>
+<p><img src="figs/fonct_trig1.png" align="bottom" width=500></p>
+</center>
+
+<p>
+<div class="panel panel-success">
+  <div class="panel-heading">
+  <h3 class="panel-title">Question</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+Essayez de tracer sur le m&#234;me graphique: \( cos (X) + sin (X) = C + S \). Que se passe-t-il? et pourquoi?
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-default">
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">6</span>]: <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Type de C = &quot;</span>, <span style="color: #008000">type</span>(C))
+   <span style="color: #666666">...</span>: <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Longueur de C = &quot;</span>, <span style="color: #008000">len</span>(C))
+   <span style="color: #666666">...</span>: <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Type de C + S= &quot;</span>, <span style="color: #008000">type</span>(C<span style="color: #666666">+</span>S))
+   <span style="color: #666666">...</span>: <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Longueur de C + S = &quot;</span>, <span style="color: #008000">len</span>(C<span style="color: #666666">+</span>S))
+Type de C <span style="color: #666666">=</span>  <span style="color: #666666">&lt;</span><span style="color: #008000; font-weight: bold">class</span> &#39;<span style="color: #0000FF; font-weight: bold">list</span><span style="color: #BA2121">&#39;&gt;</span>
+Longueur de C <span style="color: #666666">=</span>  <span style="color: #666666">126</span>
+Type de C <span style="color: #666666">+</span> S<span style="color: #666666">=</span>  <span style="color: #666666">&lt;</span><span style="color: #008000; font-weight: bold">class</span> &#39;<span style="color: #0000FF; font-weight: bold">list</span><span style="color: #BA2121">&#39;&gt;</span>
+Longueur de C <span style="color: #666666">+</span> S <span style="color: #666666">=</span>  <span style="color: #666666">252</span>
+</pre></div>
+<p>
+Il est clair donc que <code>C + S</code> n'est pas la somme alg&#233;brique \( cos (X) + sin (X) \). Sachant que nous avons une op&#233;ration d'addition de deux listes, cela signifie que nous ajoutons 126 &#233;l&#233;ments de la liste <code>S</code> &#224; la liste <code>C</code> de 63 &#233;l&#233;ments. Et ainsi la nouvelle liste <code>C + S</code> est cr&#233;&#233;e avec une longueur &#233;gale &#224; 252.
+
+<p>
+A titre d'exemple, soit l'addition de deux listes suivantes:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">7</span>]: liste1 <span style="color: #666666">=</span> [<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>] ; liste2 <span style="color: #666666">=</span> [<span style="color: #666666">0</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>]
+   <span style="color: #666666">...</span>: liste1 <span style="color: #666666">+</span> liste2
+Out[<span style="color: #666666">7</span>]: [<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">0</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>]
+</pre></div>
+<p>
+Donc, pour tirer la somme des cosinus et des sinus (C + S), nous devons construire une nouvelle liste (<code>CpS = []</code> par exemple) l&#224; o&#249; nous avons d&#233;fini les listes <code>X</code>,` C` et `S <code>et le remplir &#224; chaque it&#233;ration de</code> k` avec <code>cos (k) + sin (k)</code>.
+</div>
+</div>
+
+
+<h2 id="___sec2" class="anchor">Vectorisation avec le module numpy </h2>
+En utilisant l'instruction <code>numpy.array</code> du module` numpy`, les listes peuvent &#234;tre converties en tableaux. Cela facilite et rend plus efficace l'application d'op&#233;rations math&#233;matiques &#224; ces variables.
+
+<p>
+Voici la solution pour le cas pr&#233;c&#233;dent:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">8</span>]: <span style="color: #408080; font-style: italic"># importer le module numpy avec l&#39;alias &#39;np&#39;</span>
+   <span style="color: #666666">...</span>: <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+   <span style="color: #666666">...</span>: <span style="color: #408080; font-style: italic"># Transformer des listes en tableaux Numpy</span>
+   <span style="color: #666666">...</span>: X_v <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array(X)
+   <span style="color: #666666">...</span>: C_v <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array(C)
+   <span style="color: #666666">...</span>: S_v <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array(S)
+   <span style="color: #666666">...</span>:
+   <span style="color: #666666">...</span>: <span style="color: #408080; font-style: italic"># Afficher le tableau de cosinus C_v par exemple:</span>
+   <span style="color: #666666">...</span>: C_v
+Out[<span style="color: #666666">8</span>]:
+array([ <span style="color: #666666">1.</span>        ,  <span style="color: #666666">0.99875026</span>,  <span style="color: #666666">0.99500417</span>,  <span style="color: #666666">0.98877108</span>,  <span style="color: #666666">0.98006658</span>,
+        <span style="color: #666666">0.96891242</span>,  <span style="color: #666666">0.95533649</span>,  <span style="color: #666666">0.93937271</span>,  <span style="color: #666666">0.92106099</span>,  <span style="color: #666666">0.9004471</span> ,
+        <span style="color: #666666">0.87758256</span>,  <span style="color: #666666">0.85252452</span>,  <span style="color: #666666">0.82533561</span>,  <span style="color: #666666">0.7960838</span> ,  <span style="color: #666666">0.76484219</span>,
+        <span style="color: #666666">0.73168887</span>,  <span style="color: #666666">0.69670671</span>,  <span style="color: #666666">0.65998315</span>,  <span style="color: #666666">0.62160997</span>,  <span style="color: #666666">0.58168309</span>,
+        <span style="color: #666666">0.54030231</span>,  <span style="color: #666666">0.49757105</span>,  <span style="color: #666666">0.45359612</span>,  <span style="color: #666666">0.40848744</span>,  <span style="color: #666666">0.36235775</span>,
+        <span style="color: #666666">0.31532236</span>,  <span style="color: #666666">0.26749883</span>,  <span style="color: #666666">0.21900669</span>,  <span style="color: #666666">0.16996714</span>,  <span style="color: #666666">0.12050277</span>,
+        <span style="color: #666666">0.0707372</span> ,  <span style="color: #666666">0.02079483</span>, <span style="color: #666666">-0.02919952</span>, <span style="color: #666666">-0.07912089</span>, <span style="color: #666666">-0.12884449</span>,
+       <span style="color: #666666">-0.17824606</span>, <span style="color: #666666">-0.22720209</span>, <span style="color: #666666">-0.27559025</span>, <span style="color: #666666">-0.32328957</span>, <span style="color: #666666">-0.37018083</span>,
+       <span style="color: #666666">-0.41614684</span>, <span style="color: #666666">-0.46107269</span>, <span style="color: #666666">-0.5048461</span> , <span style="color: #666666">-0.54735767</span>, <span style="color: #666666">-0.58850112</span>,
+       <span style="color: #666666">-0.62817362</span>, <span style="color: #666666">-0.66627602</span>, <span style="color: #666666">-0.70271308</span>, <span style="color: #666666">-0.73739372</span>, <span style="color: #666666">-0.77023125</span>,
+       <span style="color: #666666">-0.80114362</span>, <span style="color: #666666">-0.83005354</span>, <span style="color: #666666">-0.85688875</span>, <span style="color: #666666">-0.8815822</span> , <span style="color: #666666">-0.90407214</span>,
+       <span style="color: #666666">-0.92430238</span>, <span style="color: #666666">-0.94222234</span>, <span style="color: #666666">-0.95778724</span>, <span style="color: #666666">-0.97095817</span>, <span style="color: #666666">-0.9817022</span> ,
+       <span style="color: #666666">-0.9899925</span> , <span style="color: #666666">-0.99580832</span>, <span style="color: #666666">-0.99913515</span>, <span style="color: #666666">-0.99996466</span>, <span style="color: #666666">-0.99829478</span>,
+       <span style="color: #666666">-0.99412968</span>, <span style="color: #666666">-0.98747977</span>, <span style="color: #666666">-0.97836168</span>, <span style="color: #666666">-0.96679819</span>, <span style="color: #666666">-0.95281821</span>,
+       <span style="color: #666666">-0.93645669</span>, <span style="color: #666666">-0.91775451</span>, <span style="color: #666666">-0.89675842</span>, <span style="color: #666666">-0.8735209</span> , <span style="color: #666666">-0.84810003</span>,
+       <span style="color: #666666">-0.82055936</span>, <span style="color: #666666">-0.79096771</span>, <span style="color: #666666">-0.75939906</span>, <span style="color: #666666">-0.7259323</span> , <span style="color: #666666">-0.6906511</span> ,
+       <span style="color: #666666">-0.65364362</span>, <span style="color: #666666">-0.61500238</span>, <span style="color: #666666">-0.57482395</span>, <span style="color: #666666">-0.53320876</span>, <span style="color: #666666">-0.49026082</span>,
+       <span style="color: #666666">-0.44608749</span>, <span style="color: #666666">-0.40079917</span>, <span style="color: #666666">-0.35450907</span>, <span style="color: #666666">-0.30733287</span>, <span style="color: #666666">-0.2593885</span> ,
+       <span style="color: #666666">-0.2107958</span> , <span style="color: #666666">-0.16167622</span>, <span style="color: #666666">-0.11215253</span>, <span style="color: #666666">-0.06234851</span>, <span style="color: #666666">-0.01238866</span>,
+        <span style="color: #666666">0.03760215</span>,  <span style="color: #666666">0.08749898</span>,  <span style="color: #666666">0.13717711</span>,  <span style="color: #666666">0.18651237</span>,  <span style="color: #666666">0.23538144</span>,
+        <span style="color: #666666">0.28366219</span>,  <span style="color: #666666">0.33123392</span>,  <span style="color: #666666">0.37797774</span>,  <span style="color: #666666">0.42377682</span>,  <span style="color: #666666">0.46851667</span>,
+        <span style="color: #666666">0.51208548</span>,  <span style="color: #666666">0.55437434</span>,  <span style="color: #666666">0.59527755</span>,  <span style="color: #666666">0.63469288</span>,  <span style="color: #666666">0.6725218</span> ,
+        <span style="color: #666666">0.70866977</span>,  <span style="color: #666666">0.74304644</span>,  <span style="color: #666666">0.77556588</span>,  <span style="color: #666666">0.80614681</span>,  <span style="color: #666666">0.83471278</span>,
+        <span style="color: #666666">0.86119242</span>,  <span style="color: #666666">0.88551952</span>,  <span style="color: #666666">0.90763328</span>,  <span style="color: #666666">0.92747843</span>,  <span style="color: #666666">0.94500537</span>,
+        <span style="color: #666666">0.96017029</span>,  <span style="color: #666666">0.97293528</span>,  <span style="color: #666666">0.98326844</span>,  <span style="color: #666666">0.99114394</span>,  <span style="color: #666666">0.9965421</span> ,
+        <span style="color: #666666">0.99944942</span>])
+</pre></div>
+<p>
+Nous pouvons v&#233;rifier que nous avons maintenant des tableaux et que l'ajout de ses &#233;l&#233;ments est possible:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">9</span>]: <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Type de C_v = &quot;</span>, <span style="color: #008000">type</span>(C_v))
+   <span style="color: #666666">...</span>: <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Longueur de C_v = &quot;</span>, <span style="color: #008000">len</span>(C_v))
+   <span style="color: #666666">...</span>: <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Type de C_v + S_v = &quot;</span>, <span style="color: #008000">type</span>(C_v <span style="color: #666666">+</span> S_v))
+   <span style="color: #666666">...</span>: <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Longueur de C_v + S_v = &quot;</span>, <span style="color: #008000">len</span>(C_v <span style="color: #666666">+</span> S_v))
+Type de C_v <span style="color: #666666">=</span>  <span style="color: #666666">&lt;</span><span style="color: #008000; font-weight: bold">class</span> &#39;<span style="color: #0000FF; font-weight: bold">numpy</span><span style="color: #666666">.</span>ndarray<span style="color: #BA2121">&#39;&gt;</span>
+Longueur de C_v <span style="color: #666666">=</span>  <span style="color: #666666">126</span>
+Type de C_v <span style="color: #666666">+</span> S_v <span style="color: #666666">=</span>  <span style="color: #666666">&lt;</span><span style="color: #008000; font-weight: bold">class</span> &#39;<span style="color: #0000FF; font-weight: bold">numpy</span><span style="color: #666666">.</span>ndarray<span style="color: #BA2121">&#39;&gt;</span>
+Longueur de C_v <span style="color: #666666">+</span> S_v <span style="color: #666666">=</span>  <span style="color: #666666">126</span>
+</pre></div>
+<p>
+Ainsi, la repr&#233;sentation graphique utilisant <code>matplotlib.pyplot</code> est la suivante:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+
+plt<span style="color: #666666">.</span>plot(X_v, C_v, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;cos(X)&quot;</span>)
+plt<span style="color: #666666">.</span>plot(X_v, S_v, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;sin(X)&quot;</span>)
+plt<span style="color: #666666">.</span>plot(X_v, C_v <span style="color: #666666">+</span> S_v, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;cos(X) + sin(X)&quot;</span>)
+
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Fonctions trigonometriques&quot;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;X&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Y&quot;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;figs/fonct_trig2.png&quot;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;figs/fonct_trig2.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+La sortie de ce code est la Figure <a href="#figout:trig2">2</a>.
+
+<p>
+<center> <!-- figure label: --> <div id="figout:trig2"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  Sortie du code.  <!-- caption label: figout:trig2 --> </p></center>
+<p><img src="figs/fonct_trig2.png" align="bottom" width=500></p>
+</center>
+
+<h2 id="___sec3" class="anchor">Utilisation de pylab (numpy + matplotlib) </h2>
+
+<h3 id="___sec4" class="anchor">Cr&#233;ation des tableaux </h3>
+
+Avec la fonction <code>numpy.arange()</code>, nous pouvons cr&#233;er automatiquement des tableaux sans avoir besoin de programmer une boucle:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># importer toutes les fonctionnalités des modules numpy et matplotlib</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">pylab</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #408080; font-style: italic"># Fonctions du module numpy pour le calcul numérique</span>
+X_np <span style="color: #666666">=</span> arange(<span style="color: #666666">0</span>, <span style="color: #666666">2*</span> pi, <span style="color: #666666">0.05</span>)<span style="color: #408080; font-style: italic"># générer un tableau arange(start, stop, step)</span>
+C_np <span style="color: #666666">=</span> cos(X_np)<span style="color: #408080; font-style: italic"># ici le cos et le sin sont aussi importés du module numpy</span>
+S_np <span style="color: #666666">=</span> sin(X_np)
+</pre></div>
+
+<h3 id="___sec5" class="anchor">Tra&#231;age des fonctions trigonom&#233;trique cos(X), sin(X) et cos(X)+ sin(X) </h3>
+
+Nous pouvons ainsi cr&#233;er et tracer directement dans le graphique la somme \( cos(X)+ sin(X) \) comme le montre le code suivant:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Fonctions du module matplotlib pour la représentation graphique</span>
+plot(X_np, C_np, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;cos(X)&quot;</span>)
+plot(X_np, S_np, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;sin(X)&quot;</span>)
+plot(X_np, C_np <span style="color: #666666">+</span> S_np, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;cos(X) + sin(X)&quot;</span>)
+title(<span style="color: #BA2121">&quot;Fonctions trigonométriques&quot;</span>)
+xlabel(<span style="color: #BA2121">&quot;X&quot;</span>)
+ylabel(<span style="color: #BA2121">&quot;Y&quot;</span>)
+legend()
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;figs/fonct_trig3.png&quot;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;figs/fonct_trig3.pdf&quot;</span>)
+show()
+</pre></div>
+<p>
+La sortie de ce code est la Figure <a href="#figout:trig3">3</a>.
+
+<p>
+<center> <!-- figure label: --> <div id="figout:trig3"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  Sortie du code.  <!-- caption label: figout:trig3 --> </p></center>
+<p><img src="figs/fonct_trig3.png" align="bottom" width=500></p>
+</center>
+
+<h1 id="___sec6" class="anchor">Introduction &#224; Numpy </h1>
+
+<p>
+La biblioth&#232;que <code>numpy</code> (module) est utilis&#233;e dans presque tous les calculs num&#233;riques r&#233;alis&#233;s &#224; l'aide de Python. C'est une biblioth&#232;que qui fournit des structures de donn&#233;es de haute performance de type vectoriel, matriciel et de dimensions sup&#233;rieures. Il est impl&#233;ment&#233; avec les syntax de C et Fortran, ainsi lorsque les calculs sont vectoris&#233;s les performances sont tr&#232;s bonnes.
 
 <p>
 Pour utiliser <code>numpy</code>, vous devez importer le module:
@@ -180,12 +461,12 @@ Pour utiliser <code>numpy</code>, vous devez importer le module:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
 </pre></div>
 <p>
 Dans la biblioth&#232;que <code>numpy</code>, la terminologie utilis&#233;e pour les vecteurs, les matrices et tout ensemble de donn&#233;es &#224; grande dimension est <b>array</b>.
 
-<h2 id="___sec1" class="anchor">Tableaux et matrices </h2>
+<h2 id="___sec7" class="anchor">Tableaux et matrices </h2>
 
 <p>
 Il existe plusieurs fa&#231;ons d'initialiser de nouveaux tableaux <code>numpy</code>, par exemple &#224; partir de:
@@ -196,22 +477,26 @@ Il existe plusieurs fa&#231;ons d'initialiser de nouveaux tableaux <code>numpy</
 <li> Lecture de donn&#233;es &#224; partir de fichiers</li>
 </ul>
 
-<h3 id="___sec2" class="anchor">Listes </h3>
+<h3 id="___sec8" class="anchor">Listes </h3>
 
 <p>
 Par exemple, pour cr&#233;er de nouveaux tableaux vectoriels et matriciels &#224; partir de listes Python, nous pouvons utiliser la fonction <code>numpy.array</code>.
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">8</span>]: v <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">3</span>,<span style="color: #666666">4</span>]) <span style="color: #408080; font-style: italic"># Un vecteur: l&#39;argument de la fonction array() est une liste Python</span>
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">8</span>]: <span style="color: #BA2121">&#39;&#39;&#39; Un vecteur: l&#39;argument de la fonction</span>
+<span style="color: #BA2121">array est une liste Python&#39;&#39;&#39;</span>
+   <span style="color: #666666">...</span>: v <span style="color: #666666">=</span> array([<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">3</span>,<span style="color: #666666">4</span>])
    <span style="color: #666666">...</span>: v
 Out[<span style="color: #666666">8</span>]: array([<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>])
 </pre></div>
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">9</span>]: M <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([[<span style="color: #666666">1</span>, <span style="color: #666666">2</span>], [<span style="color: #666666">3</span>, <span style="color: #666666">4</span>]]) <span style="color: #408080; font-style: italic"># Une matrice: l&#39;argument de la fonction de tableau est une liste imbriquée de Python</span>
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">9</span>]: <span style="color: #BA2121">&#39;&#39;&#39; Une matrice: l&#39;argument de la fonction</span>
+<span style="color: #BA2121">de tableau est une liste imbriquée de Python&#39;&#39;&#39;</span>
+   <span style="color: #666666">...</span>: M <span style="color: #666666">=</span> array([[<span style="color: #666666">1</span>, <span style="color: #666666">2</span>], [<span style="color: #666666">3</span>, <span style="color: #666666">4</span>]])
    <span style="color: #666666">...</span>: M
 Out[<span style="color: #666666">9</span>]:
 array([[<span style="color: #666666">1</span>, <span style="color: #666666">2</span>],
@@ -222,7 +507,7 @@ Les variables <code>v</code> et <code>M</code> sont de type <code>ndarray</code>
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">10</span>]: <span style="color: #008000">type</span>(v), <span style="color: #008000">type</span>(M)
 Out[<span style="color: #666666">10</span>]: (numpy<span style="color: #666666">.</span>ndarray, numpy<span style="color: #666666">.</span>ndarray)
 </pre></div>
@@ -231,13 +516,13 @@ La diff&#233;rence entre les tableaux <code>v</code> et <code>M</code> n'est que
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">11</span>]: v<span style="color: #666666">.</span>shape
 Out[<span style="color: #666666">11</span>]: (<span style="color: #666666">4</span>,)
 </pre></div>
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">13</span>]: M<span style="color: #666666">.</span>shape
 Out[<span style="color: #666666">13</span>]: (<span style="color: #666666">2</span>, <span style="color: #666666">2</span>)
 </pre></div>
@@ -246,7 +531,7 @@ Le nombre d'&#233;l&#233;ments dans le tableau est disponible via la propri&#233
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">14</span>]: M<span style="color: #666666">.</span>size
 Out[<span style="color: #666666">14</span>]: <span style="color: #666666">4</span>
 </pre></div>
@@ -255,16 +540,16 @@ De mani&#232;re &#233;quivalente, nous pourrions utiliser la fonction <code>nump
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">15</span>]: np<span style="color: #666666">.</span>shape(M)
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">15</span>]: shape(M)
 Out[<span style="color: #666666">15</span>]: (<span style="color: #666666">2</span>, <span style="color: #666666">2</span>)
 </pre></div>
 <p>
 et
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">16</span>]: np<span style="color: #666666">.</span>size(M)
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>size(M)
 Out[<span style="color: #666666">16</span>]: <span style="color: #666666">4</span>
 </pre></div>
 <p>
@@ -303,9 +588,10 @@ Il existe plusieurs raisons pour ne pas utiliser que les listes:
 
 <p>
 En utilisant la propri&#233;t&#233; <code>dtype</code> (type de donn&#233;es) d'un <code>ndarray</code>, on peut connaitre le type des &#233;l&#233;ments d'un tableau ou d'une matrice:
+
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">17</span>]: M<span style="color: #666666">.</span>dtype
 Out[<span style="color: #666666">17</span>]: dtype(<span style="color: #BA2121">&#39;int64&#39;</span>)
 </pre></div>
@@ -314,11 +600,12 @@ Si nous le d&#233;sirons, nous pouvons d&#233;finir explicitement le type de don
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">18</span>]: M_Complex <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([[<span style="color: #666666">3</span>, <span style="color: #666666">1+2j</span>], [<span style="color: #666666">1+2j</span>, <span style="color: #666666">4</span>]], dtype<span style="color: #666666">=</span><span style="color: #008000">complex</span>)
-    <span style="color: #666666">...</span>: M_Complex
-Out[<span style="color: #666666">18</span>]: array([[<span style="color: #666666">3.+0.j</span>, <span style="color: #666666">1.+2.j</span>],
-                [<span style="color: #666666">1.+2.j</span>, <span style="color: #666666">4.+0.j</span>]])
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">18</span>]: M <span style="color: #666666">=</span> array([[<span style="color: #666666">1</span>, <span style="color: #666666">2</span>], [<span style="color: #666666">3</span>, <span style="color: #666666">4</span>]], dtype<span style="color: #666666">=</span><span style="color: #008000">complex</span>)
+    <span style="color: #666666">...</span>: M
+Out[<span style="color: #666666">18</span>]:
+array([[<span style="color: #666666">1.+0.j</span>, <span style="color: #666666">2.+0.j</span>],
+       [<span style="color: #666666">3.+0.j</span>, <span style="color: #666666">4.+0.j</span>]])
 </pre></div>
 <p>
 <div class="panel panel-primary">
@@ -332,7 +619,7 @@ Les types usuels qui peuvent &#234;tre utilis&#233;s avec <code>dtype</code> son
 </div>
 
 
-<h3 id="___sec3" class="anchor">Utilisation de fonctions g&#233;n&#233;ratrices de tableaux et de matrices </h3>
+<h3 id="___sec9" class="anchor">Utilisation de fonctions g&#233;n&#233;ratrices de tableaux et de matrices </h3>
 
 <p>
 Pour les tableaux de grandes tailles, il est inconcevable d'initialiser les donn&#233;es manuellement. Au lieu de cela, nous pouvons utiliser l'une des nombreuses fonctions dans <code>numpy</code> qui g&#233;n&#232;re des tableaux ou des matrices de diff&#233;rentes formes et tailles. Certains parmi les plus utilis&#233;s sont:
@@ -347,18 +634,19 @@ Pour les tableaux de grandes tailles, il est inconcevable d'initialiser les donn
 </ul>
 
 <b>Fonction <code>arange()</code> :</b>
-Cr&#233;ation d'un tableau &#224; l'aide de la fonction <code>arange()</code>
+
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">19</span>]: x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">0</span>, <span style="color: #666666">10</span>, <span style="color: #666666">1</span>) <span style="color: #408080; font-style: italic"># Arguments: start, stop, step</span>
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">19</span>]: <span style="color: #408080; font-style: italic"># Création d&#39;un tableau à l&#39;aide de la fonction arange()</span>
+    <span style="color: #666666">...</span>: x <span style="color: #666666">=</span> arange(<span style="color: #666666">0</span>, <span style="color: #666666">10</span>, <span style="color: #666666">1</span>) <span style="color: #408080; font-style: italic"># Arguments: start, stop, step</span>
     <span style="color: #666666">...</span>: x
 Out[<span style="color: #666666">19</span>]: array([<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>, <span style="color: #666666">7</span>, <span style="color: #666666">8</span>, <span style="color: #666666">9</span>])
 </pre></div>
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">23</span>]: x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">-2</span>, <span style="color: #666666">2</span>, <span style="color: #666666">0.1</span>)
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">23</span>]: x <span style="color: #666666">=</span> arange(<span style="color: #666666">-2</span>, <span style="color: #666666">2</span>, <span style="color: #666666">0.1</span>)
     <span style="color: #666666">...</span>: x
 Out[<span style="color: #666666">23</span>]:
 array([<span style="color: #666666">-2.00000000e+00</span>, <span style="color: #666666">-1.90000000e+00</span>, <span style="color: #666666">-1.80000000e+00</span>, <span style="color: #666666">-1.70000000e+00</span>,
@@ -374,11 +662,12 @@ array([<span style="color: #666666">-2.00000000e+00</span>, <span style="color: 
 </pre></div>
 <p>
 <b>Fonctions <code>linspace()</code> et <code>logspace()</code>:</b>
-En utilisant <code>linspace()</code>, les deux points finaux sont inclus
+
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">24</span>]: np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">10</span>, <span style="color: #666666">20</span>) <span style="color: #408080; font-style: italic"># linspace(star, stop, Nombre de points)</span>
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">24</span>]: <span style="color: #408080; font-style: italic"># En utilisant linspace, les deux points finaux sont inclus</span>
+    <span style="color: #666666">...</span>: linspace(<span style="color: #666666">0</span>, <span style="color: #666666">10</span>, <span style="color: #666666">20</span>) <span style="color: #408080; font-style: italic"># linspace(star, stop, Nombre de points)</span>
 Out[<span style="color: #666666">24</span>]:
 array([ <span style="color: #666666">0.</span>        ,  <span style="color: #666666">0.52631579</span>,  <span style="color: #666666">1.05263158</span>,  <span style="color: #666666">1.57894737</span>,  <span style="color: #666666">2.10526316</span>,
         <span style="color: #666666">2.63157895</span>,  <span style="color: #666666">3.15789474</span>,  <span style="color: #666666">3.68421053</span>,  <span style="color: #666666">4.21052632</span>,  <span style="color: #666666">4.73684211</span>,
@@ -387,8 +676,8 @@ array([ <span style="color: #666666">0.</span>        ,  <span style="color: #66
 </pre></div>
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">25</span>]: np<span style="color: #666666">.</span>logspace(<span style="color: #666666">0</span>, <span style="color: #666666">10</span>, <span style="color: #666666">10</span>, base<span style="color: #666666">=</span>e)
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">25</span>]: logspace(<span style="color: #666666">0</span>, <span style="color: #666666">10</span>, <span style="color: #666666">10</span>, base<span style="color: #666666">=</span>e)
 Out[<span style="color: #666666">25</span>]:
 array([<span style="color: #666666">1.00000000e+00</span>, <span style="color: #666666">3.03773178e+00</span>, <span style="color: #666666">9.22781435e+00</span>, <span style="color: #666666">2.80316249e+01</span>,
        <span style="color: #666666">8.51525577e+01</span>, <span style="color: #666666">2.58670631e+02</span>, <span style="color: #666666">7.85771994e+02</span>, <span style="color: #666666">2.38696456e+03</span>,
@@ -399,8 +688,8 @@ array([<span style="color: #666666">1.00000000e+00</span>, <span style="color: #
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">26</span>]: x, y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>mgrid[<span style="color: #666666">0</span>:<span style="color: #666666">5</span>, <span style="color: #666666">0</span>:<span style="color: #666666">5</span>] <span style="color: #408080; font-style: italic"># Similaire à meshgrid dans MATLAB</span>
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">26</span>]: x, y <span style="color: #666666">=</span> mgrid[<span style="color: #666666">0</span>:<span style="color: #666666">5</span>, <span style="color: #666666">0</span>:<span style="color: #666666">5</span>] <span style="color: #408080; font-style: italic"># Similaire à meshgrid dans MATLAB</span>
     <span style="color: #666666">...</span>: x
 Out[<span style="color: #666666">26</span>]:
 array([[<span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>],
@@ -419,8 +708,8 @@ array([[<span style="color: #666666">0</span>, <span style="color: #666666">1</s
 </pre></div>
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">31</span>]: x, y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>meshgrid(np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>,<span style="color: #666666">2</span>,<span style="color: #666666">6</span>),np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>,<span style="color: #666666">2</span>,<span style="color: #666666">6</span>))
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">31</span>]: x, y <span style="color: #666666">=</span> meshgrid(linspace(<span style="color: #666666">0</span>,<span style="color: #666666">2</span>,<span style="color: #666666">6</span>),linspace(<span style="color: #666666">0</span>,<span style="color: #666666">2</span>,<span style="color: #666666">6</span>))
     <span style="color: #666666">...</span>: x
 Out[<span style="color: #666666">31</span>]:
 array([[<span style="color: #666666">0.</span> , <span style="color: #666666">0.4</span>, <span style="color: #666666">0.8</span>, <span style="color: #666666">1.2</span>, <span style="color: #666666">1.6</span>, <span style="color: #666666">2.</span> ],
@@ -440,23 +729,46 @@ array([[<span style="color: #666666">0.</span> , <span style="color: #666666">0.
        [<span style="color: #666666">2.</span> , <span style="color: #666666">2.</span> , <span style="color: #666666">2.</span> , <span style="color: #666666">2.</span> , <span style="color: #666666">2.</span> , <span style="color: #666666">2.</span> ]])
 </pre></div>
 <p>
-<b>Fonction <code>diag()</code>:</b>
-Une matrice diagonale
+<b>Fonctions <code>rand()</code>, <code>randint()</code>:</b>
+
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">40</span>]: np<span style="color: #666666">.</span>diag([<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">3</span>])
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #BA2121; font-style: italic">&#39;&#39;&#39; Nombres aléatoires uniformes dans [0,1]</span>
+<span style="color: #BA2121; font-style: italic">dans une matrice (3,2)&#39;&#39;&#39;</span>
+In [<span style="color: #666666">37</span>]: rand(<span style="color: #666666">3</span>,<span style="color: #666666">2</span>)
+Out[<span style="color: #666666">37</span>]:
+array([[<span style="color: #666666">0.01900499</span>, <span style="color: #666666">0.10872428</span>],
+       [<span style="color: #666666">0.78849226</span>, <span style="color: #666666">0.22114384</span>],
+       [<span style="color: #666666">0.88739675</span>, <span style="color: #666666">0.94190273</span>]])
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;Générer un tableau 2 x 4 d&#39;entiers compris entre 0 et 4 inclus&#39;&#39;&#39;</span>
+In [<span style="color: #666666">39</span>]: randint(<span style="color: #666666">5</span>, size<span style="color: #666666">=</span>(<span style="color: #666666">2</span>, <span style="color: #666666">4</span>))
+Out[<span style="color: #666666">39</span>]:
+array([[<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">4</span>, <span style="color: #666666">4</span>],
+       [<span style="color: #666666">4</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">4</span>]])
+</pre></div>
+<p>
+<b>Fonction <code>diag()</code>:</b>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">40</span>]: <span style="color: #408080; font-style: italic"># Une matrice diagonale</span>
+    <span style="color: #666666">...</span>: diag([<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">3</span>])
 Out[<span style="color: #666666">40</span>]:
 array([[<span style="color: #666666">1</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>],
        [<span style="color: #666666">0</span>, <span style="color: #666666">2</span>, <span style="color: #666666">0</span>],
        [<span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">3</span>]])
 </pre></div>
 <p>
-Diagonale avec d&#233;calage de la diagonale principale
-<p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">41</span>]: np<span style="color: #666666">.</span>diag([<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">3</span>], k<span style="color: #666666">=3</span>)
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">41</span>]: <span style="color: #408080; font-style: italic"># Diagonale avec décalage de la diagonale principale</span>
+    <span style="color: #666666">...</span>: diag([<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">3</span>], k<span style="color: #666666">=3</span>)
 Out[<span style="color: #666666">41</span>]:
 array([[<span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>],
        [<span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">2</span>, <span style="color: #666666">0</span>],
@@ -470,8 +782,8 @@ array([[<span style="color: #666666">0</span>, <span style="color: #666666">0</s
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">42</span>]: np<span style="color: #666666">.</span>zeros((<span style="color: #666666">3</span>,<span style="color: #666666">3</span>))
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">42</span>]: zeros((<span style="color: #666666">3</span>,<span style="color: #666666">3</span>))
 Out[<span style="color: #666666">42</span>]:
 array([[<span style="color: #666666">0.</span>, <span style="color: #666666">0.</span>, <span style="color: #666666">0.</span>],
        [<span style="color: #666666">0.</span>, <span style="color: #666666">0.</span>, <span style="color: #666666">0.</span>],
@@ -479,17 +791,17 @@ array([[<span style="color: #666666">0.</span>, <span style="color: #666666">0.<
 </pre></div>
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">43</span>]: np<span style="color: #666666">.</span>ones((<span style="color: #666666">3</span>,<span style="color: #666666">3</span>))
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">43</span>]: ones((<span style="color: #666666">3</span>,<span style="color: #666666">3</span>))
 Out[<span style="color: #666666">43</span>]:
 array([[<span style="color: #666666">1.</span>, <span style="color: #666666">1.</span>, <span style="color: #666666">1.</span>],
        [<span style="color: #666666">1.</span>, <span style="color: #666666">1.</span>, <span style="color: #666666">1.</span>],
        [<span style="color: #666666">1.</span>, <span style="color: #666666">1.</span>, <span style="color: #666666">1.</span>]])
 </pre></div>
 
-<h2 id="___sec4" class="anchor">Lecture et &#233;criture de donn&#233;es </h2>
+<h2 id="___sec10" class="anchor">Lecture et &#233;criture de donn&#233;es </h2>
 
-<h3 id="___sec5" class="anchor">&#201;criture de donn&#233;es </h3>
+<h3 id="___sec11" class="anchor">&#201;criture de donn&#233;es </h3>
 
 <p>
 Le module <code>numpy</code> contient une fonction tr&#232;s pratique, <code>savetxt</code>, permettant d&#8217;enregistrer des donn&#233;es tabulaires. Les donn&#233;es doivent &#234;tre stock&#233;es dans un tableau numpy &#224; deux dimensions. La fonction <code>savetxt</code> permet de contr&#244;ler le format des nombres dans chaque colonne (<code>fmt</code>), un en-t&#234;te peut &#234;tre ajout&#233; (<code>header</code>) et les lignes d'en-t&#234;te commencent par un caract&#232;re de commentaire (<code>comment</code>).
@@ -539,14 +851,14 @@ Le fichier <em>cosinus.dat</em> est cr&#233;&#233; dans le r&#233;pertoire de tr
 </div>
 
 
-<h3 id="___sec6" class="anchor">Lecture de donn&#233;es </h3>
+<h3 id="___sec12" class="anchor">Lecture de donn&#233;es </h3>
 
 <p>
 Les donn&#233;es du fichier <em>cosinus.dat</em> peuvent &#234;tre lues dans un tableau <code>numpy</code> par la fonction <code>loadtxt</code> (vous pouvez utiliser la commande <code>help(loadtxt)</code> dans le notebook pour comprendre l'utilit&#233; des arguments entre les parenth&#232;se):
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">51</span>]: data <span style="color: #666666">=</span> np<span style="color: #666666">.</span>loadtxt(<span style="color: #BA2121">&#39;cosinus.dat&#39;</span>, comments<span style="color: #666666">=</span><span style="color: #BA2121">&#39;#&#39;</span>)
     <span style="color: #666666">...</span>: data
 Out[<span style="color: #666666">51</span>]:
@@ -595,19 +907,19 @@ plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&qu
 plt<span style="color: #666666">.</span>show()
 </pre></div>
 <p>
-La sortie de ce code est la Figure <a href="#figout:trig4">1</a>.
+La sortie de ce code est la Figure <a href="#figout:trig4">4</a>.
 
 <p>
 <center> <!-- figure label: --> <div id="figout:trig4"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  Sortie du code.  <!-- caption label: figout:trig4 --> </p></center>
+<center><p class="caption">Figure 4:  Sortie du code.  <!-- caption label: figout:trig4 --> </p></center>
 <p><img src="figs/fonct_trig4.png" align="bottom" width=500></p>
 </center>
 
 <p>
 <!-- !split -->
 
-<h1 id="___sec7" class="anchor">Biblioth&#232;que Python de visualisation des donn&#233;es: <code>matplotlib</code> </h1>
+<h1 id="___sec13" class="anchor">Biblioth&#232;que Python de visualisation des donn&#233;es: <code>matplotlib</code> </h1>
 <code>matplotlib</code> (<a href="http://matplotlib.org/" target="_self"><tt>http://matplotlib.org/</tt></a>) est une excellente biblioth&#232;que graphique 2D et 3D pour g&#233;n&#233;rer des graphiques scientifiques. Voici quelques-uns des nombreux avantages de cette biblioth&#232;que:
 
 <ul>
@@ -618,7 +930,7 @@ La sortie de ce code est la Figure <a href="#figout:trig4">1</a>.
 <li> GUI (Graphical User Interface) pour explorer interactivement les figures.</li>
 </ul>
 
-<h2 id="___sec8" class="anchor">Documentation en ligne et Galerie </h2>
+<h2 id="___sec14" class="anchor">Documentation en ligne et Galerie </h2>
 Vous trouverez plus d'informations, y compris une documentation compl&#232;te avec une vaste galerie d'exemples, sur le site de <code>mtplotlib</code>.
 
 <p>
@@ -629,7 +941,7 @@ De nombreux utilisateurs de <code>matplotlib</code> sont souvent confront&#233;s
 
  Je souhaite bonne chance &#224; ceux qui d&#233;sirent obtenir rapidement une r&#233;ponse, m&#234;me avec l'aide de <b>google</b>!. C'est pourquoi la <b>galerie de matplotlib</b> (<a href="http://matplotlib.org/gallery.html" target="_self"><tt>http://matplotlib.org/gallery.html</tt></a>) est si utile, car elle montre la vari&#233;t&#233; des possibilit&#233;s. Ainsi, vous pouvez parcourir la galerie, cliquer sur n'importe quel graphique qui comporte les &#233;l&#233;ments que vous voulez reproduire et afficher le code qui a servi &#224; le g&#233;n&#233;rer. Vous deviendrez rapidement autonome, vous allez m&#233;langer et assortir diff&#233;rents composants pour produire votre propre chef-d&#8217;&#339;uvre!
 
-<h3 id="___sec9" class="anchor">Guide de D&#233;marrage </h3>
+<h3 id="___sec15" class="anchor">Guide de D&#233;marrage </h3>
 
 L'exemple ci-dessous montre comment, de mani&#232;re tr&#232;s simple, repr&#233;senter graphiquement la fonction \( f(x) = y = x \).
 <p>
@@ -656,7 +968,7 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <center> <!-- figure label: --> <div id="fig:BasicPlot1"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 2:  Fen&#234;tre de tra&#231;age de matplotlib.  <!-- caption label: fig:BasicPlot1 --> </p></center>
+<center><p class="caption">Figure 5:  Fen&#234;tre de tra&#231;age de matplotlib.  <!-- caption label: fig:BasicPlot1 --> </p></center>
 <p><img src="imgs/BasicPlot1.png" align="bottom" width=500></p>
 </center>
 
@@ -667,7 +979,7 @@ Vous pouvez avoir plusieurs figures ind&#233;pendantes et les graphiques peuvent
 <p>
 La plupart des trac&#233;s ont lieu sur des <code>Axes</code>. C&#8217;est effectivement la zone sur laquelle nous tra&#231;ons les donn&#233;es et les graduations/labels/etc. qui leur sont associ&#233;s. Habituellement, nous configurons un <code>Axes</code> avec un appel &#224; <code>Subplot</code> (qui place les <code>Axes</code> sur une grille r&#233;guli&#232;re). Par cons&#233;quent, dans la plupart des cas, <code>Axes</code> et <code>Subplot</code> sont synonymes (figure). Chaque <code>Axes</code> ou <code>Subplot</code> a un axe X et un axe Y. Ceux-ci contiennent les graduations, les emplacements de graduations, etc.
 
-<h3 id="___sec10" class="anchor">Vues en grille </h3>
+<h3 id="___sec16" class="anchor">Vues en grille </h3>
 
 Nous avons d&#233;j&#224; mentionn&#233; qu&#8217;une figure peut avoir plus d&#8217;un axe. Si vous voulez que vos axes soient sur un syst&#232;me de grille standard, il est alors plus simple d'utiliser <code>plt.subplot(...)</code> pour cr&#233;er un graphique et y ajouter les axes automatiquement.
 <p>
@@ -692,18 +1004,18 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <center> <!-- figure label: --> <div id="fig:subplot1"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 3:  Vue en grille, figure(1).  <!-- caption label: fig:subplot1 --> </p></center>
+<center><p class="caption">Figure 6:  Vue en grille, figure(1).  <!-- caption label: fig:subplot1 --> </p></center>
 <p><img src="imgs/subplot1.png" align="bottom" width=500></p>
 </center>
 
 <p>
 <center> <!-- figure label: --> <div id="fig:subplot2"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 4:  Graphique unique, figure(2).  <!-- caption label: fig:subplot2 --> </p></center>
+<center><p class="caption">Figure 7:  Graphique unique, figure(2).  <!-- caption label: fig:subplot2 --> </p></center>
 <p><img src="imgs/subplot2.png" align="bottom" width=500></p>
 </center>
 
-<h3 id="___sec11" class="anchor">Commandes de texte de base </h3>
+<h3 id="___sec17" class="anchor">Commandes de texte de base </h3>
 
 Les commandes suivantes permettent de cr&#233;er du texte dans l'interface <code>pyplot</code>:
 
@@ -759,11 +1071,11 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <center> <!-- figure label: --> <div id="fig:BasicText"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 5:  Texte de base.  <!-- caption label: fig:BasicText --> </p></center>
+<center><p class="caption">Figure 8:  Texte de base.  <!-- caption label: fig:BasicText --> </p></center>
 <p><img src="imgs/BasicText.png" align="bottom" width=500></p>
 </center>
 
-<h3 id="___sec12" class="anchor">Styles de lignes et de marqueurs </h3>
+<h3 id="___sec18" class="anchor">Styles de lignes et de marqueurs </h3>
 
 Pour changer la largeur de ligne, nous pouvons utiliser l'argument de mot-cl&#233; <code>linewidth</code> ou <code>lw</code>, et le style de ligne peut &#234;tre s&#233;lectionn&#233; &#224; l'aide des arguments de mot-cl&#233; <code>linestyle</code> ou <code>ls</code>:
 
@@ -812,11 +1124,11 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <center> <!-- figure label: --> <div id="fig:LineandMarkerStyles"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 6:  Styles de lignes et de marqueurs.  <!-- caption label: fig:LineandMarkerStyles --> </p></center>
+<center><p class="caption">Figure 9:  Styles de lignes et de marqueurs.  <!-- caption label: fig:LineandMarkerStyles --> </p></center>
 <p><img src="imgs/LineandMarkerStyles.png" align="bottom" width=500></p>
 </center>
 
-<h3 id="___sec13" class="anchor">Colormap: Trac&#233;s contour, Imshow et 3D </h3>
+<h3 id="___sec19" class="anchor">Colormap: Trac&#233;s contour, Imshow et 3D </h3>
 
 <p>
 Voir la documentation de matplotlib colormaps <a href="http://matplotlib.org/users/colormaps.html" target="_self"><tt>http://matplotlib.org/users/colormaps.html</tt></a>.
@@ -853,7 +1165,7 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <center> <!-- figure label: --> <div id="fig:ContourPlot"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 7:  Exemple de trac&#233; de contour.  <!-- caption label: fig:ContourPlot --> </p></center>
+<center><p class="caption">Figure 10:  Exemple de trac&#233; de contour.  <!-- caption label: fig:ContourPlot --> </p></center>
 <p><img src="imgs/ContourPlot.png" align="bottom" width=500></p>
 </center>
 
@@ -888,7 +1200,7 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <center> <!-- figure label: --> <div id="fig:CImshow"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 8:  Exemple d'image pixelis&#233;e.  <!-- caption label: fig:CImshow --> </p></center>
+<center><p class="caption">Figure 11:  Exemple d'image pixelis&#233;e.  <!-- caption label: fig:CImshow --> </p></center>
 <p><img src="imgs/Imshow.png" align="bottom" width=500></p>
 </center>
 
@@ -921,8 +1233,112 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <center> <!-- figure label: --> <div id="fig:3D"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 9:  Exemple de trac&#233; en 3D.  <!-- caption label: fig:3D --> </p></center>
+<center><p class="caption">Figure 12:  Exemple de trac&#233; en 3D.  <!-- caption label: fig:3D --> </p></center>
 <p><img src="imgs/Plot3D.png" align="bottom" width=500></p>
+</center>
+
+<p>
+<!-- !split -->
+
+<h1 id="___sec20" class="anchor">Biblioth&#232;que scientifique python: <code>scipy</code> </h1>
+<code>scipy</code> (<a href="https://www.scipy.org/" target="_self"><tt>https://www.scipy.org/</tt></a>"): <code>scipy</code> peut &#234;tre consid&#233;r&#233; comme une extension de <code>numpy</code> avec un grand nombre de modules optimis&#233;s pour des calculs scientifiques sp&#233;cifiques. <code>scipy</code> est la plate-forme la plus importante de Python pour le calcul scientifique. La communaut&#233; de <code>scipy</code> est un groupe bien &#233;tabli et en pleine croissance de scientifiques, d&#8217;ing&#233;nieurs et de chercheurs qui utilisent, d&#233;veloppent et promeuvent l&#8217;utilisation de Python pour le calcul scientifique, la recherche et l&#8217;&#233;ducation.
+
+<h2 id="___sec21" class="anchor">Fonctions sp&#233;ciales </h2>
+Un grand nombre de fonctions math&#233;matiques sp&#233;ciales sont importantes pour de nombreux probl&#232;mes de physique informatique. SciPy fournit des impl&#233;mentations d'un ensemble tr&#232;s complet de fonctions sp&#233;ciales. Pour plus de d&#233;tails, voir la liste des fonctions dans la documentation de r&#233;f&#233;rence &#224; <a href="http://docs.scipy.org/doc/scipy/reference/special.html#module-scipy.special" target="_self"><tt>http://docs.scipy.org/doc/scipy/reference/special.html#module-scipy.special</tt></a>.
+
+<h3 id="___sec22" class="anchor">Fonctions de Bessel </h3>
+
+<p>
+Le module <code>scipy.special</code> inclut un grand nombre de fonctions de Bessel. Ici, nous allons utiliser les fonctions <code>jn</code> et <code>yn</code>, qui sont les fonctions de Bessel des premier et deuxi&#232;me ordres de type et de valeurs r&#233;elles. Nous incluons &#233;galement la fonction <code>jn_zeros</code> et <code>yn_zeros</code> qui donne les z&#233;ros des fonctions <code>jn</code> et <code>yn</code>.
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># -*- coding: utf-8 -*-</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scipy.special</span> <span style="color: #008000; font-weight: bold">import</span> jn, yn, jn_zeros, yn_zeros
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+
+n <span style="color: #666666">=</span> <span style="color: #666666">0</span>    <span style="color: #408080; font-style: italic"># order</span>
+x <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+
+<span style="color: #408080; font-style: italic"># Bessel function of first kind</span>
+<span style="color: #008000; font-weight: bold">print</span> (<span style="color: #BA2121">&quot;J_</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">(</span><span style="color: #BB6688; font-weight: bold">%f</span><span style="color: #BA2121">) = </span><span style="color: #BB6688; font-weight: bold">%f</span><span style="color: #BA2121">&quot;</span> <span style="color: #666666">%</span> (n, x, jn(n, x)))
+
+x <span style="color: #666666">=</span> <span style="color: #666666">1.0</span>
+<span style="color: #408080; font-style: italic"># Bessel function of second kind</span>
+<span style="color: #008000; font-weight: bold">print</span> (<span style="color: #BA2121">&quot;Y_</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">(</span><span style="color: #BB6688; font-weight: bold">%f</span><span style="color: #BA2121">) = </span><span style="color: #BB6688; font-weight: bold">%f</span><span style="color: #BA2121">&quot;</span> <span style="color: #666666">%</span> (n, x, yn(n, x)))
+
+<span style="color: #408080; font-style: italic"># zeros of Bessel functions</span>
+n <span style="color: #666666">=</span> <span style="color: #666666">0</span> <span style="color: #408080; font-style: italic"># order</span>
+m <span style="color: #666666">=</span> <span style="color: #666666">4</span> <span style="color: #408080; font-style: italic"># number of roots to compute</span>
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;zeros of Bessel functions are: &quot;</span>, jn_zeros(n, m))
+
+<span style="color: #408080; font-style: italic"># Plot Bessel fonctions</span>
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">10</span>, <span style="color: #666666">50</span>)
+
+markers<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;o&#39;</span>, <span style="color: #BA2121">&#39;s&#39;</span>, <span style="color: #BA2121">&#39;*&#39;</span>, <span style="color: #BA2121">&#39;+&#39;</span>]
+lines<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;-&#39;</span>, <span style="color: #BA2121">&#39;--&#39;</span>, <span style="color: #BA2121">&#39;-.&#39;</span>, <span style="color: #BA2121">&#39;:&#39;</span>]
+
+fig, ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>subplots()
+<span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">4</span>):
+    ax<span style="color: #666666">.</span>plot(x, jn(n, x),ls<span style="color: #666666">=</span><span style="color: #008000">str</span>(lines[n]),marker<span style="color: #666666">=</span><span style="color: #008000">str</span>(markers[n]), label<span style="color: #666666">=</span><span style="color: #BA2121">r&quot;$J_</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">(x)$&quot;</span> <span style="color: #666666">%</span> n)
+ax<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+Ce code retournera:
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>J_0(0.000000) = 1.000000
+Y_0(1.000000) = 0.088257
+zeros of Bessel functions are:  [  2.40482556   5.52007811   8.65372791  11.79153444]
+</pre></div>
+<p>
+et le trac&#233;:
+
+<p>
+<center> <!-- figure label: --> <div id="fig:Bessel"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 13:  Fonctions de Bessel.  <!-- caption label: fig:Bessel --> </p></center>
+<p><img src="imgs/Bessel.png" align="bottom" width=500></p>
+</center>
+
+<h3 id="___sec23" class="anchor">Int&#233;grales de Fresnel </h3>
+
+<p>
+La fonction <code>scipy.special.fresnel</code> renvoie les deux fonctions de Fresnel mais dans l'ordre (FS, FC), o&#249; FS repr&#233;sente l'int&#233;grale de sinus de Fresnel et FC, l'int&#233;grale de cosinus de Fresnel. Vous devriez faire attention &#224; ce que vos trac&#233;s correspondent &#224; la spirale de Cornu.
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># -*- coding: utf-8 -*-</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scipy.special</span> <span style="color: #008000; font-weight: bold">import</span> fresnel
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scipy</span> <span style="color: #008000; font-weight: bold">import</span> linspace
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+t <span style="color: #666666">=</span> linspace(<span style="color: #666666">-10</span>, <span style="color: #666666">10</span>, <span style="color: #666666">1000</span>)
+FS, FC <span style="color: #666666">=</span> fresnel(t)
+fig1<span style="color: #666666">=</span>plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">10</span>,<span style="color: #666666">5</span>))
+ax1<span style="color: #666666">=</span>plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">1</span>)
+ax1<span style="color: #666666">.</span>plot(FC, FS, linewidth<span style="color: #666666">=2</span>)
+ax1<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&quot;C(t)&quot;</span>, fontsize<span style="color: #666666">=14</span>, weight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
+ax1<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&quot;S(t)&quot;</span>, fontsize<span style="color: #666666">=14</span>, weight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
+ax1<span style="color: #666666">.</span>set_title(<span style="color: #BA2121">&quot;Cornu spiral&quot;</span>, fontsize<span style="color: #666666">=16</span>, weight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
+
+ax2<span style="color: #666666">=</span>plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">2</span>) 
+ax2<span style="color: #666666">.</span>plot(t, FS, ls<span style="color: #666666">=</span><span style="color: #BA2121">&#39;--&#39;</span>,linewidth<span style="color: #666666">=2</span>,label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;S(t)&quot;</span>, alpha<span style="color: #666666">=.8</span>)
+ax2<span style="color: #666666">.</span>plot(t, FC,ls<span style="color: #666666">=</span><span style="color: #BA2121">&#39;-&#39;</span>,linewidth<span style="color: #666666">=2</span>,label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;C(t)&quot;</span>, alpha<span style="color: #666666">=.8</span>)
+ax2<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&quot;t&quot;</span>, fontsize<span style="color: #666666">=14</span>, weight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
+ax2<span style="color: #666666">.</span>set_title(<span style="color: #BA2121">&quot;Fresnel integrals&quot;</span>, fontsize<span style="color: #666666">=16</span>, weight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+<center> <!-- figure label: --> <div id="fig:Fresnel"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 14:  Int&#233;grales de Fresnel.  <!-- caption label: fig:Fresnel --> </p></center>
+<p><img src="imgs/Fresnel.png" align="bottom" width=500></p>
 </center>
 
 <!-- ------------------- end of main content --------------- -->

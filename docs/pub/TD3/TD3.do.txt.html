@@ -1,0 +1,596 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #228B22"># TITLE: TP 3: Introduction à matplotlib et numpy</span>
+<span style="color: #228B22"># AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Université de Tunis El Manar.</span>
+<span style="color: #228B22"># DATE: Mercredi, 5 décembre 2018</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># TOC: on</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Tracer une fonction =====</span>
+Ecrivez un programme qui trace la fonction $g(y) = e^{-y} sin(4y)$ pour $y \in [0, 4]$ en utilisant une ligne continue rouge. Utilisez 500 intervalles pour évaluer les points dans [0,4]. Stockez toutes les coordonnées et les valeurs dans des tableaux. Placez le texte des graduations sur les axes et utilisez le titre &quot;Onde sinusoïdale atténuée&quot;.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La programme qui trace la fonction $g(y)$ est:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># Importer tout de matplotlib et numpy</span>
+from pylab import *
+
+def g(y):
+    return exp(-y)*sin(4*y)
+
+y = np.linspace(0, 4, 501)
+<span style="color: #228B22"># définir un nouveau graphique</span>
+plt.figure()
+<span style="color: #228B22"># tracer la fonction g(y) avec ligne solide rouge</span>
+plt.plot(y, g(y), &#39;r-&#39;)
+plt.xlabel(&#39;y&#39;); plt.ylabel(&#39;g(y)&#39;)
+plt.title(&#39;Onde sinusoïdale atténuée&#39;)
+ # sauvgarder le grahique (format PNG et PDF)
+plt.savefig(&quot;fig_ex1.png&quot;); plt.savefig(&quot;fig_ex1.pdf&quot;)
+<span style="color: #228B22"># Afficher le graphique</span>
+plt.show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #000080; font-weight: bold">===== Exercise: Tracer deux fonctions =====</span>
+Comme Exercice 1, mais ajouter une courbe en pointillé noir pour la fonction $h(y) = e^{-\frac{3}{2}y} sin(4y)$. Inclure une légende pour chaque courbe (avec les noms $g$ et $h$).
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La programme qui trace la fonction $g(y)$ avec une nouvelle fonction $h(y)$ est:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># Importer tout de matplotlib et numpy</span>
+from pylab import *
+
+def g(y):
+    return exp(-y)*sin(4*y)
+
+def h(y):
+    return exp(-(3./2)*y)*sin(4*y)
+
+y = np.linspace(0, 4, 501)
+plt.figure()
+plt.plot(y, g(y), &#39;r-&#39;, y, h(y), &#39;k--&#39;)
+plt.xlabel(&#39;y&#39;); plt.ylabel(&#39;g(y)&#39;)
+plt.title(&#39;Onde sinusoïdale atténuée&#39;)
+plt.legend([&#39;g&#39;, &#39;h&#39;])
+
+plt.savefig(&quot;fig_ex2.png&quot;); plt.savefig(&quot;fig_ex2.pdf&quot;)
+plt.show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #000080; font-weight: bold">===== Exercise: Racines d’une équation du second degré =====</span>
+Dans l&#39;&quot;application de l&#39;exercice 4 dans le TP3, nous avons montré la représentation graphique d&#39;une équation du second degré $f(x)=0.83x^2+3.8x+2.48$ ainsi que ses racines réelles:
+
+<span style="color: #658b00">FIGURE:[figs/equation2deg, width=500 frac=0.7]</span>
+Reproduire ce graphique en utilisant la fonction `EqSecondDegree(a,b,c)` du script Python `racines.py` pour déterminer les valeurs des racines x1 et x2 de l’équation $f(x)$.
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le programme qui reproduit la figure en utilisant la fonction `EqSecondDegree()`:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+
+from pylab import *
+from racines import EqSecondDegree
+<span style="color: #228B22"># NOTE: le module racines est le fichier racines.py</span>
+<span style="color: #228B22"># qu&#39;on doit placer dans le répertoire de travail.</span>
+
+def f(x):
+    return 0.83 * x**2 + 3.8 * x + 2.48
+x = linspace(-6, 1, 200)
+y = f(x)
+x1, x2 = EqSecondDegree(0.83, 3.8, 2.48)
+
+figure(figsize=(7, 5), dpi=80)
+plot(x, y, color=&quot;blue&quot;, linewidth=3, linestyle=&quot;-&quot;, alpha=.8)
+scatter([x1,x2], [f(x1), f(x2)], 80, color=&#39;red&#39;)
+
+annotate(&#39;x1= {:.2f}&#39;.format(x1),
+             xy=(x1, f(x1)), xycoords=&#39;data&#39;,
+             xytext=(+10, +30), textcoords=&#39;offset points&#39;, fontsize=16,
+             arrowprops=dict(arrowstyle=&quot;-&gt;&quot;, connectionstyle=&quot;arc3,rad=.2&quot;))
+annotate(&#39;x2= {:.2f}&#39;.format(x2),
+             xy=(x2, f(x2)), xycoords=&#39;data&#39;,
+             xytext=(+40, +30), textcoords=&#39;offset points&#39;, fontsize=16,
+             arrowprops=dict(arrowstyle=&quot;-&gt;&quot;, connectionstyle=&quot;arc3,rad=.2&quot;))
+
+suptitle(&quot;Racines d’une équation du second degré&quot;, fontweight= &#39;bold&#39;)
+title(r&quot;$f(x) = 0.83 * x^2 + 3.8 * x + 2.48$&quot;,fontsize=14, color = &#39;b&#39;)
+
+plt.grid()
+
+plt.savefig(&quot;equation2deg.png&quot;); plt.savefig(&quot;equation2deg.pdf&quot;)
+plt.show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #000080; font-weight: bold">===== Exercise: Loi de Snell-Descartes pour la réfraction =====</span>
+
+La loi de Snell-Descartes stipule que le rapport sinus de l&#39;angle d&#39;incidence sur le sinus de l&#39;angle de réfraction est équivalent au rapport de la vitesse de phase dans le premier milieu à la vitesse de phase dans le deuxième milieu, ou équivalent à l&#39;inverse du rapport des indices de réfraction.
+
+$$\dfrac{\sin\theta_1}{\sin\theta_2} = \dfrac{v_1}{v_2} = \dfrac{n_2}{n_1}$$
+
+Où $\theta_1$ est l&#39;angle d&#39;incidence dans le premier milieu, $\theta_2$ est l&#39;angle de réfraction dans le deuxième milieu, tous les angles mesurés à partir de la normale de la frontière (dioptre), $v_1$ et $v_2$ sont respectivement les vitesses dans les deux milieux, et $n_1$ et $n_2$ sont les indices de réfraction du premier et du deuxième milieux, respectivement.
+
+<span style="color: #658b00">FIGURE:[figs/Refraction_fr, width=500 frac=0.7]</span>
+
+_Objectif:_
+
+Ecrire un programme Python pour tracer angle de réfraction en fonction de l&#39;angle d&#39;incidence.
+
+_Algorithme:_
+ * Afficher: `&quot;Loi de Snell-Descartes pour la réfraction.&quot;`
+ * Demender un nombre réel n1: `&quot;Entrez l&#39;indice de réfraction du premier milieu: &quot;`
+ * Demender un nombre réel n2: `&quot;Entrez l&#39;indice de réfraction du deuxième milieu: &quot;`
+ * choix = &#39;o&#39; et compteur k = 0
+ * Tant que choix == &#39;o&#39;:
+   * Stoker dans une liste theta1 un nombre réel `theta1[k]`: `&quot;Entrez l&#39;angle d&#39;incidence en degrés: &quot;`
+   * Condition: `si (n1*sin(theta1[k]))/n2 &lt; -1 ou n1 * (n1*sin(theta1[k]))/n2 &gt; 1`:
+     * Afficher: `&quot;Il y aura une réflexion totale pour l&#39;angle d&#39;incidence donné. Essayez d&#39;autres valeurs.&quot;`
+     * Stoker dans une liste theta1 un nombre réel `theta1[k]`: `&quot;Entrez l&#39;angle d&#39;incidence en degrés: &quot;`
+   * Stoker dans la liste la valeur `theta2[k]`: `arcsin(n1*sin(theta1[k])/n2`
+   * Afficher: `&quot;L&#39;angle d&#39;incidence est de theta1[k] degrés et l&#39;angle de réfraction de theta2[k] degrés.&quot;`
+   * Entrer une nouvelle valeur de choix: `&quot;Voulez-vous entrer plus de valeurs (o / n)?: &quot;`
+   * k+=1
+ * si choix == &#39;n&#39;:
+   * Tracer le graphique de theta2 en fonction de theta1 (exemple pour 3 valeurs de theta1):
+<span style="color: #658b00">FIGURE:[figs/snell, width=500 frac=0.7]</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le code Python qui traduit l&#39;algorithme précédent est:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from pylab import *
+
+print(&quot;Loi de Snell-Descartes pour la réfraction.&quot;)
+n1 = float(input(&quot;Entrez l&#39;indice de réfraction du premier milieu: &quot;))
+n2 = float(input(&quot;Entrez l&#39;indice de réfraction du deuxième milieu: &quot;))
+choix = &quot;o&quot;
+k = 0
+theta1, theta2 = [],[]
+while choix == &quot;o&quot;:
+    theta1.append(float(input(&quot;Entrez l&#39;angle d&#39;incidence en degrés: &quot;)))
+    if (n1*sin(deg2rad(theta1[k])))/n2 &lt; -1 or n1 * (n1*sin(deg2rad(theta1[k])))/n2 &gt; 1:
+        print(&quot;Il y aura une réflexion totale pour l&#39;angle d&#39;incidence donné. Essayez d&#39;autres valeurs.&quot;)
+        theta1.append(float(input(&quot;Entrez l&#39;angle d&#39;incidence en degrés: &quot;)))
+    theta2.append(rad2deg(arcsin(n1*sin(deg2rad(theta1[k]))/n2)))
+    print(&quot;L&#39;angle d&#39;incidence est de {:.2f} degrés et l&#39;angle de réfraction de {:.2f} degrés.&quot;.format(theta1[k], theta2[k]))
+    choix = input(&quot;Voulez-vous entrer plus de valeurs (o / n)?: &quot;)
+    while (choix!=&#39;o&#39;) and (choix!=&#39;n&#39;):
+        print(&quot;Entrée invalide. Tapez o ou n. &quot;)
+        choix = input(&quot;Voulez-vous entrer plus de valeurs (o / n)?: &quot;)
+
+    k +=1
+
+if choix == &quot;n&quot;:
+    scatter(theta1, theta2)
+    suptitle(&quot;Loi de Snell-Descartes&quot;, fontweight=&#39;bold&#39;)
+    title(&quot;Angle de réfraction en fonction de l&#39;angle d&#39;incidence&quot;)
+    xlabel(&quot;Angle d&#39;incidence&quot; + r&quot; $\theta_1$&quot;)
+    ylabel(&quot;Angle de réfraction&quot; + r&quot; $\theta_2$&quot;)
+    savefig(&quot;snell.png&quot;)
+    show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Diffraction par une ouverture rectangulaire =====</span>
+<span style="color: #658b00">FIGURE:[figs/Diffr_ouv_rectangle, width=500 frac=0.7]</span>
+
+Une ouverture rectangulaire de côtés a et b correspond à une transmission $t(X, Y)$ définie par :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+\[ \left\{
+<span style="color: #658b00">\begin{array}</span>{ll}
+t(X,Y) = 1 &amp; si \ |X|&lt;a/2 \ et \ |Y|&lt;b/2 \\
+t(X,Y) = 0 &amp; sinon
+<span style="color: #658b00">\end{array}</span>
+\right. \]
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Le calcul de l&#39;intensité diffractée par une telle ouverture, c’est-à-dire du carré du module de l&#39;amplitude E(M), donne :
+$$I(x,y)=|E(x,y)|^2=I_0 \  \mathrm{sinc}^2\left(\frac{\pi xa}{\lambda f_2}\right) \mathrm{sinc}^2\left(\frac{\pi yb}{\lambda f_2}\right)$$
+
+<span style="color: #658b00">FIGURE:[figs/figDiff, width=500 frac=0.7]</span>
+
+les dimensions de la tache centrale sont :
+ * $\Delta x = 2 \lambda f_2/a $
+ * $\Delta y = 2 \lambda f_2/b $
+
+_Le programme Python:_
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Écrire une fonction `Intensity(X, Y, a = 0.2 * 1.E-3, b = 0.2 * 1.E-3, lambda_ = 630 * 1.E-9, f2 = 10)` qui affiche les dimensions de la tache centrale ($\Delta x$ et $\Delta y$) et retourne la valeur de $I(X,Y)$. Avec:
+* `X` et `Y` sont respectivement l&#39;abscisse et l&#39;ordonnée à l&#39;écran.
+* `a` la largeur de la fente (par défaut = 0.2 mm)
+* `b` la hauteur de la fente (par défaut = 0.2 mm)
+* `lambda_` la longueur d&#39;onde de la lumière incidente (par défaut = 630 nm)
+* `f2` la distance fente - écran (par défaut = 10 m)
+
+On considère que $I_0 = 1$ par convention.
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+la fonction `Intensity()` s&#39;écrit:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from pylab import *
+
+def Intensity(X, Y, a = 0.2 * 1.E-3, b = 0.2 * 1.E-3, lambda_ = 630 * 1.E-9, f2 = 10):
+    # les dimensions de la tache centrale
+    Dx = 1.E2 * (2 * lambda_ * f2) / a
+    print(&quot;La largeur du maximum central le long (Ox) = {:.3f} cm&quot;.format(Dx))
+    Dy = 1.E2 * (2 * lambda_ * f2) / b
+    print(&quot;La largeur du maximum central le long (Oy) = {:.3f} cm&quot;.format(Dy))
+    # Variables intermidières
+    A = (pi * X * a)/(lambda_ * f2)
+    B = (pi * Y * b)/(lambda_ * f2)
+    return (sin(A)/A)**2 * (sin(B)/B)**2
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Créez le graphique de diffraction suivant (à l&#39;aide de la fonction &quot;`imshow()`&quot;: &quot;https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#image-pixelis%C3%A9e&quot;) pour un écran de 30/30 cm:
+<span style="color: #658b00">FIGURE:[figs/diff2D, width=500 frac=0.7]</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La représentation graphique de la figure de diffraction en 2D:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># coordonnées de l&#39;écran</span>
+X, Y = meshgrid(linspace(-15*1e-2, 15*1e-2, 400), linspace(-15*1e-2, 15*1e-2, 400))
+<span style="color: #228B22"># Intensité</span>
+I = Intensity(X, Y)
+<span style="color: #228B22"># Figure de diffraction</span>
+fig, ax = plt.subplots(figsize=(8,8))
+im = imshow(I, cmap=&#39;gray&#39;, interpolation=&#39;bilinear&#39;,
+                origin=&#39;lower&#39;,  vmin= 0, vmax = 0.005)
+cb = fig.colorbar(im, label=&quot;I(X,Y) - ua&quot;, shrink=0.8)
+title(&#39;Diffraction par une ouverture rectangulaire&#39;, fontweight=&#39;bold&#39;)
+
+xlabel(&#39;X (cm)&#39;, fontsize=12, fontweight=&#39;bold&#39;)
+ylabel(&#39;Y (cm)&#39;, fontsize=12, fontweight=&#39;bold&#39;)
+xticks(linspace(0, 400, 7))
+ax.set_xticklabels(linspace(-15, 15, 7),  color=&#39;r&#39;)
+yticks(linspace(0, 400, 7))
+ax.set_yticklabels(linspace(-15, 15, 7),  color=&#39;r&#39;)
+
+savefig(&quot;diff2D.png&quot;); savefig(&quot;diff2D.pdf&quot;)
+show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Créez le graphique 3D de diffraction suivant (voir la partie &quot;tracé de surfaces&quot;: &quot;https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#trac%C3%A9-de-surfaces&quot; du cours):
+<span style="color: #658b00">FIGURE:[figs/diff3D, width=500 frac=0.7]</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La représentation graphique de la figure de diffraction en 3D:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># coordonnées de l&#39;écran</span>
+X, Y = meshgrid(linspace(-15*1e-2, 15*1e-2, 400), linspace(-15*1e-2, 15*1e-2, 400))
+<span style="color: #228B22"># Intensité</span>
+I = Intensity(X, Y)
+
+<span style="color: #228B22"># Figure de diffraction</span>
+fig = plt.figure(figsize=(8,8))
+ax = plt.axes(projection=&#39;3d&#39;)
+<span style="color: #228B22"># plot surface</span>
+p = ax.plot_surface(X, Y, I, rstride=4, cstride=4, cmap=&#39;coolwarm&#39;,
+                    linewidth=0, antialiased=False)
+cb = fig.colorbar(p, label=&quot;I(X,Y) - ua&quot;, shrink=0.5)
+
+xlabel(&#39;X (m)&#39;, fontsize=12, fontweight=&#39;bold&#39;)
+ylabel(&#39;Y (m)&#39;, fontsize=12, fontweight=&#39;bold&#39;)
+title(&#39;Diffraction par une ouverture rectangulaire&#39;, fontweight=&#39;bold&#39;)
+
+savefig(&quot;diff3D.png&quot;); savefig(&quot;diff3D.pdf&quot;)
+plt.show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Tracer un graphique à partir d&#39;un fichier (données satellitaires) =====</span>
+
+Les mesures de flux de rayons X du satellite GOES (&quot;Geostationary Operational Environmental Satellite&quot;: &quot;https://fr.wikipedia.org/wiki/Geostationary_Operational_Environmental_Satellite&quot;) ont été effectuées depuis 1974. Le graphique à rayons X GOES (flux de 1 à 8 angströms) faisant l’objet de cet exercice peut suivre l’activité solaire et les éruptions solaires. De grandes éruptions de rayons X solaires peuvent modifier l&#39;ionosphère terrestre et bloquer les transmissions radio haute fréquence (HF) du côté de la Terre éclairé par le soleil.
+
+<span style="color: #658b00">FIGURE:[figs/goes_sat.jpeg, width=500 frac=0.7]</span>
+
+SWPC (&quot;Space Weather Prediction Center&quot;: &quot;https://www.swpc.noaa.gov/products/goes-x-ray-flux&quot;) a utilisé ces données pour produire les ensembles et tracés de données de rayons X moyennés sur 1 minute et 5 minutes.
+
+
+Le but de cet exercice est de tracer 24 heures, pour un intervalle de mesure d&#39;une minute, des données solaires aux rayons X enregistrées par le satellite GOES. Dans le répertoire courant (répertoire de ce notebook Jupyter), nous avons un dossier `data_GOES` contenant 12 fichiers dont le nom est formaté comme suit `YYYYMMDD_Gp_xr_1m.txt` avec:
+
+* _YYYY_ est l&#39;année de l&#39;enregistrement des données
+* _MM_ estle mois de l&#39;enregistrement des données
+* _DD_ est le jour de l&#39;enregistrement des données
+* _Gp_ est la générartion du satellite GOES (GOES-15)
+* _1m_ résolution de l&#39;enregistrement des données
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod-t
+ls data_GOES/  # Afficher le contenu du dossier data_GOES
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span>
+20120607_Gp_xr_1m.txt  20120615_Gp_xr_1m.txt  20120627_Gp_xr_1m.txt
+20120609_Gp_xr_1m.txt  20120616_Gp_xr_1m.txt  20120628_Gp_xr_1m.txt
+20120613_Gp_xr_1m.txt  20120617_Gp_xr_1m.txt  20120629_Gp_xr_1m.txt
+20120614_Gp_xr_1m.txt  20120620_Gp_xr_1m.txt  20120630_Gp_xr_1m.txt
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+
+
+Soit par exemple le fichier `data_GOES/20120609_Gp_xr_1m.txt` suivant:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span>
+:Data_list: 20120609_Gp_xr_1m.txt
+:Created: 2012 Jun 10 0010 UTC
+<span style="color: #228B22"># Prepared by the U.S. Dept. of Commerce, NOAA, Space Weather Prediction Center</span>
+<span style="color: #228B22"># Please send comments and suggestions to SWPC.Webmaster@noaa.gov</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># Label: Short = 0.05- 0.4 nanometer</span>
+<span style="color: #228B22"># Label: Long  = 0.1 - 0.8 nanometer</span>
+<span style="color: #228B22"># Units: Short = Watts per meter squared</span>
+<span style="color: #228B22"># Units: Long  = Watts per meter squared</span>
+<span style="color: #228B22"># Source: GOES-15</span>
+<span style="color: #228B22"># Location: W135</span>
+<span style="color: #228B22"># Missing data: -1.00e+05</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22">#         1-minute GOES-15 Solar X-ray Flux</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22">#                 Modified Seconds</span>
+<span style="color: #228B22"># UTC Date  Time   Julian  of the</span>
+<span style="color: #228B22"># YR MO DA  HHMM    Day     Day       Short       Long</span>
+<span style="color: #228B22">#-------------------------------------------------------</span>
+2012 06 09  0000   56087      0     1.62e-08    7.81e-07
+2012 06 09  0001   56087     60     1.70e-08    7.92e-07
+2012 06 09  0002   56087    120     1.85e-08    8.21e-07
+2012 06 09  0003   56087    180     1.90e-08    8.41e-07
+2012 06 09  0004   56087    240     1.86e-08    8.50e-07
+2012 06 09  0005   56087    300     1.98e-08    8.59e-07
+.... .. ..  ....   .....   ....     ........    ........
+.... .. ..  ....   .....   ....     ........    ........
+.... .. ..  ....   .....   ....     ........    ........
+2012 06 09  2352   56087  85920     5.48e-09    5.50e-07
+2012 06 09  2353   56087  85980     3.94e-09    5.48e-07
+2012 06 09  2354   56087  86040     3.68e-09    5.45e-07
+2012 06 09  2355   56087  86100     3.91e-09    5.44e-07
+2012 06 09  2356   56087  86160     2.28e-09    5.48e-07
+2012 06 09  2357   56087  86220     5.71e-09    5.64e-07
+2012 06 09  2358   56087  86280     1.15e-08    5.96e-07
+2012 06 09  2359   56087  86340     1.62e-08    6.49e-07
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+Dans le même graphique, tracer les tableaux _Short X-ray_ et _Long X-ray_ en fonction de temps _Universal Time_ (Heure de la journée GMT):
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Définir les tableaux `Xray_s` et `Xray_L` qui correspondent au $6^{éme}$ et au $7^{éme}$ colonnes dans le fichier (on compte les colonnes à partir de zéro). Utilisez la fonction `numpy.loadtxt` comme indiqué dans le cours3 (&quot;lecture de données&quot;: &quot;https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#lecture-de-donn%C3%A9es&quot;) et précisez les numéros des colonnes avec l&#39;argument `usecols`, utilisez le help (`help(np.loadtxt)`) dans le notebook.
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Les tableaux `Xray_s` et `Xray_L` sont définis de la façon suivante:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from pylab import *
+NomFichier = &quot;data_GOES/20120609_Gp_xr_1m.txt&quot;
+Xray_s,Xray_L = np.loadtxt(NomFichier, skiprows=18, usecols=[6,7],unpack=True)
+
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Définir le tableau `temps` en utilisant la fonction `numpy.arange()` (voir cours3: &quot;Utilisation de fonctions génératrices de tableaux et de matrices&quot;: &quot;https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#utilisation-de-fonctions-g%C3%A9n%C3%A9ratrices-de-tableaux-et-de-matrices&quot;).
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le tableau temps s&#39;écrit:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+temps = np.arange(0.0, 24.0 , 24.0/len(Xray_L))
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Tracer `Xray_s` et `Xray_L` en fonction de `temps` afin de reproduire le graphique suivant (voirs cours3: &quot;Tracés logarithmiques&quot;: &quot;https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#trac%C3%A9s-logarithmiques&quot;):
+<span style="color: #658b00">FIGURE:[figs/goes_plot, width=500 frac=0.7]</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+plt.figure(figsize=(10, 7))
+plt.semilogy(temps, Xray_L,color=&#39;r&#39;,linewidth=3,label=&quot;GOES: Long X-Ray (0.1 - 0.8 nanometer)&quot;)
+plt.semilogy(temps, Xray_s,color=&#39;k&#39;,linewidth=3,label=&quot;GOES: Short X-Ray (0.05 - 0.4 nanometer)&quot;, alpha=.3)
+plt.title(&quot; GOES Solar X-ray Flux&quot;, fontsize=16, weight=&quot;bold&quot; )
+plt.ylabel(&quot;X ray Flux ($Watts/m^2$)&quot;); plt.xlabel(&quot;Universal Time (hours)&quot;)
+plt.legend(loc=&#39;upper left&#39;)
+plt.ylim(1e-9, 1e-3)
+plt.grid()
+
+savefig(&quot;goes_plot.png&quot;)
+plt.show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #000080; font-weight: bold">===== Exercise: Fonctions spéciales (intégrales de Fresnel et spirale de Cornu) =====</span>
+
+Les intégrales de Fresnel ont été introduites par le physicien français Augustin Fresnel (1788-1827) lors de ses travaux sur les interférences lumineuses (voici un article intéressant à lire: &quot;Fresnel, des Mathématiques en Lumière&quot;: &quot;http://www.mathouriste.eu/Fresnel/Fresnel.html&quot;).
+
+Ces intégrales doivent être calculées numériquement à partir des développements en série des intégrales:
+
+$$\int_{0}^{x} e^{-i\frac{\pi t^{2}}{2}} dt = \int_{0}^{x} cos(t^2) dt -i \int_{0}^{x} sin(t^2) dt= C(x) -i S(x)$$
+
+Les fonctions de Fresnel sont des fonctions spéciales, définies par:
+
+Pour $x \geq \sqrt{\frac{8}{\pi}}$
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+<span style="color: #658b00">\begin{aligned}</span>
+C(x) &amp;= \frac{1}{2} + \cos\left(\frac{\pi x^{2}}{2}\right) gg1 + \sin\left(\frac{\pi x^{2}}{2}\right) ff1\\
+S(x) &amp;=  \frac{1}{2} - \cos\left(\frac{\pi x^{2}}{2}\right) ff1 + \sin\left(\frac{\pi x^{2}}{2}\right) gg1
+<span style="color: #658b00">\end{aligned}</span>
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+et pour $0 \leq x &lt; \sqrt{\frac{8}{\pi}}$
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+<span style="color: #658b00">\begin{aligned}</span>
+C(x) &amp;= \cos\left(\frac{\pi x^{2}}{2}\right) gg2 + \sin\left(\frac{\pi x^{2}}{2}\right) ff2 \\
+S(x) &amp;= - \cos\left(\frac{\pi x^{2}}{2}\right) ff2 + \sin\left(\frac{\pi x^{2}}{2}\right) gg2
+<span style="color: #658b00">\end{aligned}</span>
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Où:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+<span style="color: #658b00">\begin{aligned}</span>
+ff1 = \sum\limits_{n=0}^{11} \frac{d_{n}}{x^{2n+1}}\left(\frac{8}{\pi}\right)^{n+1/2} &amp; gg1 = \sum\limits_{n=0}^{11} \frac{c_{n}}{x^{2n+1}}\left(\frac{8}{\pi}\right)^{n+1/2}\\
+ff2 = \sum\limits_{n=0}^{11} b_{n}x^{2n+1}\left(\frac{\pi}{8}\right)^{n+1/2} &amp; gg2 = \sum\limits_{n=0}^{11} a_{n}x^{2n+1}\left(\frac{\pi}{8}\right)^{n+1/2}
+<span style="color: #658b00">\end{aligned}</span>
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+et $a_n$, $b_n$, $c_n$ et $d_n$ sont des coefficients tabulés  (&quot;*J.Boersma Math Computation 14,380(1960)*&quot;: &quot;https://www.ams.org/journals/mcom/1960-14-072/S0025-5718-1960-0121973-3/S0025-5718-1960-0121973-3.pdf&quot;) et donnés dans un fichier _coef.dat_ dans le répertoire de ce notebook:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span>
+<span style="color: #228B22">#--------------------------------------------------</span>
+<span style="color: #228B22">#    an            bn          cn           dn</span>
+<span style="color: #228B22">#--------------------------------------------------</span>
++1.595769140 -0.000000033 -0.000000000 +0.199471140
+-0.000001702 +4.255387524 -0.024933975 +0.000000023
+-6.808568854 -0.000092810 +0.000003936 -0.009351341
+-0.000576361 -7.780020400 +0.005770956 +0.000023006
++6.920691902 -0.009520895 +0.000689892 +0.004851466
+-0.016898657 +5.075161298 -0.009497136 +0.001903218
+-3.050485660 -0.138341947 +0.011948809 -0.017122914
+-0.075752419 -1.363729124 -0.006748873 +0.029064067
++0.850663781 -0.403349276 +0.000246420 -0.027928955
+-0.025639041 +0.702222016 +0.002102967 +0.016497308
+-0.150230960 -0.216195929 -0.001217930 -0.005598515
++0.034404779 +0.019547031 +0.000233939 +0.000838386
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+
+Écrire un programme Python qui calcule les fonctions de Fresnel $C(x)$ et $S(x)$ ainsi que leurs représentations graphiques:
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Définir les fonctions `ff1(x)`, `gg1(x)`, `ff2(x)` et `gg2(x)`. Chaque fonction renvoie la valeur de la somme qui lui correspond.
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Les fonctions `ff1(x)`, `gg1(x)`, `ff2(x)` et `gg2(x)` sont les suivantes:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from pylab import *
+
+def ff1(x):
+    S = 0
+    for i in range(12):
+        fn = (8 / pi)**(i + 0.5) * dn[i]
+        S += fn * x**(-2 * i - 1)
+    return S
+
+def gg1(x):
+    S = 0
+    for i in range(12):
+        gn = (8 / pi)**(i + 0.5) * cn[i]
+        S += gn * x**(-2 * i - 1)
+    return S
+
+def ff2(x):
+    S = 0
+    for i in range(12):
+        fn = (pi / 8)**(i + 0.5) * bn[i]
+        S += fn * x**(2 * i + 1)
+    return S
+
+def gg2(x):
+
+    S = 0
+    for i in range(12):
+        gn = (pi/8)**(i + 0.5) * an[i]
+        S +=  gn * x**(2 * i + 1)
+    return S
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Définir les fonctions Python `C(x)` et `S(x)` qui renvoient respectivement les listes, les valeurs de $C(x)$ et $S(x)$, `CF` et` SF` (en utilisant une boucle `for` pour remplir les listes par exemple).
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Les fonctions Python `C(x)` et `S(x)` sont les suivantes:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+def C(x):
+    CF=[]
+    for i in range(len(x)):
+        if x[i] &gt;= sqrt(8/pi):
+            cf=0.5 + cos((pi*x[i]**2)/2)*gg1(x[i]) + sin((pi*x[i]**2)/2)*ff1(x[i])
+            CF.append(cf)
+        elif 0 &lt;= x[i] &lt; sqrt(8/pi):
+            cf = cos((pi*x[i]**2)/2)*gg2(x[i]) + sin((pi*x[i]**2)/2)*ff2(x[i])
+            CF.append(cf)
+    return CF
+def S(x):
+    SF=[]
+    for i in range(len(x)):
+        if x[i] &gt;= sqrt(8/pi):
+            sf = 0.5 - cos((pi*x[i]**2)/2)*ff1(x[i]) + sin((pi*x[i]**2)/2)*gg1(x[i])
+            SF.append(sf)
+        elif 0 &lt;= x[i] &lt; sqrt(8/pi):
+            sf = -cos((pi*x[i]**2)/2)*ff2(x[i]) + sin((pi*x[i]**2)/2)*gg2(x[i])
+            SF.append(sf)
+    return SF
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Créer des tableaux `an`, `bn`, `cn` et `dn` à partir du fichier _coef.dat_.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Les tableaux `an`, `bn`, `cn` et `dn` sont chargés  à partir du fichier _coef.dat_ à l&#39;aide del a fonction `numpy.loadtxt()`:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+an, bn, cn, dn = loadtxt(&#39;coef.dat&#39;, comments=&#39;#&#39;, usecols=(0, 1, 2, 3), unpack=True)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Créer un tableau `x`. Utilisez 800 intervalles pour évaluer les points dans [0,10] (cas où $x \geq 0$).
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le tableau `x` s&#39;écrit:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+x = linspace(0,10, 500)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Transformer `C(x)` et `S(x)` en tableaux `numpy`, respectivement `CF` et `SF`.
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Les listes `C(x)` et `S(x)` sont transformés en tableaux `numpy` à l&#39;aide de la fonction `numpy.array()`:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+CF = array(C(x)); SF = array(S(x))
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Tracer une grille de figures à 2 colonnes (voir Cours3: &quot;Vues en grille&quot;: &quot;https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#linstruction-subplot&quot;) dont le graphique de gauche représente `CF` et `SF` en fonction de `x` et le graphique de droite représente une &quot;clothoïde&quot;: &quot;https://fr.wikipedia.org/wiki/Clotho%C3%AFde&quot; (ou spirale de Cornu, ou Spirale de Fresnel..)`SF` en fonction de `CF`.
+La sortie de ce programme devrait être comme suit:
+<span style="color: #658b00">FIGURE:[figs/fresnel, width=500 frac=0.7]</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La représentation graphique des intégrales de Fresnel et du spirale de Cornu est donc:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+plt.figure(figsize=(12,5))
+subplot(1,2,1)
+plt.plot(x, CF,&#39;b&#39;, x, SF,&#39;r&#39;, linewidth=2)
+plt.xlabel(&quot;x&quot;, fontweight=&#39;bold&#39;); plt.ylabel(&quot;C(x) / S(x)&quot;, fontweight=&#39;bold&#39;)
+plt.title(&quot;Intégrales de Fresnel&quot;, fontsize=14, fontweight=&#39;bold&#39;)
+plt.legend([&quot;C(x)&quot;,&quot;S(x)&quot;])
+subplot(1,2,2)
+plt.plot(CF, SF, linewidth = 2, color = &#39;k&#39;)
+plt.xlabel(&quot;C(x)&quot;, fontweight=&#39;bold&#39;); plt.ylabel(&quot;S(x)&quot;, fontweight=&#39;bold&#39;)
+plt.title(&quot;Spirale de Cornu&quot;, fontsize=14, fontweight=&#39;bold&#39;)
+
+plt.savefig(&quot;fresnel.png&quot;)
+plt.show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+</pre></div>
