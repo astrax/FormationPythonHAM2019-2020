@@ -1,0 +1,277 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: Contrôle continu: Devoir Surveillé N°2</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+<span style="color: #000080; font-weight: bold">DATE:</span> 11 Décembre 2019
+<span style="color: #228B22"># FIGURE: [imgs/header2, width=700 frac=1]</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Équation de récurrence (3 points) =====</span>
+Soit la relation de récurrence suivante:
+$$x^{k+2} = 2x^{k+1} - 3x^{k} \ pour \ k \ge 0 \ et \ x^0 =1, \  x^1 =2$$
+Calculer et afficher les 10 premiers termes de cette relation sous la forme :
+<span style="color: #8B008B; font-weight: bold">!bc</span>
+x^2 = 1
+x^3 = -4
+x^4 = -11
+x^5 = -10
+x^6 = 13
+x^7 = 56
+x^8 = 73
+x^9 = -22
+x^10 = -263
+x^11 = -460
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le programme qui calcule et affiche les 10 premiers termes de la relation peut s’écrire comme suit:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pyscpro
+x0 = 1
+x1 = 2
+for k in range(10):
+ x = 2*x1 - 3*x0
+ x0 = x1
+ x1 = x
+ print(&quot;x^{} = {}&quot;.format(k+2,x))
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Calculer une somme (3 points) =====</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Le code suivant est supposé calculer la somme $s = \sum_{k=1}^M {1\over k}$
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod-t
+s = 0;  k = 1;  M = 100
+while k &lt; M:
+    s += 1/k
+print(s)
+
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Ce programme ne fonctionne pas correctement. Quelles sont les deux erreurs? (si vous essayez d&#39;exécuter le programme, rien ne se passera à l&#39;écran). Écrivez un programme correct.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le programme correct est:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pyscpro
+s = 0.;  k = 1;  M = 100
+while k &lt;= M:
+    s += 1/k
+    k+=1
+print(s)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Réécrivez la version corrigée du programme en _a)_ en utilisant une boucle `for` sur `k` valeurs au lieu d&#39;une boucle `while`.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La version corrigée du programme dans _a)_ à l&#39;aide d&#39;une boucle `for` est la suivante:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pyscpro
+s = 0.;  M = 100
+for k in range(1,M+1):
+    s += 1/k
+print(s)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Générer des coordonnées équidistantes (4 points) =====</span>
+<span style="color: #658b00">label{ex:coordonnee}</span>
+Nous voulons générer $n + 1$ coordonnées $x$ équidistantes dans $[a, b]$. Stocker, pour `a = -2`; `b = 3` et `n= 20` les coordonnées $x$ dans une liste `xList`.
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Définir toutes les variables puis utiliser une boucle _for_ et ajouter chaque coordonnée à la liste `xList` (*initialement vide*).
+<span style="color: #8B008B; font-weight: bold">!bhint</span>
+Avec $n$ intervalles, correspondant à $n + 1$ points, dans $[a, b]$, chaque intervalle a une longueur $h = (b-a) / n$. Les coordonnées peuvent alors être générées par la formule `xi = a + i * h`; $i = 0,…, n$.
+<span style="color: #8B008B; font-weight: bold">!ehint</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La liste `xList` sera remplis par les valeurs de `xi` comme suivant:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+n =20
+a, b = -2, 3
+h = (b - a) / n
+xList = []
+for i in range(n+1):
+    xi  = a + i * h
+    xList.append(xi)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Utiliser une liste de compréhension comme une implémentation alternative.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Nous pouvons également remplir `xList` par une liste de compréhension:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+xList = [a + i * h for i in range(n+1)]
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Vectoriser la liste résultante `xList` en un tableau `numpy` xVect. N&#39;oubliez pas _d&#39;importer_ d&#39;abord la fonction qui transforme les listes en tableaux à partir de `numpy`.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La fonction `numpy.array()` transforme les listes en tableaux `numpy`:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from numpy import array
+xVect = array(xList)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Implémenter une fonction gaussienne (5 points) =====</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Créer la fonction: `gauss(x, m = 0, s = 1)`, qui modélise la gaussienne:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+f(x) =
+{1\over\sqrt{2\pi }\, s}
+\exp{\left[-\frac{1}{2}\left({x-m\over s}\right)^2\right]}
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La fonction `gauss(x, m = 0, s = 1)` est la suivante:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from pylab import *
+def gauss(x, m = 0, s = 1):
+    A = 1/sqrt(2*pi*s)
+    B = -0.5 *((x-m)/s)**2
+    return A*exp(B)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Créer un tableau `x` à l&#39;aide de la fonction `linspace`, du module `numpy`, pour `100` valeurs `x` uniformément espacées dans [-10, 10].
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Pour avoir `100` valeurs `x` uniformément espacés dans [-10, 10], on écrit:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+x = linspace(-10, 10, 100)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Écrire les instructions pour tracer le graphique ci-dessous à l’aide de la bibliothèque `matplotlib`.
+<span style="color: #658b00">FIGURE: [imgs/gaussian, width=500 frac=0.7]</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le programme qui donne le graphique de la fonction gaussienne est:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+plt.plot(x, gauss(x, m = 0, s = 1), &#39;k-&#39;, label = &#39;m = 0, s = 1&#39;)
+plt.plot(x, gauss(x, m = -2, s = 2), &#39;k:&#39;, label = &#39;m = -2, s = 2&#39;)
+plt.plot(x, gauss(x, m = 2, s = 2), &#39;k--&#39;, label = &#39;m = 2, s = 2&#39;)
+plt.title(&quot;fonction gaussienne&quot;, fontweight = &#39;bold&#39;)
+plt.xlabel(&quot;x&quot;)
+plt.ylabel(&quot;f(x)&quot;)
+plt.legend()
+plt.show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Tracer les 6 premiers polynômes de Legendre (5 points) =====</span>
+En mathématiques et en physique théorique, les polynômes de Legendre constituent l&#39;exemple le plus simple d&#39;une suite de polynômes orthogonaux. Ce sont des solutions polynomiales $P_n(x)$ de l&#39;équation différentielle de Legendre :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+\frac{d}{d x}\left[(1-x^{2}){\frac {d }{d x}}P_{n}(x) \right]+ n(n+1) P_{n}(x)=0
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Les polynômes de Legendre sont définis uniquement pour $x \in [-1 ; 1]$ puisque les points $x = \pm 1$ sont des points singuliers réguliers de cette équation différentielle.
+
+Les 6 premiers polynômes de Legendre sont :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{eqnarray*}</span>
+P_{0}(x)&amp;=&amp;1 \\\
+P_{1}(x)&amp;=&amp;x \\\
+P_{2}(x)&amp;=&amp;\frac{1}{2}(3x^{2}-1)\\\
+P_{3}(x)&amp;=&amp;\frac{1}{2}(5x^{3}-3x)\\\
+P_{4}(x)&amp;=&amp;\frac{1}{8}(35x^{4}-30x^{2}+3)\\\
+P_{5}(x)&amp;=&amp;\frac{1}{8}(63x^{5}-70x^{3}+15x)
+<span style="color: #658b00">\end{eqnarray*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Définir les fonctions `P0(x)`, `P1(x)`, `P2(x)`, `P3(x)`, `P4(x)` et `P5(x)` qui retournent les valeurs des 6 premiers polynômes de Legendre.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Les fonctions qui calculent les 6 premiers polynômes de Legendre sont les suivantes:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+import numpy as np
+import matplotlib.pyplot as plt
+def P0(x):
+    return np.ones(len(x))
+def P1(x):
+    return x
+def P2(x):
+    return 1/2*(3*x**2 - 1)
+def P3(x):
+    return 1/2*(5*x**3 - 3*x)
+def P4(x):
+    return 1/8*(35*x**4 - 30*x**2 + 3)
+def P5(x):
+    return 1/8*(63*x**5 - 70*x**3 + 15*x)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Créer un tableau `x` à l&#39;aide de la fonction `linspace`, du module `numpy`, pour `100` valeurs `x` uniformément espacées dans [-1, 1].
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La variable x est définie comme suivant:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+x=np.linspace(-1,1,100)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Tracer ces polynômes sur le même graphique en utilisant la bibliothèque `matplotlib`.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Les instructions pour le traçage des courbes sont les suivantes:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycd
+plt.figure()
+plt.plot(x,P0(x),label=&#39;P0&#39;)
+plt.plot(x,P1(x),label=&#39;P1&#39;)
+plt.plot(x,P2(x),label=&#39;P2&#39;)
+plt.plot(x,P3(x),label=&#39;P3&#39;)
+plt.plot(x,P4(x),label=&#39;P4&#39;)
+plt.plot(x,P5(x),label=&#39;P5&#39;)
+plt.title(&#39;Les six premiers polynômes de Legendre&#39;, weight = &quot;bold&quot;)
+plt.xlabel(&quot;x&quot;)
+plt.ylabel(&quot;P(x)&quot;)
+plt.legend()
+plt.grid()
+plt.show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bnotice</span>
+Voici l&#39;ensemble des solutions des questions a), b) et c) dans un script `PolyLegendre.py`:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pyscpro
+<span style="color: #228B22">## NOM DU PROGRAMME: PolyLegendre.py</span>
+<span style="color: #228B22">#% IMPORTATION</span>
+import numpy as np
+import matplotlib.pyplot as plt
+def P0(x):
+    return np.ones(len(x))
+def P1(x):
+    return x
+def P2(x):
+    return 1/2*(3*x**2 - 1)
+def P3(x):
+    return 1/2*(5*x**3 - 3*x)
+def P4(x):
+    return 1/8*(35*x**4 - 30*x**2 + 3)
+def P5(x):
+    return 1/8*(63*x**5 - 70*x**3 + 15*x)
+x=np.linspace(-1,1,100)
+plt.figure()
+plt.plot(x,P0(x),label=&#39;P0&#39;)
+plt.plot(x,P1(x),label=&#39;P1&#39;)
+plt.plot(x,P2(x),label=&#39;P2&#39;)
+plt.plot(x,P3(x),label=&#39;P3&#39;)
+plt.plot(x,P4(x),label=&#39;P4&#39;)
+plt.plot(x,P5(x),label=&#39;P5&#39;)
+plt.title(u&#39;Les six premiers polynômes de Legendre&#39;, weight = &quot;bold&quot;)
+plt.xlabel(&quot;x&quot;)
+plt.ylabel(&quot;P(x)&quot;)
+plt.legend()
+plt.grid()
+plt.savefig(&quot;legendre.png&quot;); plt.savefig(&quot;legendre.pdf&quot;)
+plt.show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+</pre></div>

@@ -1,0 +1,276 @@
+TITLE: Contrôle continu: Devoir Surveillé N°2
+AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+DATE: 11 Décembre 2019
+# FIGURE: [imgs/header2, width=700 frac=1]
+
+!split
+===== Exercise: Équation de récurrence (3 points) =====
+Soit la relation de récurrence suivante:
+$$x^{k+2} = 2x^{k+1} - 3x^{k} \ pour \ k \ge 0 \ et \ x^0 =1, \  x^1 =2$$
+Calculer et afficher les 10 premiers termes de cette relation sous la forme :
+!bc
+x^2 = 1
+x^3 = -4
+x^4 = -11
+x^5 = -10
+x^6 = 13
+x^7 = 56
+x^8 = 73
+x^9 = -22
+x^10 = -263
+x^11 = -460
+!ec
+!bsol
+Le programme qui calcule et affiche les 10 premiers termes de la relation peut s’écrire comme suit:
+!bc pyscpro
+x0 = 1
+x1 = 2
+for k in range(10):
+ x = 2*x1 - 3*x0
+ x0 = x1
+ x1 = x
+ print("x^{} = {}".format(k+2,x))
+!ec
+!esol
+
+!split
+===== Exercise: Calculer une somme (3 points) =====
+!bsubex
+Le code suivant est supposé calculer la somme $s = \sum_{k=1}^M {1\over k}$
+!bc pycod-t
+s = 0;  k = 1;  M = 100
+while k < M:
+    s += 1/k
+print(s)
+
+!ec
+Ce programme ne fonctionne pas correctement. Quelles sont les deux erreurs? (si vous essayez d'exécuter le programme, rien ne se passera à l'écran). Écrivez un programme correct.
+!bsol
+Le programme correct est:
+!bc pyscpro
+s = 0.;  k = 1;  M = 100
+while k <= M:
+    s += 1/k
+    k+=1
+print(s)
+!ec
+!esol
+!esubex
+
+!bsubex
+Réécrivez la version corrigée du programme en _a)_ en utilisant une boucle `for` sur `k` valeurs au lieu d'une boucle `while`.
+!bsol
+La version corrigée du programme dans _a)_ à l'aide d'une boucle `for` est la suivante:
+!bc pyscpro
+s = 0.;  M = 100
+for k in range(1,M+1):
+    s += 1/k
+print(s)
+!ec
+!esol
+!esubex
+!split
+===== Exercise: Générer des coordonnées équidistantes (4 points) =====
+label{ex:coordonnee}
+Nous voulons générer $n + 1$ coordonnées $x$ équidistantes dans $[a, b]$. Stocker, pour `a = -2`; `b = 3` et `n= 20` les coordonnées $x$ dans une liste `xList`.
+!bsubex
+Définir toutes les variables puis utiliser une boucle _for_ et ajouter chaque coordonnée à la liste `xList` (*initialement vide*).
+!bhint
+Avec $n$ intervalles, correspondant à $n + 1$ points, dans $[a, b]$, chaque intervalle a une longueur $h = (b-a) / n$. Les coordonnées peuvent alors être générées par la formule `xi = a + i * h`; $i = 0,…, n$.
+!ehint
+!bsol
+La liste `xList` sera remplis par les valeurs de `xi` comme suivant:
+!bc pycod
+n =20
+a, b = -2, 3
+h = (b - a) / n
+xList = []
+for i in range(n+1):
+    xi  = a + i * h
+    xList.append(xi)
+!ec
+!esol
+!esubex
+
+!bsubex
+Utiliser une liste de compréhension comme une implémentation alternative.
+!bsol
+Nous pouvons également remplir `xList` par une liste de compréhension:
+!bc pycod
+xList = [a + i * h for i in range(n+1)]
+!ec
+!esol
+!esubex
+
+!bsubex
+Vectoriser la liste résultante `xList` en un tableau `numpy` xVect. N'oubliez pas _d'importer_ d'abord la fonction qui transforme les listes en tableaux à partir de `numpy`.
+!bsol
+La fonction `numpy.array()` transforme les listes en tableaux `numpy`:
+!bc pycod
+from numpy import array
+xVect = array(xList)
+!ec
+!esol
+
+!esubex
+!split
+===== Exercise: Implémenter une fonction gaussienne (5 points) =====
+!bsubex
+Créer la fonction: `gauss(x, m = 0, s = 1)`, qui modélise la gaussienne:
+!bt
+\begin{equation}
+f(x) =
+{1\over\sqrt{2\pi }\, s}
+\exp{\left[-\frac{1}{2}\left({x-m\over s}\right)^2\right]}
+\end{equation}
+!et
+!bsol
+La fonction `gauss(x, m = 0, s = 1)` est la suivante:
+!bc pycod
+from pylab import *
+def gauss(x, m = 0, s = 1):
+    A = 1/sqrt(2*pi*s)
+    B = -0.5 *((x-m)/s)**2
+    return A*exp(B)
+!ec
+!esol
+!esubex
+!bsubex
+Créer un tableau `x` à l'aide de la fonction `linspace`, du module `numpy`, pour `100` valeurs `x` uniformément espacées dans [-10, 10].
+!bsol
+Pour avoir `100` valeurs `x` uniformément espacés dans [-10, 10], on écrit:
+!bc pycod
+x = linspace(-10, 10, 100)
+!ec
+!esol
+!esubex
+!bsubex
+Écrire les instructions pour tracer le graphique ci-dessous à l’aide de la bibliothèque `matplotlib`.
+FIGURE: [imgs/gaussian, width=500 frac=0.7]
+
+!bsol
+Le programme qui donne le graphique de la fonction gaussienne est:
+!bc pycod
+plt.plot(x, gauss(x, m = 0, s = 1), 'k-', label = 'm = 0, s = 1')
+plt.plot(x, gauss(x, m = -2, s = 2), 'k:', label = 'm = -2, s = 2')
+plt.plot(x, gauss(x, m = 2, s = 2), 'k--', label = 'm = 2, s = 2')
+plt.title("fonction gaussienne", fontweight = 'bold')
+plt.xlabel("x")
+plt.ylabel("f(x)")
+plt.legend()
+plt.show()
+!ec
+!esol
+!esubex
+
+!split
+===== Exercise: Tracer les 6 premiers polynômes de Legendre (5 points) =====
+En mathématiques et en physique théorique, les polynômes de Legendre constituent l'exemple le plus simple d'une suite de polynômes orthogonaux. Ce sont des solutions polynomiales $P_n(x)$ de l'équation différentielle de Legendre :
+!bt
+\begin{equation*}
+\frac{d}{d x}\left[(1-x^{2}){\frac {d }{d x}}P_{n}(x) \right]+ n(n+1) P_{n}(x)=0
+\end{equation*}
+!et
+Les polynômes de Legendre sont définis uniquement pour $x \in [-1 ; 1]$ puisque les points $x = \pm 1$ sont des points singuliers réguliers de cette équation différentielle.
+
+Les 6 premiers polynômes de Legendre sont :
+!bt
+\begin{eqnarray*}
+P_{0}(x)&=&1 \\\
+P_{1}(x)&=&x \\\
+P_{2}(x)&=&\frac{1}{2}(3x^{2}-1)\\\
+P_{3}(x)&=&\frac{1}{2}(5x^{3}-3x)\\\
+P_{4}(x)&=&\frac{1}{8}(35x^{4}-30x^{2}+3)\\\
+P_{5}(x)&=&\frac{1}{8}(63x^{5}-70x^{3}+15x)
+\end{eqnarray*}
+!et
+
+!bsubex
+Définir les fonctions `P0(x)`, `P1(x)`, `P2(x)`, `P3(x)`, `P4(x)` et `P5(x)` qui retournent les valeurs des 6 premiers polynômes de Legendre.
+!bsol
+Les fonctions qui calculent les 6 premiers polynômes de Legendre sont les suivantes:
+!bc pycod
+import numpy as np
+import matplotlib.pyplot as plt
+def P0(x):
+    return np.ones(len(x))
+def P1(x):
+    return x
+def P2(x):
+    return 1/2*(3*x**2 - 1)
+def P3(x):
+    return 1/2*(5*x**3 - 3*x)
+def P4(x):
+    return 1/8*(35*x**4 - 30*x**2 + 3)
+def P5(x):
+    return 1/8*(63*x**5 - 70*x**3 + 15*x)
+!ec
+!esol
+!esubex
+!bsubex
+Créer un tableau `x` à l'aide de la fonction `linspace`, du module `numpy`, pour `100` valeurs `x` uniformément espacées dans [-1, 1].
+!bsol
+La variable x est définie comme suivant:
+!bc pycod
+x=np.linspace(-1,1,100)
+!ec
+!esol
+!esubex
+!bsubex
+Tracer ces polynômes sur le même graphique en utilisant la bibliothèque `matplotlib`.
+!bsol
+Les instructions pour le traçage des courbes sont les suivantes:
+!bc pycd
+plt.figure()
+plt.plot(x,P0(x),label='P0')
+plt.plot(x,P1(x),label='P1')
+plt.plot(x,P2(x),label='P2')
+plt.plot(x,P3(x),label='P3')
+plt.plot(x,P4(x),label='P4')
+plt.plot(x,P5(x),label='P5')
+plt.title('Les six premiers polynômes de Legendre', weight = "bold")
+plt.xlabel("x")
+plt.ylabel("P(x)")
+plt.legend()
+plt.grid()
+plt.show()
+!ec
+
+!bnotice
+Voici l'ensemble des solutions des questions a), b) et c), dans un script `PolyLegendre.py`:
+!bc pyscpro
+## NOM DU PROGRAMME: PolyLegendre.py
+#% IMPORTATION
+import numpy as np
+import matplotlib.pyplot as plt
+def P0(x):
+    return np.ones(len(x))
+def P1(x):
+    return x
+def P2(x):
+    return 1/2*(3*x**2 - 1)
+def P3(x):
+    return 1/2*(5*x**3 - 3*x)
+def P4(x):
+    return 1/8*(35*x**4 - 30*x**2 + 3)
+def P5(x):
+    return 1/8*(63*x**5 - 70*x**3 + 15*x)
+x=np.linspace(-1,1,100)
+plt.figure()
+plt.plot(x,P0(x),label='P0')
+plt.plot(x,P1(x),label='P1')
+plt.plot(x,P2(x),label='P2')
+plt.plot(x,P3(x),label='P3')
+plt.plot(x,P4(x),label='P4')
+plt.plot(x,P5(x),label='P5')
+plt.title(u'Les six premiers polynômes de Legendre', weight = "bold")
+plt.xlabel("x")
+plt.ylabel("P(x)")
+plt.legend()
+plt.grid()
+plt.savefig("legendre.png"); plt.savefig("legendre.pdf")
+plt.show()
+!ec
+!enotice
+!esol
+!esubex
