@@ -1,0 +1,396 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: L&#39;intégration numérique</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #000080; font-weight: bold">TOC:</span> on
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">======= Introduction =======</span>
+L&#39;intégration numérique est un chapitre important de l&#39;analyse numérique et un outil indispensable en physique numérique. On intègre numériquement dans deux cas principaux:
+
+* on ne peut pas intégrer analytiquement,
+* l&#39;intégrande est fourni non pas sous la forme d&#39;une fonction mais de tableaux de mesures, cas d&#39;ailleurs le plus fréquent dans la vraie vie.
+Les méthodes numériques d&#39;intégration d&#39;une fonction sont nombreuses et les techniques très diverses. Des très simples, comme la méthode des rectangles aux très complexes comme certaines variétés de la méthode de Monte-Carlo.
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">======= Idées de base de l&#39;intégration numérique =======</span>
+Nous considérons l&#39;intégrale
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span> \label{eq:ExampleIntegral}
+\int_a^b f(x)dx
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+La plupart des méthodes numériques de calcul de cette intégrale divisent l&#39;intégrale d&#39;origine en une somme de plusieurs intégrales, chacune couvrant une partie plus petite de l&#39;intervalle d&#39;intégration d&#39;origine $[a, b]$. Cette réécriture de l&#39;intégrale est basée sur une sélection de points d&#39;intégration $x_i$, $i = 0,1,…, n$ qui sont répartis sur l&#39;intervalle $[a, b]$. Les points d&#39;intégration peuvent ou non être répartis uniformément. Une distribution uniforme simplifie les expressions et est souvent suffisante, nous nous limiterons donc principalement à ce choix. Les points d&#39;intégration sont ensuite calculés comme:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+x_i = a + ih,\quad i = 0,1,\ldots,n
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+où
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+h = \frac{b-a}{n}
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Compte tenu des points d&#39;intégration, l&#39;intégrale d&#39;origine est réécrite sous la forme d&#39;une somme d&#39;intégrales, chaque intégrale étant calculée sur le sous-intervalle entre deux points d&#39;intégration consécutifs. L&#39;intégrale dans (ref{eq:ExampleIntegral}) est donc exprimée comme:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span> \label{eq:SumIntegrals}
+\int_a^b f(x)dx =
+\int_{x_0}^{x_1} f(x)dx + \int_{x_1}^{x_2} f(x)dx + \ldots +
+\int_{x_{n-1}}^{x_n} f(x)dx
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Notez que $x_0 = a$ et $x_n = b$.
+
+En partant de (ref{eq:SumIntegrals}), les différentes méthodes d&#39;intégration différeront dans la façon dont elles approchent chaque intégrale du côté droit. L&#39;idée fondamentale est que chaque terme est une intégrale sur un petit intervalle $[x_i, x_{i + 1}]$, et sur ce petit intervalle, il est logique d&#39;approximer f par une forme simple, disons une constante, une ligne droite ou une parabole , que nous pouvons facilement intégrer à la main. Les détails deviendront clairs dans les exemples à venir.
+<span style="color: #000080; font-weight: bold">===== Exemple de calcul =====</span>
+Pour comprendre et comparer les méthodes d&#39;intégration numérique, il est avantageux d&#39;utiliser une intégrale spécifique pour les calculs et les illustrations graphiques. En particulier, nous voulons utiliser une intégrale que nous pouvons calculer à la main de sorte que la précision des méthodes d&#39;approximation puisse être facilement évaluée. Notre intégrale spécifique est tirée de la physique de base. Supposons que vous accélérez votre voiture du repos et demandez-vous jusqu&#39;où vous allez en $T$ secondes. La distance est donnée par l&#39;intégrale $\int_0^T v(t)dt$ , où $v (t)$ est la vitesse en fonction du temps. Une fonction de vitesse en augmentation rapide pourrait être:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+v\left(t\right) = 3t^{2}e^{t^3}\thinspace
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+La distance après une seconde est
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span> \label{eq:SpeedIntegral}
+\int_0^1 v(t)dt
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+qui est l&#39;intégrale que nous cherchons à calculer par des méthodes numériques. Heureusement, l&#39;expression choisie de la vitesse a une forme qui permet de calculer facilement l&#39;anti-dérivé comme
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+V(t) = e^{t^3}-1
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Nous pouvons donc calculer la valeur exacte de l&#39;intégrale comme $V (1) −V (0) ≈1.718$ (arrondi à 3 décimales pour plus de commodité).
+<span style="color: #000080; font-weight: bold">======= La règle trapézoïdale composite =======</span>
+L&#39;intégrale $\int_a^b f(x)dx$ peut être interprété comme l&#39;aire entre l&#39;axe des x et le graphique $y = f (x)$ de fonction à intégrer. La figure ref{fig:integral_of_f} illustre cette zone de choix (ref{eq:SpeedIntegral}). Le calcul de l&#39;intégrale $\int_0^1f(t)dt$ revient à calculer l&#39;aire de la zone hachurée.
+<span style="color: #658b00">FIGURE:[imgs/integral_of_f, width=400 frac=0.7] L&#39;intégrale de $v (t)$ interprétée comme l&#39;aire sous le graphique de $v$. label{fig:integral_of_f}</span>
+
+Si nous remplaçons le vrai graphique de la figure ref{fig:integral_of_f} par un ensemble de segments de ligne droite, nous pouvons voir la zone plutôt comme composée de trapèzes, dont les zones sont faciles à calculer. Ceci est illustré sur la figure ref{fig:viz_trapezoidal}, où 4 segments de ligne droite donnent naissance à 4 trapèzes, couvrant les intervalles de temps $[0,0.2)$, $[0.2,0.6)$, $[0.6,0.8)$ et $[0.8,1.0]$. Notez que nous en avons profité pour démontrer les calculs avec des intervalles de temps de tailles différentes.
+<span style="color: #658b00">FIGURE:[imgs/viz_trapezoidal, width=400 frac=0.7] Calculer approximativement l&#39;intégrale d&#39;une fonction comme la somme des aires des trapèzes. label{fig:viz_trapezoidal}</span>
+Les aires des 4 trapèzes représentés sur la figure ref{fig:viz_trapezoidal} constituent maintenant notre approximation de l&#39;intégrale (ref{eq:SpeedIntegral}):
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\int_0^1 v(t)dt &amp;\approx
+h_1 (\frac{v(0)+v(0.2)}{2}) + h_2 (\frac{v(0.2)+v(0.6)}{2}) \nonumber  \\
+&amp;+ h_3 (\frac{v(0.6)+v(0.8)}{2}) + h_4 (\frac{v(0.8)+v(1.0)}{2})
+\label{eq:trapezoids}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+où
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+h_1 &amp;= (0.2 - 0.0) \label{eq:h1}\\
+h_2 &amp;= (0.6 - 0.2)  \label{eq:h2}\\
+h_3 &amp;= (0.8 - 0.6)  \label{eq:h3}\\
+h_4 &amp;= (1.0 - 0.8) \label{eq:h4}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Avec $v(t) = 3t^{2}e^{t^3}$, chaque terme dans (ref{eq:trapezoids}) est facilement calculé et notre calcul approximatif donne
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+\int_0^1 v(t)dt \approx 1.895
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Par rapport à la vraie réponse de $1.718$, cela est d&#39;environ $10 \%$. Cependant, notez que nous avons utilisé seulement 4 trapèzes pour approximer la zone. Avec plus de trapèzes, l&#39;approximation serait devenue meilleure, puisque les segments de droite du côté trapézoïdal supérieur suivraient alors le graphique de plus près. Faire un autre calcul avec plus de trapèzes n&#39;est pas trop tentant pour un humain paresseux, mais c&#39;est un travail parfait pour un ordinateur! Dérivons donc les expressions d&#39;approximation de l&#39;intégrale par un nombre arbitraire de trapèzes.
+<span style="color: #000080; font-weight: bold">===== La formule générale =====</span>
+Pour une fonction donnée $f (x)$, nous voulons approximer l&#39;intégrale $\int_a^bf(x)dx$ par $n$ trapézoïdes (de largeur égale). Nous commençons par (3.5) et approchons chaque intégrale du côté droit avec un seul trapèze. En détail,
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\int_a^b f(x)\,dx &amp;= \int_{x_0}^{x_1} f(x) dx + \int_{x_1}^{x_2} f(x) dx + \ldots + \int_{x_{n-1}}^{x_n} f(x) dx,     \nonumber \\
+                  &amp;\approx h \frac{f(x_0) + f(x_1)}{2} +
+		  h \frac{f(x_1) + f(x_2)}{2} + \ldots + \nonumber \\
+		  &amp;\quad h \frac{f(x_{n-1}) + f(x_n)}{2}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+En simplifiant le côté droit de (3.15), nous obtenons
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+\int_a^b f(x)\,dx \approx \\
+\frac{h}{2}\left[f(x_0) + 2 f(x_1) + 2 f(x_2) + \ldots + 2 f(x_{n-1}) + f(x_n)\right]
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+qui est écrit de façon plus compacte comme
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span> \label{eq:GenralIntegral}
+\int_a^b f(x)\,dx \approx h \left[\frac{1}{2}f(x_0) + \sum_{i=1}^{n-1}f(x_i) + \frac{1}{2}f(x_n) \right]
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #8B008B; font-weight: bold">!bnotice</span> Règles d&#39;intégration composites
+Le mot composite est souvent utilisé lorsqu&#39;une méthode d&#39;intégration numérique est appliquée avec plus d&#39;un sous-intervalle.
+à vrai dire alors, écrire, par exemple, &quot;la méthode trapézoïdale&quot;, devrait impliquer l&#39;utilisation d&#39;un seul trapèze, tandis que &quot;la méthode trapézoïdale composite&quot; est le nom le plus correct lorsque plusieurs trapèzes sont utilisés. Cependant, cette convention de dénomination n&#39;est pas toujours suivie, donc dire que &quot;la méthode trapézoïdale&quot; peut pointer vers un seul trapèze ainsi que la règle composite avec de nombreux trapèzes.
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+<span style="color: #000080; font-weight: bold">===== Implémentation =====</span>
+<span style="color: #000080; font-weight: bold">=== Implémentation spécifique ou générale? ===</span>
+Supposons que notre objectif principal était de calculer l&#39;intégrale spécifique $\int_0^1 v(t)dt$ avec $v(t)=3t^2e^{t^3}$. D&#39;abord, nous avons joué avec un simple calcul de main pour voir de quoi il s&#39;agissait, avant de développer (comme c&#39;est souvent le cas en mathématiques) une formule générale (ref{eq:GenralIntegral}) pour l&#39;intégrale générale ou «abstraite» $\int_a^bf(x)dx$. Pour résoudre notre problème spécifique $\int_0^1 v(t)dt$, nous devons ensuite appliquer la formule générale (ref{eq:GenralIntegral}) aux données données (fonction et limites intégrales) dans notre problème. Bien que simples en principe, les étapes pratiques sont déroutantes pour beaucoup car la notation dans le problème abstrait de (ref{eq:GenralIntegral}) diffère de la notation dans notre problème spécial. Clairement, les $f$, $x$ et $h$ dans (ref{eq:GenralIntegral}) correspondent à $v$, $t$ et peut-être $\Delta t$ pour la largeur trapézoïdale dans notre problème spécial.
+<span style="color: #8B008B; font-weight: bold">!bquestion</span> Le dilemme du programmeur
+o Faut-il écrire un programme spécial pour l&#39;intégrale spéciale, en utilisant les idées de la règle générale (ref{eq:GenralIntegral}), mais en remplaçant $f$ par $v$, $x$ par $t$ et $h$ par $\Delta t$?
+o Faut-il implémenter la méthode générale (ref{eq:GenralIntegral}) telle qu&#39;elle se présente dans une fonction générale `trapezoid(f, a, b, n)` et résoudre le problème spécifique en question par un appel spécialisé à cette fonction?
+
+_L&#39;alternative 2 est toujours le meilleur choix!_
+<span style="color: #8B008B; font-weight: bold">!equestion</span>
+
+La première alternative dans l&#39;encadré ci-dessus semble moins abstraite et donc plus attrayante pour beaucoup. Néanmoins, comme nous l&#39;espérons, cela sera évident à partir des exemples, la deuxième alternative est en fait la plus simple et la plus fiable d&#39;un point de vue mathématique et de programmation. Ces auteurs affirmeront que la deuxième alternative est l&#39;essence même du pouvoir des mathématiques, tandis que la première alternative est la source de beaucoup de confusion sur les mathématiques!
+<span style="color: #000080; font-weight: bold">=== Implémentation avec fonctions ===</span>
+Pour l&#39;intégrale $\int_a^bf(x)dx$ calculée par la formule (ref{eq:GenralIntegral}), nous voulons que le trapèze de la fonction Python correspondante prenne tout $f$, $a$, $b$ et $n$ en entrée et renvoie l&#39;approximation à l&#39;intégrale.
+
+Nous écrivons une fonction Python `trapezoidal` dans un fichier &quot;trapezoidal.py&quot;:&quot;&quot; aussi proche que possible de la formule (ref{eq:GenralIntegral}), en nous assurant que les noms de variables correspondent à la notation mathématique:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+def trapezoidal(f, a, b, n):
+    h = float(b-a)/n
+    result = 0.5*f(a) + 0.5*f(b)
+    for i in range(1, n):
+        result += f(a + i*h)
+    result *= h
+    return result
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #000080; font-weight: bold">=== Résoudre notre problème spécifique en une session ===</span>
+Le simple fait d&#39;avoir la fonction `trapezoidal` comme seul contenu d&#39;un fichier trapezoidal.py fait automatiquement de ce fichier un module que nous pouvons importer et tester dans une session interactive:
+<span style="color: #8B008B; font-weight: bold">!bc</span> ipy
+&gt;&gt;&gt; from trapezoidal import trapezoidal
+&gt;&gt;&gt; from math import exp
+&gt;&gt;&gt; v = lambda t: 3*(t**2)*exp(t**3)
+&gt;&gt;&gt; n = 4
+&gt;&gt;&gt; numerical = trapezoidal(v, 0, 1, n)
+&gt;&gt;&gt; numerical
+1.9227167504675762
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Calculons l&#39;expression exacte et l&#39;erreur dans l&#39;approximation:
+<span style="color: #8B008B; font-weight: bold">!bc</span> ipy
+&gt;&gt;&gt; V = lambda t: exp(t**3)
+&gt;&gt;&gt; exact = V(1) - V(0)
+&gt;&gt;&gt; exact - numerical
+-0.20443492200853108
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Cette erreur est-elle convaincante? On peut essayer un $n$ plus grand:
+<span style="color: #8B008B; font-weight: bold">!bc</span> ipy
+&gt;&gt;&gt; numerical = trapezoidal(v, 0, 1, n=400)
+&gt;&gt;&gt; exact - numerical
+-2.1236490512777095e-05
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Heureusement, beaucoup plus de trapèzes donnent une erreur beaucoup plus petite.
+<span style="color: #000080; font-weight: bold">=== Résoudre notre problème spécifique dans un programme ===</span>
+Au lieu de calculer notre problème spécial dans une session interactive, nous pouvons le faire dans un programme. Comme toujours, un morceau de code faisant une chose particulière est mieux isolé en tant que fonction même si nous ne voyons aucune raison future d&#39;appeler la fonction plusieurs fois et même si nous n&#39;avons pas besoin d&#39;arguments pour paramétrer ce qui se passe à l&#39;intérieur de la fonction. Dans le cas présent, nous mettons simplement les instructions que nous aurions autrement mises dans un programme principal, à l&#39;intérieur d&#39;une fonction:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+def application():
+    from math import exp
+    v = lambda t: 3*(t**2)*exp(t**3)
+    n = input(&#39;n: &#39;)
+    numerical = trapezoidal(v, 0, 1, n)
+
+    # Compare with exact result
+    V = lambda t: exp(t**3)
+    exact = V(1) - V(0)
+    error = exact - numerical
+    print(&#39;n=%d: %.16f, error: %g&#39; % (n, numerical, error))
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Maintenant, nous calculons notre problème spécial en appelant `application()` comme la seule instruction du programme principal. Les fonctions `trapezoidal` et `application` résident toutes deux dans le fichier `trapezoidal.py`, qui peut être exécuté en tant que
+<span style="color: #8B008B; font-weight: bold">!bc</span> ipy
+Terminal&gt; python trapezoidal.py
+n: 4
+n=4: 1.9227167504675762, error: -0.204435
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #000080; font-weight: bold">=== Faire un module ===</span>
+Lorsque nous avons les différentes parties de notre programme comme une collection de fonctions, il est très simple de créer un *module* qui peut être importé dans d&#39;autres programmes. Ce fait, avoir notre code comme module, signifie que la fonction `trapezoidal` peut facilement être réutilisée par d&#39;autres programmes pour résoudre d&#39;autres problèmes. Les exigences d&#39;un module sont simples: mettez tout à l&#39;intérieur des fonctions et laissez les appels de fonction dans le programme principal être dans le soi-disant *bloc de test*:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod-text
+if __name__ == &#39;__main__&#39;:
+    application()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Le test `if` est vrai si le fichier de module, `trapezoidal.py`, est exécuté en tant que programme et faux si le module est importé dans un autre programme. Par conséquent, lorsque nous effectuons une importation: `from trapezoidal import trapezoidal` dans un fichier, le test échoue et `application()` n&#39;est pas appelée, c&#39;est-à-dire que notre problème spécial n&#39;est pas résolu et n&#39;imprime rien à l&#39;écran. D&#39;un autre côté, si nous exécutons `trapezoidal.py` dans la fenêtre du terminal, la condition de test est positive, `application()` est appelée et nous obtenons une sortie dans la fenêtre:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod-text
+Terminal&gt; python trapezoidal.py
+n: 400
+n=400: 1.7183030649495579, error: -2.12365e-05
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Lorsque vous regardez maintenant les deux solutions, le programme plat spécial et le programme basé sur les fonctions avec la fonction polyvalente `trapezoidal`, vous vous rendez compte que *la mise en œuvre d&#39;un algorithme mathématique général dans une fonction générale* nécessite une réflexion un peu plus abstraite, mais le code résultant peut être utilisé encore et encore. Essentiellement, si vous appliquez le style plat spécial, vous devez retester l&#39;implémentation de l&#39;algorithme après chaque changement de programme.
+<span style="color: #000080; font-weight: bold">======= La méthode du point milieu composite =======</span>
+<span style="color: #000080; font-weight: bold">===== L&#39;idée =====</span>
+Plutôt que d&#39;approximer l&#39;aire sous une courbe par des trapèzes, nous pouvons utiliser des rectangles simples. Il peut sembler moins précis d&#39;utiliser des lignes horizontales et non des lignes obliques suivant la fonction à intégrer, mais une méthode d&#39;intégration basée sur des rectangles (la méthode du point milieu) est en fait légèrement plus précise que celle basée sur des trapèzes!
+
+Dans la méthode du milieu, nous construisons un rectangle pour chaque sous-intervalle où la hauteur est égale à $f$ au milieu du sous-intervalle. Faisons-le pour quatre rectangles, en utilisant les mêmes sous-intervalles que nous avions pour les calculs manuels avec la méthode trapézoïdale: $[0,0.2)$, $[0.2,0.6)$, $[0.6,0.8)$ et $[0.8,1.0]$. On a
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\int_0^1 f(t)dt &amp;\approx
+   h_1 f\left(\frac{0 + 0.2}{2}\right) +
+   h_2 f\left(\frac{0.2 + 0.6}{2}\right) \nonumber  \\
+&amp;+ h_3 f\left(\frac{0.6 + 0.8}{2}\right) +
+   h_4 f\left(\frac{0.8 + 1.0}{2}\right)
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+où $h_1$, $h_2$, $h_3$ et $h_4$ sont les largeurs des sous-intervalles, utilisées précédemment avec la méthode du trapèze et définies dans (ref{eq:h1})-(ref{eq:h4}).
+
+<span style="color: #658b00">FIGURE:[imgs/viz_midpoint, width=400 frac=0.7] Calcul approximatif de l&#39;intégrale d&#39;une fonction comme la somme des aires des rectangles. label{fig:viz_midpoint}</span>
+
+Avec $f(t) = 3t^{2}e^{t^3}$, l&#39;approximation devient $1.632$. Comparé à la vraie réponse ($1.718$), c&#39;est environ $5 \%$ trop petit, mais c&#39;est mieux que ce que nous avons obtenu avec la méthode trapézoïdale ($10 \%$) avec les mêmes sous-intervalles. Plus de rectangles donnent une meilleure approximation.
+
+<span style="color: #000080; font-weight: bold">===== La formule générale =====</span>
+Dérivons une formule pour la méthode du milieu basée sur $n$ rectangles d&#39;égale largeur:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\int_a^b f(x)\,dx &amp;= \int_{x_0}^{x_1} f(x)dx + \int_{x_1}^{x_2} f(x)dx +
+                     \ldots + \int_{x_{n-1}}^{x_n} f(x)dx,     \nonumber \\
+                  &amp;\approx h f\left(\frac{x_0 + x_1}{2}\right) +
+                   h f\left(\frac{x_1 + x_2}{2}\right) + \ldots +
+                   h f\left(\frac{x_{n-1} + x_n}{2}\right) \\
+                  &amp;\approx h \left(f\left(\frac{x_0 + x_1}{2}\right) +
+                  f\left(\frac{x_1 + x_2}{2}\right) + \ldots +
+                  f\left(\frac{x_{n-1} + x_n}{2}\right)\right)
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Cette somme peut être écrite de façon plus compacte comme
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span> \label{eq:GeneralMidpoint}
+\int_a^b f(x) dx \approx h \sum_{i=0}^{n-1}f(x_i)
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+où $x_i = \left(a + \frac{h}{2}\right) + ih$.
+
+<span style="color: #000080; font-weight: bold">===== Implémentation =====</span>
+<span style="color: #658b00">label{sec:implementation}</span>
+Nous suivons les conseils et les enseignements tirés de la mise en œuvre de la méthode trapézoïdale et réalisons une fonction `midpoint(f, a, b, n)` (dans un fichier `midpoint.py`) pour mettre en œuvre la formule générale (ref{eq:GeneralMidpoint}):
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+def midpoint(f, a, b, n):
+    h = float(b-a)/n
+    result = 0
+    for i in range(n):
+        result += f((a + h/2.0) + i*h)
+    result *= h
+    return result
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Nous pouvons tester la fonction comme nous l&#39;avons expliqué pour la méthode du trapèze similaire. L&#39;erreur dans notre problème particulier $\int_0^1 3t^2e^{t^3}dt$ avec quatre intervalles est maintenant d&#39;environ $0.1$ contrairement à $0.2$ pour la règle du trapèze. Les différences sont rarement d&#39;une importance pratique, et sur un ordinateur portable, nous pouvons facilement utiliser $n = 10^6$ et obtenir la réponse avec une erreur d&#39;environ $10^{-12}$ en quelques secondes.
+<span style="color: #000080; font-weight: bold">===== Comparaison des méthodes du trapèze et du point milieu =====</span>
+L&#39;exemple suivant montre la facilité avec laquelle nous pouvons combiner les fonctions `trapezoidal` et `midpoint` pour comparer les deux méthodes dans le fichier `compare_integration_methods.py`:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from trapezoidal import trapezoidal
+from midpoint import midpoint
+from math import exp
+
+g = lambda y: exp(-y**2)
+a = 0
+b = 2
+print(&#39;    n        midpoint          trapezoidal&#39;)
+for i in range(1, 21):
+    n = 2**i
+    m = midpoint(g, a, b, n)
+    t = trapezoidal(g, a, b, n)
+    print(&#39;%7d %.16f %.16f&#39; % (n, m, t))
+
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Notez les efforts mis en forme agréable - la sortie devient
+<span style="color: #8B008B; font-weight: bold">!bc</span> shell
+n        midpoint          trapezoidal
+      2 0.8842000076332692 0.8770372606158094
+      4 0.8827889485397279 0.8806186341245393
+      8 0.8822686991994210 0.8817037913321336
+     16 0.8821288703366458 0.8819862452657772
+     32 0.8820933014203766 0.8820575578012112
+     64 0.8820843709743319 0.8820754296107942
+    128 0.8820821359746071 0.8820799002925637
+    256 0.8820815770754198 0.8820810181335849
+    512 0.8820814373412922 0.8820812976045025
+   1024 0.8820814024071774 0.8820813674728968
+   2048 0.8820813936736116 0.8820813849400392
+   4096 0.8820813914902204 0.8820813893068272
+   8192 0.8820813909443684 0.8820813903985197
+  16384 0.8820813908079066 0.8820813906714446
+  32768 0.8820813907737911 0.8820813907396778
+ 131072 0.8820813907631487 0.8820813907610036
+ 262144 0.8820813907625702 0.8820813907620528
+ 524288 0.8820813907624605 0.8820813907623183
+1048576 0.8820813907624268 0.8820813907623890
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Une inspection visuelle des chiffres montre à quelle vitesse les chiffres se stabilisent dans les deux méthodes. Il semble que 13 chiffres se soient stabilisés dans les deux dernières lignes.
+
+<span style="color: #8B008B; font-weight: bold">!bnotice</span> Remarque
+Les méthodes trapézoïdale et médiane ne sont que deux exemples dans une jungle de règles d&#39;intégration numérique. D&#39;autres méthodes célèbres sont la règle de Simpson et la quadrature de Gauss. Ils fonctionnent tous de la même manière:
+$$\int_a^b f(x)dx \approx \sum_{i=0}^{n-1} w_if(x_i)$$
+Autrement dit, l&#39;intégrale est approximée par une somme d&#39;évaluations de fonctions, où chaque évaluation $f (x_i)$ reçoit un poids $w_i$. Les différentes méthodes diffèrent par la façon dont elles construisent les points d&#39;évaluation $x_i$ et les poids $w_i$. Nous avons utilisé des points $x_i$ également espacés, mais une précision plus élevée peut être obtenue en optimisant l&#39;emplacement de $x_i$.
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+<span style="color: #000080; font-weight: bold">======= Intégrales doubles et triples =======</span>
+<span style="color: #000080; font-weight: bold">===== La règle du point milieu pour une double intégrale =====</span>
+Étant donné une intégrale double sur un domaine rectangulaire $[a, b] \times [c, d]$,
+
+$$\int_a^b \int_c^d f(x,y) dydx$$
+
+comment approcher cette intégrale par des méthodes numériques?
+<span style="color: #000080; font-weight: bold">=== Dérivation via des intégrales unidimensionnelles ===</span>
+Puisque nous savons comment traiter les intégrales dans une variable, une approche fructueuse consiste à considérer l&#39;intégrale double comme deux intégrales, chacune dans une variable, qui peut être approximée numériquement par les formules unidimensionnelles précédentes. À cette fin, nous introduisons une fonction d&#39;aide $g (x)$ et écrivons
+$$\int_a^b \int_c^d f(x,y) dydx = \int_a^b g(x)dx,\quad
+g(x) = \int_c^d f(x,y) dy$$
+Chacune des intégrales
+$$ \int_a^b g(x)dx,\quad
+g(x) = \int_c^d f(x,y) dy$$
+peut être discrétisé par n&#39;importe quelle règle d&#39;intégration numérique pour une intégrale dans une variable. Utilisons la méthode du point médian (22) et commençons par $g(x)=\int_c^d f(x,y)dy$. Nous introduisons $n_y$ intervalles sur $[c, d]$ de longueur $h_y$. La règle médiane pour cette intégrale devient alors
+$$g(x) = \int_c^d f(x,y) dy \approx  h_y \sum_{j=0}^{n_y-1} f(x,y_j),
+\quad y_j = c + \frac{1}{2}{h_y} + jh_y $$
+
+L&#39;expression semble quelque peu différente de (22), mais c&#39;est à cause de la notation: puisque nous nous intégrons dans la direction $y$ et que nous devrons travailler avec $x$ et $y$ comme coordonnées, nous devons utiliser $n_y$ pour $n$, $h_y$ pour $h$ et le compteur $i$ est plus naturellement appelé $j$ lors de l&#39;intégration dans $y$. Les intégrales dans la direction $x$ utiliseront $h_x$ et $n_x$ pour $h$ et $n$, et $i$ comme compteur.
+
+L&#39;intégrale double est $\int_a^b g(x)dx$, qui peut être approximée par la méthode du point médian:
+$$\int_a^b g(x)dx \approx h_x \sum_{i=0}^{n_x-1} g(x_i),\quad x_i=a + \frac{1}{2}{h_x} + ih_x$$
+
+En rassemblant les formules, nous arrivons à la méthode du point milieu composite pour une double intégrale:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\int_a^b \int_c^d f(x,y) dydx &amp;\approx
+h_x \sum_{i=0}^{n_x-1} h_y \sum_{j=0}^{n_y-1} f(x_i,y_j)\nonumber\\
+&amp;=
+h_xh_y \sum_{i=0}^{n_x-1} \sum_{j=0}^{n_y-1} f(a + \frac{h_x}{2} + ih_x, c + \frac{h_y}{2} + jh_y) \label{eq:MidpointDouble}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+La formule (ref{eq:MidpointDouble}) peut également être dérivée directement dans le cas bidimensionnel en appliquant l&#39;idée de la méthode du point milieu. Nous divisons le rectangle $[a, b] \times [c, d]$ en $nx \times ny$ cellules de taille égale. L&#39;idée de la méthode du point milieu est d&#39;approximer $f$ par une constante sur chaque cellule et d&#39;évaluer la constante au point médian. La cellule $(i, j)$ occupe la zone
+
+$$[a+ih_x,a+(i+1)h_x]\times [c+jh_y, c+ (j+1)h_y],$$
+et le milieu est $(x_i, y_j)$ avec
+$$x_i=a + ih_x + \frac{1}{2}{h_x} ,\quad y_j = c + jh_y + \frac{1}{2}{h_y}$$
+L&#39;intégrale sur la cellule est donc $h_xh_y f(x_i,y_j)$, et l&#39;intégrale double totale est la somme sur toutes les cellules, qui n&#39;est rien d&#39;autre que la formule (ref{eq:MidpointDouble}).
+<span style="color: #000080; font-weight: bold">=== Programmation d&#39;une double somme ===</span>
+La formule (ref{eq:MidpointDouble}) implique une double somme, qui est normalement implémentée sous la forme d&#39;une boucle double. Une fonction Python implémentant (ref{eq:MidpointDouble}) peut ressembler à
+<span style="color: #8B008B; font-weight: bold">!bc</span>  pycod
+def midpoint_double1(f, a, b, c, d, nx, ny):
+    hx = (b - a)/float(nx)
+    hy = (d - c)/float(ny)
+    I = 0
+    for i in range(nx):
+        for j in range(ny):
+            xi = a + hx/2 + i*hx
+            yj = c + hy/2 + j*hy
+            I += hx*hy*f(xi, yj)
+    return I
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Si cette fonction est stockée dans un fichier de module `midpoint_double.py`, nous pouvons calculer une intégrale, par exemple, $\int_2^3\int_0^2 (2x + y)dxdy=9$ dans un shell interactif et démontrer que la fonction calcule le bon nombre:
+<span style="color: #8B008B; font-weight: bold">!bc</span> ipy
+&gt;&gt;&gt; from midpoint_double import midpoint_double1
+&gt;&gt;&gt; def f(x, y):
+...     return 2*x + y
+...
+&gt;&gt;&gt; midpoint_double1(f, 0, 2, 2, 3, 5, 5)
+9.0
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #000080; font-weight: bold">=== Réutilisation du code pour les intégrales unidimensionnelles ===</span>
+Il est très naturel d&#39;écrire une méthode de point médian bidimensionnelle comme nous l&#39;avons fait dans la fonction `midpoint_double1` lorsque nous avons la formule (ref{eq:MidpointDouble}). Cependant, nous pourrions également demander, tout comme nous l&#39;avons fait en mathématiques, pouvons-nous réutiliser une implémentation bien testée pour les intégrales unidimensionnelles pour calculer les doubles intégrales? Autrement dit, pouvons-nous utiliser la fonction `midpoint`.
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+def midpoint(f, a, b, n):
+    h = float(b-a)/n
+    result = 0
+    for i in range(n):
+        result += f((a + h/2.0) + i*h)
+    result *= h
+    return result
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+de la section ref{sec:implementation} &quot;deux fois&quot;? La réponse est oui, si nous pensons comme nous l&#39;avons fait dans les mathématiques: calculer l&#39;intégrale double comme règle du point milieu pour intégrer $g (x)$ et définir $g (x_i)$ en termes d&#39;une règle médiane sur $f$ dans la coordonnée $y$.
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+def midpoint_double2(f, a, b, c, d, nx, ny):
+    def g(x):
+        return midpoint(lambda y: f(x, y), c, d, ny)
+
+    return midpoint(g, a, b, nx)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+L&#39;avantage important de cette implémentation est que nous réutilisons une fonction bien testée pour la règle du point milieu unidimensionnelle standard et que nous appliquons la règle unidimensionnelle exactement comme dans les mathématiques.
+<span style="color: #000080; font-weight: bold">=== Vérification via les fonctions de test ===</span>
+</pre></div>
