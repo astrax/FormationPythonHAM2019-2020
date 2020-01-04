@@ -311,6 +311,7 @@ Autrement dit, l&#39;intégrale est approximée par une somme d&#39;évaluations
 <span style="color: #8B008B; font-weight: bold">!enotice</span>
 <span style="color: #000080; font-weight: bold">======= Intégrales doubles et triples =======</span>
 <span style="color: #000080; font-weight: bold">===== La règle du point milieu pour une double intégrale =====</span>
+<span style="color: #658b00">label{sec:midpointDouble}</span>
 Étant donné une intégrale double sur un domaine rectangulaire $[a, b] \times [c, d]$,
 
 $$\int_a^b \int_c^d f(x,y) dydx$$
@@ -393,4 +394,178 @@ def midpoint_double2(f, a, b, c, d, nx, ny):
 <span style="color: #8B008B; font-weight: bold">!ec</span>
 L&#39;avantage important de cette implémentation est que nous réutilisons une fonction bien testée pour la règle du point milieu unidimensionnelle standard et que nous appliquons la règle unidimensionnelle exactement comme dans les mathématiques.
 <span style="color: #000080; font-weight: bold">=== Vérification via les fonctions de test ===</span>
+Comment tester que nos fonctions pour la double intégrale fonctionnent? Le meilleur test unitaire consiste à trouver un problème où l&#39;erreur d&#39;approximation numérique disparaît, car alors nous savons exactement quelle devrait être la réponse numérique. La règle du point milieu est exacte pour les fonctions linéaires, quel que soit le nombre de sous-intervalles que nous utilisons. De plus, toute fonction linéaire bidimensionnelle $f(x,y)=px+qy+r$ sera intégrée exactement par la règle point milieu bidimensionnelle. Nous pouvons choisir $f(x,y)=2x+y$ et créer une fonction de test appropriée qui peut automatiquement vérifier nos deux implémentations alternatives de la règle médiane bidimensionnelle. La fonction de test devient:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+def test_midpoint_double():
+    &quot;&quot;&quot;Test that a linear function is integrated exactly.&quot;&quot;&quot;
+    def f(x, y):
+        return 2*x + y
+
+    a = 0;  b = 2;  c = 2;  d = 3
+    import sympy
+    x, y = sympy.symbols(&#39;x  y&#39;)
+    I_expected = sympy.integrate(f(x, y), (x, a, b), (y, c, d))
+    # Test three cases: nx &lt; ny, nx = ny, nx &gt; ny
+    for nx, ny in (3, 5), (4, 4), (5, 3):
+        I_computed1 = midpoint_double1(f, a, b, c, d, nx, ny)
+        I_computed2 = midpoint_double2(f, a, b, c, d, nx, ny)
+        tol = 1E-14
+        #print I_expected, I_computed1, I_computed2
+        assert abs(I_computed1 - I_expected) &lt; tol
+        assert abs(I_computed2 - I_expected) &lt; tol
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!bnotice</span> Laisser parler les fonctions de test?
+Si nous appelons la fonction `test_midpoint_double` ci-dessus et que rien ne se passe, nos implémentations sont correctes. Cependant, il est quelque peu ennuyeux d&#39;avoir une fonction complètement silencieuse lorsqu&#39;elle fonctionne - sommes-nous sûrs que tout est correctement calculé? Pendant le développement, il est donc fortement recommandé d&#39;insérer une instruction d&#39;impression afin que nous puissions surveiller les calculs et être convaincu que la fonction de test fait ce que nous voulons. Puisqu&#39;une fonction de test ne doit avoir aucune instruction print, nous la commentons simplement comme nous l&#39;avons fait dans la fonction listée ci-dessus.
+
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+La méthode de trapèze peut être utilisée comme alternative à la méthode du point milieu. La dérivation d&#39;une formule pour la double intégrale et les implémentations suivent exactement les mêmes idées que nous avons expliquées avec la méthode du point milieu, mais il y a plus de termes à écrire dans les formules.
+<span style="color: #000080; font-weight: bold">===== La règle du point milieu pour une triple intégrale =====</span>
+<span style="color: #000080; font-weight: bold">=== Théorie ===</span>
+Une fois qu&#39;une méthode qui fonctionne pour un problème unidimensionnel est généralisée à deux dimensions, il est généralement assez simple d&#39;étendre la méthode à trois dimensions. Cela sera maintenant démontré pour les intégrales. Nous avons la triple intégrale:
+$$\int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx$$
+et veulent approximer l&#39;intégrale par une règle du point milieu. En suivant les idées de la double intégrale, nous avons divisé cette intégrale en intégrales unidimensionnelles:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+p(x,y) &amp;= \int_e^f g(x,y,z) dz\\
+q(x) &amp;= \int_c^d p(x,y) dy\\
+\int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx &amp;= \int_a^b q(x)dx
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Pour chacune de ces intégrales unidimensionnelles, nous appliquons la règle du point milieu:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+p(x,y) = \int_e^f g(x,y,z) dz
+&amp;\approx \sum_{k=0}^{n_z-1} g(x,y,z_k),
+\\
+q(x) = \int_c^d p(x,y) dy
+&amp;\approx \sum_{j=0}^{n_y-1} p(x,y_j),
+\\
+\int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx = \int_a^b q(x)dx
+&amp;\approx \sum_{i=0}^{n_x-1} q(x_i),
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+où
+$$z_k=e + \frac{1}{2}h_z + kh_z,\quad y_j=c + \frac{1}{2}h_y + jh_y \quad
+x_i=a + \frac{1}{2}h_x + ih_x$$
+En commençant par la formule pour $\int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx$ et en insérant les deux formules précédentes donne
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+&amp; \int_{a}^{b} \int_c^d \int_e^f g(x,y,z)\, dzdydx\approx\nonumber\\
+&amp; h_xh_yh_z
+\sum_{i=0}^{n_x-1}\sum_{j=0}^{n_y-1}\sum_{k=0}^{n_z-1}
+g(a + \frac{1}{2}h_x + ih_x,
+c + \frac{1}{2}h_y + jh_y,
+e + \frac{1}{2}h_z + kh_z) \label{eq:midpointTriple}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Notez que nous pouvons appliquer les idées sous Dérivation directe à la fin de la section ref{sec:midpointDouble} arrive à (ref{eq:midpointTriple}) directement: diviser le domaine en $n_x\times n_y\times n_z$ cellules de volumes $h_xh_yh_z$; approximativement g par une constante, évaluée au milieu $(x_i,y_j,z_k)$, dans chaque cellule; et additionner les intégrales de cellule $h_xh_yh_zg(x_i,y_j,z_k)$.
+<span style="color: #000080; font-weight: bold">=== Implémentation ===</span>
+Nous suivons les idées pour les implémentations de la règle du point milieu pour une double intégrale. Les fonctions correspondantes sont présentées ci-dessous et se trouvent dans le fichier `midpoint_triple.py`.
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+def midpoint_triple1(g, a, b, c, d, e, f, nx, ny, nz):
+    hx = (b - a)/float(nx)
+    hy = (d - c)/float(ny)
+    hz = (f - e)/float(nz)
+    I = 0
+    for i in range(nx):
+        for j in range(ny):
+            for k in range(nz):
+                xi = a + hx/2 + i*hx
+                yj = c + hy/2 + j*hy
+                zk = e + hz/2 + k*hz
+                I += hx*hy*hz*g(xi, yj, zk)
+    return I
+
+def midpoint(f, a, b, n):
+    h = float(b-a)/n
+    result = 0
+    for i in range(n):
+        result += f((a + h/2.0) + i*h)
+    result *= h
+    return result
+
+def midpoint_triple2(g, a, b, c, d, e, f, nx, ny, nz):
+    def p(x, y):
+        return midpoint(lambda z: g(x, y, z), e, f, nz)
+
+    def q(x):
+        return midpoint(lambda y: p(x, y), c, d, ny)
+
+    return midpoint(q, a, b, nx)
+
+def test_midpoint_triple():
+    &quot;&quot;&quot;Test that a linear function is integrated exactly.&quot;&quot;&quot;
+    def g(x, y, z):
+        return 2*x + y - 4*z
+
+    a = 0;  b = 2;  c = 2;  d = 3;  e = -1;  f = 2
+    import sympy
+    x, y, z = sympy.symbols(&#39;x y z&#39;)
+    I_expected = sympy.integrate(
+        g(x, y, z), (x, a, b), (y, c, d), (z, e, f))
+    for nx, ny, nz in (3, 5, 2), (4, 4, 4), (5, 3, 6):
+        I_computed1 = midpoint_triple1(
+            g, a, b, c, d, e, f, nx, ny, nz)
+        I_computed2 = midpoint_triple2(
+            g, a, b, c, d, e, f, nx, ny, nz)
+        tol = 1E-14
+        print(I_expected, I_computed1, I_computed2)
+        assert abs(I_computed1 - I_expected) &lt; tol
+        assert abs(I_computed2 - I_expected) &lt; tol
+
+if __name__ == &#39;__main__&#39;:
+    test_midpoint_triple()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #000080; font-weight: bold">======= Intégration Monte Carlo pour les domaines de forme complexe =======</span>
+L&#39;utilisation répétée de règles d&#39;intégration unidimensionnelles pour gérer les intégrales doubles et triples ne constitue une stratégie de travail que si le domaine d&#39;intégration est un rectangle ou une boîte. Pour toute autre forme de domaine, des méthodes complètement différentes doivent être utilisées. Une approche courante pour les domaines bidimensionnels et tridimensionnels consiste à diviser le domaine en plusieurs petits triangles ou tétraèdres et à utiliser des méthodes d&#39;intégration numérique pour chaque triangle ou tétraèdre. L&#39;algorithme global et l&#39;implémentation sont trop compliqués pour être traités dans ce livre. Au lieu de cela, nous utiliserons une méthode alternative, très simple et générale, appelée *intégration de Monte Carlo*. Il peut être implémenté dans une demi-page de code, mais nécessite des ordres de grandeur plus d&#39;évaluations de fonctions en intégrales doubles par rapport à la règle du point milieu.
+
+Cependant, l&#39;intégration Monte Carlo est beaucoup plus efficace en termes de calcul que la règle du point médian lors du calcul d&#39;intégrales de dimension supérieure dans plus de trois variables sur des domaines d&#39;hypercube. Nos idées d&#39;intégrales doubles et triples peuvent être facilement généralisées pour gérer une intégrale en $m$ variables. Une formule médiane implique alors $m$ sommes. Avec $n$ cellules dans chaque direction de coordonnées, la formule nécessite une fonction $n^m$ d&#39;évaluations. Autrement dit, le travail de calcul explose comme une fonction exponentielle du nombre de dimensions de l&#39;espace. L&#39;intégration de Monte-Carlo, quant à elle, ne souffre pas de cette explosion du travail de calcul et est la méthode préférée pour calculer les intégrales de dimension supérieure. Ainsi, il est logique dans un chapitre sur l&#39;intégration numérique d&#39;aborder les méthodes de Monte Carlo, à la fois pour la gestion de domaines complexes et pour la gestion d&#39;intégrales avec de nombreuses variables.
+<span style="color: #000080; font-weight: bold">===== L&#39;algorithme d&#39;intégration de Monte Carlo =====</span>
+L&#39;idée de l&#39;intégration Monte Carlo de $\int_a^b f(x)dx$ est d&#39;utiliser le théorème de la valeur moyenne du calcul, qui dit que l&#39;intégrale $\int_a^b f(x)dx$ est égale à la longueur du domaine d&#39;intégration, ici $b - a$, multipliée par la *valeur moyenne* de $f$, $\bar f$, dans $[a, b]$. La valeur moyenne peut être calculée en échantillonnant $f$ à un ensemble de points *aléatoires* à l&#39;intérieur du domaine et en prenant la moyenne des valeurs de fonction. Dans les dimensions supérieures, une intégrale est estimée comme l&#39;aire/le volume du domaine multiplié par la valeur moyenne, et encore une fois, on peut évaluer l&#39;intégrande à un ensemble de points aléatoires dans le domaine et calculer la valeur moyenne de ces évaluations.
+
+Introduisons quelques quantités pour nous aider à rendre la spécification de l&#39;algorithme d&#39;intégration plus précise. Supposons que nous ayons une intégrale à deux dimensions
+$$\int_\Omega f(x,y)dxdx,$$
+où $\Omega$ est un domaine bidimensionnel défini via une fonction d&#39;aide $g (x, y)$: $$\Omega = \{ (x,y)\,|\, g(x,y) \geq 0\}$$
+Autrement dit, les points $(x, y)$ pour lesquels $g (x, y) \ge 0$ se trouvent à l&#39;intérieur de $\Omega$, et les points pour lesquels $g (x, y) &lt; \Omega$ sont à l&#39;extérieur de $\Omega$. La frontière du domaine $\partial\Omega$ est donnée par la courbe implicite $g (x, y) = 0$. De telles formulations de géométries ont été très courantes au cours des deux dernières décennies, et l&#39;une se réfère à $g$ comme une fonction de *level-set* et la frontière $g = 0$ comme le contour de niveau zéro de la fonction de level-set. Pour des géométries simples, on peut facilement construire $g$ à la main, tandis que dans des applications industrielles plus compliquées, il faut recourir à des modèles mathématiques pour construire $g$.
+
+Soit $A(\Omega)$ l&#39;aire d&#39;un domaine $\Omega$. On peut estimer l&#39;intégrale par cette méthode d&#39;intégration de Monte Carlo:
+o incorporer la géométrie de $\Omega$ dans une zone rectangulaire $R$
+o dessiner un grand nombre de points aléatoires $(x, y)$ dans $R$
+o compter la fraction $q$ de points qui sont à l&#39;intérieur de $\Omega$
+o approximativement $A(\Omega)/ A(R)$ par $q$, c&#39;est-à-dire, régler $A(\Omega) = q A(R)$
+o évaluer la moyenne de $f$, $\bar f$, aux points à l&#39;intérieur de $\Omega$
+o estimer l&#39;intégrale comme $A(\Omega) \bar f$
+
+Notez que $A (R)$ est trivial à calculer car R est un rectangle, tandis que $A(\Omega)$ est inconnu. Cependant, si nous supposons que la fraction de $A (R)$ occupée par $A(\Omega)$ est la même que la fraction des points aléatoires à l&#39;intérieur de $\Omega$, nous obtenons une estimation simple pour $A(\Omega)$.
+
+Pour avoir une idée de la méthode, considérons un domaine circulaire $\Omega$ incorporé dans un rectangle comme indiqué ci-dessous. Une collection de points aléatoires est illustrée par des points noirs.
+<span style="color: #658b00">FIGURE:[imgs/integral_complex_domain, width=400 frac=0.7]</span>
+
+<span style="color: #000080; font-weight: bold">===== Implémentation =====</span>
+Une fonction Python implémentant $\int_\Omega f(x,y)dxdy$ peut être écrite comme ceci:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+import numpy as np
+
+def MonteCarlo_double(f, g, x0, x1, y0, y1, n):
+    &quot;&quot;&quot;
+    Monte Carlo integration of f over a domain g&gt;=0, embedded
+    in a rectangle [x0,x1]x[y0,y1]. n^2 is the number of
+    random points.
+    &quot;&quot;&quot;
+    # Draw n**2 random points in the rectangle
+    x = np.random.uniform(x0, x1, n)
+    y = np.random.uniform(y0, y1, n)
+    # Compute sum of f values inside the integration domain
+    f_mean = 0
+    num_inside = 0   # number of x,y points inside domain (g&gt;=0)
+    for i in range(len(x)):
+        for j in range(len(y)):
+            if g(x[i], y[j]) &gt;= 0:
+                num_inside += 1
+                f_mean += f(x[i], y[j])
+    f_mean = f_mean/float(num_inside)
+    area = num_inside/float(n**2)*(x1 - x0)*(y1 - y0)
+    return area*f_mean
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+(Voir le fichier `MC_double.py`.)
 </pre></div>
