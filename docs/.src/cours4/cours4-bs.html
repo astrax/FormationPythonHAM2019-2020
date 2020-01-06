@@ -50,7 +50,7 @@ body { font-size:20px;line-height:1.5; }
               ('Introduction', 1, None, '___sec0'),
               ("Idées de base de l'intégration numérique", 1, None, '___sec1'),
               ('Exemple de calcul', 2, None, '___sec2'),
-              ('La règle trapézoïdale composite', 1, None, '___sec3'),
+              ('La règle du trapèze composite', 1, None, '___sec3'),
               ('La formule générale', 2, None, '___sec4'),
               ('Implémentation', 2, None, '___sec5'),
               ('Implémentation spécifique ou générale?', 3, None, '___sec6'),
@@ -149,7 +149,7 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>Idées de base de l'intégration numérique</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exemple de calcul</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;"><b>La règle trapézoïdale composite</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;"><b>La règle du trapèze composite</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;La formule générale</a></li>
      <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Implémentation</a></li>
      <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Implémentation spécifique ou générale?</a></li>
@@ -209,7 +209,7 @@ MathJax.Hub.Config({
 <center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
 <br>
 <p>
-<center><h4>Jan 5, 2020</h4></center> <!-- date -->
+<center><h4>Jan 6, 2020</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -220,7 +220,7 @@ MathJax.Hub.Config({
 <a href="#___sec0"> Introduction </a><br>
 <a href="#___sec1"> Id&#233;es de base de l'int&#233;gration num&#233;rique </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Exemple de calcul </a><br>
-<a href="#___sec3"> La r&#232;gle trap&#233;zo&#239;dale composite </a><br>
+<a href="#___sec3"> La r&#232;gle du trap&#232;ze composite </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec4"> La formule g&#233;n&#233;rale </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Impl&#233;mentation </a><br>
 <a href="#___sec11"> La m&#233;thode du point milieu composite </a><br>
@@ -315,7 +315,7 @@ $$
 
 Nous pouvons donc calculer la valeur exacte de l'int&#233;grale comme \( V (1) &#8722;V (0) &#8776;1.718 \) (arrondi &#224; 3 d&#233;cimales pour plus de commodit&#233;).
 
-<h1 id="___sec3" class="anchor">La r&#232;gle trap&#233;zo&#239;dale composite </h1>
+<h1 id="___sec3" class="anchor">La r&#232;gle du trap&#232;ze composite </h1>
 L'int&#233;grale \( \int_a^b f(x)dx \) peut &#234;tre interpr&#233;t&#233; comme l'aire entre l'axe des x et le graphique \( y = f (x) \) de fonction &#224; int&#233;grer. La figure <a href="#fig:integral_of_f">1</a> illustre cette zone de choix \eqref{eq:SpeedIntegral}. Le calcul de l'int&#233;grale \( \int_0^1f(t)dt \) revient &#224; calculer l'aire de la zone hachur&#233;e.
 
 <p>
@@ -364,10 +364,10 @@ $$
 \end{equation}
 $$
 
-Par rapport &#224; la vraie r&#233;ponse de \( 1.718 \), cela est d'environ \( 10 \% \). Cependant, notez que nous avons utilis&#233; seulement 4 trap&#232;zes pour approximer la zone. Avec plus de trap&#232;zes, l'approximation serait devenue meilleure, puisque les segments de droite du c&#244;t&#233; trap&#233;zo&#239;dal sup&#233;rieur suivraient alors le graphique de plus pr&#232;s. Faire un autre calcul avec plus de trap&#232;zes n'est pas trop tentant pour un humain paresseux, mais c'est un travail parfait pour un ordinateur! D&#233;rivons donc les expressions d'approximation de l'int&#233;grale par un nombre arbitraire de trap&#232;zes.
+Par rapport &#224; la vraie r&#233;ponse de \( 1.718 \), cela est d'environ \( 10 \% \). Cependant, notez que nous avons utilis&#233; seulement 4 trap&#232;zes pour approximer la zone. Avec plus de trap&#232;zes, l'approximation serait devenue meilleure, puisque les segments de droite du c&#244;t&#233; sup&#233;rieur des trap&#232;zes suivraient alors le graphique de plus pr&#232;s. Faire un autre calcul avec plus de trap&#232;zes n'est pas trop tentant pour un humain paresseux, mais c'est un travail parfait pour un ordinateur! D&#233;rivons donc les expressions d'approximation de l'int&#233;grale par un nombre arbitraire de trap&#232;zes.
 
 <h2 id="___sec4" class="anchor">La formule g&#233;n&#233;rale </h2>
-Pour une fonction donn&#233;e \( f (x) \), nous voulons approximer l'int&#233;grale \( \int_a^bf(x)dx \) par \( n \) trap&#233;zo&#239;des (de largeur &#233;gale). Nous commen&#231;ons par (3.5) et approchons chaque int&#233;grale du c&#244;t&#233; droit avec un seul trap&#232;ze. En d&#233;tail,
+Pour une fonction donn&#233;e \( f (x) \), nous voulons approximer l'int&#233;grale \( \int_a^bf(x)dx \) par \( n \) trap&#232;zes (de largeur &#233;gale). Nous commen&#231;ons par (3.5) et approchons chaque int&#233;grale du c&#244;t&#233; droit avec un seul trap&#232;ze. En d&#233;tail,
 $$
 \begin{align}
 \int_a^b f(x)\,dx &= \int_{x_0}^{x_1} f(x) dx + \int_{x_1}^{x_2} f(x) dx + \ldots + \int_{x_{n-1}}^{x_n} f(x) dx,     \nonumber \\
@@ -401,7 +401,7 @@ $$
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
 Le mot composite est souvent utilis&#233; lorsqu'une m&#233;thode d'int&#233;gration num&#233;rique est appliqu&#233;e avec plus d'un sous-intervalle.
-&#224; vrai dire alors, &#233;crire, par exemple, "la m&#233;thode trap&#233;zo&#239;dale", devrait impliquer l'utilisation d'un seul trap&#232;ze, tandis que "la m&#233;thode trap&#233;zo&#239;dale composite" est le nom le plus correct lorsque plusieurs trap&#232;zes sont utilis&#233;s. Cependant, cette convention de d&#233;nomination n'est pas toujours suivie, donc dire que "la m&#233;thode trap&#233;zo&#239;dale" peut pointer vers un seul trap&#232;ze ainsi que la r&#232;gle composite avec de nombreux trap&#232;zes.
+&#224; vrai dire alors, &#233;crire, par exemple, "la m&#233;thode du trap&#232;ze", devrait impliquer l'utilisation d'un seul trap&#232;ze, tandis que "la m&#233;thode du trap&#232;ze composite" est le nom le plus correct lorsque plusieurs trap&#232;zes sont utilis&#233;s. Cependant, cette convention de d&#233;nomination n'est pas toujours suivie, donc dire que "la m&#233;thode du trap&#232;ze" peut pointer vers un seul trap&#232;ze ainsi que la r&#232;gle composite avec de nombreux trap&#232;zes.
 </div>
 </div>
 
@@ -410,7 +410,7 @@ Le mot composite est souvent utilis&#233; lorsqu'une m&#233;thode d'int&#233;gra
 
 <h3 id="___sec6" class="anchor">Impl&#233;mentation sp&#233;cifique ou g&#233;n&#233;rale? </h3>
 
-Supposons que notre objectif principal &#233;tait de calculer l'int&#233;grale sp&#233;cifique \( \int_0^1 v(t)dt \) avec \( v(t)=3t^2e^{t^3} \). D'abord, nous avons jou&#233; avec un simple calcul de main pour voir de quoi il s'agissait, avant de d&#233;velopper (comme c'est souvent le cas en math&#233;matiques) une formule g&#233;n&#233;rale \eqref{eq:GenralIntegral} pour l'int&#233;grale g&#233;n&#233;rale ou &#171;abstraite&#187; \( \int_a^bf(x)dx \). Pour r&#233;soudre notre probl&#232;me sp&#233;cifique \( \int_0^1 v(t)dt \), nous devons ensuite appliquer la formule g&#233;n&#233;rale \eqref{eq:GenralIntegral} aux donn&#233;es donn&#233;es (fonction et limites int&#233;grales) dans notre probl&#232;me. Bien que simples en principe, les &#233;tapes pratiques sont d&#233;routantes pour beaucoup car la notation dans le probl&#232;me abstrait de \eqref{eq:GenralIntegral} diff&#232;re de la notation dans notre probl&#232;me sp&#233;cial. Clairement, les \( f \), \( x \) et \( h \) dans \eqref{eq:GenralIntegral} correspondent &#224; \( v \), \( t \) et peut-&#234;tre \( \Delta t \) pour la largeur trap&#233;zo&#239;dale dans notre probl&#232;me sp&#233;cial.
+Supposons que notre objectif principal &#233;tait de calculer l'int&#233;grale sp&#233;cifique \( \int_0^1 v(t)dt \) avec \( v(t)=3t^2e^{t^3} \). D'abord, nous avons jou&#233; avec un simple calcul de main pour voir de quoi il s'agissait, avant de d&#233;velopper (comme c'est souvent le cas en math&#233;matiques) une formule g&#233;n&#233;rale \eqref{eq:GenralIntegral} pour l'int&#233;grale g&#233;n&#233;rale ou &#171;abstraite&#187; \( \int_a^bf(x)dx \). Pour r&#233;soudre notre probl&#232;me sp&#233;cifique \( \int_0^1 v(t)dt \), nous devons ensuite appliquer la formule g&#233;n&#233;rale \eqref{eq:GenralIntegral} aux donn&#233;es donn&#233;es (fonction et limites int&#233;grales) dans notre probl&#232;me. Bien que simples en principe, les &#233;tapes pratiques sont d&#233;routantes pour beaucoup car la notation dans le probl&#232;me abstrait de \eqref{eq:GenralIntegral} diff&#232;re de la notation dans notre probl&#232;me sp&#233;cial. Clairement, les \( f \), \( x \) et \( h \) dans \eqref{eq:GenralIntegral} correspondent &#224; \( v \), \( t \) et peut-&#234;tre \( \Delta t \) pour la largeur du trap&#232;ze dans notre probl&#232;me sp&#233;cial.
 <div class="panel panel-success">
   <div class="panel-heading">
   <h3 class="panel-title">Le dilemme du programmeur</h3>
@@ -420,7 +420,7 @@ Supposons que notre objectif principal &#233;tait de calculer l'int&#233;grale s
 
 <ol>
 <li> Faut-il &#233;crire un programme sp&#233;cial pour l'int&#233;grale sp&#233;ciale, en utilisant les id&#233;es de la r&#232;gle g&#233;n&#233;rale \eqref{eq:GenralIntegral}, mais en rempla&#231;ant \( f \) par \( v \), \( x \) par \( t \) et \( h \) par \( \Delta t \)?</li>
-<li> Faut-il impl&#233;menter la m&#233;thode g&#233;n&#233;rale \eqref{eq:GenralIntegral} telle qu'elle se pr&#233;sente dans une fonction g&#233;n&#233;rale <code>trapezoid(f, a, b, n)</code> et r&#233;soudre le probl&#232;me sp&#233;cifique en question par un appel sp&#233;cialis&#233; &#224; cette fonction?</li>
+<li> Faut-il impl&#233;menter la m&#233;thode g&#233;n&#233;rale \eqref{eq:GenralIntegral} telle qu'elle se pr&#233;sente dans une fonction g&#233;n&#233;rale <code>trapeze(f, a, b, n)</code> et r&#233;soudre le probl&#232;me sp&#233;cifique en question par un appel sp&#233;cialis&#233; &#224; cette fonction?</li>
 </ol>
 
 <b>L'alternative 2 est toujours le meilleur choix!</b>
@@ -436,11 +436,11 @@ La premi&#232;re alternative dans l'encadr&#233; ci-dessus semble moins abstrait
 Pour l'int&#233;grale \( \int_a^bf(x)dx \) calcul&#233;e par la formule \eqref{eq:GenralIntegral}, nous voulons que le trap&#232;ze de la fonction Python correspondante prenne tout \( f \), \( a \), \( b \) et \( n \) en entr&#233;e et renvoie l'approximation &#224; l'int&#233;grale.
 
 <p>
-Nous &#233;crivons une fonction Python <code>trapezoidal</code> dans un fichier "trapezoidal.py":"" aussi proche que possible de la formule \eqref{eq:GenralIntegral}, en nous assurant que les noms de variables correspondent &#224; la notation math&#233;matique:
+Nous &#233;crivons une fonction Python <code>trapeze()</code> dans un fichier <code>trapeze_integral.py</code> aussi proche que possible de la formule \eqref{eq:GenralIntegral}, en nous assurant que les noms de variables correspondent &#224; la notation math&#233;matique:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">trapezoidal</span>(f, a, b, n):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">trapeze</span>(f, a, b, n):
     h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n
     result <span style="color: #666666">=</span> <span style="color: #666666">0.5*</span>f(a) <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>f(b)
     <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, n):
@@ -451,15 +451,15 @@ Nous &#233;crivons une fonction Python <code>trapezoidal</code> dans un fichier 
 
 <h3 id="___sec8" class="anchor">R&#233;soudre notre probl&#232;me sp&#233;cifique en une session </h3>
 
-Le simple fait d'avoir la fonction <code>trapezoidal</code> comme seul contenu d'un fichier trapezoidal.py fait automatiquement de ce fichier un module que nous pouvons importer et tester dans une session interactive:
+Le simple fait d'avoir la fonction <code>trapeze()</code> comme seul contenu d'un fichier <code>trapeze_integral.py</code> fait automatiquement de ce fichier un module que nous pouvons importer et tester dans une session interactive:
 <p>
 
 <!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">trapezoidal</span> <span style="color: #008000; font-weight: bold">import</span> trapezoidal
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">trapeze_integral</span> <span style="color: #008000; font-weight: bold">import</span> trapeze
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp
 <span style="color: #666666">&gt;&gt;&gt;</span> v <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> t: <span style="color: #666666">3*</span>(t<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>exp(t<span style="color: #666666">**3</span>)
 <span style="color: #666666">&gt;&gt;&gt;</span> n <span style="color: #666666">=</span> <span style="color: #666666">4</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> numerical <span style="color: #666666">=</span> trapezoidal(v, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n)
+<span style="color: #666666">&gt;&gt;&gt;</span> numerical <span style="color: #666666">=</span> trapeze(v, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n)
 <span style="color: #666666">&gt;&gt;&gt;</span> numerical
 <span style="color: #666666">1.9227167504675762</span>
 </pre></div>
@@ -478,7 +478,7 @@ Cette erreur est-elle convaincante? On peut essayer un \( n \) plus grand:
 <p>
 
 <!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> numerical <span style="color: #666666">=</span> trapezoidal(v, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n<span style="color: #666666">=400</span>)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> numerical <span style="color: #666666">=</span> trapeze(v, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n<span style="color: #666666">=400</span>)
 <span style="color: #666666">&gt;&gt;&gt;</span> exact <span style="color: #666666">-</span> numerical
 <span style="color: #666666">-2.1236490512777095e-05</span>
 </pre></div>
@@ -495,7 +495,7 @@ Au lieu de calculer notre probl&#232;me sp&#233;cial dans une session interactiv
     <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp
     v <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> t: <span style="color: #666666">3*</span>(t<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>exp(t<span style="color: #666666">**3</span>)
     n <span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&#39;n: &#39;</span>)
-    numerical <span style="color: #666666">=</span> trapezoidal(v, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n)
+    numerical <span style="color: #666666">=</span> trapeze(v, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n)
 
     <span style="color: #408080; font-style: italic"># Compare with exact result</span>
     V <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> t: exp(t<span style="color: #666666">**3</span>)
@@ -504,18 +504,18 @@ Au lieu de calculer notre probl&#232;me sp&#233;cial dans une session interactiv
     <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;n=</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">: </span><span style="color: #BB6688; font-weight: bold">%.16f</span><span style="color: #BA2121">, error: </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (n, numerical, error))
 </pre></div>
 <p>
-Maintenant, nous calculons notre probl&#232;me sp&#233;cial en appelant <code>application()</code> comme la seule instruction du programme principal. Les fonctions <code>trapezoidal</code> et <code>application</code> r&#233;sident toutes deux dans le fichier <code>trapezoidal.py</code>, qui peut &#234;tre ex&#233;cut&#233; en tant que
+Maintenant, nous calculons notre probl&#232;me sp&#233;cial en appelant <code>application()</code> comme la seule instruction du programme principal. Les fonctions <code>trapeze()</code> et <code>application</code> r&#233;sident toutes deux dans le fichier <code>trapeze_integral.py</code>, qui peut &#234;tre ex&#233;cut&#233; en tant que
 <p>
 
 <!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal<span style="color: #666666">&gt;</span> python trapezoidal<span style="color: #666666">.</span>py
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal<span style="color: #666666">&gt;</span> python trapeze_integral<span style="color: #666666">.</span>py
 n: <span style="color: #666666">4</span>
 n<span style="color: #666666">=4</span>: <span style="color: #666666">1.9227167504675762</span>, error: <span style="color: #666666">-0.204435</span>
 </pre></div>
 
 <h3 id="___sec10" class="anchor">Faire un module </h3>
 
-Lorsque nous avons les diff&#233;rentes parties de notre programme comme une collection de fonctions, il est tr&#232;s simple de cr&#233;er un <em>module</em> qui peut &#234;tre import&#233; dans d'autres programmes. Ce fait, avoir notre code comme module, signifie que la fonction <code>trapezoidal</code> peut facilement &#234;tre r&#233;utilis&#233;e par d'autres programmes pour r&#233;soudre d'autres probl&#232;mes. Les exigences d'un module sont simples: mettez tout &#224; l'int&#233;rieur des fonctions et laissez les appels de fonction dans le programme principal &#234;tre dans le soi-disant <em>bloc de test</em>:
+Lorsque nous avons les diff&#233;rentes parties de notre programme comme une collection de fonctions, il est tr&#232;s simple de cr&#233;er un <em>module</em> qui peut &#234;tre import&#233; dans d'autres programmes. Ce fait, avoir notre code comme module, signifie que la fonction <code>trapeze()</code> peut facilement &#234;tre r&#233;utilis&#233;e par d'autres programmes pour r&#233;soudre d'autres probl&#232;mes. Les exigences d'un module sont simples: mettez tout &#224; l'int&#233;rieur des fonctions et laissez les appels de fonction dans le programme principal &#234;tre dans le soi-disant <em>bloc de test</em>:
 <p>
 
 <!-- code=text (!bc pycodext) typeset with pygments style "default" -->
@@ -523,17 +523,17 @@ Lorsque nous avons les diff&#233;rentes parties de notre programme comme une col
     application()
 </pre></div>
 <p>
-Le test <code>if</code> est vrai si le fichier de module, <code>trapezoidal.py</code>, est ex&#233;cut&#233; en tant que programme et faux si le module est import&#233; dans un autre programme. Par cons&#233;quent, lorsque nous effectuons une importation: <code>from trapezoidal import trapezoidal</code> dans un fichier, le test &#233;choue et <code>application()</code> n'est pas appel&#233;e, c'est-&#224;-dire que notre probl&#232;me sp&#233;cial n'est pas r&#233;solu et n'imprime rien &#224; l'&#233;cran. D'un autre c&#244;t&#233;, si nous ex&#233;cutons <code>trapezoidal.py</code> dans la fen&#234;tre du terminal, la condition de test est positive, <code>application()</code> est appel&#233;e et nous obtenons une sortie dans la fen&#234;tre:
+Le test <code>if</code> est vrai si le fichier de module, <code>trapeze_integral.py</code>, est ex&#233;cut&#233; en tant que programme et faux si le module est import&#233; dans un autre programme. Par cons&#233;quent, lorsque nous effectuons une importation: <code>from trapeze_integral import trapeze</code> dans un fichier, le test &#233;choue et <code>application()</code> n'est pas appel&#233;e, c'est-&#224;-dire que notre probl&#232;me sp&#233;cial n'est pas r&#233;solu et n'imprime rien &#224; l'&#233;cran. D'un autre c&#244;t&#233;, si nous ex&#233;cutons <code>trapeze_integral.py</code> dans la fen&#234;tre du terminal, la condition de test est positive, <code>application()</code> est appel&#233;e et nous obtenons une sortie dans la fen&#234;tre:
 
 <p>
 
 <!-- code=text (!bc pycodext) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; python trapezoidal.py
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; python trapeze_integral.py
 n: 400
 n=400: 1.7183030649495579, error: -2.12365e-05
 </pre></div>
 <p>
-Lorsque vous regardez maintenant les deux solutions, le programme plat sp&#233;cial et le programme bas&#233; sur les fonctions avec la fonction polyvalente <code>trapezoidal</code>, vous vous rendez compte que <em>la mise en &#339;uvre d'un algorithme math&#233;matique g&#233;n&#233;ral dans une fonction g&#233;n&#233;rale</em> n&#233;cessite une r&#233;flexion un peu plus abstraite, mais le code r&#233;sultant peut &#234;tre utilis&#233; encore et encore. Essentiellement, si vous appliquez le style plat sp&#233;cial, vous devez retester l'impl&#233;mentation de l'algorithme apr&#232;s chaque changement de programme.
+Lorsque vous regardez maintenant les deux solutions, le programme plat sp&#233;cial et le programme bas&#233; sur les fonctions avec la fonction polyvalente <code>trapeze()</code>, vous vous rendez compte que <em>l'impl&#233;mentation d'un algorithme math&#233;matique g&#233;n&#233;ral dans une fonction g&#233;n&#233;rale</em> n&#233;cessite une r&#233;flexion un peu plus abstraite, mais le code r&#233;sultant peut &#234;tre utilis&#233; encore et encore. Essentiellement, si vous appliquez le style plat sp&#233;cial, vous devez retester l'impl&#233;mentation de l'algorithme apr&#232;s chaque changement de programme.
 
 <h1 id="___sec11" class="anchor">La m&#233;thode du point milieu composite </h1>
 
@@ -541,7 +541,7 @@ Lorsque vous regardez maintenant les deux solutions, le programme plat sp&#233;c
 Plut&#244;t que d'approximer l'aire sous une courbe par des trap&#232;zes, nous pouvons utiliser des rectangles simples. Il peut sembler moins pr&#233;cis d'utiliser des lignes horizontales et non des lignes obliques suivant la fonction &#224; int&#233;grer, mais une m&#233;thode d'int&#233;gration bas&#233;e sur des rectangles (la m&#233;thode du point milieu) est en fait l&#233;g&#232;rement plus pr&#233;cise que celle bas&#233;e sur des trap&#232;zes!
 
 <p>
-Dans la m&#233;thode du milieu, nous construisons un rectangle pour chaque sous-intervalle o&#249; la hauteur est &#233;gale &#224; \( f \) au milieu du sous-intervalle. Faisons-le pour quatre rectangles, en utilisant les m&#234;mes sous-intervalles que nous avions pour les calculs manuels avec la m&#233;thode trap&#233;zo&#239;dale: \( [0,0.2) \), \( [0.2,0.6) \), \( [0.6,0.8) \) et \( [0.8,1.0] \). On a
+Dans la m&#233;thode du milieu, nous construisons un rectangle pour chaque sous-intervalle o&#249; la hauteur est &#233;gale &#224; \( f \) au milieu du sous-intervalle. Faisons-le pour quatre rectangles, en utilisant les m&#234;mes sous-intervalles que nous avions pour les calculs manuels avec la m&#233;thode du trap&#232;ze: \( [0,0.2) \), \( [0.2,0.6) \), \( [0.6,0.8) \) et \( [0.8,1.0] \). On a
 $$
 \begin{align}
 \int_0^1 f(t)dt &\approx
@@ -592,7 +592,7 @@ $$
 o&#249; \( x_i = \left(a + \frac{h}{2}\right) + ih \).
 
 <h2 id="sec:implementation" class="anchor">Impl&#233;mentation</h2>
-Nous suivons les conseils et les enseignements tir&#233;s de la mise en &#339;uvre de la m&#233;thode trap&#233;zo&#239;dale et r&#233;alisons une fonction <code>midpoint(f, a, b, n)</code> (dans un fichier <code>midpoint.py</code>) pour mettre en &#339;uvre la formule g&#233;n&#233;rale \eqref{eq:GeneralMidpoint}:
+Nous suivons les conseils et les enseignements tir&#233;s de l'impl&#233;mentation de la m&#233;thode trap&#232;ze et r&#233;alisons une fonction <code>midpoint(f, a, b, n)</code> (dans un fichier <code>midpoint_integral.py</code>) pour impl&#233;menter la formule g&#233;n&#233;rale \eqref{eq:GeneralMidpoint}:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -608,12 +608,12 @@ Nous suivons les conseils et les enseignements tir&#233;s de la mise en &#339;uv
 Nous pouvons tester la fonction comme nous l'avons expliqu&#233; pour la m&#233;thode du trap&#232;ze similaire. L'erreur dans notre probl&#232;me particulier \( \int_0^1 3t^2e^{t^3}dt \) avec quatre intervalles est maintenant d'environ \( 0.1 \) contrairement &#224; \( 0.2 \) pour la r&#232;gle du trap&#232;ze. Les diff&#233;rences sont rarement d'une importance pratique, et sur un ordinateur portable, nous pouvons facilement utiliser \( n = 10^6 \) et obtenir la r&#233;ponse avec une erreur d'environ \( 10^{-12} \) en quelques secondes.
 
 <h2 id="___sec15" class="anchor">Comparaison des m&#233;thodes du trap&#232;ze et du point milieu </h2>
-L'exemple suivant montre la facilit&#233; avec laquelle nous pouvons combiner les fonctions <code>trapezoidal</code> et <code>midpoint</code> pour comparer les deux m&#233;thodes dans le fichier <code>compare_integration_methods.py</code>:
+L'exemple suivant montre la facilit&#233; avec laquelle nous pouvons combiner les fonctions <code>trapeze()</code> et <code>midpoint()</code> pour comparer les deux m&#233;thodes dans le fichier <code>compare_integration_methods.py</code>:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">trapezoidal</span> <span style="color: #008000; font-weight: bold">import</span> trapezoidal
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">midpoint</span> <span style="color: #008000; font-weight: bold">import</span> midpoint
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">trapeze_integral</span> <span style="color: #008000; font-weight: bold">import</span> trapeze
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">midpoint_integral</span> <span style="color: #008000; font-weight: bold">import</span> midpoint
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp
 
 g <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> y: exp(<span style="color: #666666">-</span>y<span style="color: #666666">**2</span>)
@@ -662,7 +662,7 @@ Une inspection visuelle des chiffres montre &#224; quelle vitesse les chiffres s
   </div>
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
-Les m&#233;thodes trap&#233;zo&#239;dale et m&#233;diane ne sont que deux exemples dans une jungle de r&#232;gles d'int&#233;gration num&#233;rique. D'autres m&#233;thodes c&#233;l&#232;bres sont la r&#232;gle de Simpson et la quadrature de Gauss. Ils fonctionnent tous de la m&#234;me mani&#232;re:
+Les m&#233;thodes du trap&#232;ze et du point milieu ne sont que deux exemples dans une jungle de r&#232;gles d'int&#233;gration num&#233;rique. D'autres m&#233;thodes c&#233;l&#232;bres sont la r&#232;gle de Simpson et la quadrature de Gauss. Ils fonctionnent tous de la m&#234;me mani&#232;re:
 $$\int_a^b f(x)dx \approx \sum_{i=0}^{n-1} w_if(x_i)$$
 Autrement dit, l'int&#233;grale est approxim&#233;e par une somme d'&#233;valuations de fonctions, o&#249; chaque &#233;valuation \( f (x_i) \) re&#231;oit un poids \( w_i \). Les diff&#233;rentes m&#233;thodes diff&#232;rent par la fa&#231;on dont elles construisent les points d'&#233;valuation \( x_i \) et les poids \( w_i \). Nous avons utilis&#233; des points \( x_i \) &#233;galement espac&#233;s, mais une pr&#233;cision plus &#233;lev&#233;e peut &#234;tre obtenue en optimisant l'emplacement de \( x_i \).
 </div>
@@ -681,21 +681,21 @@ comment approcher cette int&#233;grale par des m&#233;thodes num&#233;riques?
 
 <h3 id="___sec18" class="anchor">D&#233;rivation via des int&#233;grales unidimensionnelles </h3>
 
-Puisque nous savons comment traiter les int&#233;grales dans une variable, une approche fructueuse consiste &#224; consid&#233;rer l'int&#233;grale double comme deux int&#233;grales, chacune dans une variable, qui peut &#234;tre approxim&#233;e num&#233;riquement par les formules unidimensionnelles pr&#233;c&#233;dentes. &#192; cette fin, nous introduisons une fonction d'aide \( g (x) \) et &#233;crivons
+Puisque nous savons comment traiter les int&#233;grales &#224; une variable, une approche fructueuse consiste &#224; consid&#233;rer l'int&#233;grale double comme deux int&#233;grales, chacune &#224; une variable, qui peut &#234;tre approxim&#233;e num&#233;riquement par les formules unidimensionnelles pr&#233;c&#233;dentes. &#192; cette fin, nous introduisons une fonction interm&#233;diaire \( g (x) \) et &#233;crivons
 $$\int_a^b \int_c^d f(x,y) dydx = \int_a^b g(x)dx,\quad
 g(x) = \int_c^d f(x,y) dy$$
 Chacune des int&#233;grales
 $$ \int_a^b g(x)dx,\quad
 g(x) = \int_c^d f(x,y) dy$$
-peut &#234;tre discr&#233;tis&#233; par n'importe quelle r&#232;gle d'int&#233;gration num&#233;rique pour une int&#233;grale dans une variable. Utilisons la m&#233;thode du point m&#233;dian (22) et commen&#231;ons par \( g(x)=\int_c^d f(x,y)dy \). Nous introduisons \( n_y \) intervalles sur \( [c, d] \) de longueur \( h_y \). La r&#232;gle m&#233;diane pour cette int&#233;grale devient alors
+peut &#234;tre discr&#233;tis&#233; par n'importe quelle r&#232;gle d'int&#233;gration num&#233;rique pour une int&#233;grale dans une variable. Utilisons la m&#233;thode du point milieu \eqref{eq:GeneralMidpoint} et commen&#231;ons par \( g(x)=\int_c^d f(x,y)dy \). Nous introduisons \( n_y \) intervalles sur \( [c, d] \) de longueur \( h_y \). La r&#232;gle du point milieu pour cette int&#233;grale devient alors
 $$g(x) = \int_c^d f(x,y) dy \approx  h_y \sum_{j=0}^{n_y-1} f(x,y_j),
 \quad y_j = c + \frac{1}{2}{h_y} + jh_y $$
 
 <p>
-L'expression semble quelque peu diff&#233;rente de (22), mais c'est &#224; cause de la notation: puisque nous nous int&#233;grons dans la direction \( y \) et que nous devrons travailler avec \( x \) et \( y \) comme coordonn&#233;es, nous devons utiliser \( n_y \) pour \( n \), \( h_y \) pour \( h \) et le compteur \( i \) est plus naturellement appel&#233; \( j \) lors de l'int&#233;gration dans \( y \). Les int&#233;grales dans la direction \( x \) utiliseront \( h_x \) et \( n_x \) pour \( h \) et \( n \), et \( i \) comme compteur.
+L'expression semble quelque peu diff&#233;rente de \eqref{eq:GeneralMidpoint}, mais c'est &#224; cause de la notation: puisque nous nous int&#233;grons dans la direction \( y \) et que nous devrons travailler avec \( x \) et \( y \) comme coordonn&#233;es, nous devons utiliser \( n_y \) pour \( n \), \( h_y \) pour \( h \) et le compteur \( i \) est plus naturellement appel&#233; \( j \) lors de l'int&#233;gration dans \( y \). Les int&#233;grales dans la direction \( x \) utiliseront \( h_x \) et \( n_x \) pour \( h \) et \( n \), et \( i \) comme compteur.
 
 <p>
-L'int&#233;grale double est \( \int_a^b g(x)dx \), qui peut &#234;tre approxim&#233;e par la m&#233;thode du point m&#233;dian:
+L'int&#233;grale double est \( \int_a^b g(x)dx \), qui peut &#234;tre approxim&#233;e par la m&#233;thode du point milieu:
 $$\int_a^b g(x)dx \approx h_x \sum_{i=0}^{n_x-1} g(x_i),\quad x_i=a + \frac{1}{2}{h_x} + ih_x$$
 
 <p>
@@ -748,7 +748,7 @@ Si cette fonction est stock&#233;e dans un fichier de module <code>midpoint_doub
 
 <h3 id="___sec20" class="anchor">R&#233;utilisation du code pour les int&#233;grales unidimensionnelles </h3>
 
-Il est tr&#232;s naturel d'&#233;crire une m&#233;thode de point m&#233;dian bidimensionnelle comme nous l'avons fait dans la fonction <code>midpoint_double1</code> lorsque nous avons la formule \eqref{eq:MidpointDouble}. Cependant, nous pourrions &#233;galement demander, tout comme nous l'avons fait en math&#233;matiques, pouvons-nous r&#233;utiliser une impl&#233;mentation bien test&#233;e pour les int&#233;grales unidimensionnelles pour calculer les doubles int&#233;grales? Autrement dit, pouvons-nous utiliser la fonction <code>midpoint</code>.
+Il est tr&#232;s naturel d'&#233;crire une m&#233;thode de point milieu bidimensionnelle comme nous l'avons fait dans la fonction <code>midpoint_double1</code> lorsque nous avons la formule \eqref{eq:MidpointDouble}. Cependant, nous pourrions &#233;galement demander, tout comme nous l'avons fait en math&#233;matiques, pouvons-nous r&#233;utiliser une impl&#233;mentation bien test&#233;e pour les int&#233;grales unidimensionnelles pour calculer les doubles int&#233;grales? Autrement dit, pouvons-nous utiliser la fonction <code>midpoint</code>.
 
 <p>
 
@@ -762,7 +762,7 @@ Il est tr&#232;s naturel d'&#233;crire une m&#233;thode de point m&#233;dian bid
     <span style="color: #008000; font-weight: bold">return</span> result
 </pre></div>
 <p>
-de la the section <a href="#sec:implementation">Impl&#233;mentation</a> "deux fois"? La r&#233;ponse est oui, si nous pensons comme nous l'avons fait dans les math&#233;matiques: calculer l'int&#233;grale double comme r&#232;gle du point milieu pour int&#233;grer \( g (x) \) et d&#233;finir \( g (x_i) \) en termes d'une r&#232;gle m&#233;diane sur \( f \) dans la coordonn&#233;e \( y \).
+de la the section <a href="#sec:implementation">Impl&#233;mentation</a> "deux fois"? La r&#233;ponse est oui, si nous pensons comme nous l'avons fait dans les math&#233;matiques: calculer l'int&#233;grale double comme r&#232;gle du point milieu pour int&#233;grer \( g (x) \) et d&#233;finir \( g (x_i) \) en termes d'une r&#232;gle du point milieu sur \( f \) dans la coordonn&#233;e \( y \).
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -777,7 +777,7 @@ L'avantage important de cette impl&#233;mentation est que nous r&#233;utilisons 
 
 <h3 id="___sec21" class="anchor">V&#233;rification via les fonctions de test </h3>
 
-Comment tester que nos fonctions pour la double int&#233;grale fonctionnent? Le meilleur test unitaire consiste &#224; trouver un probl&#232;me o&#249; l'erreur d'approximation num&#233;rique dispara&#238;t, car alors nous savons exactement quelle devrait &#234;tre la r&#233;ponse num&#233;rique. La r&#232;gle du point milieu est exacte pour les fonctions lin&#233;aires, quel que soit le nombre de sous-intervalles que nous utilisons. De plus, toute fonction lin&#233;aire bidimensionnelle \( f(x,y)=px+qy+r \) sera int&#233;gr&#233;e exactement par la r&#232;gle point milieu bidimensionnelle. Nous pouvons choisir \( f(x,y)=2x+y \) et cr&#233;er une fonction de test appropri&#233;e qui peut automatiquement v&#233;rifier nos deux impl&#233;mentations alternatives de la r&#232;gle m&#233;diane bidimensionnelle. La fonction de test devient:
+Comment tester que nos fonctions pour la double int&#233;grale fonctionnent? Le meilleur test unitaire consiste &#224; trouver un probl&#232;me o&#249; l'erreur d'approximation num&#233;rique dispara&#238;t, car alors nous savons exactement quelle devrait &#234;tre la r&#233;ponse num&#233;rique. La r&#232;gle du point milieu est exacte pour les fonctions lin&#233;aires, quel que soit le nombre de sous-intervalles que nous utilisons. De plus, toute fonction lin&#233;aire bidimensionnelle \( f(x,y)=px+qy+r \) sera int&#233;gr&#233;e exactement par la r&#232;gle point milieu bidimensionnelle. Nous pouvons choisir \( f(x,y)=2x+y \) et cr&#233;er une fonction de test appropri&#233;e qui peut automatiquement v&#233;rifier nos deux impl&#233;mentations alternatives de la r&#232;gle du point milieu bidimensionnelle. La fonction de test devient:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -806,13 +806,13 @@ Comment tester que nos fonctions pour la double int&#233;grale fonctionnent? Le 
   </div>
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
-Si nous appelons la fonction <code>test_midpoint_double</code> ci-dessus et que rien ne se passe, nos impl&#233;mentations sont correctes. Cependant, il est quelque peu ennuyeux d'avoir une fonction compl&#232;tement silencieuse lorsqu'elle fonctionne - sommes-nous s&#251;rs que tout est correctement calcul&#233;? Pendant le d&#233;veloppement, il est donc fortement recommand&#233; d'ins&#233;rer une instruction d'impression afin que nous puissions surveiller les calculs et &#234;tre convaincu que la fonction de test fait ce que nous voulons. Puisqu'une fonction de test ne doit avoir aucune instruction print, nous la commentons simplement comme nous l'avons fait dans la fonction list&#233;e ci-dessus.
+Si nous appelons la fonction <code>test_midpoint_double</code> ci-dessus et que rien ne se passe, nos impl&#233;mentations sont correctes. Cependant, il est quelque peu ennuyeux d'avoir une fonction compl&#232;tement silencieuse lorsqu'elle fonctionne sommes-nous s&#251;rs que tout est correctement calcul&#233;? Pendant le d&#233;veloppement, il est donc fortement recommand&#233; d'ins&#233;rer une instruction d'impression afin que nous puissions surveiller les calculs et &#234;tre convaincu que la fonction de test fait ce que nous voulons. Puisqu'une fonction de test ne doit avoir aucune instruction print(), nous la commentons simplement comme nous l'avons fait dans la fonction list&#233;e ci-dessus.
 
 <p>
 </div>
 </div>
 
-La m&#233;thode de trap&#232;ze peut &#234;tre utilis&#233;e comme alternative &#224; la m&#233;thode du point milieu. La d&#233;rivation d'une formule pour la double int&#233;grale et les impl&#233;mentations suivent exactement les m&#234;mes id&#233;es que nous avons expliqu&#233;es avec la m&#233;thode du point milieu, mais il y a plus de termes &#224; &#233;crire dans les formules.
+La m&#233;thode du trap&#232;ze peut &#234;tre utilis&#233;e comme alternative &#224; la m&#233;thode du point milieu. La d&#233;rivation d'une formule pour la double int&#233;grale et les impl&#233;mentations suivent exactement les m&#234;mes id&#233;es que nous avons expliqu&#233;es avec la m&#233;thode du point milieu, mais il y a plus de termes &#224; &#233;crire dans les formules.
 
 <h2 id="___sec22" class="anchor">La r&#232;gle du point milieu pour une triple int&#233;grale </h2>
 

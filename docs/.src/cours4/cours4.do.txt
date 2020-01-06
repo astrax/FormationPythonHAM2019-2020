@@ -63,7 +63,7 @@ V(t) = e^{t^3}-1
 \end{equation}
 !et
 Nous pouvons donc calculer la valeur exacte de l'intégrale comme $V (1) −V (0) ≈1.718$ (arrondi à 3 décimales pour plus de commodité).
-======= La règle trapézoïdale composite =======
+======= La règle du trapèze composite =======
 L'intégrale $\int_a^b f(x)dx$ peut être interprété comme l'aire entre l'axe des x et le graphique $y = f (x)$ de fonction à intégrer. La figure ref{fig:integral_of_f} illustre cette zone de choix (ref{eq:SpeedIntegral}). Le calcul de l'intégrale $\int_0^1f(t)dt$ revient à calculer l'aire de la zone hachurée.
 FIGURE:[imgs/integral_of_f, width=400 frac=0.7] L'intégrale de $v (t)$ interprétée comme l'aire sous le graphique de $v$. label{fig:integral_of_f}
 
@@ -93,9 +93,9 @@ Avec $v(t) = 3t^{2}e^{t^3}$, chaque terme dans (ref{eq:trapezoids}) est facileme
 \int_0^1 v(t)dt \approx 1.895
 \end{equation}
 !et
-Par rapport à la vraie réponse de $1.718$, cela est d'environ $10 \%$. Cependant, notez que nous avons utilisé seulement 4 trapèzes pour approximer la zone. Avec plus de trapèzes, l'approximation serait devenue meilleure, puisque les segments de droite du côté trapézoïdal supérieur suivraient alors le graphique de plus près. Faire un autre calcul avec plus de trapèzes n'est pas trop tentant pour un humain paresseux, mais c'est un travail parfait pour un ordinateur! Dérivons donc les expressions d'approximation de l'intégrale par un nombre arbitraire de trapèzes.
+Par rapport à la vraie réponse de $1.718$, cela est d'environ $10 \%$. Cependant, notez que nous avons utilisé seulement 4 trapèzes pour approximer la zone. Avec plus de trapèzes, l'approximation serait devenue meilleure, puisque les segments de droite du côté supérieur des trapèzes suivraient alors le graphique de plus près. Faire un autre calcul avec plus de trapèzes n'est pas trop tentant pour un humain paresseux, mais c'est un travail parfait pour un ordinateur! Dérivons donc les expressions d'approximation de l'intégrale par un nombre arbitraire de trapèzes.
 ===== La formule générale =====
-Pour une fonction donnée $f (x)$, nous voulons approximer l'intégrale $\int_a^bf(x)dx$ par $n$ trapézoïdes (de largeur égale). Nous commençons par (3.5) et approchons chaque intégrale du côté droit avec un seul trapèze. En détail,
+Pour une fonction donnée $f (x)$, nous voulons approximer l'intégrale $\int_a^bf(x)dx$ par $n$ trapèzes (de largeur égale). Nous commençons par (3.5) et approchons chaque intégrale du côté droit avec un seul trapèze. En détail,
 !bt
 \begin{align}
 \int_a^b f(x)\,dx &= \int_{x_0}^{x_1} f(x) dx + \int_{x_1}^{x_2} f(x) dx + \ldots + \int_{x_{n-1}}^{x_n} f(x) dx,     \nonumber \\
@@ -119,14 +119,14 @@ qui est écrit de façon plus compacte comme
 !et
 !bnotice Règles d'intégration composites
 Le mot composite est souvent utilisé lorsqu'une méthode d'intégration numérique est appliquée avec plus d'un sous-intervalle.
-à vrai dire alors, écrire, par exemple, "la méthode trapézoïdale", devrait impliquer l'utilisation d'un seul trapèze, tandis que "la méthode trapézoïdale composite" est le nom le plus correct lorsque plusieurs trapèzes sont utilisés. Cependant, cette convention de dénomination n'est pas toujours suivie, donc dire que "la méthode trapézoïdale" peut pointer vers un seul trapèze ainsi que la règle composite avec de nombreux trapèzes.
+à vrai dire alors, écrire, par exemple, "la méthode du trapèze", devrait impliquer l'utilisation d'un seul trapèze, tandis que "la méthode du trapèze composite" est le nom le plus correct lorsque plusieurs trapèzes sont utilisés. Cependant, cette convention de dénomination n'est pas toujours suivie, donc dire que "la méthode du trapèze" peut pointer vers un seul trapèze ainsi que la règle composite avec de nombreux trapèzes.
 !enotice
 ===== Implémentation =====
 === Implémentation spécifique ou générale? ===
-Supposons que notre objectif principal était de calculer l'intégrale spécifique $\int_0^1 v(t)dt$ avec $v(t)=3t^2e^{t^3}$. D'abord, nous avons joué avec un simple calcul de main pour voir de quoi il s'agissait, avant de développer (comme c'est souvent le cas en mathématiques) une formule générale (ref{eq:GenralIntegral}) pour l'intégrale générale ou «abstraite» $\int_a^bf(x)dx$. Pour résoudre notre problème spécifique $\int_0^1 v(t)dt$, nous devons ensuite appliquer la formule générale (ref{eq:GenralIntegral}) aux données données (fonction et limites intégrales) dans notre problème. Bien que simples en principe, les étapes pratiques sont déroutantes pour beaucoup car la notation dans le problème abstrait de (ref{eq:GenralIntegral}) diffère de la notation dans notre problème spécial. Clairement, les $f$, $x$ et $h$ dans (ref{eq:GenralIntegral}) correspondent à $v$, $t$ et peut-être $\Delta t$ pour la largeur trapézoïdale dans notre problème spécial.
+Supposons que notre objectif principal était de calculer l'intégrale spécifique $\int_0^1 v(t)dt$ avec $v(t)=3t^2e^{t^3}$. D'abord, nous avons joué avec un simple calcul de main pour voir de quoi il s'agissait, avant de développer (comme c'est souvent le cas en mathématiques) une formule générale (ref{eq:GenralIntegral}) pour l'intégrale générale ou «abstraite» $\int_a^bf(x)dx$. Pour résoudre notre problème spécifique $\int_0^1 v(t)dt$, nous devons ensuite appliquer la formule générale (ref{eq:GenralIntegral}) aux données données (fonction et limites intégrales) dans notre problème. Bien que simples en principe, les étapes pratiques sont déroutantes pour beaucoup car la notation dans le problème abstrait de (ref{eq:GenralIntegral}) diffère de la notation dans notre problème spécial. Clairement, les $f$, $x$ et $h$ dans (ref{eq:GenralIntegral}) correspondent à $v$, $t$ et peut-être $\Delta t$ pour la largeur du trapèze dans notre problème spécial.
 !bquestion Le dilemme du programmeur
 o Faut-il écrire un programme spécial pour l'intégrale spéciale, en utilisant les idées de la règle générale (ref{eq:GenralIntegral}), mais en remplaçant $f$ par $v$, $x$ par $t$ et $h$ par $\Delta t$?
-o Faut-il implémenter la méthode générale (ref{eq:GenralIntegral}) telle qu'elle se présente dans une fonction générale `trapezoid(f, a, b, n)` et résoudre le problème spécifique en question par un appel spécialisé à cette fonction?
+o Faut-il implémenter la méthode générale (ref{eq:GenralIntegral}) telle qu'elle se présente dans une fonction générale `trapeze(f, a, b, n)` et résoudre le problème spécifique en question par un appel spécialisé à cette fonction?
 
 _L'alternative 2 est toujours le meilleur choix!_
 !equestion
@@ -135,9 +135,9 @@ La première alternative dans l'encadré ci-dessus semble moins abstraite et don
 === Implémentation avec fonctions ===
 Pour l'intégrale $\int_a^bf(x)dx$ calculée par la formule (ref{eq:GenralIntegral}), nous voulons que le trapèze de la fonction Python correspondante prenne tout $f$, $a$, $b$ et $n$ en entrée et renvoie l'approximation à l'intégrale.
 
-Nous écrivons une fonction Python `trapezoidal` dans un fichier "trapezoidal.py":"" aussi proche que possible de la formule (ref{eq:GenralIntegral}), en nous assurant que les noms de variables correspondent à la notation mathématique:
+Nous écrivons une fonction Python `trapeze()` dans un fichier `trapeze_integral.py` aussi proche que possible de la formule (ref{eq:GenralIntegral}), en nous assurant que les noms de variables correspondent à la notation mathématique:
 !bc pycod
-def trapezoidal(f, a, b, n):
+def trapeze(f, a, b, n):
     h = float(b-a)/n
     result = 0.5*f(a) + 0.5*f(b)
     for i in range(1, n):
@@ -146,13 +146,13 @@ def trapezoidal(f, a, b, n):
     return result
 !ec
 === Résoudre notre problème spécifique en une session ===
-Le simple fait d'avoir la fonction `trapezoidal` comme seul contenu d'un fichier trapezoidal.py fait automatiquement de ce fichier un module que nous pouvons importer et tester dans une session interactive:
+Le simple fait d'avoir la fonction `trapeze()` comme seul contenu d'un fichier `trapeze_integral.py` fait automatiquement de ce fichier un module que nous pouvons importer et tester dans une session interactive:
 !bc ipy
->>> from trapezoidal import trapezoidal
+>>> from trapeze_integral import trapeze
 >>> from math import exp
 >>> v = lambda t: 3*(t**2)*exp(t**3)
 >>> n = 4
->>> numerical = trapezoidal(v, 0, 1, n)
+>>> numerical = trapeze(v, 0, 1, n)
 >>> numerical
 1.9227167504675762
 !ec
@@ -165,7 +165,7 @@ Calculons l'expression exacte et l'erreur dans l'approximation:
 !ec
 Cette erreur est-elle convaincante? On peut essayer un $n$ plus grand:
 !bc ipy
->>> numerical = trapezoidal(v, 0, 1, n=400)
+>>> numerical = trapeze(v, 0, 1, n=400)
 >>> exact - numerical
 -2.1236490512777095e-05
 !ec
@@ -177,7 +177,7 @@ def application():
     from math import exp
     v = lambda t: 3*(t**2)*exp(t**3)
     n = input('n: ')
-    numerical = trapezoidal(v, 0, 1, n)
+    numerical = trapeze(v, 0, 1, n)
 
     # Compare with exact result
     V = lambda t: exp(t**3)
@@ -185,32 +185,32 @@ def application():
     error = exact - numerical
     print('n=%d: %.16f, error: %g' % (n, numerical, error))
 !ec
-Maintenant, nous calculons notre problème spécial en appelant `application()` comme la seule instruction du programme principal. Les fonctions `trapezoidal` et `application` résident toutes deux dans le fichier `trapezoidal.py`, qui peut être exécuté en tant que
+Maintenant, nous calculons notre problème spécial en appelant `application()` comme la seule instruction du programme principal. Les fonctions `trapeze()` et `application` résident toutes deux dans le fichier `trapeze_integral.py`, qui peut être exécuté en tant que
 !bc ipy
-Terminal> python trapezoidal.py
+Terminal> python trapeze_integral.py
 n: 4
 n=4: 1.9227167504675762, error: -0.204435
 !ec
 
 === Faire un module ===
-Lorsque nous avons les différentes parties de notre programme comme une collection de fonctions, il est très simple de créer un *module* qui peut être importé dans d'autres programmes. Ce fait, avoir notre code comme module, signifie que la fonction `trapezoidal` peut facilement être réutilisée par d'autres programmes pour résoudre d'autres problèmes. Les exigences d'un module sont simples: mettez tout à l'intérieur des fonctions et laissez les appels de fonction dans le programme principal être dans le soi-disant *bloc de test*:
+Lorsque nous avons les différentes parties de notre programme comme une collection de fonctions, il est très simple de créer un *module* qui peut être importé dans d'autres programmes. Ce fait, avoir notre code comme module, signifie que la fonction `trapeze()` peut facilement être réutilisée par d'autres programmes pour résoudre d'autres problèmes. Les exigences d'un module sont simples: mettez tout à l'intérieur des fonctions et laissez les appels de fonction dans le programme principal être dans le soi-disant *bloc de test*:
 !bc pycod-text
 if __name__ == '__main__':
     application()
 !ec
-Le test `if` est vrai si le fichier de module, `trapezoidal.py`, est exécuté en tant que programme et faux si le module est importé dans un autre programme. Par conséquent, lorsque nous effectuons une importation: `from trapezoidal import trapezoidal` dans un fichier, le test échoue et `application()` n'est pas appelée, c'est-à-dire que notre problème spécial n'est pas résolu et n'imprime rien à l'écran. D'un autre côté, si nous exécutons `trapezoidal.py` dans la fenêtre du terminal, la condition de test est positive, `application()` est appelée et nous obtenons une sortie dans la fenêtre:
+Le test `if` est vrai si le fichier de module, `trapeze_integral.py`, est exécuté en tant que programme et faux si le module est importé dans un autre programme. Par conséquent, lorsque nous effectuons une importation: `from trapeze_integral import trapeze` dans un fichier, le test échoue et `application()` n'est pas appelée, c'est-à-dire que notre problème spécial n'est pas résolu et n'imprime rien à l'écran. D'un autre côté, si nous exécutons `trapeze_integral.py` dans la fenêtre du terminal, la condition de test est positive, `application()` est appelée et nous obtenons une sortie dans la fenêtre:
 
 !bc pycod-text
-Terminal> python trapezoidal.py
+Terminal> python trapeze_integral.py
 n: 400
 n=400: 1.7183030649495579, error: -2.12365e-05
 !ec
-Lorsque vous regardez maintenant les deux solutions, le programme plat spécial et le programme basé sur les fonctions avec la fonction polyvalente `trapezoidal`, vous vous rendez compte que *la mise en œuvre d'un algorithme mathématique général dans une fonction générale* nécessite une réflexion un peu plus abstraite, mais le code résultant peut être utilisé encore et encore. Essentiellement, si vous appliquez le style plat spécial, vous devez retester l'implémentation de l'algorithme après chaque changement de programme.
+Lorsque vous regardez maintenant les deux solutions, le programme plat spécial et le programme basé sur les fonctions avec la fonction polyvalente `trapeze()`, vous vous rendez compte que *l'implémentation d'un algorithme mathématique général dans une fonction générale* nécessite une réflexion un peu plus abstraite, mais le code résultant peut être utilisé encore et encore. Essentiellement, si vous appliquez le style plat spécial, vous devez retester l'implémentation de l'algorithme après chaque changement de programme.
 ======= La méthode du point milieu composite =======
 ===== L'idée =====
 Plutôt que d'approximer l'aire sous une courbe par des trapèzes, nous pouvons utiliser des rectangles simples. Il peut sembler moins précis d'utiliser des lignes horizontales et non des lignes obliques suivant la fonction à intégrer, mais une méthode d'intégration basée sur des rectangles (la méthode du point milieu) est en fait légèrement plus précise que celle basée sur des trapèzes!
 
-Dans la méthode du milieu, nous construisons un rectangle pour chaque sous-intervalle où la hauteur est égale à $f$ au milieu du sous-intervalle. Faisons-le pour quatre rectangles, en utilisant les mêmes sous-intervalles que nous avions pour les calculs manuels avec la méthode trapézoïdale: $[0,0.2)$, $[0.2,0.6)$, $[0.6,0.8)$ et $[0.8,1.0]$. On a
+Dans la méthode du milieu, nous construisons un rectangle pour chaque sous-intervalle où la hauteur est égale à $f$ au milieu du sous-intervalle. Faisons-le pour quatre rectangles, en utilisant les mêmes sous-intervalles que nous avions pour les calculs manuels avec la méthode du trapèze: $[0,0.2)$, $[0.2,0.6)$, $[0.6,0.8)$ et $[0.8,1.0]$. On a
 !bt
 \begin{align}
 \int_0^1 f(t)dt &\approx
@@ -250,7 +250,7 @@ où $x_i = \left(a + \frac{h}{2}\right) + ih$.
 
 ===== Implémentation =====
 label{sec:implementation}
-Nous suivons les conseils et les enseignements tirés de la mise en œuvre de la méthode trapézoïdale et réalisons une fonction `midpoint(f, a, b, n)` (dans un fichier `midpoint.py`) pour mettre en œuvre la formule générale (ref{eq:GeneralMidpoint}):
+Nous suivons les conseils et les enseignements tirés de l'implémentation de la méthode trapèze et réalisons une fonction `midpoint(f, a, b, n)` (dans un fichier `midpoint_integral.py`) pour implémenter la formule générale (ref{eq:GeneralMidpoint}):
 !bc pycod
 def midpoint(f, a, b, n):
     h = float(b-a)/n
@@ -262,10 +262,10 @@ def midpoint(f, a, b, n):
 !ec
 Nous pouvons tester la fonction comme nous l'avons expliqué pour la méthode du trapèze similaire. L'erreur dans notre problème particulier $\int_0^1 3t^2e^{t^3}dt$ avec quatre intervalles est maintenant d'environ $0.1$ contrairement à $0.2$ pour la règle du trapèze. Les différences sont rarement d'une importance pratique, et sur un ordinateur portable, nous pouvons facilement utiliser $n = 10^6$ et obtenir la réponse avec une erreur d'environ $10^{-12}$ en quelques secondes.
 ===== Comparaison des méthodes du trapèze et du point milieu =====
-L'exemple suivant montre la facilité avec laquelle nous pouvons combiner les fonctions `trapezoidal` et `midpoint` pour comparer les deux méthodes dans le fichier `compare_integration_methods.py`:
+L'exemple suivant montre la facilité avec laquelle nous pouvons combiner les fonctions `trapeze()` et `midpoint()` pour comparer les deux méthodes dans le fichier `compare_integration_methods.py`:
 !bc pycod
-from trapezoidal import trapezoidal
-from midpoint import midpoint
+from trapeze_integral import trapeze
+from midpoint_integral import midpoint
 from math import exp
 
 g = lambda y: exp(-y**2)
@@ -305,7 +305,7 @@ n        midpoint          trapezoidal
 Une inspection visuelle des chiffres montre à quelle vitesse les chiffres se stabilisent dans les deux méthodes. Il semble que 13 chiffres se soient stabilisés dans les deux dernières lignes.
 
 !bnotice Remarque
-Les méthodes trapézoïdale et médiane ne sont que deux exemples dans une jungle de règles d'intégration numérique. D'autres méthodes célèbres sont la règle de Simpson et la quadrature de Gauss. Ils fonctionnent tous de la même manière:
+Les méthodes du trapèze et du point milieu ne sont que deux exemples dans une jungle de règles d'intégration numérique. D'autres méthodes célèbres sont la règle de Simpson et la quadrature de Gauss. Ils fonctionnent tous de la même manière:
 $$\int_a^b f(x)dx \approx \sum_{i=0}^{n-1} w_if(x_i)$$
 Autrement dit, l'intégrale est approximée par une somme d'évaluations de fonctions, où chaque évaluation $f (x_i)$ reçoit un poids $w_i$. Les différentes méthodes diffèrent par la façon dont elles construisent les points d'évaluation $x_i$ et les poids $w_i$. Nous avons utilisé des points $x_i$ également espacés, mais une précision plus élevée peut être obtenue en optimisant l'emplacement de $x_i$.
 !enotice
@@ -318,19 +318,19 @@ $$\int_a^b \int_c^d f(x,y) dydx$$
 
 comment approcher cette intégrale par des méthodes numériques?
 === Dérivation via des intégrales unidimensionnelles ===
-Puisque nous savons comment traiter les intégrales dans une variable, une approche fructueuse consiste à considérer l'intégrale double comme deux intégrales, chacune dans une variable, qui peut être approximée numériquement par les formules unidimensionnelles précédentes. À cette fin, nous introduisons une fonction d'aide $g (x)$ et écrivons
+Puisque nous savons comment traiter les intégrales à une variable, une approche fructueuse consiste à considérer l'intégrale double comme deux intégrales, chacune à une variable, qui peut être approximée numériquement par les formules unidimensionnelles précédentes. À cette fin, nous introduisons une fonction intermédiaire $g (x)$ et écrivons
 $$\int_a^b \int_c^d f(x,y) dydx = \int_a^b g(x)dx,\quad
 g(x) = \int_c^d f(x,y) dy$$
 Chacune des intégrales
 $$ \int_a^b g(x)dx,\quad
 g(x) = \int_c^d f(x,y) dy$$
-peut être discrétisé par n'importe quelle règle d'intégration numérique pour une intégrale dans une variable. Utilisons la méthode du point médian (22) et commençons par $g(x)=\int_c^d f(x,y)dy$. Nous introduisons $n_y$ intervalles sur $[c, d]$ de longueur $h_y$. La règle médiane pour cette intégrale devient alors
+peut être discrétisé par n'importe quelle règle d'intégration numérique pour une intégrale dans une variable. Utilisons la méthode du point milieu (ref{eq:GeneralMidpoint}) et commençons par $g(x)=\int_c^d f(x,y)dy$. Nous introduisons $n_y$ intervalles sur $[c, d]$ de longueur $h_y$. La règle du point milieu pour cette intégrale devient alors
 $$g(x) = \int_c^d f(x,y) dy \approx  h_y \sum_{j=0}^{n_y-1} f(x,y_j),
 \quad y_j = c + \frac{1}{2}{h_y} + jh_y $$
 
-L'expression semble quelque peu différente de (22), mais c'est à cause de la notation: puisque nous nous intégrons dans la direction $y$ et que nous devrons travailler avec $x$ et $y$ comme coordonnées, nous devons utiliser $n_y$ pour $n$, $h_y$ pour $h$ et le compteur $i$ est plus naturellement appelé $j$ lors de l'intégration dans $y$. Les intégrales dans la direction $x$ utiliseront $h_x$ et $n_x$ pour $h$ et $n$, et $i$ comme compteur.
+L'expression semble quelque peu différente de (ref{eq:GeneralMidpoint}), mais c'est à cause de la notation: puisque nous nous intégrons dans la direction $y$ et que nous devrons travailler avec $x$ et $y$ comme coordonnées, nous devons utiliser $n_y$ pour $n$, $h_y$ pour $h$ et le compteur $i$ est plus naturellement appelé $j$ lors de l'intégration dans $y$. Les intégrales dans la direction $x$ utiliseront $h_x$ et $n_x$ pour $h$ et $n$, et $i$ comme compteur.
 
-L'intégrale double est $\int_a^b g(x)dx$, qui peut être approximée par la méthode du point médian:
+L'intégrale double est $\int_a^b g(x)dx$, qui peut être approximée par la méthode du point milieu:
 $$\int_a^b g(x)dx \approx h_x \sum_{i=0}^{n_x-1} g(x_i),\quad x_i=a + \frac{1}{2}{h_x} + ih_x$$
 
 En rassemblant les formules, nous arrivons à la méthode du point milieu composite pour une double intégrale:
@@ -372,7 +372,7 @@ Si cette fonction est stockée dans un fichier de module `midpoint_double.py`, n
 9.0
 !ec
 === Réutilisation du code pour les intégrales unidimensionnelles ===
-Il est très naturel d'écrire une méthode de point médian bidimensionnelle comme nous l'avons fait dans la fonction `midpoint_double1` lorsque nous avons la formule (ref{eq:MidpointDouble}). Cependant, nous pourrions également demander, tout comme nous l'avons fait en mathématiques, pouvons-nous réutiliser une implémentation bien testée pour les intégrales unidimensionnelles pour calculer les doubles intégrales? Autrement dit, pouvons-nous utiliser la fonction `midpoint`.
+Il est très naturel d'écrire une méthode de point milieu bidimensionnelle comme nous l'avons fait dans la fonction `midpoint_double1` lorsque nous avons la formule (ref{eq:MidpointDouble}). Cependant, nous pourrions également demander, tout comme nous l'avons fait en mathématiques, pouvons-nous réutiliser une implémentation bien testée pour les intégrales unidimensionnelles pour calculer les doubles intégrales? Autrement dit, pouvons-nous utiliser la fonction `midpoint`.
 
 !bc pycod
 def midpoint(f, a, b, n):
@@ -384,7 +384,7 @@ def midpoint(f, a, b, n):
     return result
 !ec
 
-de la section ref{sec:implementation} "deux fois"? La réponse est oui, si nous pensons comme nous l'avons fait dans les mathématiques: calculer l'intégrale double comme règle du point milieu pour intégrer $g (x)$ et définir $g (x_i)$ en termes d'une règle médiane sur $f$ dans la coordonnée $y$.
+de la section ref{sec:implementation} "deux fois"? La réponse est oui, si nous pensons comme nous l'avons fait dans les mathématiques: calculer l'intégrale double comme règle du point milieu pour intégrer $g (x)$ et définir $g (x_i)$ en termes d'une règle du point milieu sur $f$ dans la coordonnée $y$.
 !bc pycod
 def midpoint_double2(f, a, b, c, d, nx, ny):
     def g(x):
@@ -394,7 +394,7 @@ def midpoint_double2(f, a, b, c, d, nx, ny):
 !ec
 L'avantage important de cette implémentation est que nous réutilisons une fonction bien testée pour la règle du point milieu unidimensionnelle standard et que nous appliquons la règle unidimensionnelle exactement comme dans les mathématiques.
 === Vérification via les fonctions de test ===
-Comment tester que nos fonctions pour la double intégrale fonctionnent? Le meilleur test unitaire consiste à trouver un problème où l'erreur d'approximation numérique disparaît, car alors nous savons exactement quelle devrait être la réponse numérique. La règle du point milieu est exacte pour les fonctions linéaires, quel que soit le nombre de sous-intervalles que nous utilisons. De plus, toute fonction linéaire bidimensionnelle $f(x,y)=px+qy+r$ sera intégrée exactement par la règle point milieu bidimensionnelle. Nous pouvons choisir $f(x,y)=2x+y$ et créer une fonction de test appropriée qui peut automatiquement vérifier nos deux implémentations alternatives de la règle médiane bidimensionnelle. La fonction de test devient:
+Comment tester que nos fonctions pour la double intégrale fonctionnent? Le meilleur test unitaire consiste à trouver un problème où l'erreur d'approximation numérique disparaît, car alors nous savons exactement quelle devrait être la réponse numérique. La règle du point milieu est exacte pour les fonctions linéaires, quel que soit le nombre de sous-intervalles que nous utilisons. De plus, toute fonction linéaire bidimensionnelle $f(x,y)=px+qy+r$ sera intégrée exactement par la règle point milieu bidimensionnelle. Nous pouvons choisir $f(x,y)=2x+y$ et créer une fonction de test appropriée qui peut automatiquement vérifier nos deux implémentations alternatives de la règle du point milieu bidimensionnelle. La fonction de test devient:
 !bc pycod
 def test_midpoint_double():
     """Test that a linear function is integrated exactly."""
@@ -415,10 +415,10 @@ def test_midpoint_double():
         assert abs(I_computed2 - I_expected) < tol
 !ec
 !bnotice Laisser parler les fonctions de test?
-Si nous appelons la fonction `test_midpoint_double` ci-dessus et que rien ne se passe, nos implémentations sont correctes. Cependant, il est quelque peu ennuyeux d'avoir une fonction complètement silencieuse lorsqu'elle fonctionne - sommes-nous sûrs que tout est correctement calculé? Pendant le développement, il est donc fortement recommandé d'insérer une instruction d'impression afin que nous puissions surveiller les calculs et être convaincu que la fonction de test fait ce que nous voulons. Puisqu'une fonction de test ne doit avoir aucune instruction print, nous la commentons simplement comme nous l'avons fait dans la fonction listée ci-dessus.
+Si nous appelons la fonction `test_midpoint_double` ci-dessus et que rien ne se passe, nos implémentations sont correctes. Cependant, il est quelque peu ennuyeux d'avoir une fonction complètement silencieuse lorsqu'elle fonctionne sommes-nous sûrs que tout est correctement calculé? Pendant le développement, il est donc fortement recommandé d'insérer une instruction d'impression afin que nous puissions surveiller les calculs et être convaincu que la fonction de test fait ce que nous voulons. Puisqu'une fonction de test ne doit avoir aucune instruction print(), nous la commentons simplement comme nous l'avons fait dans la fonction listée ci-dessus.
 
 !enotice
-La méthode de trapèze peut être utilisée comme alternative à la méthode du point milieu. La dérivation d'une formule pour la double intégrale et les implémentations suivent exactement les mêmes idées que nous avons expliquées avec la méthode du point milieu, mais il y a plus de termes à écrire dans les formules.
+La méthode du trapèze peut être utilisée comme alternative à la méthode du point milieu. La dérivation d'une formule pour la double intégrale et les implémentations suivent exactement les mêmes idées que nous avons expliquées avec la méthode du point milieu, mais il y a plus de termes à écrire dans les formules.
 ===== La règle du point milieu pour une triple intégrale =====
 === Théorie ===
 Une fois qu'une méthode qui fonctionne pour un problème unidimensionnel est généralisée à deux dimensions, il est généralement assez simple d'étendre la méthode à trois dimensions. Cela sera maintenant démontré pour les intégrales. Nous avons la triple intégrale:
