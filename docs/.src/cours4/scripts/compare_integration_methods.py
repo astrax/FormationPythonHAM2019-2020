@@ -1,3 +1,5 @@
+## NOM DU PROGRAMME: compare_integration_methods.py
+#% IMPORTATION
 from trapeze_integral import trapeze
 from midpoint_integral import midpoint
 from math import exp

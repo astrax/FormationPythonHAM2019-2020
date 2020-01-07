@@ -1,4 +1,4 @@
-TITLE: L'intégration numérique
+TITLE: Intégration numérique
 AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
 DATE: today
 
@@ -56,7 +56,7 @@ La distance après une seconde est
 \int_0^1 v(t)dt
 \end{equation}
 !et
-qui est l'intégrale que nous cherchons à calculer par des méthodes numériques. Heureusement, l'expression choisie de la vitesse a une forme qui permet de calculer facilement l'anti-dérivé comme
+qui est l'intégrale que nous cherchons à calculer par des méthodes numériques. Heureusement, l'expression choisie de la vitesse a une forme qui permet de calculer facilement la primitive comme
 !bt
 \begin{equation}
 V(t) = e^{t^3}-1
@@ -136,68 +136,44 @@ La première alternative dans l'encadré ci-dessus semble moins abstraite et don
 Pour l'intégrale $\int_a^bf(x)dx$ calculée par la formule (ref{eq:GenralIntegral}), nous voulons que le trapèze de la fonction Python correspondante prenne tout $f$, $a$, $b$ et $n$ en entrée et renvoie l'approximation à l'intégrale.
 
 Nous écrivons une fonction Python `trapeze()` dans un fichier `trapeze_integral.py` aussi proche que possible de la formule (ref{eq:GenralIntegral}), en nous assurant que les noms de variables correspondent à la notation mathématique:
-!bc pycod
-def trapeze(f, a, b, n):
-    h = float(b-a)/n
-    result = 0.5*f(a) + 0.5*f(b)
-    for i in range(1, n):
-        result += f(a + i*h)
-    result *= h
-    return result
-!ec
+
+@@@CODE scripts/trapeze_integral.py fromto:## NOM@def application()
 === Résoudre notre problème spécifique en une session ===
 Le simple fait d'avoir la fonction `trapeze()` comme seul contenu d'un fichier `trapeze_integral.py` fait automatiquement de ce fichier un module que nous pouvons importer et tester dans une session interactive:
 !bc ipy
->>> from trapeze_integral import trapeze
->>> from math import exp
->>> v = lambda t: 3*(t**2)*exp(t**3)
->>> n = 4
->>> numerical = trapeze(v, 0, 1, n)
->>> numerical
-1.9227167504675762
+In [3]: from trapeze_integral import trapeze
+In [4]: from math import exp
+In [5]: v = lambda t: 3*(t**2)*exp(t**3)
+In [6]: n = 4
+In [7]: numerical = trapeze(v, 0, 1, n)
+In [8]: numerical
+Out[8]: 1.9227167504675762
 !ec
 Calculons l'expression exacte et l'erreur dans l'approximation:
 !bc ipy
->>> V = lambda t: exp(t**3)
->>> exact = V(1) - V(0)
->>> exact - numerical
--0.20443492200853108
+In [9]: V = lambda t: exp(t**3) - 1
+In [10]: exact = V(1) - V(0)
+In [11]: exact - numerical
+Out[11]: -0.20443492200853108
 !ec
 Cette erreur est-elle convaincante? On peut essayer un $n$ plus grand:
 !bc ipy
->>> numerical = trapeze(v, 0, 1, n=400)
->>> exact - numerical
--2.1236490512777095e-05
+In [12]: numerical = trapeze(v, 0, 1, n=400)
+In [13]: exact - numerical
+Out[13]: -2.1236490512777095e-05
 !ec
 Heureusement, beaucoup plus de trapèzes donnent une erreur beaucoup plus petite.
 === Résoudre notre problème spécifique dans un programme ===
 Au lieu de calculer notre problème spécial dans une session interactive, nous pouvons le faire dans un programme. Comme toujours, un morceau de code faisant une chose particulière est mieux isolé en tant que fonction même si nous ne voyons aucune raison future d'appeler la fonction plusieurs fois et même si nous n'avons pas besoin d'arguments pour paramétrer ce qui se passe à l'intérieur de la fonction. Dans le cas présent, nous mettons simplement les instructions que nous aurions autrement mises dans un programme principal, à l'intérieur d'une fonction:
-!bc pycod
-def application():
-    from math import exp
-    v = lambda t: 3*(t**2)*exp(t**3)
-    n = input('n: ')
-    numerical = trapeze(v, 0, 1, n)
 
-    # Compare with exact result
-    V = lambda t: exp(t**3)
-    exact = V(1) - V(0)
-    error = exact - numerical
-    print('n=%d: %.16f, error: %g' % (n, numerical, error))
-!ec
-Maintenant, nous calculons notre problème spécial en appelant `application()` comme la seule instruction du programme principal. Les fonctions `trapeze()` et `application` résident toutes deux dans le fichier `trapeze_integral.py`, qui peut être exécuté en tant que
-!bc ipy
-Terminal> python trapeze_integral.py
-n: 4
-n=4: 1.9227167504675762, error: -0.204435
-!ec
+@@@CODE scripts/trapeze_integral.py fromto:def application@if
+
+Maintenant, nous calculons notre problème spécial en appelant `application()` comme la seule instruction du programme principal.
 
 === Faire un module ===
 Lorsque nous avons les différentes parties de notre programme comme une collection de fonctions, il est très simple de créer un *module* qui peut être importé dans d'autres programmes. Ce fait, avoir notre code comme module, signifie que la fonction `trapeze()` peut facilement être réutilisée par d'autres programmes pour résoudre d'autres problèmes. Les exigences d'un module sont simples: mettez tout à l'intérieur des fonctions et laissez les appels de fonction dans le programme principal être dans le soi-disant *bloc de test*:
-!bc pycod-text
-if __name__ == '__main__':
-    application()
-!ec
+@@@CODE scripts/trapeze_integral.py fromto:if@
+
 Le test `if` est vrai si le fichier de module, `trapeze_integral.py`, est exécuté en tant que programme et faux si le module est importé dans un autre programme. Par conséquent, lorsque nous effectuons une importation: `from trapeze_integral import trapeze` dans un fichier, le test échoue et `application()` n'est pas appelée, c'est-à-dire que notre problème spécial n'est pas résolu et n'imprime rien à l'écran. D'un autre côté, si nous exécutons `trapeze_integral.py` dans la fenêtre du terminal, la condition de test est positive, `application()` est appelée et nous obtenons une sortie dans la fenêtre:
 
 !bc pycod-text
@@ -205,7 +181,6 @@ Terminal> python trapeze_integral.py
 n: 400
 n=400: 1.7183030649495579, error: -2.12365e-05
 !ec
-Lorsque vous regardez maintenant les deux solutions, le programme plat spécial et le programme basé sur les fonctions avec la fonction polyvalente `trapeze()`, vous vous rendez compte que *l'implémentation d'un algorithme mathématique général dans une fonction générale* nécessite une réflexion un peu plus abstraite, mais le code résultant peut être utilisé encore et encore. Essentiellement, si vous appliquez le style plat spécial, vous devez retester l'implémentation de l'algorithme après chaque changement de programme.
 ======= La méthode du point milieu composite =======
 ===== L'idée =====
 Plutôt que d'approximer l'aire sous une courbe par des trapèzes, nous pouvons utiliser des rectangles simples. Il peut sembler moins précis d'utiliser des lignes horizontales et non des lignes obliques suivant la fonction à intégrer, mais une méthode d'intégration basée sur des rectangles (la méthode du point milieu) est en fait légèrement plus précise que celle basée sur des trapèzes!
@@ -251,37 +226,18 @@ où $x_i = \left(a + \frac{h}{2}\right) + ih$.
 ===== Implémentation =====
 label{sec:implementation}
 Nous suivons les conseils et les enseignements tirés de l'implémentation de la méthode trapèze et réalisons une fonction `midpoint(f, a, b, n)` (dans un fichier `midpoint_integral.py`) pour implémenter la formule générale (ref{eq:GeneralMidpoint}):
-!bc pycod
-def midpoint(f, a, b, n):
-    h = float(b-a)/n
-    result = 0
-    for i in range(n):
-        result += f((a + h/2.0) + i*h)
-    result *= h
-    return result
-!ec
+
+@@@CODE scripts/midpoint_integral.py fromto:## NOM@def application()
+
 Nous pouvons tester la fonction comme nous l'avons expliqué pour la méthode du trapèze similaire. L'erreur dans notre problème particulier $\int_0^1 3t^2e^{t^3}dt$ avec quatre intervalles est maintenant d'environ $0.1$ contrairement à $0.2$ pour la règle du trapèze. Les différences sont rarement d'une importance pratique, et sur un ordinateur portable, nous pouvons facilement utiliser $n = 10^6$ et obtenir la réponse avec une erreur d'environ $10^{-12}$ en quelques secondes.
 ===== Comparaison des méthodes du trapèze et du point milieu =====
 L'exemple suivant montre la facilité avec laquelle nous pouvons combiner les fonctions `trapeze()` et `midpoint()` pour comparer les deux méthodes dans le fichier `compare_integration_methods.py`:
-!bc pycod
-from trapeze_integral import trapeze
-from midpoint_integral import midpoint
-from math import exp
 
-g = lambda y: exp(-y**2)
-a = 0
-b = 2
-print('    n        midpoint          trapezoidal')
-for i in range(1, 21):
-    n = 2**i
-    m = midpoint(g, a, b, n)
-    t = trapezoidal(g, a, b, n)
-    print('%7d %.16f %.16f' % (n, m, t))
+@@@CODE scripts/compare_integration_methods.py
 
-!ec
 Notez les efforts mis en forme agréable - la sortie devient
 !bc shell
-n        midpoint          trapezoidal
+      n      point milieu     trapèze
       2 0.8842000076332692 0.8770372606158094
       4 0.8827889485397279 0.8806186341245393
       8 0.8822686991994210 0.8817037913321336
@@ -309,213 +265,215 @@ Les méthodes du trapèze et du point milieu ne sont que deux exemples dans une 
 $$\int_a^b f(x)dx \approx \sum_{i=0}^{n-1} w_if(x_i)$$
 Autrement dit, l'intégrale est approximée par une somme d'évaluations de fonctions, où chaque évaluation $f (x_i)$ reçoit un poids $w_i$. Les différentes méthodes diffèrent par la façon dont elles construisent les points d'évaluation $x_i$ et les poids $w_i$. Nous avons utilisé des points $x_i$ également espacés, mais une précision plus élevée peut être obtenue en optimisant l'emplacement de $x_i$.
 !enotice
-======= Intégrales doubles et triples =======
-===== La règle du point milieu pour une double intégrale =====
-label{sec:midpointDouble}
-Étant donné une intégrale double sur un domaine rectangulaire $[a, b] \times [c, d]$,
 
-$$\int_a^b \int_c^d f(x,y) dydx$$
+# ======= Intégrales doubles et triples =======
+# ===== La règle du point milieu pour une double intégrale =====
+# label{sec:midpointDouble}
+# Étant donné une intégrale double sur un domaine rectangulaire $[a, b] \times [c, d]$,
+#
+# $$\int_a^b \int_c^d f(x,y) dydx$$
+#
+# comment approcher cette intégrale par des méthodes numériques?
+# === Dérivation via des intégrales unidimensionnelles ===
+# Puisque nous savons comment traiter les intégrales à une variable, une approche fructueuse consiste à considérer l'intégrale double comme deux intégrales, chacune à une variable, qui peut être approximée numériquement par les formules unidimensionnelles précédentes. À cette fin, nous introduisons une fonction intermédiaire $g (x)$ et écrivons
+# $$\int_a^b \int_c^d f(x,y) dydx = \int_a^b g(x)dx,\quad
+# g(x) = \int_c^d f(x,y) dy$$
+# Chacune des intégrales
+# $$ \int_a^b g(x)dx,\quad
+# g(x) = \int_c^d f(x,y) dy$$
+# peut être discrétisé par n'importe quelle règle d'intégration numérique pour une intégrale dans une variable. Utilisons la méthode du point milieu (ref{eq:GeneralMidpoint}) et commençons par $g(x)=\int_c^d f(x,y)dy$. Nous introduisons $n_y$ intervalles sur $[c, d]$ de longueur $h_y$. La règle du point milieu pour cette intégrale devient alors
+# $$g(x) = \int_c^d f(x,y) dy \approx  h_y \sum_{j=0}^{n_y-1} f(x,y_j),
+# \quad y_j = c + \frac{1}{2}{h_y} + jh_y $$
+#
+# L'expression semble quelque peu différente de (ref{eq:GeneralMidpoint}), mais c'est à cause de la notation: puisque nous nous intégrons dans la direction $y$ et que nous devrons travailler avec $x$ et $y$ comme coordonnées, nous devons utiliser $n_y$ pour $n$, $h_y$ pour $h$ et le compteur $i$ est plus naturellement appelé $j$ lors de l'intégration dans $y$. Les intégrales dans la direction $x$ utiliseront $h_x$ et $n_x$ pour $h$ et $n$, et $i$ comme compteur.
+#
+# L'intégrale double est $\int_a^b g(x)dx$, qui peut être approximée par la méthode du point milieu:
+# $$\int_a^b g(x)dx \approx h_x \sum_{i=0}^{n_x-1} g(x_i),\quad x_i=a + \frac{1}{2}{h_x} + ih_x$$
+#
+# En rassemblant les formules, nous arrivons à la méthode du point milieu composite pour une double intégrale:
+# !bt
+# \begin{align}
+# \int_a^b \int_c^d f(x,y) dydx &\approx
+# h_x \sum_{i=0}^{n_x-1} h_y \sum_{j=0}^{n_y-1} f(x_i,y_j)\nonumber\\
+# &=
+# h_xh_y \sum_{i=0}^{n_x-1} \sum_{j=0}^{n_y-1} f(a + \frac{h_x}{2} + ih_x, c + \frac{h_y}{2} + jh_y) \label{eq:MidpointDouble}
+# \end{align}
+# !et
+# La formule (ref{eq:MidpointDouble}) peut également être dérivée directement dans le cas bidimensionnel en appliquant l'idée de la méthode du point milieu. Nous divisons le rectangle $[a, b] \times [c, d]$ en $nx \times ny$ cellules de taille égale. L'idée de la méthode du point milieu est d'approximer $f$ par une constante sur chaque cellule et d'évaluer la constante au point médian. La cellule $(i, j)$ occupe la zone
+#
+# $$[a+ih_x,a+(i+1)h_x]\times [c+jh_y, c+ (j+1)h_y],$$
+# et le milieu est $(x_i, y_j)$ avec
+# $$x_i=a + ih_x + \frac{1}{2}{h_x} ,\quad y_j = c + jh_y + \frac{1}{2}{h_y}$$
+# L'intégrale sur la cellule est donc $h_xh_y f(x_i,y_j)$, et l'intégrale double totale est la somme sur toutes les cellules, qui n'est rien d'autre que la formule (ref{eq:MidpointDouble}).
+# === Programmation d'une double somme ===
+# La formule (ref{eq:MidpointDouble}) implique une double somme, qui est normalement implémentée sous la forme d'une boucle double. Une fonction Python implémentant (ref{eq:MidpointDouble}) peut ressembler à
+# !bc  pycod
+# def midpoint_double1(f, a, b, c, d, nx, ny):
+#     hx = (b - a)/float(nx)
+#     hy = (d - c)/float(ny)
+#     I = 0
+#     for i in range(nx):
+#         for j in range(ny):
+#             xi = a + hx/2 + i*hx
+#             yj = c + hy/2 + j*hy
+#             I += hx*hy*f(xi, yj)
+#     return I
+# !ec
+# Si cette fonction est stockée dans un fichier de module `midpoint_double.py`, nous pouvons calculer une intégrale, par exemple, $\int_2^3\int_0^2 (2x + y)dxdy=9$ dans un shell interactif et démontrer que la fonction calcule le bon nombre:
+# !bc ipy
+# >>> from midpoint_double import midpoint_double1
+# >>> def f(x, y):
+# ...     return 2*x + y
+# ...
+# >>> midpoint_double1(f, 0, 2, 2, 3, 5, 5)
+# 9.0
+# !ec
+# === Réutilisation du code pour les intégrales unidimensionnelles ===
+# Il est très naturel d'écrire une méthode de point milieu bidimensionnelle comme nous l'avons fait dans la fonction `midpoint_double1` lorsque nous avons la formule (ref{eq:MidpointDouble}). Cependant, nous pourrions également demander, tout comme nous l'avons fait en mathématiques, pouvons-nous réutiliser une implémentation bien testée pour les intégrales unidimensionnelles pour calculer les doubles intégrales? Autrement dit, pouvons-nous utiliser la fonction `midpoint`.
+#
+# !bc pycod
+# def midpoint(f, a, b, n):
+#     h = float(b-a)/n
+#     result = 0
+#     for i in range(n):
+#         result += f((a + h/2.0) + i*h)
+#     result *= h
+#     return result
+# !ec
+#
+# de la section ref{sec:implementation} "deux fois"? La réponse est oui, si nous pensons comme nous l'avons fait dans les mathématiques: calculer l'intégrale double comme règle du point milieu pour intégrer $g (x)$ et définir $g (x_i)$ en termes d'une règle du point milieu sur $f$ dans la coordonnée $y$.
+# !bc pycod
+# def midpoint_double2(f, a, b, c, d, nx, ny):
+#     def g(x):
+#         return midpoint(lambda y: f(x, y), c, d, ny)
+#
+#     return midpoint(g, a, b, nx)
+# !ec
+# L'avantage important de cette implémentation est que nous réutilisons une fonction bien testée pour la règle du point milieu unidimensionnelle standard et que nous appliquons la règle unidimensionnelle exactement comme dans les mathématiques.
+# === Vérification via les fonctions de test ===
+# Comment tester que nos fonctions pour la double intégrale fonctionnent? Le meilleur test unitaire consiste à trouver un problème où l'erreur d'approximation numérique disparaît, car alors nous savons exactement quelle devrait être la réponse numérique. La règle du point milieu est exacte pour les fonctions linéaires, quel que soit le nombre de sous-intervalles que nous utilisons. De plus, toute fonction linéaire bidimensionnelle $f(x,y)=px+qy+r$ sera intégrée exactement par la règle point milieu bidimensionnelle. Nous pouvons choisir $f(x,y)=2x+y$ et créer une fonction de test appropriée qui peut automatiquement vérifier nos deux implémentations alternatives de la règle du point milieu bidimensionnelle. La fonction de test devient:
+# !bc pycod
+# def test_midpoint_double():
+#     """Test that a linear function is integrated exactly."""
+#     def f(x, y):
+#         return 2*x + y
+#
+#     a = 0;  b = 2;  c = 2;  d = 3
+#     import sympy
+#     x, y = sympy.symbols('x  y')
+#     I_expected = sympy.integrate(f(x, y), (x, a, b), (y, c, d))
+#     # Test three cases: nx < ny, nx = ny, nx > ny
+#     for nx, ny in (3, 5), (4, 4), (5, 3):
+#         I_computed1 = midpoint_double1(f, a, b, c, d, nx, ny)
+#         I_computed2 = midpoint_double2(f, a, b, c, d, nx, ny)
+#         tol = 1E-14
+#         #print I_expected, I_computed1, I_computed2
+#         assert abs(I_computed1 - I_expected) < tol
+#         assert abs(I_computed2 - I_expected) < tol
+# !ec
+# !bnotice Laisser parler les fonctions de test?
+# Si nous appelons la fonction `test_midpoint_double` ci-dessus et que rien ne se passe, nos implémentations sont correctes. Cependant, il est quelque peu ennuyeux d'avoir une fonction complètement silencieuse lorsqu'elle fonctionne sommes-nous sûrs que tout est correctement calculé? Pendant le développement, il est donc fortement recommandé d'insérer une instruction d'impression afin que nous puissions surveiller les calculs et être convaincu que la fonction de test fait ce que nous voulons. Puisqu'une fonction de test ne doit avoir aucune instruction print(), nous la commentons simplement comme nous l'avons fait dans la fonction listée ci-dessus.
+#
+# !enotice
+# La méthode du trapèze peut être utilisée comme alternative à la méthode du point milieu. La dérivation d'une formule pour la double intégrale et les implémentations suivent exactement les mêmes idées que nous avons expliquées avec la méthode du point milieu, mais il y a plus de termes à écrire dans les formules.
+# ===== La règle du point milieu pour une triple intégrale =====
+# === Théorie ===
+# Une fois qu'une méthode qui fonctionne pour un problème unidimensionnel est généralisée à deux dimensions, il est généralement assez simple d'étendre la méthode à trois dimensions. Cela sera maintenant démontré pour les intégrales. Nous avons la triple intégrale:
+# $$\int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx$$
+# et veulent approximer l'intégrale par une règle du point milieu. En suivant les idées de la double intégrale, nous avons divisé cette intégrale en intégrales unidimensionnelles:
+# !bt
+# \begin{align*}
+# p(x,y) &= \int_e^f g(x,y,z) dz\\
+# q(x) &= \int_c^d p(x,y) dy\\
+# \int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx &= \int_a^b q(x)dx
+# \end{align*}
+# !et
+# Pour chacune de ces intégrales unidimensionnelles, nous appliquons la règle du point milieu:
+# !bt
+# \begin{align*}
+# p(x,y) = \int_e^f g(x,y,z) dz
+# &\approx \sum_{k=0}^{n_z-1} g(x,y,z_k),
+# \\
+# q(x) = \int_c^d p(x,y) dy
+# &\approx \sum_{j=0}^{n_y-1} p(x,y_j),
+# \\
+# \int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx = \int_a^b q(x)dx
+# &\approx \sum_{i=0}^{n_x-1} q(x_i),
+# \end{align*}
+# !et
+# où
+# $$z_k=e + \frac{1}{2}h_z + kh_z,\quad y_j=c + \frac{1}{2}h_y + jh_y \quad
+# x_i=a + \frac{1}{2}h_x + ih_x$$
+# En commençant par la formule pour $\int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx$ et en insérant les deux formules précédentes donne
+# !bt
+# \begin{align}
+# & \int_{a}^{b} \int_c^d \int_e^f g(x,y,z)\, dzdydx\approx\nonumber\\
+# & h_xh_yh_z
+# \sum_{i=0}^{n_x-1}\sum_{j=0}^{n_y-1}\sum_{k=0}^{n_z-1}
+# g(a + \frac{1}{2}h_x + ih_x,
+# c + \frac{1}{2}h_y + jh_y,
+# e + \frac{1}{2}h_z + kh_z) \label{eq:midpointTriple}
+# \end{align}
+# !et
+# Notez que nous pouvons appliquer les idées sous Dérivation directe à la fin de la section ref{sec:midpointDouble} arrive à (ref{eq:midpointTriple}) directement: diviser le domaine en $n_x\times n_y\times n_z$ cellules de volumes $h_xh_yh_z$; approximativement g par une constante, évaluée au milieu $(x_i,y_j,z_k)$, dans chaque cellule; et additionner les intégrales de cellule $h_xh_yh_zg(x_i,y_j,z_k)$.
+# === Implémentation ===
+# Nous suivons les idées pour les implémentations de la règle du point milieu pour une double intégrale. Les fonctions correspondantes sont présentées ci-dessous et se trouvent dans le fichier `midpoint_triple.py`.
+# !bc pycod
+# def midpoint_triple1(g, a, b, c, d, e, f, nx, ny, nz):
+#     hx = (b - a)/float(nx)
+#     hy = (d - c)/float(ny)
+#     hz = (f - e)/float(nz)
+#     I = 0
+#     for i in range(nx):
+#         for j in range(ny):
+#             for k in range(nz):
+#                 xi = a + hx/2 + i*hx
+#                 yj = c + hy/2 + j*hy
+#                 zk = e + hz/2 + k*hz
+#                 I += hx*hy*hz*g(xi, yj, zk)
+#     return I
+#
+# def midpoint(f, a, b, n):
+#     h = float(b-a)/n
+#     result = 0
+#     for i in range(n):
+#         result += f((a + h/2.0) + i*h)
+#     result *= h
+#     return result
+#
+# def midpoint_triple2(g, a, b, c, d, e, f, nx, ny, nz):
+#     def p(x, y):
+#         return midpoint(lambda z: g(x, y, z), e, f, nz)
+#
+#     def q(x):
+#         return midpoint(lambda y: p(x, y), c, d, ny)
+#
+#     return midpoint(q, a, b, nx)
+#
+# def test_midpoint_triple():
+#     """Test that a linear function is integrated exactly."""
+#     def g(x, y, z):
+#         return 2*x + y - 4*z
+#
+#     a = 0;  b = 2;  c = 2;  d = 3;  e = -1;  f = 2
+#     import sympy
+#     x, y, z = sympy.symbols('x y z')
+#     I_expected = sympy.integrate(
+#         g(x, y, z), (x, a, b), (y, c, d), (z, e, f))
+#     for nx, ny, nz in (3, 5, 2), (4, 4, 4), (5, 3, 6):
+#         I_computed1 = midpoint_triple1(
+#             g, a, b, c, d, e, f, nx, ny, nz)
+#         I_computed2 = midpoint_triple2(
+#             g, a, b, c, d, e, f, nx, ny, nz)
+#         tol = 1E-14
+#         print(I_expected, I_computed1, I_computed2)
+#         assert abs(I_computed1 - I_expected) < tol
+#         assert abs(I_computed2 - I_expected) < tol
+#
+# if __name__ == '__main__':
+#     test_midpoint_triple()
+# !ec
 
-comment approcher cette intégrale par des méthodes numériques?
-=== Dérivation via des intégrales unidimensionnelles ===
-Puisque nous savons comment traiter les intégrales à une variable, une approche fructueuse consiste à considérer l'intégrale double comme deux intégrales, chacune à une variable, qui peut être approximée numériquement par les formules unidimensionnelles précédentes. À cette fin, nous introduisons une fonction intermédiaire $g (x)$ et écrivons
-$$\int_a^b \int_c^d f(x,y) dydx = \int_a^b g(x)dx,\quad
-g(x) = \int_c^d f(x,y) dy$$
-Chacune des intégrales
-$$ \int_a^b g(x)dx,\quad
-g(x) = \int_c^d f(x,y) dy$$
-peut être discrétisé par n'importe quelle règle d'intégration numérique pour une intégrale dans une variable. Utilisons la méthode du point milieu (ref{eq:GeneralMidpoint}) et commençons par $g(x)=\int_c^d f(x,y)dy$. Nous introduisons $n_y$ intervalles sur $[c, d]$ de longueur $h_y$. La règle du point milieu pour cette intégrale devient alors
-$$g(x) = \int_c^d f(x,y) dy \approx  h_y \sum_{j=0}^{n_y-1} f(x,y_j),
-\quad y_j = c + \frac{1}{2}{h_y} + jh_y $$
-
-L'expression semble quelque peu différente de (ref{eq:GeneralMidpoint}), mais c'est à cause de la notation: puisque nous nous intégrons dans la direction $y$ et que nous devrons travailler avec $x$ et $y$ comme coordonnées, nous devons utiliser $n_y$ pour $n$, $h_y$ pour $h$ et le compteur $i$ est plus naturellement appelé $j$ lors de l'intégration dans $y$. Les intégrales dans la direction $x$ utiliseront $h_x$ et $n_x$ pour $h$ et $n$, et $i$ comme compteur.
-
-L'intégrale double est $\int_a^b g(x)dx$, qui peut être approximée par la méthode du point milieu:
-$$\int_a^b g(x)dx \approx h_x \sum_{i=0}^{n_x-1} g(x_i),\quad x_i=a + \frac{1}{2}{h_x} + ih_x$$
-
-En rassemblant les formules, nous arrivons à la méthode du point milieu composite pour une double intégrale:
-!bt
-\begin{align}
-\int_a^b \int_c^d f(x,y) dydx &\approx
-h_x \sum_{i=0}^{n_x-1} h_y \sum_{j=0}^{n_y-1} f(x_i,y_j)\nonumber\\
-&=
-h_xh_y \sum_{i=0}^{n_x-1} \sum_{j=0}^{n_y-1} f(a + \frac{h_x}{2} + ih_x, c + \frac{h_y}{2} + jh_y) \label{eq:MidpointDouble}
-\end{align}
-!et
-La formule (ref{eq:MidpointDouble}) peut également être dérivée directement dans le cas bidimensionnel en appliquant l'idée de la méthode du point milieu. Nous divisons le rectangle $[a, b] \times [c, d]$ en $nx \times ny$ cellules de taille égale. L'idée de la méthode du point milieu est d'approximer $f$ par une constante sur chaque cellule et d'évaluer la constante au point médian. La cellule $(i, j)$ occupe la zone
-
-$$[a+ih_x,a+(i+1)h_x]\times [c+jh_y, c+ (j+1)h_y],$$
-et le milieu est $(x_i, y_j)$ avec
-$$x_i=a + ih_x + \frac{1}{2}{h_x} ,\quad y_j = c + jh_y + \frac{1}{2}{h_y}$$
-L'intégrale sur la cellule est donc $h_xh_y f(x_i,y_j)$, et l'intégrale double totale est la somme sur toutes les cellules, qui n'est rien d'autre que la formule (ref{eq:MidpointDouble}).
-=== Programmation d'une double somme ===
-La formule (ref{eq:MidpointDouble}) implique une double somme, qui est normalement implémentée sous la forme d'une boucle double. Une fonction Python implémentant (ref{eq:MidpointDouble}) peut ressembler à
-!bc  pycod
-def midpoint_double1(f, a, b, c, d, nx, ny):
-    hx = (b - a)/float(nx)
-    hy = (d - c)/float(ny)
-    I = 0
-    for i in range(nx):
-        for j in range(ny):
-            xi = a + hx/2 + i*hx
-            yj = c + hy/2 + j*hy
-            I += hx*hy*f(xi, yj)
-    return I
-!ec
-Si cette fonction est stockée dans un fichier de module `midpoint_double.py`, nous pouvons calculer une intégrale, par exemple, $\int_2^3\int_0^2 (2x + y)dxdy=9$ dans un shell interactif et démontrer que la fonction calcule le bon nombre:
-!bc ipy
->>> from midpoint_double import midpoint_double1
->>> def f(x, y):
-...     return 2*x + y
-...
->>> midpoint_double1(f, 0, 2, 2, 3, 5, 5)
-9.0
-!ec
-=== Réutilisation du code pour les intégrales unidimensionnelles ===
-Il est très naturel d'écrire une méthode de point milieu bidimensionnelle comme nous l'avons fait dans la fonction `midpoint_double1` lorsque nous avons la formule (ref{eq:MidpointDouble}). Cependant, nous pourrions également demander, tout comme nous l'avons fait en mathématiques, pouvons-nous réutiliser une implémentation bien testée pour les intégrales unidimensionnelles pour calculer les doubles intégrales? Autrement dit, pouvons-nous utiliser la fonction `midpoint`.
-
-!bc pycod
-def midpoint(f, a, b, n):
-    h = float(b-a)/n
-    result = 0
-    for i in range(n):
-        result += f((a + h/2.0) + i*h)
-    result *= h
-    return result
-!ec
-
-de la section ref{sec:implementation} "deux fois"? La réponse est oui, si nous pensons comme nous l'avons fait dans les mathématiques: calculer l'intégrale double comme règle du point milieu pour intégrer $g (x)$ et définir $g (x_i)$ en termes d'une règle du point milieu sur $f$ dans la coordonnée $y$.
-!bc pycod
-def midpoint_double2(f, a, b, c, d, nx, ny):
-    def g(x):
-        return midpoint(lambda y: f(x, y), c, d, ny)
-
-    return midpoint(g, a, b, nx)
-!ec
-L'avantage important de cette implémentation est que nous réutilisons une fonction bien testée pour la règle du point milieu unidimensionnelle standard et que nous appliquons la règle unidimensionnelle exactement comme dans les mathématiques.
-=== Vérification via les fonctions de test ===
-Comment tester que nos fonctions pour la double intégrale fonctionnent? Le meilleur test unitaire consiste à trouver un problème où l'erreur d'approximation numérique disparaît, car alors nous savons exactement quelle devrait être la réponse numérique. La règle du point milieu est exacte pour les fonctions linéaires, quel que soit le nombre de sous-intervalles que nous utilisons. De plus, toute fonction linéaire bidimensionnelle $f(x,y)=px+qy+r$ sera intégrée exactement par la règle point milieu bidimensionnelle. Nous pouvons choisir $f(x,y)=2x+y$ et créer une fonction de test appropriée qui peut automatiquement vérifier nos deux implémentations alternatives de la règle du point milieu bidimensionnelle. La fonction de test devient:
-!bc pycod
-def test_midpoint_double():
-    """Test that a linear function is integrated exactly."""
-    def f(x, y):
-        return 2*x + y
-
-    a = 0;  b = 2;  c = 2;  d = 3
-    import sympy
-    x, y = sympy.symbols('x  y')
-    I_expected = sympy.integrate(f(x, y), (x, a, b), (y, c, d))
-    # Test three cases: nx < ny, nx = ny, nx > ny
-    for nx, ny in (3, 5), (4, 4), (5, 3):
-        I_computed1 = midpoint_double1(f, a, b, c, d, nx, ny)
-        I_computed2 = midpoint_double2(f, a, b, c, d, nx, ny)
-        tol = 1E-14
-        #print I_expected, I_computed1, I_computed2
-        assert abs(I_computed1 - I_expected) < tol
-        assert abs(I_computed2 - I_expected) < tol
-!ec
-!bnotice Laisser parler les fonctions de test?
-Si nous appelons la fonction `test_midpoint_double` ci-dessus et que rien ne se passe, nos implémentations sont correctes. Cependant, il est quelque peu ennuyeux d'avoir une fonction complètement silencieuse lorsqu'elle fonctionne sommes-nous sûrs que tout est correctement calculé? Pendant le développement, il est donc fortement recommandé d'insérer une instruction d'impression afin que nous puissions surveiller les calculs et être convaincu que la fonction de test fait ce que nous voulons. Puisqu'une fonction de test ne doit avoir aucune instruction print(), nous la commentons simplement comme nous l'avons fait dans la fonction listée ci-dessus.
-
-!enotice
-La méthode du trapèze peut être utilisée comme alternative à la méthode du point milieu. La dérivation d'une formule pour la double intégrale et les implémentations suivent exactement les mêmes idées que nous avons expliquées avec la méthode du point milieu, mais il y a plus de termes à écrire dans les formules.
-===== La règle du point milieu pour une triple intégrale =====
-=== Théorie ===
-Une fois qu'une méthode qui fonctionne pour un problème unidimensionnel est généralisée à deux dimensions, il est généralement assez simple d'étendre la méthode à trois dimensions. Cela sera maintenant démontré pour les intégrales. Nous avons la triple intégrale:
-$$\int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx$$
-et veulent approximer l'intégrale par une règle du point milieu. En suivant les idées de la double intégrale, nous avons divisé cette intégrale en intégrales unidimensionnelles:
-!bt
-\begin{align*}
-p(x,y) &= \int_e^f g(x,y,z) dz\\
-q(x) &= \int_c^d p(x,y) dy\\
-\int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx &= \int_a^b q(x)dx
-\end{align*}
-!et
-Pour chacune de ces intégrales unidimensionnelles, nous appliquons la règle du point milieu:
-!bt
-\begin{align*}
-p(x,y) = \int_e^f g(x,y,z) dz
-&\approx \sum_{k=0}^{n_z-1} g(x,y,z_k),
-\\
-q(x) = \int_c^d p(x,y) dy
-&\approx \sum_{j=0}^{n_y-1} p(x,y_j),
-\\
-\int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx = \int_a^b q(x)dx
-&\approx \sum_{i=0}^{n_x-1} q(x_i),
-\end{align*}
-!et
-où
-$$z_k=e + \frac{1}{2}h_z + kh_z,\quad y_j=c + \frac{1}{2}h_y + jh_y \quad
-x_i=a + \frac{1}{2}h_x + ih_x$$
-En commençant par la formule pour $\int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx$ et en insérant les deux formules précédentes donne
-!bt
-\begin{align}
-& \int_{a}^{b} \int_c^d \int_e^f g(x,y,z)\, dzdydx\approx\nonumber\\
-& h_xh_yh_z
-\sum_{i=0}^{n_x-1}\sum_{j=0}^{n_y-1}\sum_{k=0}^{n_z-1}
-g(a + \frac{1}{2}h_x + ih_x,
-c + \frac{1}{2}h_y + jh_y,
-e + \frac{1}{2}h_z + kh_z) \label{eq:midpointTriple}
-\end{align}
-!et
-Notez que nous pouvons appliquer les idées sous Dérivation directe à la fin de la section ref{sec:midpointDouble} arrive à (ref{eq:midpointTriple}) directement: diviser le domaine en $n_x\times n_y\times n_z$ cellules de volumes $h_xh_yh_z$; approximativement g par une constante, évaluée au milieu $(x_i,y_j,z_k)$, dans chaque cellule; et additionner les intégrales de cellule $h_xh_yh_zg(x_i,y_j,z_k)$.
-=== Implémentation ===
-Nous suivons les idées pour les implémentations de la règle du point milieu pour une double intégrale. Les fonctions correspondantes sont présentées ci-dessous et se trouvent dans le fichier `midpoint_triple.py`.
-!bc pycod
-def midpoint_triple1(g, a, b, c, d, e, f, nx, ny, nz):
-    hx = (b - a)/float(nx)
-    hy = (d - c)/float(ny)
-    hz = (f - e)/float(nz)
-    I = 0
-    for i in range(nx):
-        for j in range(ny):
-            for k in range(nz):
-                xi = a + hx/2 + i*hx
-                yj = c + hy/2 + j*hy
-                zk = e + hz/2 + k*hz
-                I += hx*hy*hz*g(xi, yj, zk)
-    return I
-
-def midpoint(f, a, b, n):
-    h = float(b-a)/n
-    result = 0
-    for i in range(n):
-        result += f((a + h/2.0) + i*h)
-    result *= h
-    return result
-
-def midpoint_triple2(g, a, b, c, d, e, f, nx, ny, nz):
-    def p(x, y):
-        return midpoint(lambda z: g(x, y, z), e, f, nz)
-
-    def q(x):
-        return midpoint(lambda y: p(x, y), c, d, ny)
-
-    return midpoint(q, a, b, nx)
-
-def test_midpoint_triple():
-    """Test that a linear function is integrated exactly."""
-    def g(x, y, z):
-        return 2*x + y - 4*z
-
-    a = 0;  b = 2;  c = 2;  d = 3;  e = -1;  f = 2
-    import sympy
-    x, y, z = sympy.symbols('x y z')
-    I_expected = sympy.integrate(
-        g(x, y, z), (x, a, b), (y, c, d), (z, e, f))
-    for nx, ny, nz in (3, 5, 2), (4, 4, 4), (5, 3, 6):
-        I_computed1 = midpoint_triple1(
-            g, a, b, c, d, e, f, nx, ny, nz)
-        I_computed2 = midpoint_triple2(
-            g, a, b, c, d, e, f, nx, ny, nz)
-        tol = 1E-14
-        print(I_expected, I_computed1, I_computed2)
-        assert abs(I_computed1 - I_expected) < tol
-        assert abs(I_computed2 - I_expected) < tol
-
-if __name__ == '__main__':
-    test_midpoint_triple()
-!ec
 ======= Intégration Monte Carlo pour les domaines de forme complexe =======
 L'utilisation répétée de règles d'intégration unidimensionnelles pour gérer les intégrales doubles et triples ne constitue une stratégie de travail que si le domaine d'intégration est un rectangle ou une boîte. Pour toute autre forme de domaine, des méthodes complètement différentes doivent être utilisées. Une approche courante pour les domaines bidimensionnels et tridimensionnels consiste à diviser le domaine en plusieurs petits triangles ou tétraèdres et à utiliser des méthodes d'intégration numérique pour chaque triangle ou tétraèdre. L'algorithme global et l'implémentation sont trop compliqués pour être traités dans ce livre. Au lieu de cela, nous utiliserons une méthode alternative, très simple et générale, appelée *intégration de Monte Carlo*. Il peut être implémenté dans une demi-page de code, mais nécessite des ordres de grandeur plus d'évaluations de fonctions en intégrales doubles par rapport à la règle du point milieu.
 
