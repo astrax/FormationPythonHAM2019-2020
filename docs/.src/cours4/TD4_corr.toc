@@ -1,1 +1,11 @@
 \contentsline {paragraph}{Solution.}{1}{section*.3}
+\contentsline {paragraph}{Indication.}{2}{section*.5}
+\contentsline {paragraph}{a)}{2}{section*.6}
+\contentsline {paragraph}{Solution.}{2}{section*.7}
+\contentsline {paragraph}{b)}{4}{section*.8}
+\contentsline {paragraph}{Solution.}{4}{section*.9}
+\contentsline {paragraph}{c)}{4}{section*.10}
+\contentsline {paragraph}{Solution.}{4}{section*.11}
+\contentsline {paragraph}{Remarks.}{4}{section*.12}
+\contentsline {paragraph}{Indication.}{5}{section*.14}
+\contentsline {paragraph}{Solution.}{5}{section*.15}

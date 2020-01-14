@@ -12,7 +12,7 @@
 \pi = 4 \left( \int_0^\infty e^{-x^2} dx \right)^2 = 4 \left( \int_0^{10} e^{-x^2} dx + \epsilon \right)^2
 <span style="color: #658b00">\end{equation}</span>
 <span style="color: #8B008B; font-weight: bold">!et</span>
-avec $0 &lt; 2 &lt; 10^{−44}$ , utiliser la méthode des trapèzes composite à $10$ intervalles pour estimer la valeur de $\pi$.
+avec $0 &lt; \epsilon &lt; 10^{−44}$ , utiliser la méthode des trapèzes composite à $10$ intervalles pour estimer la valeur de $\pi$.
 <span style="color: #8B008B; font-weight: bold">!bsol</span>
 La méthode des trapèzes composite à $n$ intervalles pour calculer l’intégrale d’une fonction f sur l’intervalle $[a, b]$ s’écrit
 <span style="color: #8B008B; font-weight: bold">!bt</span>
@@ -25,9 +25,200 @@ avec $h = \frac{b-a}{n}$ et $x_i = a + ih,\quad i = 0,1,\ldots,n$
 Ici on a $f (x) = e^{-x}$ , $a = 0$, $b = 10$, $n = 10$ d’où $h = 1$ et on obtient
 <span style="color: #8B008B; font-weight: bold">!bt</span>
 <span style="color: #658b00">\begin{equation*}</span>
-I \approx \frac{1}{2} + \sum_{i=1}^{9} e^{-i} + \frac{1}{2e^{100}}
+I \approx \frac{1}{2} + \sum_{i=1}^{9} e^{-i} + \frac{1}{2e^{100}} = \frac{1}{2} + \frac{1}{e} + \frac{1}{e^{4}} + \frac{1}{e^{9}} + \frac{1}{e^{16}} + \frac{1}{e^{25}} + \frac{1}{e^{36}} + \frac{1}{e^{49}} + \frac{1}{e^{64}} + \frac{1}{e^{81}} + \frac{1}{2e^{100}}
 <span style="color: #658b00">\end{equation*}</span>
 <span style="color: #8B008B; font-weight: bold">!et</span>
+ainsi en utilisant la fonction `trapeze(f,a,b,n)` du module `trapeze_integral.py` décrite dans le cours comme suit
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from trapeze_integral import trapeze
+from math import exp
+f = lambda x: exp(-x**2)
+I = trapeze(f, 0, 10, 10)
+print(4*I**2)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+on obtient $\pi \approx 4I^2 = 3.14224265994$.
+<span style="color: #8B008B; font-weight: bold">!esol</span>
 
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Intégration adaptative =====</span>
+<span style="color: #658b00">label{ex:adaptatif}</span>
+
+Supposons que nous voulons utiliser la méthode des trapèzes ou du point milieu pour calculer une intégrale $\int_a^b f(x)dx$ avec une erreur inférieure à une tolérance prescrite $\epsilon$. Quelle est la taille appropriée de $n$?
+
+Pour répondre à cette question, nous pouvons entrer une procédure itérative où nous comparons les résultats produits par $n$ et $2n$ intervalles, et si la différence est inférieure à $\epsilon$, la valeur correspondant à $2n$ est retournée. Sinon, nous avons $n$ et répétons la procédure.
+<span style="color: #8B008B; font-weight: bold">!bhint</span>
+Il peut être une bonne idée d&#39;organiser votre code afin que la fonction `integration_adaptive` peut être utilisé facilement dans les programmes futurs que vous écrivez.
+<span style="color: #8B008B; font-weight: bold">!ehint</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+
+Écrire une fonction `integration_adaptive(f, a, b, eps, method=midpoint)` qui implémente l&#39;idée ci-dessus (`eps` correspond à la tolérance $\epsilon$, et la méthode peut être `midpoint` ou `trapeze`).
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+En facilitant les réponses à l&#39;ensemble de cet exercice, ainsi qu&#39;en préparant l&#39;utilisation facile de l&#39;intégration adaptative dans les futurs programmes, nous organisons le codage des tâches a, b et c en un seul fichier, ce qui en fait un module. Le code se lit alors:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from numpy import linspace, zeros, sqrt, log
+from trapezoidal import trapezoidal
+from midpoint import midpoint
+
+def adaptive_integration(f, a, b, eps, method=&#39;midpoint&#39;):
+    n_limit = 1000000   # Just a choice (used to avoid inf loop)
+    n = 2
+    if method == &#39;trapezoidal&#39;:
+        integral_n  = trapezoidal(f, a, b, n)
+        integral_2n = trapezoidal(f, a, b, 2*n)
+        diff = abs(integral_2n - integral_n)
+        print &#39;trapezoidal diff: &#39;, diff
+        while (diff &gt; eps) and (n &lt; n_limit):
+            integral_n  = trapezoidal(f, a, b, n)
+            integral_2n = trapezoidal(f, a, b, 2*n)
+            diff = abs(integral_2n - integral_n)
+            print &#39;trapezoidal diff: &#39;, diff
+            n *= 2
+    elif method == &#39;midpoint&#39;:
+        integral_n  = midpoint(f, a, b, n)
+        integral_2n = midpoint(f, a, b, 2*n)
+        diff = abs(integral_2n - integral_n)
+        print &#39;midpoint diff: &#39;, diff
+        while (diff &gt; eps) and (n &lt; n_limit):
+            integral_n  = midpoint(f, a, b, n)
+            integral_2n = midpoint(f, a, b, 2*n)
+            diff = abs(integral_2n - integral_n)
+            print &#39;midpoint diff: &#39;, diff
+            n *= 2
+    else:
+        print &#39;Error - adaptive integration called with unknown par&#39;
+    # Now we check if acceptable n was found or not
+    if diff &lt;= eps:   # Success
+        print &#39;The integral computes to: &#39;, integral_2n
+        return n
+    else:
+        return -n   # Return negative n to tell &quot;not found&quot;
+
+def application():
+    &quot;&quot;&quot;...Tasks b) and c)&quot;&quot;&quot;
+
+    def f(x):
+        return x**2
+    def g(x):
+        return sqrt(x)
+
+    #eps = 1E-1           # Just switch between these two eps values
+    eps = 1E-10
+    #a = 0.0
+    a = 0.0 + 0.01;       # If we adjust a, sqrt(x) is handled easily
+    b = 2.0
+    # ...f
+    n = adaptive_integration(f, a, b, eps, &#39;midpoint&#39;)
+    if n &gt; 0:
+        print &#39;Sufficient n is: %d&#39; % (n)
+    else:
+        print &#39;No n was found in %d iterations&#39; % (n_limit)
+
+    n = adaptive_integration(f, a, b, eps, &#39;trapezoidal&#39;)
+    if n &gt; 0:
+        print &#39;Sufficient n is: %d&#39; % (n)
+    else:
+        print &#39;No n was found in %d iterations&#39; % (n_limit)
+
+    # ...g
+    n = adaptive_integration(g, a, b, eps, &#39;midpoint&#39;)
+    if n &gt; 0:
+        print &#39;Sufficient n is: %d&#39; % (n)
+    else:
+        print &#39;No n was found in %d iterations&#39; % (n_limit)
+
+    n = adaptive_integration(g, a, b, eps, &#39;trapezoidal&#39;)
+    if n &gt; 0:
+        print &#39;Sufficient n is: %d&#39; % (n)
+    else:
+        print &#39;No n was found in %d iterations&#39; % (n_limit)
+
+    # Task c, make plot for both midpoint and trapezoidal
+    eps = linspace(1E-1,10E-10,10)
+    n_m = zeros(len(eps))
+    n_t = zeros(len(eps))
+    for i in range(len(n_m)):
+        n_m[i] = adaptive_integration(g, a, b, eps[i], &#39;midpoint&#39;)
+        n_t[i] = adaptive_integration(g, a, b, eps[i], &#39;trapezoidal&#39;)
+
+    import matplotlib.pyplot as plt
+    plt.plot(log(eps),n_m,&#39;b-&#39;,log(eps),n_t,&#39;r-&#39;)
+    plt.xlabel(&#39;log(eps)&#39;)
+    plt.ylabel(&#39;n for midpoint (blue) and trapezoidal (red)&#39;)
+    plt.show()
+    print n
+    print eps
+
+if __name__ == &#39;__main__&#39;:
+    application()
+
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Testez la méthode sur $\int_0^2x^2dx$ et $\int_0^2\sqrt{x}dx$ pour $\epsilon = 10^{−1},10^{−10}$ et notez l&#39;erreur exacte.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Voir le code ci-dessus. Notez que, dans notre code suggéré, il est prévu que le programmeur bascule entre les deux valeurs epsilon en utilisant des commentaires, c&#39;est-à-dire en ajoutant/supprimant `#`. Cela peut bien sûr être évité, si cela est souhaitable, en demandant à l&#39;utilisateur d&#39;entrer un valeur d&#39;epsilon.
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Faites un tracé de $n$ en fonction de $\epsilon \in [10^{-1}, 10^{-10}]$ pour $\int_0^2\sqrt{x}dx$. Utilisez l&#39;échelle logarithmique pour $\epsilon$.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La figure 14 montre que plus la valeur d&#39;epsilon est stricte, plus la différence entre les méthodes du point milieu et des trapèzes est grande. Pour une valeur donnée pour epsilon, la méthode du point médian se situe dans la tolérance avec moins d&#39;intervalles (valeur inférieure de $n$) que la méthode des trapèzes. Il faut s&#39;y attendre, car la méthode du point milieu est un peu plus précise que la méthode des trapèzes.
+
+Une façon de produire ce tracé est d&#39;utiliser les lignes de code incluses à la fin de `integration_adaptive.py` (voir ci-dessus).
+
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bremarks</span>
+Le type de méthode exploré dans cet exercice est appelé *adaptatif*, car il essaie d&#39;adapter la valeur de n pour répondre à un critère d&#39;erreur donné. La vraie erreur peut très rarement être calculée (car nous ne connaissons pas la réponse exacte au problème de calcul), il faut donc trouver d&#39;autres indicateurs de l&#39;erreur, comme celui ici où les changements de la valeur intégrale, comme le nombre d&#39;intervalles est doublé, est pris pour refléter l&#39;erreur.
+<span style="color: #8B008B; font-weight: bold">!eremarks</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Intégration de x élevé à x =====</span>
+Considérons l&#39;intégrale
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+I = \int_0^2 x^x\,dx\thinspace .
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+L&#39;intégrande $x^x$ n&#39;a pas de primitive qui peut être exprimé en termes de fonctions standard (visitez URL:&quot;http://wolframalpha.com&quot; et tapez `integral x^x dx from 0 to 2` pour vous convaincre que notre affirmation est juste. Notez que Wolfram alpha vous donne une réponse, mais cette réponse est une approximation, elle n&#39;est pas *exacte*. C&#39;est parce que Wolfram alpha utilise également des méthodes numériques pour arriver à la réponse, comme vous le ferez dans cet exercice). Par conséquent, nous sommes obligés de calculer l&#39;intégrale par des méthodes numériques. Calculez un résultat composé de quatre chiffres.
+<span style="color: #8B008B; font-weight: bold">!bhint</span>
+Utilisez des idées de l&#39;exercice ref{ex:adaptatif}.
+<span style="color: #8B008B; font-weight: bold">!ehint</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Lorsque la fonction `integration_adaptive` est disponible, le code peut s&#39;écrire:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from integration_adaptive import integration_adaptive
+
+def f(x):
+    return x**x
+
+eps = 1E-4
+a = 0.0;  b = 2.0
+
+<span style="color: #228B22"># Choose midpoint method</span>
+n = integration_adaptive(f, a, b, eps, &#39;midpoint&#39;)
+if n &gt; 0:
+    print &#39;Sufficient n is: %d&#39; % (n)
+else:
+    # The negative n is returned to signal that the upper limit of n
+    # was passed
+    print &#39;No n was found in %d iterations&#39; % (abs(n))
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+N&#39;oubliez pas que `integration_adaptive` affiche l&#39;intégrale calculée, donc aucun effort à cet égard n&#39;est requis ici.
+
+L&#39;exécution du programme donne une impression à l&#39;écran montrant comment la différence devient de plus en plus petite à chaque fois. Les deux dernières lignes de l&#39;impression se lisent comme suit:
+<span style="color: #8B008B; font-weight: bold">!bc</span>
+The integral computes to: 2.83384395958
+Sufficient n is: 256
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+La valeur calculée peut être comparée à ce que donne Wolfram alpha. N&#39;oubliez pas qu&#39;étant donné que nous n&#39;avons pas calculé l&#39;erreur exacte, nous ne pouvons garantir que le &quot;résultat est correct à quatre chiffres&quot;. Cependant, nous avons des raisons de croire que nous &quot;sommes proches&quot;. Typiquement, lorsque l&#39;on sait que la mesure d&#39;erreur utilisée n&#39;est pas précise, la tolérance est rendue plus stricte.
 <span style="color: #8B008B; font-weight: bold">!esol</span>
 </pre></div>
