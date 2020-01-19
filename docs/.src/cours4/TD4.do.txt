@@ -3,6 +3,52 @@ AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut P
 DATE: today
 
 TOC: on
+!split
+===== Exercise: Vitesse d'une fusée =====
+On lance une fusée verticalement du sol et l’on mesure pendant les premières 80 secondes l'accélération $\gamma$:
+
+|------l--------------c--------------c--------------c--------------c--------------c--------------c--------------c--------------c--------------c-------|
+| t[s]         | 0            | 10           | 20           | 30           | 40           | 50           | 60           | 70           | 80           |
+|------l--------------c--------------c--------------c--------------c--------------c--------------c--------------c--------------c--------------c-------|
+| $\gamma$ [m $s^{-2}$]  | 30           | 31.63        | 33.44        | 35.47        | 37.75        | 40.33        | 43.29        | 46.70        | 50.67        |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+
+Calculer la vitesse $V$ de la fusée à l’instant $t=80 \ s$, par la méthode des trapèzes.
+!bsol
+On sait que l’accélération $\gamma$ est la dérivée de la vitesse $V$, donc,
+!bt
+\begin{equation*}
+V(t) = \int_0^t \gamma(s) ds
+\end{equation*}
+\begin{equation*}
+I = V(80) = \int_0^{80} \gamma(s) ds
+\end{equation*}
+!et
+Calculons $I$ par la méthode des trapèzes. Ici, d’après le tableau des valeurs, $h = 10$.
+
+!bt
+\begin{equation*}
+I \approx h \left[\frac{1}{2}f(x_0) + \sum_{i=1}^{n-1}f(x_i) + \frac{1}{2}f(x_n) \right]
+\end{equation*}
+!et
+!bt
+\begin{align*}
+I &\approx 10 \left[\frac{1}{2} \times 30 + \frac{1}{2} \times 50.67 + 31.63 + 33.44 + \ldots + 46.70 \right] \\
+  &\approx 3089.45 \quad ms^{-1}
+\end{align*}
+!et
+!bc pycod
+h = 10
+I = 0.5 * (30 + 50.67) # 1/2 * [f(x0) + f(xn)]
+fx = [31.63,33.44,35.47,37.75,40.33,43.29,46.70] # f(x1) ---> f(xn-1)
+for i in range(len(fx)):
+    I+= fx[i]
+I*=h
+print(I, "ms^-1")
+
+!ec
+
+!esol
 
 !split
 ===== Exercise: Valeur approchée de $\pi$ =====
@@ -221,3 +267,55 @@ Sufficient n is: 256
 !ec
 La valeur calculée peut être comparée à ce que donne Wolfram alpha. N'oubliez pas qu'étant donné que nous n'avons pas calculé l'erreur exacte, nous ne pouvons garantir que le "résultat est correct à quatre chiffres". Cependant, nous avons des raisons de croire que nous "sommes proches". Typiquement, lorsque l'on sait que la mesure d'erreur utilisée n'est pas précise, la tolérance est rendue plus stricte.
 !esol
+
+!split
+===== Exercise: Orbitales atomiques =====
+Pour décrire la trajectoire d'un électron autour d'un noyau, une description probabiliste est adoptée : l'électron n'est plus caractérisé par ses coordonnées spatiales mais par sa *probabilité de présence* en un point de l'espace.
+
+Pour simplifier le problème, on considérera que cette probabilité de présence ne dépend que de la variable $r$, distance entre l'électron et le centre du noyau. Pour une orbitale $1s$, la probabilité de trouver l'électron entre les rayons $r_1$ et $r_2$ s'écrit :
+!bt
+\begin{align*}
+P_{s1} = \int_{r_1}^{r_2} \underbrace{4 \times \frac{r^2}{a_0^3} \times e^{-2 \times \frac{r}{a_0}}}_\text{densité radiale} dr
+\end{align*}
+!et
+avec $a_0 = 0.529$ $\AA$, appelé le rayon de Bohr.
+
+La densité radiale, représentée dans la figure ref{fig:D_rad}, est maximale pour $r = a_0$. Ce rayon qui maximise la densité radiale est appelé le *rayon orbitalaire*.
+!bnotice
+Dans ce problème, les distances seront conservées en Angström.
+!enotice
+
+FIGURE:[imgs/densite_radiale, width=400 frac=0.7] Densité radiale pour une orbitale atomique 1s. label{fig:D_rad}
+
+
+!bsubex
+Définir une fonction `densite_radiale()`, définie entre $0$ et $\infty$ qui prend comme paramètre variable un rayon $r$ et comme paramètre par défaut $a_0 = 0.529$ $\AA$ et renvoie la valeur $4 \times \frac{r^2}{a_0^3} \times e^{-2 \times \frac{r}{a_0}}$.
+!esubex
+
+!bsubex
+Tracer la densité radiale pour $r \in [0, 2.6] \quad \AA$, afin d'obtenir le même graphique sur la figure ref{fig:D_rad}.
+!esubex
+
+!bsubex
+On souhaite déterminer la probabilité de présence de l'électron entre $0$ et $a_0$. Évaluer cette probabilité à l'aide de $100$ rectangles. On pourra vérifier que la réponse obtenue est proche de $0.32$.
+!esubex
+
+!bsubex
+Déterminer le nombre entier $n$, tel que l'électron ait une probabilité supérieure ou égale à $90 \%$ de se trouver entre $0$ et $n*a_0$.
+!esubex
+
+!bsubex
+On souhaite désormais évaluer la probabilité de trouver l'électron proche du rayon de Bohr, c'est-à-dire entre $0.9*a_0$ et $1.1*a_0$. Évaluer cette probabilité à l'aide de 100 rectangles.
+!esubex
+
+!bsubex
+D'après la valeur obtenue à la question précédente, que penser de la description des trajectoires des électrons par orbite autour du noyau ?
+!bnotice
+On répondra en commentaire dans le programme.
+!enotice
+!bsol
+La solution de l'exercice est dans le programme python suivant:
+@@@CODE scripts/OrbitalesAtomiques.py
+!esol
+
+!esubex

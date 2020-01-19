@@ -3,6 +3,52 @@
 <span style="color: #000080; font-weight: bold">DATE:</span> today
 
 <span style="color: #000080; font-weight: bold">TOC:</span> on
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Vitesse d&#39;une fusée =====</span>
+On lance une fusée verticalement du sol et l’on mesure pendant les premières 80 secondes l&#39;accélération $\gamma$:
+
+<span style="color: #CD5555">|------l--------------c--------------c--------------c--------------c--------------c--------------c--------------c--------------c--------------c-------|</span>
+<span style="color: #CD5555">| t[s]         | 0            | 10           | 20           | 30           | 40           | 50           | 60           | 70           | 80           |</span>
+<span style="color: #CD5555">|------l--------------c--------------c--------------c--------------c--------------c--------------c--------------c--------------c--------------c-------|</span>
+<span style="color: #CD5555">| $\gamma$ [m $s^{-2}$]  | 30           | 31.63        | 33.44        | 35.47        | 37.75        | 40.33        | 43.29        | 46.70        | 50.67        |</span>
+<span style="color: #CD5555">|-----------------------------------------------------------------------------------------------------------------------------------------------------|</span>
+
+Calculer la vitesse $V$ de la fusée à l’instant $t=80 \ s$, par la méthode des trapèzes.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+On sait que l’accélération $\gamma$ est la dérivée de la vitesse $V$, donc,
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+V(t) = \int_0^t \gamma(s) ds
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #658b00">\begin{equation*}</span>
+I = V(80) = \int_0^{80} \gamma(s) ds
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Calculons $I$ par la méthode des trapèzes. Ici, d’après le tableau des valeurs, $h = 10$.
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+I \approx h \left[\frac{1}{2}f(x_0) + \sum_{i=1}^{n-1}f(x_i) + \frac{1}{2}f(x_n) \right]
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+I &amp;\approx 10 \left[\frac{1}{2} \times 30 + \frac{1}{2} \times 50.67 + 31.63 + 33.44 + \ldots + 46.70 \right] \\
+  &amp;\approx 3089.45 \quad ms^{-1}
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+h = 10
+I = 0.5 * (30 + 50.67) # 1/2 * [f(x0) + f(xn)]
+fx = [31.63,33.44,35.47,37.75,40.33,43.29,46.70] # f(x1) ---&gt; f(xn-1)
+for i in range(len(fx)):
+    I+= fx[i]
+I*=h
+print(I, &quot;ms^-1&quot;)
+
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!esol</span>
 
 <span style="color: #8B008B; font-weight: bold">!split</span>
 <span style="color: #000080; font-weight: bold">===== Exercise: Valeur approchée de $\pi$ =====</span>
@@ -221,4 +267,56 @@ Sufficient n is: 256
 <span style="color: #8B008B; font-weight: bold">!ec</span>
 La valeur calculée peut être comparée à ce que donne Wolfram alpha. N&#39;oubliez pas qu&#39;étant donné que nous n&#39;avons pas calculé l&#39;erreur exacte, nous ne pouvons garantir que le &quot;résultat est correct à quatre chiffres&quot;. Cependant, nous avons des raisons de croire que nous &quot;sommes proches&quot;. Typiquement, lorsque l&#39;on sait que la mesure d&#39;erreur utilisée n&#39;est pas précise, la tolérance est rendue plus stricte.
 <span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Orbitales atomiques =====</span>
+Pour décrire la trajectoire d&#39;un électron autour d&#39;un noyau, une description probabiliste est adoptée : l&#39;électron n&#39;est plus caractérisé par ses coordonnées spatiales mais par sa *probabilité de présence* en un point de l&#39;espace.
+
+Pour simplifier le problème, on considérera que cette probabilité de présence ne dépend que de la variable $r$, distance entre l&#39;électron et le centre du noyau. Pour une orbitale $1s$, la probabilité de trouver l&#39;électron entre les rayons $r_1$ et $r_2$ s&#39;écrit :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+P_{s1} = \int_{r_1}^{r_2} \underbrace{4 \times \frac{r^2}{a_0^3} \times e^{-2 \times \frac{r}{a_0}}}_\text{densité radiale} dr
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+avec $a_0 = 0.529$ $\AA$, appelé le rayon de Bohr.
+
+La densité radiale, représentée dans la figure ref{fig:D_rad}, est maximale pour $r = a_0$. Ce rayon qui maximise la densité radiale est appelé le *rayon orbitalaire*.
+<span style="color: #8B008B; font-weight: bold">!bnotice</span>
+Dans ce problème, les distances seront conservées en Angström.
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+
+<span style="color: #658b00">FIGURE:[imgs/densite_radiale, width=400 frac=0.7] Densité radiale pour une orbitale atomique 1s. label{fig:D_rad}</span>
+
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Définir une fonction `densite_radiale()`, définie entre $0$ et $\infty$ qui prend comme paramètre variable un rayon $r$ et comme paramètre par défaut $a_0 = 0.529$ $\AA$ et renvoie la valeur $4 \times \frac{r^2}{a_0^3} \times e^{-2 \times \frac{r}{a_0}}$.
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Tracer la densité radiale pour $r \in [0, 2.6] \quad \AA$, afin d&#39;obtenir le même graphique sur la figure ref{fig:D_rad}.
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+On souhaite déterminer la probabilité de présence de l&#39;électron entre $0$ et $a_0$. Évaluer cette probabilité à l&#39;aide de $100$ rectangles. On pourra vérifier que la réponse obtenue est proche de $0.32$.
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Déterminer le nombre entier $n$, tel que l&#39;électron ait une probabilité supérieure ou égale à $90 \%$ de se trouver entre $0$ et $n*a_0$.
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+On souhaite désormais évaluer la probabilité de trouver l&#39;électron proche du rayon de Bohr, c&#39;est-à-dire entre $0.9*a_0$ et $1.1*a_0$. Évaluer cette probabilité à l&#39;aide de 100 rectangles.
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+D&#39;après la valeur obtenue à la question précédente, que penser de la description des trajectoires des électrons par orbite autour du noyau ?
+<span style="color: #8B008B; font-weight: bold">!bnotice</span>
+On répondra en commentaire dans le programme.
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La solution de l&#39;exercice est dans le programme python suivant:
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/OrbitalesAtomiques.py</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
 </pre></div>
