@@ -29,6 +29,8 @@ function common_replacements {
   doconce replace "Example" "Exemple" $1
   doconce replace "Warning" "Attention" $1
   doconce replace "Hint" "Indication" $1
+  doconce replace "Exercise" "Exercice" $1
+  doconce replace "Remarks" "Remarques" $1
 }
 
 doconce pygmentize $name.do.txt perldoc

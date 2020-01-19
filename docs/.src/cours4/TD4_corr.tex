@@ -304,7 +304,7 @@ final,                   % draft: marks overfull hboxes, figures with paths
 \newcounter{doconceexercisecounter}
 % --- begin definition of \listofexercises command ---
 \makeatletter
-\newcommand\listofexercises{\section*{List of Exercises}
+\newcommand\listofexercises{\section*{List of Exercices}
 \@starttoc{loe}
 }
 \newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
@@ -397,7 +397,7 @@ Jan 19, 2020
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\exercisesection{Exercise \thedoconceexercisecounter: Vitesse d'une fusée}
+\exercisesection{Exercice \thedoconceexercisecounter: Vitesse d'une fusée}
 
 
 On lance une fusée verticalement du sol et l’on mesure pendant les premières 80 secondes l'accélération $\gamma$:
@@ -461,7 +461,7 @@ print(I, "ms^-1")
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\exercisesection{Exercise \thedoconceexercisecounter: Valeur approchée de $\pi$}
+\exercisesection{Exercice \thedoconceexercisecounter: Valeur approchée de $\pi$}
 
 
 Étant donnée l'égalité:
@@ -508,7 +508,7 @@ on obtient $\pi \approx 4I^2 = 3.14224265994$.
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\exercisesection{Exercise \thedoconceexercisecounter: Intégration adaptative}
+\exercisesection{Exercice \thedoconceexercisecounter: Intégration adaptative}
 
 \label{ex:adaptatif}
 
@@ -525,117 +525,96 @@ Il peut être une bonne idée d'organiser votre code afin que la fonction \Verb!
 
 
 \subex{a)}
-Écrire une fonction \Verb!integration_adaptive(f, a, b, eps, method=midpoint)! qui implémente l'idée ci-dessus (\texttt{eps} correspond à la tolérance $\epsilon$, et la méthode peut être \texttt{midpoint} ou \texttt{trapeze}).
+Écrire une fonction \Verb!integration_adaptive(f, a, b, eps, method="midpoint")! qui implémente l'idée ci-dessus (\texttt{eps} correspond à la tolérance $\epsilon$, et la méthode peut être \texttt{midpoint} ou \texttt{trapeze}).
 
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 En facilitant les réponses à l'ensemble de cet exercice, ainsi qu'en préparant l'utilisation facile de l'intégration adaptative dans les futurs programmes, nous organisons le codage des tâches a, b et c en un seul fichier, ce qui en fait un module. Le code se lit alors:
-\begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-from numpy import linspace, zeros, sqrt, log
-from trapezoidal import trapezoidal
-from midpoint import midpoint
 
-def adaptive_integration(f, a, b, eps, method='midpoint'):
-    n_limit = 1000000   # Just a choice (used to avoid inf loop)
+\begin{pro}{cbg_gray}{bar_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+## NOM DU PROGRAMME: integration_adaptive.py
+#% IMPORTATION
+from numpy import linspace, zeros, sqrt
+from trapeze_integral import trapeze
+from midpoint_integral import midpoint
+
+def integration_adaptative(f, a, b, eps, method='midpoint'):
+    '''
+    Question a)
+    '''
+    n_limit = 1000000  # Juste un choix (utilisé pour éviter la boucle inf)
     n = 2
-    if method == 'trapezoidal':
-        integral_n  = trapezoidal(f, a, b, n)
-        integral_2n = trapezoidal(f, a, b, 2*n)
+    if method == 'trapeze':
+        integral_n  = trapeze(f, a, b, n)
+        integral_2n = trapeze(f, a, b, 2*n)
         diff = abs(integral_2n - integral_n)
-        print 'trapezoidal diff: ', diff
         while (diff > eps) and (n < n_limit):
-            integral_n  = trapezoidal(f, a, b, n)
-            integral_2n = trapezoidal(f, a, b, 2*n)
+            integral_n  = trapeze(f, a, b, n)
+            integral_2n = trapeze(f, a, b, 2*n)
             diff = abs(integral_2n - integral_n)
-            print 'trapezoidal diff: ', diff
             n *= 2
     elif method == 'midpoint':
         integral_n  = midpoint(f, a, b, n)
         integral_2n = midpoint(f, a, b, 2*n)
         diff = abs(integral_2n - integral_n)
-        print 'midpoint diff: ', diff
         while (diff > eps) and (n < n_limit):
             integral_n  = midpoint(f, a, b, n)
             integral_2n = midpoint(f, a, b, 2*n)
             diff = abs(integral_2n - integral_n)
-            print 'midpoint diff: ', diff
             n *= 2
     else:
-        print 'Error - adaptive integration called with unknown par'
-    # Now we check if acceptable n was found or not
-    if diff <= eps:   # Success
-        print 'The integral computes to: ', integral_2n
+        print('Erreur - intégration adaptative appelée avec un paramètre inconnu')
+    # Maintenant, nous vérifions si un n acceptable a été trouvé ou non
+    if diff <= eps:   # Succès
+        print("L'intégrale calcule: ", integral_2n)
         return n
     else:
-        return -n   # Return negative n to tell "not found"
+        return -n   # Renvoie n négatif pour dire "non trouvé"
 
 def application():
-    """...Tasks b) and c)"""
+    """Questions b) and c)"""
 
-    def f(x):
-        return x**2
-    def g(x):
-        return sqrt(x)
+    g = lambda x: sqrt(x)
 
-    #eps = 1E-1           # Just switch between these two eps values
+#    eps = 1E-1 # Il suffit de basculer entre ces deux valeurs eps
     eps = 1E-10
-    #a = 0.0
-    a = 0.0 + 0.01;       # If we adjust a, sqrt(x) is handled easily
+    a = 0.0 + 0.01  # Si nous ajustons a, sqrt (x) est géré facilement
     b = 2.0
-    # ...f
-    n = adaptive_integration(f, a, b, eps, 'midpoint')
+    n = integration_adaptative(g, a, b, eps, 'midpoint')
     if n > 0:
-        print 'Sufficient n is: %d' % (n)
+        print('n suffisant est: %d'%(n))
     else:
-        print 'No n was found in %d iterations' % (n_limit)
-
-    n = adaptive_integration(f, a, b, eps, 'trapezoidal')
-    if n > 0:
-        print 'Sufficient n is: %d' % (n)
-    else:
-        print 'No n was found in %d iterations' % (n_limit)
-
-    # ...g
-    n = adaptive_integration(g, a, b, eps, 'midpoint')
-    if n > 0:
-        print 'Sufficient n is: %d' % (n)
-    else:
-        print 'No n was found in %d iterations' % (n_limit)
-
-    n = adaptive_integration(g, a, b, eps, 'trapezoidal')
-    if n > 0:
-        print 'Sufficient n is: %d' % (n)
-    else:
-        print 'No n was found in %d iterations' % (n_limit)
-
-    # Task c, make plot for both midpoint and trapezoidal
+        print("Aucun n n'a été trouvé dans %d iterations" % (n_limit))
+   
+    # c) faire un tracé pour le point milieu et les trapèzes
     eps = linspace(1E-1,10E-10,10)
     n_m = zeros(len(eps))
     n_t = zeros(len(eps))
     for i in range(len(n_m)):
-        n_m[i] = adaptive_integration(g, a, b, eps[i], 'midpoint')
-        n_t[i] = adaptive_integration(g, a, b, eps[i], 'trapezoidal')
+        n_m[i] = integration_adaptative(g, a, b, eps[i], 'midpoint')
+        n_t[i] = integration_adaptative(g, a, b, eps[i], 'trapeze')
 
     import matplotlib.pyplot as plt
-    plt.plot(log(eps),n_m,'b-',log(eps),n_t,'r-')
-    plt.xlabel('log(eps)')
-    plt.ylabel('n for midpoint (blue) and trapezoidal (red)')
+    plt.figure(figsize=(7,5))
+    plt.plot(eps,n_m,'b-', label = "méthode du point milieu")
+    plt.plot(eps,n_t,'r-',  label = "méthode des trapèzes")
+    plt.xlabel(r'$\epsilon$')
+    plt.ylabel('n')
+    plt.xscale("log")
+    plt.legend()
     plt.show()
-    print n
-    print eps
 
 if __name__ == '__main__':
     application()
-
 \end{minted}
-\end{cod}
+\end{pro}
 \noindent
 
 % --- end solution of exercise ---
 
 \subex{b)}
-Testez la méthode sur $\int_0^2x^2dx$ et $\int_0^2\sqrt{x}dx$ pour $\epsilon = 10^{−1},10^{−10}$ et notez l'erreur exacte.
+Testez la méthode sur $g(x) = \int_0^2\sqrt{x}dx$ pour $\epsilon = 10^{−1},10^{−10}$ et notez l'erreur exacte.
 
 
 % --- begin solution of exercise ---
@@ -648,18 +627,28 @@ Voir le code ci-dessus. Notez que, dans notre code suggéré, il est prévu que 
 Faites un tracé de $n$ en fonction de $\epsilon \in [10^{-1}, 10^{-10}]$ pour $\int_0^2\sqrt{x}dx$. Utilisez l'échelle logarithmique pour $\epsilon$.
 
 
+\begin{figure}[!ht]  % fig:eps
+  \centerline{\includegraphics[width=0.7\linewidth]{imgs/eps.pdf}}
+  \caption{
+  Affichage de n en fonction de $\epsilon$ lorsque $\int_0^2\sqrt{x}dx$ est calculé par la méthode du point milieu (bleu) et la méthode des trapèzes (rouge). \label{fig:eps}
+  }
+\end{figure}
+%\clearpage % flush figures fig:eps
+
+
+
 % --- begin solution of exercise ---
 \paragraph{Solution.}
-La figure 14 montre que plus la valeur d'epsilon est stricte, plus la différence entre les méthodes du point milieu et des trapèzes est grande. Pour une valeur donnée pour epsilon, la méthode du point médian se situe dans la tolérance avec moins d'intervalles (valeur inférieure de $n$) que la méthode des trapèzes. Il faut s'y attendre, car la méthode du point milieu est un peu plus précise que la méthode des trapèzes.
+La figure~\ref{fig:eps} montre que plus la valeur d'epsilon est stricte, plus la différence entre les méthodes du point milieu et des trapèzes est grande. Pour une valeur donnée pour epsilon, la méthode du point milieu se situe dans la tolérance avec moins d'intervalles (valeur inférieure de $n$) que la méthode des trapèzes. Il faut s'y attendre, car la méthode du point milieu est un peu plus précise que la méthode des trapèzes.
 
 Une façon de produire ce tracé est d'utiliser les lignes de code incluses à la fin de \Verb!integration_adaptive.py! (voir ci-dessus).
 
 % --- end solution of exercise ---
 
 
-% Closing remarks for this Exercise
+% Closing remarks for this Exercice
 
-\paragraph{Remarks.}
+\paragraph{Remarques.}
 Le type de méthode exploré dans cet exercice est appelé \emph{adaptatif}, car il essaie d'adapter la valeur de n pour répondre à un critère d'erreur donné. La vraie erreur peut très rarement être calculée (car nous ne connaissons pas la réponse exacte au problème de calcul), il faut donc trouver d'autres indicateurs de l'erreur, comme celui ici où les changements de la valeur intégrale, comme le nombre d'intervalles est doublé, est pris pour refléter l'erreur.
 
 
@@ -674,7 +663,7 @@ Le type de méthode exploré dans cet exercice est appelé \emph{adaptatif}, car
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\exercisesection{Exercise \thedoconceexercisecounter: Intégration de x élevé à x}
+\exercisesection{Exercice \thedoconceexercisecounter: Intégration de x élevé à x}
 
 
 Considérons l'intégrale
@@ -694,8 +683,11 @@ Utilisez des idées de l'exercice~\ref{ex:adaptatif}.
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 Lorsque la fonction \Verb!integration_adaptive! est disponible, le code peut s'écrire:
-\begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-from integration_adaptive import integration_adaptive
+
+\begin{pro}{cbg_gray}{bar_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+## NOM DU PROGRAMME: xtox.py
+#% IMPORTATION
+from integration_adaptive import integration_adaptative
 
 def f(x):
     return x**x
@@ -703,23 +695,24 @@ def f(x):
 eps = 1E-4
 a = 0.0;  b = 2.0
 
-# Choose midpoint method
-n = integration_adaptive(f, a, b, eps, 'midpoint')
+# Choisir la méthode milieu
+n = integration_adaptative(f, a, b, eps, 'midpoint')
 if n > 0:
-    print 'Sufficient n is: %d' % (n)
+    print('n suffisant est: %d'%(n))
 else:
-    # The negative n is returned to signal that the upper limit of n
-    # was passed
-    print 'No n was found in %d iterations' % (abs(n))
+    # Le n négatif est renvoyé pour signaler que la limite supérieure de n 
+    # a été dépassée
+    print("Aucun n n'a été trouvé dans %d iterations"  % (abs(n)))
 \end{minted}
-\end{cod}
+\end{pro}
 \noindent
+
 N'oubliez pas que \Verb!integration_adaptive! affiche l'intégrale calculée, donc aucun effort à cet égard n'est requis ici.
 
-L'exécution du programme donne une impression à l'écran montrant comment la différence devient de plus en plus petite à chaque fois. Les deux dernières lignes de l'impression se lisent comme suit:
+L'exécution du programme donne une impression à l'écran montrant comment la différence devient de plus en plus petite à chaque fois. Les deux lignes de l'impression se lisent comme suit:
 \begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{text}
-The integral computes to: 2.83384395958
-Sufficient n is: 256
+L'intégrale calcule:  2.8338439595776044
+n suffisant est: 256
 \end{minted}
 \end{cod}
 \noindent
@@ -738,7 +731,7 @@ La valeur calculée peut être comparée à ce que donne Wolfram alpha. N'oublie
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\exercisesection{Exercise \thedoconceexercisecounter: Orbitales atomiques}
+\exercisesection{Exercice \thedoconceexercisecounter: Orbitales atomiques}
 
 
 Pour décrire la trajectoire d'un électron autour d'un noyau, une description probabiliste est adoptée : l'électron n'est plus caractérisé par ses coordonnées spatiales mais par sa \emph{probabilité de présence} en un point de l'espace.
@@ -802,8 +795,6 @@ La solution de l'exercice est dans le programme python suivant:
 import numpy as np
 import matplotlib.pyplot as plt
 from midpoint_integral import midpoint
-import matplotlib
-matplotlib.rcParams.update({'font.size': 14})
 # a) 
 def densite_radiale(r, a0 = 0.529):
     return 4 * (r**2/a0**3) * np.exp(-2*(r/a0))
@@ -815,7 +806,6 @@ plt.plot(r, densite_radiale(r), label = "densité radiale pour une OA 1s")
 plt.xlabel("r "+r"$[\AA]$")
 plt.ylabel("densité radiale")
 plt.legend()
-plt.savefig("../imgs/densite_radiale.pdf", dpi = 200); plt.savefig("../imgs/densite_radiale.png")
 plt.show()
 
 # c) probabilité de présence de l’électron entre 0 et a0
@@ -841,7 +831,7 @@ print("La probabilité de présence de l’électron entre 0.9*a0 et 1.1*a0 est:
 
 # La probabilité de présence de l’électron entre 0.9*a0 et 1.1*a0 est:  0.10790737203009312
 
-# f)
+# f) Conclusion
 
 '''
 * La densité radiale de probabilité de présence est maximale 

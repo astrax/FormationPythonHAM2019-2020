@@ -3,8 +3,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from midpoint_integral import midpoint
-import matplotlib
-matplotlib.rcParams.update({'font.size': 14})
 # a) 
 def densite_radiale(r, a0 = 0.529):
     return 4 * (r**2/a0**3) * np.exp(-2*(r/a0))
@@ -16,7 +14,6 @@ plt.plot(r, densite_radiale(r), label = "densité radiale pour une OA 1s")
 plt.xlabel("r "+r"$[\AA]$")
 plt.ylabel("densité radiale")
 plt.legend()
-plt.savefig("../imgs/densite_radiale.pdf", dpi = 200); plt.savefig("../imgs/densite_radiale.png")
 plt.show()
 
 # c) probabilité de présence de l’électron entre 0 et a0
@@ -42,7 +39,7 @@ print("La probabilité de présence de l’électron entre 0.9*a0 et 1.1*a0 est:
 
 # La probabilité de présence de l’électron entre 0.9*a0 et 1.1*a0 est:  0.10790737203009312
 
-# f)
+# f) Conclusion
 
 '''
 * La densité radiale de probabilité de présence est maximale 

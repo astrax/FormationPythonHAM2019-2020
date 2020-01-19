@@ -98,113 +98,18 @@ Il peut être une bonne idée d&#39;organiser votre code afin que la fonction `i
 
 <span style="color: #8B008B; font-weight: bold">!bsubex</span>
 
-Écrire une fonction `integration_adaptive(f, a, b, eps, method=midpoint)` qui implémente l&#39;idée ci-dessus (`eps` correspond à la tolérance $\epsilon$, et la méthode peut être `midpoint` ou `trapeze`).
+Écrire une fonction `integration_adaptive(f, a, b, eps, method=&quot;midpoint&quot;)` qui implémente l&#39;idée ci-dessus (`eps` correspond à la tolérance $\epsilon$, et la méthode peut être `midpoint` ou `trapeze`).
 <span style="color: #8B008B; font-weight: bold">!bsol</span>
 En facilitant les réponses à l&#39;ensemble de cet exercice, ainsi qu&#39;en préparant l&#39;utilisation facile de l&#39;intégration adaptative dans les futurs programmes, nous organisons le codage des tâches a, b et c en un seul fichier, ce qui en fait un module. Le code se lit alors:
-<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
-from numpy import linspace, zeros, sqrt, log
-from trapezoidal import trapezoidal
-from midpoint import midpoint
 
-def adaptive_integration(f, a, b, eps, method=&#39;midpoint&#39;):
-    n_limit = 1000000   # Just a choice (used to avoid inf loop)
-    n = 2
-    if method == &#39;trapezoidal&#39;:
-        integral_n  = trapezoidal(f, a, b, n)
-        integral_2n = trapezoidal(f, a, b, 2*n)
-        diff = abs(integral_2n - integral_n)
-        print &#39;trapezoidal diff: &#39;, diff
-        while (diff &gt; eps) and (n &lt; n_limit):
-            integral_n  = trapezoidal(f, a, b, n)
-            integral_2n = trapezoidal(f, a, b, 2*n)
-            diff = abs(integral_2n - integral_n)
-            print &#39;trapezoidal diff: &#39;, diff
-            n *= 2
-    elif method == &#39;midpoint&#39;:
-        integral_n  = midpoint(f, a, b, n)
-        integral_2n = midpoint(f, a, b, 2*n)
-        diff = abs(integral_2n - integral_n)
-        print &#39;midpoint diff: &#39;, diff
-        while (diff &gt; eps) and (n &lt; n_limit):
-            integral_n  = midpoint(f, a, b, n)
-            integral_2n = midpoint(f, a, b, 2*n)
-            diff = abs(integral_2n - integral_n)
-            print &#39;midpoint diff: &#39;, diff
-            n *= 2
-    else:
-        print &#39;Error - adaptive integration called with unknown par&#39;
-    # Now we check if acceptable n was found or not
-    if diff &lt;= eps:   # Success
-        print &#39;The integral computes to: &#39;, integral_2n
-        return n
-    else:
-        return -n   # Return negative n to tell &quot;not found&quot;
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/integration_adaptive.py</span>
 
-def application():
-    &quot;&quot;&quot;...Tasks b) and c)&quot;&quot;&quot;
-
-    def f(x):
-        return x**2
-    def g(x):
-        return sqrt(x)
-
-    #eps = 1E-1           # Just switch between these two eps values
-    eps = 1E-10
-    #a = 0.0
-    a = 0.0 + 0.01;       # If we adjust a, sqrt(x) is handled easily
-    b = 2.0
-    # ...f
-    n = adaptive_integration(f, a, b, eps, &#39;midpoint&#39;)
-    if n &gt; 0:
-        print &#39;Sufficient n is: %d&#39; % (n)
-    else:
-        print &#39;No n was found in %d iterations&#39; % (n_limit)
-
-    n = adaptive_integration(f, a, b, eps, &#39;trapezoidal&#39;)
-    if n &gt; 0:
-        print &#39;Sufficient n is: %d&#39; % (n)
-    else:
-        print &#39;No n was found in %d iterations&#39; % (n_limit)
-
-    # ...g
-    n = adaptive_integration(g, a, b, eps, &#39;midpoint&#39;)
-    if n &gt; 0:
-        print &#39;Sufficient n is: %d&#39; % (n)
-    else:
-        print &#39;No n was found in %d iterations&#39; % (n_limit)
-
-    n = adaptive_integration(g, a, b, eps, &#39;trapezoidal&#39;)
-    if n &gt; 0:
-        print &#39;Sufficient n is: %d&#39; % (n)
-    else:
-        print &#39;No n was found in %d iterations&#39; % (n_limit)
-
-    # Task c, make plot for both midpoint and trapezoidal
-    eps = linspace(1E-1,10E-10,10)
-    n_m = zeros(len(eps))
-    n_t = zeros(len(eps))
-    for i in range(len(n_m)):
-        n_m[i] = adaptive_integration(g, a, b, eps[i], &#39;midpoint&#39;)
-        n_t[i] = adaptive_integration(g, a, b, eps[i], &#39;trapezoidal&#39;)
-
-    import matplotlib.pyplot as plt
-    plt.plot(log(eps),n_m,&#39;b-&#39;,log(eps),n_t,&#39;r-&#39;)
-    plt.xlabel(&#39;log(eps)&#39;)
-    plt.ylabel(&#39;n for midpoint (blue) and trapezoidal (red)&#39;)
-    plt.show()
-    print n
-    print eps
-
-if __name__ == &#39;__main__&#39;:
-    application()
-
-<span style="color: #8B008B; font-weight: bold">!ec</span>
 <span style="color: #8B008B; font-weight: bold">!esol</span>
 
 <span style="color: #8B008B; font-weight: bold">!esubex</span>
 
 <span style="color: #8B008B; font-weight: bold">!bsubex</span>
-Testez la méthode sur $\int_0^2x^2dx$ et $\int_0^2\sqrt{x}dx$ pour $\epsilon = 10^{−1},10^{−10}$ et notez l&#39;erreur exacte.
+Testez la méthode sur $g(x) = \int_0^2\sqrt{x}dx$ pour $\epsilon = 10^{−1},10^{−10}$ et notez l&#39;erreur exacte.
 <span style="color: #8B008B; font-weight: bold">!bsol</span>
 Voir le code ci-dessus. Notez que, dans notre code suggéré, il est prévu que le programmeur bascule entre les deux valeurs epsilon en utilisant des commentaires, c&#39;est-à-dire en ajoutant/supprimant `#`. Cela peut bien sûr être évité, si cela est souhaitable, en demandant à l&#39;utilisateur d&#39;entrer un valeur d&#39;epsilon.
 <span style="color: #8B008B; font-weight: bold">!esol</span>
@@ -213,8 +118,11 @@ Voir le code ci-dessus. Notez que, dans notre code suggéré, il est prévu que 
 
 <span style="color: #8B008B; font-weight: bold">!bsubex</span>
 Faites un tracé de $n$ en fonction de $\epsilon \in [10^{-1}, 10^{-10}]$ pour $\int_0^2\sqrt{x}dx$. Utilisez l&#39;échelle logarithmique pour $\epsilon$.
+
+<span style="color: #658b00">FIGURE:[imgs/eps, width=400 frac=0.7] Affichage de n en fonction de $\epsilon$ lorsque $\int_0^2\sqrt{x}dx$ est calculé par la méthode du point milieu (bleu) et la méthode des trapèzes (rouge). label{fig:eps}</span>
+
 <span style="color: #8B008B; font-weight: bold">!bsol</span>
-La figure 14 montre que plus la valeur d&#39;epsilon est stricte, plus la différence entre les méthodes du point milieu et des trapèzes est grande. Pour une valeur donnée pour epsilon, la méthode du point médian se situe dans la tolérance avec moins d&#39;intervalles (valeur inférieure de $n$) que la méthode des trapèzes. Il faut s&#39;y attendre, car la méthode du point milieu est un peu plus précise que la méthode des trapèzes.
+La figure ref{fig:eps} montre que plus la valeur d&#39;epsilon est stricte, plus la différence entre les méthodes du point milieu et des trapèzes est grande. Pour une valeur donnée pour epsilon, la méthode du point milieu se situe dans la tolérance avec moins d&#39;intervalles (valeur inférieure de $n$) que la méthode des trapèzes. Il faut s&#39;y attendre, car la méthode du point milieu est un peu plus précise que la méthode des trapèzes.
 
 Une façon de produire ce tracé est d&#39;utiliser les lignes de code incluses à la fin de `integration_adaptive.py` (voir ci-dessus).
 
@@ -240,30 +148,15 @@ Utilisez des idées de l&#39;exercice ref{ex:adaptatif}.
 <span style="color: #8B008B; font-weight: bold">!ehint</span>
 <span style="color: #8B008B; font-weight: bold">!bsol</span>
 Lorsque la fonction `integration_adaptive` est disponible, le code peut s&#39;écrire:
-<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
-from integration_adaptive import integration_adaptive
 
-def f(x):
-    return x**x
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/xtox.py</span>
 
-eps = 1E-4
-a = 0.0;  b = 2.0
-
-<span style="color: #228B22"># Choose midpoint method</span>
-n = integration_adaptive(f, a, b, eps, &#39;midpoint&#39;)
-if n &gt; 0:
-    print &#39;Sufficient n is: %d&#39; % (n)
-else:
-    # The negative n is returned to signal that the upper limit of n
-    # was passed
-    print &#39;No n was found in %d iterations&#39; % (abs(n))
-<span style="color: #8B008B; font-weight: bold">!ec</span>
 N&#39;oubliez pas que `integration_adaptive` affiche l&#39;intégrale calculée, donc aucun effort à cet égard n&#39;est requis ici.
 
-L&#39;exécution du programme donne une impression à l&#39;écran montrant comment la différence devient de plus en plus petite à chaque fois. Les deux dernières lignes de l&#39;impression se lisent comme suit:
+L&#39;exécution du programme donne une impression à l&#39;écran montrant comment la différence devient de plus en plus petite à chaque fois. Les deux lignes de l&#39;impression se lisent comme suit:
 <span style="color: #8B008B; font-weight: bold">!bc</span>
-The integral computes to: 2.83384395958
-Sufficient n is: 256
+L&#39;intégrale calcule:  2.8338439595776044
+n suffisant est: 256
 <span style="color: #8B008B; font-weight: bold">!ec</span>
 La valeur calculée peut être comparée à ce que donne Wolfram alpha. N&#39;oubliez pas qu&#39;étant donné que nous n&#39;avons pas calculé l&#39;erreur exacte, nous ne pouvons garantir que le &quot;résultat est correct à quatre chiffres&quot;. Cependant, nous avons des raisons de croire que nous &quot;sommes proches&quot;. Typiquement, lorsque l&#39;on sait que la mesure d&#39;erreur utilisée n&#39;est pas précise, la tolérance est rendue plus stricte.
 <span style="color: #8B008B; font-weight: bold">!esol</span>
