@@ -188,114 +188,6 @@ final,                   % draft: marks overfull hboxes, figures with paths
 \pagestyle{fancy}
 
 
-\usepackage{framed,wrapfig}
-
-% --- begin definitions of admonition environments ---
-
-% Admonition style "grayicon" has colored background, no frame, and an icon
-% Admon "notice"
-\definecolor{grayicon_notice_background}{rgb}{0.91,0.91,0.91}
-% \fboxsep sets the space between the text and the box
-\newenvironment{noticeshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{grayicon_notice_background}}
- \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
-
-\newenvironment{notice_grayiconadmon}[1][À noter]{
-\begin{noticeshaded}
-\noindent
-\begin{wrapfigure}{l}{0.07\textwidth}
-\vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_notice}
-\end{wrapfigure} \textbf{#1}\par
-\nobreak\noindent\ignorespaces
-}
-{
-\end{noticeshaded}
-}
-
-% Admonition style "grayicon" has colored background, no frame, and an icon
-% Admon "summary"
-\definecolor{grayicon_summary_background}{rgb}{0.91,0.91,0.91}
-% \fboxsep sets the space between the text and the box
-\newenvironment{summaryshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{grayicon_summary_background}}
- \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
-
-\newenvironment{summary_grayiconadmon}[1][Résumé]{
-\begin{summaryshaded}
-\noindent
-\begin{wrapfigure}{l}{0.07\textwidth}
-\vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_summary}
-\end{wrapfigure} \textbf{#1}\par
-\nobreak\noindent\ignorespaces
-}
-{
-\end{summaryshaded}
-}
-
-% Admonition style "grayicon" has colored background, no frame, and an icon
-% Admon "warning"
-\definecolor{grayicon_warning_background}{rgb}{0.91,0.91,0.91}
-% \fboxsep sets the space between the text and the box
-\newenvironment{warningshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{grayicon_warning_background}}
- \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
-
-\newenvironment{warning_grayiconadmon}[1][Attention]{
-\begin{warningshaded}
-\noindent
-\begin{wrapfigure}{l}{0.07\textwidth}
-\vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_warning}
-\end{wrapfigure} \textbf{#1}\par
-\nobreak\noindent\ignorespaces
-}
-{
-\end{warningshaded}
-}
-
-% Admonition style "grayicon" has colored background, no frame, and an icon
-% Admon "question"
-\definecolor{grayicon_question_background}{rgb}{0.91,0.91,0.91}
-% \fboxsep sets the space between the text and the box
-\newenvironment{questionshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{grayicon_question_background}}
- \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
-
-\newenvironment{question_grayiconadmon}[1][Question]{
-\begin{questionshaded}
-\noindent
-\begin{wrapfigure}{l}{0.07\textwidth}
-\vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_question2}
-\end{wrapfigure} \textbf{#1}\par
-\nobreak\noindent\ignorespaces
-}
-{
-\end{questionshaded}
-}
-
-% Admonition style "grayicon" has colored background, no frame, and an icon
-% Admon "block"
-\definecolor{grayicon_block_background}{rgb}{0.91,0.91,0.91}
-% \fboxsep sets the space between the text and the box
-\newenvironment{blockshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{grayicon_block_background}}
- \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
-
-\newenvironment{block_grayiconadmon}[1][Block]{
-\begin{blockshaded}
-\noindent
- \textbf{#1}\par
-\nobreak\noindent\ignorespaces
-}
-{
-\end{blockshaded}
-}
-
-% --- end of definitions of admonition environments ---
-
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
@@ -376,7 +268,7 @@ TD N°4 : Intégration numérique
 
 % --- begin date ---
 \begin{center}
-Jan 19, 2020
+Jan 29, 2020
 \end{center}
 % --- end date ---
 
@@ -718,137 +610,57 @@ La valeur calculée peut être comparée à ce que donne Wolfram alpha. N'oublie
 
 % --- end solution of exercise ---
 
-\end{doconceexercise}
-% --- end exercise ---
-
 
 % !split
-
-
-% --- begin exercise ---
-\begin{doconceexercise}
-\refstepcounter{doconceexercisecounter}
-
-\exercisesection{Exercice \thedoconceexercisecounter: Orbitales atomiques}
-
-
-Pour décrire la trajectoire d'un électron autour d'un noyau, une description probabiliste est adoptée : l'électron n'est plus caractérisé par ses coordonnées spatiales mais par sa \emph{probabilité de présence} en un point de l'espace.
-
-Pour simplifier le problème, on considérera que cette probabilité de présence ne dépend que de la variable $r$, distance entre l'électron et le centre du noyau. Pour une orbitale $1s$, la probabilité de trouver l'électron entre les rayons $r_1$ et $r_2$ s'écrit :
-\begin{align*}
-P_{s1} = \int_{r_1}^{r_2} \underbrace{4 \times \frac{r^2}{a_0^3} \times e^{-2 \times \frac{r}{a_0}}}_\text{densité radiale} dr
-\end{align*}
-avec $a_0 = 0.529$ $\AA$, appelé le rayon de Bohr.
-
-La densité radiale, représentée dans la figure~\ref{fig:D_rad}, est maximale pour $r = a_0$. Ce rayon qui maximise la densité radiale est appelé le \emph{rayon orbitalaire}.
-
-\begin{notice_grayiconadmon}[À noter]
-Dans ce problème, les distances seront conservées en Angström.
-\end{notice_grayiconadmon} % title: À noter
-
-
-
-
-\begin{figure}[!ht]  % fig:D_rad
-  \centerline{\includegraphics[width=0.7\linewidth]{imgs/densite_radiale.pdf}}
-  \caption{
-  Densité radiale pour une orbitale atomique 1s. \label{fig:D_rad}
-  }
-\end{figure}
-%\clearpage % flush figures fig:D_rad
-
-
-
-\subex{a)}
-Définir une fonction \Verb!densite_radiale()!, définie entre $0$ et $\infty$ qui prend comme paramètre variable un rayon $r$ et comme paramètre par défaut $a_0 = 0.529$ $\AA$ et renvoie la valeur $4 \times \frac{r^2}{a_0^3} \times e^{-2 \times \frac{r}{a_0}}$.
-
-\subex{b)}
-Tracer la densité radiale pour $r \in [0, 2.6] \quad \AA$, afin d'obtenir le même graphique sur la figure~\ref{fig:D_rad}.
-
-\subex{c)}
-On souhaite déterminer la probabilité de présence de l'électron entre $0$ et $a_0$. Évaluer cette probabilité à l'aide de $100$ rectangles. On pourra vérifier que la réponse obtenue est proche de $0.32$.
-
-\subex{d)}
-Déterminer le nombre entier $n$, tel que l'électron ait une probabilité supérieure ou égale à $90 \%$ de se trouver entre $0$ et $n*a_0$.
-
-\subex{e)}
-On souhaite désormais évaluer la probabilité de trouver l'électron proche du rayon de Bohr, c'est-à-dire entre $0.9*a_0$ et $1.1*a_0$. Évaluer cette probabilité à l'aide de 100 rectangles.
-
-\subex{f)}
-D'après la valeur obtenue à la question précédente, que penser de la description des trajectoires des électrons par orbite autour du noyau ?
-
-\begin{notice_grayiconadmon}[À noter]
-On répondra en commentaire dans le programme.
-\end{notice_grayiconadmon} % title: À noter
-
-
-
-
-% --- begin solution of exercise ---
-\paragraph{Solution.}
-La solution de l'exercice est dans le programme python suivant:
-\begin{pro}{cbg_gray}{bar_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
-## NOM DU PROGRAMME: OrbitalesAtomiques.py
-#% IMPORTATION
-import numpy as np
-import matplotlib.pyplot as plt
-from midpoint_integral import midpoint
-# a) 
-def densite_radiale(r, a0 = 0.529):
-    return 4 * (r**2/a0**3) * np.exp(-2*(r/a0))
-# b)
-r = np.linspace(0,2.6, 100)
-
-plt.figure(figsize=(7,5))
-plt.plot(r, densite_radiale(r), label = "densité radiale pour une OA 1s")
-plt.xlabel("r "+r"$[\AA]$")
-plt.ylabel("densité radiale")
-plt.legend()
-plt.show()
-
-# c) probabilité de présence de l’électron entre 0 et a0
-a0 = 0.529
-Pa0 = midpoint(densite_radiale, 0, a0, 100)
-print("La probabilité de présence de l’électron entre 0 et a0 est: ", Pa0)
-
-# d) rayon moyen de l'OA 1s
-
-for n in range(21):
-    Prn = midpoint(densite_radiale, 0, n*a0, 100)
-    if Prn >= 0.90:
-        print("n = %d, Pr%d = %.4f"%(n,n,Prn))
-    
-'''
-r90 = 3*a0. On dit donc que la rayon moyen de l'OA 1s de l'atome d'hydrogène 
-est une sphère de rayon 3*a0, soit à peu près 1.6 Å.
-'''
-
-# e)
-Pr = midpoint(densite_radiale, 0.9*a0, 1.1*a0, 100)
-print("La probabilité de présence de l’électron entre 0.9*a0 et 1.1*a0 est: ", Pr)
-
-# La probabilité de présence de l’électron entre 0.9*a0 et 1.1*a0 est:  0.10790737203009312
-
-# f) Conclusion
-
-'''
-* La densité radiale de probabilité de présence est maximale 
-pour r = a0 (rayon de Bohr) On dit que c'est le rayon le plus probable.
-
-* Ce résultat est trompeur, car entre 0.9*a0  et 1.1*a0, la probabilité de présence
-de l'électron n'est que de 11%.
-
-* l'atome d'hydrogène est une sphère de rayon 3*a0, soit à peu près 1.6 Å.
-
-* La probabilité de présence de l’électron 1s est plus élevée à l’extérieur 
-de l’orbite de Bohr. 
-'''
-\end{minted}
-\end{pro}
-\noindent
-
-% --- end solution of exercise ---
-
+% ===== Exercice: Orbitales atomiques =====
+% Pour décrire la trajectoire d'un électron autour d'un noyau, une description probabiliste est adoptée : l'électron n'est plus caractérisé par ses coordonnées spatiales mais par sa \emph{probabilité de présence} en un point de l'espace.
+% 
+% Pour simplifier le problème, on considérera que cette probabilité de présence ne dépend que de la variable $r$, distance entre l'électron et le centre du noyau. Pour une orbitale $1s$, la probabilité de trouver l'électron entre les rayons $r_1$ et $r_2$ s'écrit :
+% !bt
+% \begin{align*}
+% P_{s1} = \int_{r_1}^{r_2} \underbrace{4 \times \frac{r^2}{a_0^3} \times e^{-2 \times \frac{r}{a_0}}}_\text{densité radiale} dr
+% \end{align*}
+% % avec $a_0 = 0.529$ $\AA$, appelé le rayon de Bohr.
+% 
+% La densité radiale, représentée dans la figure~\ref{fig:D_rad}, est maximale pour $r = a_0$. Ce rayon qui maximise la densité radiale est appelé le \emph{rayon orbitalaire}.
+% !bnotice
+% Dans ce problème, les distances seront conservées en Angström.
+% !enotice
+% 
+% FIGURE:[imgs/densite_radiale, width=400 frac=0.7] Densité radiale pour une orbitale atomique 1s. \label{fig:D_rad}
+% 
+% 
+% !bsubex
+% Définir une fonction \Verb!densite_radiale()!, définie entre $0$ et $\infty$ qui prend comme paramètre variable un rayon $r$ et comme paramètre par défaut $a_0 = 0.529$ $\AA$ et renvoie la valeur $4 \times \frac{r^2}{a_0^3} \times e^{-2 \times \frac{r}{a_0}}$.
+% !esubex
+% 
+% !bsubex
+% Tracer la densité radiale pour $r \in [0, 2.6] \quad \AA$, afin d'obtenir le même graphique sur la figure~\ref{fig:D_rad}.
+% !esubex
+% 
+% !bsubex
+% On souhaite déterminer la probabilité de présence de l'électron entre $0$ et $a_0$. Évaluer cette probabilité à l'aide de $100$ rectangles. On pourra vérifier que la réponse obtenue est proche de $0.32$.
+% !esubex
+% 
+% !bsubex
+% Déterminer le nombre entier $n$, tel que l'électron ait une probabilité supérieure ou égale à $90 \%$ de se trouver entre $0$ et $n*a_0$.
+% !esubex
+% 
+% !bsubex
+% On souhaite désormais évaluer la probabilité de trouver l'électron proche du rayon de Bohr, c'est-à-dire entre $0.9*a_0$ et $1.1*a_0$. Évaluer cette probabilité à l'aide de 100 rectangles.
+% !esubex
+% 
+% !bsubex
+% D'après la valeur obtenue à la question précédente, que penser de la description des trajectoires des électrons par orbite autour du noyau ?
+% !bnotice
+% On répondra en commentaire dans le programme.
+% !enotice
+% !bsol
+% La solution de l'exercice est dans le programme python suivant:
+% @@@CODE scripts/OrbitalesAtomiques.py
+% !esol
+% 
+% !esubex
 \end{doconceexercise}
 % --- end exercise ---
 
