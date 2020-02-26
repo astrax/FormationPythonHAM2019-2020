@@ -385,4 +385,14 @@ Le tracé de la trajectoire dans l'espace de phase est obtenu avec le programme 
 
  Voilà ce que cela donne avec le programme `AttracteurLorenzRK4.py`:
 
-FIGURE:[scripts/lorenz_ode_3d, width=500 frac=0.7] Attracteur de Lorenz pour $\sigma = 10$, $\beta= 8/3$ et $\rho = 28$. Les conditions initiales pour [x0,y0,z0] sont [1,1,20].
+FIGURE:[scripts/lorenz_ode_components, width=500 frac=0.6] Évolution des coordonnées x, y et z en fonction du temps. $\sigma = 10$, $\beta= 8/3$ et $\rho = 28$. Les conditions initiales sont pour [x0,y0,z0] sont [1,1,20].
+
+FIGURE:[scripts/lorenz_ode_3d, width=500 frac=0.7] Attracteur de Lorenz pour $\sigma = 10$, $\beta= 8/3$ et $\rho = 28$. Les conditions initiales sont pour [x0,y0,z0] sont [1,1,20].
+
+Lorsque nous modélisons ce système dans l'espace des phases, nous avons apparition d'une structure fractale que nous appelons "Attracteur de Lorenz". C'est cette construction mathématique qui a probablement donné l'idée du papillon à Lorenz pour illustrer sa mécanique Chaotique lors de sa conférence de 1963!
+
+Nous remarquons que notre système va devenir chaotique lorsque $\rho$ va dépasser une valeur critique $\rho_c = 19.44$
+
+FIGURE:[scripts/lorenz_ode_r, width=500 frac=0.7] Formation d'un deuxième attracteur lorsque $\rho$ dépasse la valeur critique $\rho_c = 19.44$.
+
+Lorsque notre système n'est pas chaotique, nous avons la formation d'un seul attracteur, cependant, lorsque $\rho$ dépasse la valeur $\rho_c$, notre papillon déploie ses ailes pour nous inviter dans le monde du Chaos! Nous pouvons alors voir la présence d'un deuxième attracteur venant perturber la trajectoire de notre système qui rester à naviguer entre les deux puits de gravité de ces deux attracteurs. On qualifie également cette figure "d'attracteur étrange" car les trajectoires ne se coupent pas et semblent évoluer au hasard.

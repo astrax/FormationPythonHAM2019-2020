@@ -164,7 +164,7 @@ MathJax.Hub.Config({
 <center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
 <br>
 <p>
-<center><h4>Feb 25, 2020</h4></center> <!-- date -->
+<center><h4>Feb 26, 2020</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -772,7 +772,7 @@ Le trac&#233; de la trajectoire dans l'espace de phase est obtenu avec le progra
 <span style="color: #408080; font-style: italic">#Initial values</span>
 sigma <span style="color: #666666">=</span> <span style="color: #666666">10</span>
 beta <span style="color: #666666">=</span> <span style="color: #666666">8.0/3.0</span>
-rho <span style="color: #666666">=</span> <span style="color: #666666">28</span>
+rho <span style="color: #666666">=</span> <span style="color: #666666">28.0</span>
 <span style="color: #408080; font-style: italic">#Compute the time-derivative of a Lorenz system.</span>
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">xt</span>(x, y, z, t):
     <span style="color: #008000; font-weight: bold">return</span> (sigma<span style="color: #666666">*</span>(y <span style="color: #666666">-</span> x))
@@ -788,7 +788,7 @@ rho <span style="color: #666666">=</span> <span style="color: #666666">28</span>
     t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
     x[<span style="color: #666666">0</span>],y[<span style="color: #666666">0</span>], z[<span style="color: #666666">0</span>], t[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">1.0</span>, <span style="color: #666666">1.0</span>, <span style="color: #666666">20</span>, <span style="color: #666666">0</span>
     dt <span style="color: #666666">=</span> tf<span style="color: #666666">/</span><span style="color: #008000">float</span>(n)
-    <span style="color: #408080; font-style: italic">#Compute the approximate solution at equally spaced times.</span>
+    <span style="color: #408080; font-style: italic"># calculer la solution approximative RK4.</span>
     <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span> (n<span style="color: #666666">-1</span>):
         t[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> t[k] <span style="color: #666666">+</span> dt
         k1 <span style="color: #666666">=</span> xt(x[k], y[k], z[k], t[k])
@@ -820,24 +820,24 @@ rho <span style="color: #666666">=</span> <span style="color: #666666">28</span>
 
 x, y, z, t <span style="color: #666666">=</span> RungeKutta4(xt,yt,zt)
 
-plt<span style="color: #666666">.</span>figure (figsize <span style="color: #666666">=</span> (<span style="color: #666666">7</span>,<span style="color: #666666">5</span>))
+plt<span style="color: #666666">.</span>figure (figsize <span style="color: #666666">=</span> (<span style="color: #666666">8</span>,<span style="color: #666666">5</span>))
 plt<span style="color: #666666">.</span>plot ( t, x, linewidth <span style="color: #666666">=</span> <span style="color: #666666">1</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;b&#39;</span> ) 
 plt<span style="color: #666666">.</span>plot ( t, y, linewidth <span style="color: #666666">=</span> <span style="color: #666666">1</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;r&#39;</span> )
 plt<span style="color: #666666">.</span>plot ( t, z, linewidth <span style="color: #666666">=</span> <span style="color: #666666">1</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;g&#39;</span> )
 plt<span style="color: #666666">.</span>xlabel ( <span style="color: #BA2121">&#39;Temps&#39;</span> )
 plt<span style="color: #666666">.</span>ylabel ( <span style="color: #BA2121">&#39;x(t), y(t), z(t)&#39;</span> )
-plt<span style="color: #666666">.</span>title ( <span style="color: #BA2121">&#39;Tracé de la série chronologique de Lorenz&#39;</span> )
+plt<span style="color: #666666">.</span>title (<span style="color: #BA2121">&#39;Évolution des coordonnées x, y et z en fonction du temps&#39;</span> )
 plt<span style="color: #666666">.</span>legend([<span style="color: #BA2121">&#39;x(t)&#39;</span>,<span style="color: #BA2121">&#39;y(t)&#39;</span>,<span style="color: #BA2121">&#39;z(t)&#39;</span>], loc <span style="color: #666666">=</span> <span style="color: #666666">2</span>)
-plt<span style="color: #666666">.</span>savefig ( <span style="color: #BA2121">&#39;lorenz_ode_components.png&#39;</span> )
+plt<span style="color: #666666">.</span>savefig (<span style="color: #BA2121">&#39;lorenz_ode_components.png&#39;</span>); plt<span style="color: #666666">.</span>savefig (<span style="color: #BA2121">&#39;lorenz_ode_components.pdf&#39;</span> )
 plt<span style="color: #666666">.</span>show ( )
-
+<span style="color: #408080; font-style: italic"># FIGURE 3d: ATTRACTEUR DE LORENZ</span>
 fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure()
 ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>axes(projection <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;3d&#39;</span> )
-ax<span style="color: #666666">.</span>plot ( x, y, z, linewidth <span style="color: #666666">=</span> <span style="color: #666666">1</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;b&#39;</span> )
+ax<span style="color: #666666">.</span>plot ( x, y, z, linewidth <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;k&#39;</span> )
 ax<span style="color: #666666">.</span>set_xlabel (<span style="color: #BA2121">&#39;x(t)&#39;</span>)
 ax<span style="color: #666666">.</span>set_ylabel (<span style="color: #BA2121">&#39;y(t)&#39;</span>)
 ax<span style="color: #666666">.</span>set_zlabel (<span style="color: #BA2121">&#39;z(t)&#39;</span>)
-ax<span style="color: #666666">.</span>set_title (<span style="color: #BA2121">&#39;Attracteur de Lorenz (3D)&#39;</span>)
+ax<span style="color: #666666">.</span>set_title (<span style="color: #BA2121">&#39;Attracteur de Lorenz pour &#39;</span> <span style="color: #666666">+</span> <span style="color: #BA2121">r&quot;$\rho = </span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">$&quot;</span><span style="color: #666666">%</span>rho)
 plt<span style="color: #666666">.</span>tight_layout()
 plt<span style="color: #666666">.</span>savefig (<span style="color: #BA2121">&#39;lorenz_ode_3d.png&#39;</span>); plt<span style="color: #666666">.</span>savefig (<span style="color: #BA2121">&#39;lorenz_ode_3d.pdf&#39;</span>)
 plt<span style="color: #666666">.</span>show()
@@ -848,9 +848,32 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <center>  <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 8:  Attracteur de Lorenz pour \( \sigma = 10 \), \( \beta= 8/3 \) et \( \rho = 28 \). Les conditions initiales pour [x0,y0,z0] sont [1,1,20]. </p></center>
+<center><p class="caption">Figure 8:  &#201;volution des coordonn&#233;es x, y et z en fonction du temps. \( \sigma = 10 \), \( \beta= 8/3 \) et \( \rho = 28 \). Les conditions initiales sont pour [x0,y0,z0] sont [1,1,20]. </p></center>
+<p><img src="scripts/lorenz_ode_components.png" align="bottom" width=500></p>
+</center>
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 9:  Attracteur de Lorenz pour \( \sigma = 10 \), \( \beta= 8/3 \) et \( \rho = 28 \). Les conditions initiales sont pour [x0,y0,z0] sont [1,1,20]. </p></center>
 <p><img src="scripts/lorenz_ode_3d.png" align="bottom" width=500></p>
 </center>
+
+<p>
+Lorsque nous mod&#233;lisons ce syst&#232;me dans l'espace des phases, nous avons apparition d'une structure fractale que nous appelons "Attracteur de Lorenz". C'est cette construction math&#233;matique qui a probablement donn&#233; l'id&#233;e du papillon &#224; Lorenz pour illustrer sa m&#233;canique Chaotique lors de sa conf&#233;rence de 1963!
+
+<p>
+Nous remarquons que notre syst&#232;me va devenir chaotique lorsque \( \rho \) va d&#233;passer une valeur critique \( \rho_c = 19.44 \)
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 10:  Formation d'un deuxi&#232;me attracteur lorsque \( \rho \) d&#233;passe la valeur critique \( \rho_c = 19.44 \). </p></center>
+<p><img src="scripts/lorenz_ode_r.png" align="bottom" width=500></p>
+</center>
+
+<p>
+Lorsque notre syst&#232;me n'est pas chaotique, nous avons la formation d'un seul attracteur, cependant, lorsque \( \rho \) d&#233;passe la valeur \( \rho_c \), notre papillon d&#233;ploie ses ailes pour nous inviter dans le monde du Chaos! Nous pouvons alors voir la pr&#233;sence d'un deuxi&#232;me attracteur venant perturber la trajectoire de notre syst&#232;me qui rester &#224; naviguer entre les deux puits de gravit&#233; de ces deux attracteurs. On qualifie &#233;galement cette figure "d'attracteur &#233;trange" car les trajectoires ne se coupent pas et semblent &#233;voluer au hasard.
 
 <!-- ------------------- end of main content --------------- -->
 

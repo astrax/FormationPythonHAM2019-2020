@@ -6,7 +6,7 @@ from mpl_toolkits.mplot3d import Axes3D
 #Initial values
 sigma = 10
 beta = 8.0/3.0
-rho = 28
+rho = 28.0
 #Compute the time-derivative of a Lorenz system.
 def xt(x, y, z, t):
     return (sigma*(y - x))
@@ -22,7 +22,7 @@ def RungeKutta4(xt,yt,zt,n = 3500, tf = 30):
     t = np.zeros(n)
     x[0],y[0], z[0], t[0] = 1.0, 1.0, 20, 0
     dt = tf/float(n)
-    #Compute the approximate solution at equally spaced times.
+    # calculer la solution approximative RK4.
     for k in range (n-1):
         t[k+1] = t[k] + dt
         k1 = xt(x[k], y[k], z[k], t[k])
@@ -54,24 +54,24 @@ def RungeKutta4(xt,yt,zt,n = 3500, tf = 30):
 
 x, y, z, t = RungeKutta4(xt,yt,zt)
 
-plt.figure (figsize = (7,5))
+plt.figure (figsize = (8,5))
 plt.plot ( t, x, linewidth = 1, color = 'b' ) 
 plt.plot ( t, y, linewidth = 1, color = 'r' )
 plt.plot ( t, z, linewidth = 1, color = 'g' )
 plt.xlabel ( 'Temps' )
 plt.ylabel ( 'x(t), y(t), z(t)' )
-plt.title ( 'Tracé de la série chronologique de Lorenz' )
+plt.title ('Évolution des coordonnées x, y et z en fonction du temps' )
 plt.legend(['x(t)','y(t)','z(t)'], loc = 2)
-plt.savefig ( 'lorenz_ode_components.png' )
+plt.savefig ('lorenz_ode_components.png'); plt.savefig ('lorenz_ode_components.pdf' )
 plt.show ( )
-
+# FIGURE 3d: ATTRACTEUR DE LORENZ
 fig = plt.figure()
 ax = plt.axes(projection = '3d' )
-ax.plot ( x, y, z, linewidth = 1, color = 'b' )
+ax.plot ( x, y, z, linewidth = 0.5, color = 'k' )
 ax.set_xlabel ('x(t)')
 ax.set_ylabel ('y(t)')
 ax.set_zlabel ('z(t)')
-ax.set_title ('Attracteur de Lorenz (3D)')
+ax.set_title ('Attracteur de Lorenz pour ' + r"$\rho = %.2f$"%rho)
 plt.tight_layout()
 plt.savefig ('lorenz_ode_3d.png'); plt.savefig ('lorenz_ode_3d.pdf')
 plt.show()

@@ -385,5 +385,15 @@ Le tracé de la trajectoire dans l&#39;espace de phase est obtenu avec le progra
 
  Voilà ce que cela donne avec le programme `AttracteurLorenzRK4.py`:
 
-<span style="color: #658b00">FIGURE:[scripts/lorenz_ode_3d, width=500 frac=0.7] Attracteur de Lorenz pour $\sigma = 10$, $\beta= 8/3$ et $\rho = 28$. Les conditions initiales pour [x0,y0,z0] sont [1,1,20].</span>
+<span style="color: #658b00">FIGURE:[scripts/lorenz_ode_components, width=500 frac=0.6] Évolution des coordonnées x, y et z en fonction du temps. $\sigma = 10$, $\beta= 8/3$ et $\rho = 28$. Les conditions initiales sont pour [x0,y0,z0] sont [1,1,20].</span>
+
+<span style="color: #658b00">FIGURE:[scripts/lorenz_ode_3d, width=500 frac=0.7] Attracteur de Lorenz pour $\sigma = 10$, $\beta= 8/3$ et $\rho = 28$. Les conditions initiales sont pour [x0,y0,z0] sont [1,1,20].</span>
+
+Lorsque nous modélisons ce système dans l&#39;espace des phases, nous avons apparition d&#39;une structure fractale que nous appelons &quot;Attracteur de Lorenz&quot;. C&#39;est cette construction mathématique qui a probablement donné l&#39;idée du papillon à Lorenz pour illustrer sa mécanique Chaotique lors de sa conférence de 1963!
+
+Nous remarquons que notre système va devenir chaotique lorsque $\rho$ va dépasser une valeur critique $\rho_c = 19.44$
+
+<span style="color: #658b00">FIGURE:[scripts/lorenz_ode_r, width=500 frac=0.7] Formation d&#39;un deuxième attracteur lorsque $\rho$ dépasse la valeur critique $\rho_c = 19.44$.</span>
+
+Lorsque notre système n&#39;est pas chaotique, nous avons la formation d&#39;un seul attracteur, cependant, lorsque $\rho$ dépasse la valeur $\rho_c$, notre papillon déploie ses ailes pour nous inviter dans le monde du Chaos! Nous pouvons alors voir la présence d&#39;un deuxième attracteur venant perturber la trajectoire de notre système qui rester à naviguer entre les deux puits de gravité de ces deux attracteurs. On qualifie également cette figure &quot;d&#39;attracteur étrange&quot; car les trajectoires ne se coupent pas et semblent évoluer au hasard.
 </pre></div>
