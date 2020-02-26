@@ -352,8 +352,14 @@ y_{n+1} &amp;= y_n + k_1/6 + k_2/3 + k_3/3 + k_4/6 + O(h^5)
 <span style="color: #8B008B; font-weight: bold">!et</span>
 
 <span style="color: #000080; font-weight: bold">===== Exemple: Système dynamique différentiel de Lorenz (attracteur de Lorenz) =====</span>
-L&#39;attracteur de Lorenz, connu aussi sous le nom de &quot;papillon de Lorenz&quot;, est sans doute le plus connu des systèmes dynamiques non linéaires, essentiellement pour son aspect esthétique !
-Le système différentiel en question fut obtenu par Ed Lorenz en 1963, alors qu&#39;il étudiait les mouvements convectifs de l&#39;atmosphère. Ce système résulte d&#39;une simplification assez drastique de l&#39;ensemble des équations différentielles en jeu. C&#39;est un système paramétrique dont voici l&#39;expression :
+L&#39;attracteur de Lorenz, connu aussi sous le nom de *&quot;papillon de Lorenz&quot;*, est sans doute le plus connu des systèmes dynamiques non linéaires, essentiellement pour son aspect esthétique!
+
+Le problème avec la prédiction météorologique est l&#39;interdépendance de tous les paramètres de l&#39;atmosphère. Pour prendre un exemple, lorsque vous avez une zone de dépression, il y a un déplacement d&#39;une masse d&#39;air voisine. C&#39;est ici une réaction thermodynamique, l&#39;atmosphère s&#39;organise pour que son enthalpie soit minimum alors qu&#39;en même temps, le sol continue à chauffer l&#39;air créant de nouveau un déséquilibre. De même, l&#39;ensoleillement n&#39;étant pas constant à la surface de la Terre (dépendant de la situation géographique et des saisons), nous avons donc formation de diverses cellules de convections qui se retrouvent interdépendantes. Une perturbation sur l&#39;une de ces cellules peut être retrouvée sous la forme d&#39;une autre perturbation sur une autre cellule de convection. C&#39;est ici l&#39;idée qui s&#39;est dégagée de la remarque de Lorenz: *&quot;Le battement d&#39;ailes d&#39;un papillon au Brésil peut-il provoquer une tornade au Texas?&quot;*
+
+<span style="color: #658b00">FIGURE:[imgs/convection, width=500 frac=0.7]</span>
+Lorsque Lorenz a découvert cette théorie en 1963, il étudiait la météorologie au MIT. Comme nous l&#39;avons dit, il fut l&#39;un des premiers a avoir pu utiliser un ordinateur! Bien sûr, ce n&#39;était pas du tout les mêmes machines que nous utilisons aujourd&#39;hui! Ces derniers occupaient une salle entière, chauffaient comme un diable et avaient une capacité de calcul inférieure aux premiers smartphones commercialisés. Il fallait donc être très patient lorsque vous vouliez faire une modélisation et chaque erreur faisait perdre du temps à vos collègues (car à cette époque, il n&#39;y avait que quelques ordinateurs au MIT) et gaspillait énormément d&#39;énergie.
+
+Le système différentiel résulte d&#39;une simplification assez drastique de l&#39;ensemble des équations différentielles en jeu. C&#39;est un système paramétrique dont voici l&#39;expression :
 
 <span style="color: #8B008B; font-weight: bold">!bt</span>
 <span style="color: #658b00">\begin{align*}</span>

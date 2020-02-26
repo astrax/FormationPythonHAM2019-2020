@@ -164,7 +164,7 @@ MathJax.Hub.Config({
 <center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
 <br>
 <p>
-<center><h4>Feb 20, 2020</h4></center> <!-- date -->
+<center><h4>Feb 25, 2020</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -721,8 +721,17 @@ y_{n+1} &= y_n + k_1/6 + k_2/3 + k_3/3 + k_4/6 + O(h^5)
 $$
 
 <h2 id="___sec12" class="anchor">Exemple: Syst&#232;me dynamique diff&#233;rentiel de Lorenz (attracteur de Lorenz) </h2>
-L'attracteur de Lorenz, connu aussi sous le nom de "papillon de Lorenz", est sans doute le plus connu des syst&#232;mes dynamiques non lin&#233;aires, essentiellement pour son aspect esth&#233;tique !
-Le syst&#232;me diff&#233;rentiel en question fut obtenu par Ed Lorenz en 1963, alors qu'il &#233;tudiait les mouvements convectifs de l'atmosph&#232;re. Ce syst&#232;me r&#233;sulte d'une simplification assez drastique de l'ensemble des &#233;quations diff&#233;rentielles en jeu. C'est un syst&#232;me param&#233;trique dont voici l'expression :
+L'attracteur de Lorenz, connu aussi sous le nom de <em>"papillon de Lorenz"</em>, est sans doute le plus connu des syst&#232;mes dynamiques non lin&#233;aires, essentiellement pour son aspect esth&#233;tique!
+
+<p>
+Le probl&#232;me avec la pr&#233;diction m&#233;t&#233;orologique est l'interd&#233;pendance de tous les param&#232;tres de l'atmosph&#232;re. Pour prendre un exemple, lorsque vous avez une zone de d&#233;pression, il y a un d&#233;placement d'une masse d'air voisine. C'est ici une r&#233;action thermodynamique, l'atmosph&#232;re s'organise pour que son enthalpie soit minimum alors qu'en m&#234;me temps, le sol continue &#224; chauffer l'air cr&#233;ant de nouveau un d&#233;s&#233;quilibre. De m&#234;me, l'ensoleillement n'&#233;tant pas constant &#224; la surface de la Terre (d&#233;pendant de la situation g&#233;ographique et des saisons), nous avons donc formation de diverses cellules de convections qui se retrouvent interd&#233;pendantes. Une perturbation sur l'une de ces cellules peut &#234;tre retrouv&#233;e sous la forme d'une autre perturbation sur une autre cellule de convection. C'est ici l'id&#233;e qui s'est d&#233;gag&#233;e de la remarque de Lorenz: <em>"Le battement d'ailes d'un papillon au Br&#233;sil peut-il provoquer une tornade au Texas?"</em>
+
+<p>
+<br /><br /><center><p><img src="imgs/convection.jpg" align="bottom" width=500></p></center><br /><br />
+Lorsque Lorenz a d&#233;couvert cette th&#233;orie en 1963, il &#233;tudiait la m&#233;t&#233;orologie au MIT. Comme nous l'avons dit, il fut l'un des premiers a avoir pu utiliser un ordinateur! Bien s&#251;r, ce n'&#233;tait pas du tout les m&#234;mes machines que nous utilisons aujourd'hui! Ces derniers occupaient une salle enti&#232;re, chauffaient comme un diable et avaient une capacit&#233; de calcul inf&#233;rieure aux premiers smartphones commercialis&#233;s. Il fallait donc &#234;tre tr&#232;s patient lorsque vous vouliez faire une mod&#233;lisation et chaque erreur faisait perdre du temps &#224; vos coll&#232;gues (car &#224; cette &#233;poque, il n'y avait que quelques ordinateurs au MIT) et gaspillait &#233;norm&#233;ment d'&#233;nergie.
+
+<p>
+Le syst&#232;me diff&#233;rentiel r&#233;sulte d'une simplification assez drastique de l'ensemble des &#233;quations diff&#233;rentielles en jeu. C'est un syst&#232;me param&#233;trique dont voici l'expression :
 
 $$
 \begin{align*}
@@ -815,10 +824,10 @@ plt<span style="color: #666666">.</span>figure (figsize <span style="color: #666
 plt<span style="color: #666666">.</span>plot ( t, x, linewidth <span style="color: #666666">=</span> <span style="color: #666666">1</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;b&#39;</span> ) 
 plt<span style="color: #666666">.</span>plot ( t, y, linewidth <span style="color: #666666">=</span> <span style="color: #666666">1</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;r&#39;</span> )
 plt<span style="color: #666666">.</span>plot ( t, z, linewidth <span style="color: #666666">=</span> <span style="color: #666666">1</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;g&#39;</span> )
-plt<span style="color: #666666">.</span>xlabel ( <span style="color: #BA2121">&#39;&lt;--- Time ---&gt;&#39;</span> )
-plt<span style="color: #666666">.</span>ylabel ( <span style="color: #BA2121">&#39;&lt;--- x(t), y(t), z(t) ---&gt;&#39;</span> )
-plt<span style="color: #666666">.</span>title ( <span style="color: #BA2121">&#39;Lorenz Time Series Plot&#39;</span> )
-plt<span style="color: #666666">.</span>legend([<span style="color: #BA2121">&#39;x&#39;</span>,<span style="color: #BA2121">&#39;y&#39;</span>,<span style="color: #BA2121">&#39;z&#39;</span>], loc <span style="color: #666666">=</span> <span style="color: #666666">2</span>)
+plt<span style="color: #666666">.</span>xlabel ( <span style="color: #BA2121">&#39;Temps&#39;</span> )
+plt<span style="color: #666666">.</span>ylabel ( <span style="color: #BA2121">&#39;x(t), y(t), z(t)&#39;</span> )
+plt<span style="color: #666666">.</span>title ( <span style="color: #BA2121">&#39;Tracé de la série chronologique de Lorenz&#39;</span> )
+plt<span style="color: #666666">.</span>legend([<span style="color: #BA2121">&#39;x(t)&#39;</span>,<span style="color: #BA2121">&#39;y(t)&#39;</span>,<span style="color: #BA2121">&#39;z(t)&#39;</span>], loc <span style="color: #666666">=</span> <span style="color: #666666">2</span>)
 plt<span style="color: #666666">.</span>savefig ( <span style="color: #BA2121">&#39;lorenz_ode_components.png&#39;</span> )
 plt<span style="color: #666666">.</span>show ( )
 
