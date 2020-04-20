@@ -1,0 +1,9 @@
+TITLE: TD N°5 : Résolution des équations aux dérivées partielles
+AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+DATE: today
+
+TOC: on
+
+===== Exercise:  Condensateur plan =====
+Résoudre l'équation bidimensionnelle de Laplace pour le potentiel électrique pour un condensateur à plaques parallèles avec des potentiels V = ± 1 V contenus dans une région carrée mise à la terre de longueur latérale L comme indiqué sur la figure ref{fig:laplace2DExercice}.
+FIGURE:[imgs/laplace2DExercice, width=600 frac=0.5] label{fig:laplace2DExercice}
